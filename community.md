@@ -11,7 +11,7 @@ File an enhancement or a bug in the following issue tracker:
 
 [GitHub Issue Tracker](https://github.com/souffle-lang/souffle/issues)
 
-## Question & Answers
+## Questions & Answers
 
 <iframe id="forum_embed"
  src="javascript:void(0)"
