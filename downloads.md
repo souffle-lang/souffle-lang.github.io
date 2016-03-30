@@ -11,7 +11,7 @@ title: Downloads
   dpkg -i souffle_1.0-1_amd64.deb
 ```
 
-The MD5SUM of the package is 
+The MD5SUM of the package is:
 ```
   21bbfdefa9ac851c54400c9441e715f4
 ```
