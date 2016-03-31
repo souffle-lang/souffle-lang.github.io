@@ -3,6 +3,12 @@ layout: default
 title: Community
 ---
 
+## Issues
+
+File an enhancement or a bug in the following issue tracker:
+
+[GitHub Issue Tracker](https://github.com/souffle-lang/souffle/issues)
+
 ## Questions & Answers
 
 <iframe id="forum_embed"
@@ -19,10 +25,3 @@ title: Community
   "&showsearch=true&showpopout=true&parenturl=" +
   encodeURIComponent(window.location.href);
 </script>
-
-## Issues
-
-File an enhancement or a bug in the following issue tracker:
-
-[GitHub Issue Tracker](https://github.com/souffle-lang/souffle/issues)
-
