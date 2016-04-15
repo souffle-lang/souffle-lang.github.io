@@ -5,17 +5,11 @@ title: Downloads
 
 ## Debian Package
 
-[Debian package](/souffle_1.0-1_amd64.deb) is installed by typing:
+[Debian package](https://github.com/souffle-lang/souffle/releases/latest) is installed by typing:
 
 ```
   dpkg -i souffle_1.0-1_amd64.deb
 ```
-
-The MD5SUM of the package is:
-```
-  21bbfdefa9ac851c54400c9441e715f4
-```
-
 
 ## Source Code
 
