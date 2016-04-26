@@ -9,6 +9,8 @@ File an enhancement or a bug in the following issue tracker:
 
 [GitHub Issue Tracker](https://github.com/souffle-lang/souffle/issues)
 
+## [Email Forum](https://groups.google.com/forum/#!forum/souffle-talk) 
+
 ## Questions & Answers
 
 <iframe id="forum_embed"
