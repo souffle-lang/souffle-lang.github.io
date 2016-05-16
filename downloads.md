@@ -24,4 +24,4 @@ The source code can be obtained by git, as a zip-file, or as tar-ball.
 
 The latest build status for a various systems can be found below:
 
-<iframe src="http://plang1.it.usyd.edu.au/jenkins"></iframe>
+<iframe src="http://plang1.it.usyd.edu.au/jenkins/" width="640" height="480" style="display:block; margin: 0 auto;">&nbsp;</iframe>
