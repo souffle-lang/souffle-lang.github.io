@@ -23,5 +23,4 @@ The source code can be obtained by git, as a zip-file, or as tar-ball.
 * <a href="https://github.com/souffle-lang/souffle/tarball/master" class="btn">Download .tar.gz</a>
 
 The latest build status for a various systems can be found below:
-
-<iframe src="http://plang1.it.usyd.edu.au/jenkins/" width="640" height="480" style="display:block; margin: 0 auto;">&nbsp;</iframe>
+ * [Jenkins Build System](http://plang1.it.usyd.edu.au/jenkins) 
