@@ -3,9 +3,11 @@ layout: default
 title: Downloads
 ---
 
-## Pre-built packages of the latest version of Soufflé 
+## Pre-built packages of Soufflé 
 
-https://github.com/souffle-lang/souffle/releases
+Currently, we have packages for Debian based systems and MAC OS X.
+
+[Releases](https://github.com/souffle-lang/souffle/releases)
 
 ## Source Code
 
@@ -18,4 +20,8 @@ The source code can be obtained by git, as a zip-file, or as tar-ball.
 * <a href="https://github.com/souffle-lang/souffle/tarball/master" class="btn">Download .tar.gz</a>
 
 The latest build status for a various systems can be found below:
-* [Jenkins Build System](http://plang1.it.usyd.edu.au/jenkins) 
+
+[Jenkins Build System](http://plang1.it.usyd.edu.au/jenkins)
+
+
+
