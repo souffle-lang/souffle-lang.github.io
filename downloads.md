@@ -5,8 +5,7 @@ title: Downloads
 
 ## Pre-built packages of the latest version of Soufflé 
 
-https://github.com/souffle-lang/souffle/releaseshttps://github.com/souffle-lang/souffle/releases
-
+https://github.com/souffle-lang/souffle/releases
 
 ## Source Code
 
