@@ -1,0 +1,29 @@
+- title: Getting Started
+  docs:
+  - home
+  - build
+  - simple
+  - execute
+
+- title: Language
+  docs:
+  - datalog
+  - types
+  - strings
+  - arithmetic
+  - components
+  - records
+  - aggregates
+
+- title: Advanced Topics
+  docs:
+  - translate
+  - tuning
+  - profiler
+
+- title: Misc
+  docs:
+  - history
+  - others
+  - contributors
+  - publications

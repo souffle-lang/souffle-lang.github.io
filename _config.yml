@@ -1,0 +1,35 @@
+markdown: kramdown
+highlighter: rouge
+
+repository: https://github.com/souffle-lang/souffle
+
+timezone: Australia/Sydney
+
+collections:
+  docs:
+    output: true
+  posts:
+    permalink: /news/:year/:month/:day/:title/
+    output: true
+
+name: Soufflé • A Datalog Synthesis Tool for Static Analysis
+description: Soufflé synthesizes a parallel C++ program from a declarative Datalog program
+url: https://souffle-lang.org
+
+twitter:
+  username: soufflelang
+
+logo: /img/logo-2x.png
+
+gems:
+  - jekyll-feed
+  - jekyll-redirect-from
+  - jemoji
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-avatar
+  - jekyll-mentions
+
+exclude:
+  - README.md
+  - .gitignore
