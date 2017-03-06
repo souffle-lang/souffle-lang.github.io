@@ -10,7 +10,7 @@ Soufflé has various command line options to control the execution mode and para
 
 The flag ```-I <directory>``` specifies the include directory for Soufflé programs. Soufflé uses a C-preprocessor to preprocess the source code. The flag specifies the include directory such that include files included by```#include``` can be found in the directory ```<directory>```.
 
-# Input & Output
+# Input
 
 A Soufflé program may load the facts of a relation (aka. as EDB) from various input sources.
 The input source is specified by the ```.input``` directive of a relation.
@@ -27,6 +27,7 @@ The input directive ```.input``` make the EDB read from
 a tab-separated file ```A.facts``` in either the current directory (if no ```-F``` flag was specified) or it expects the file ```A.facts``` in the directory ```<fact-dir>``` with the option ```-F <fact-dir>```. 
 Note that there is an exception if the filename is either changed in the [input directive](/docs/io) or the relation is a result of a component instantiation [component](components). 
 
+# Output
 The output relations of a Datalog program are written to a tab separated file name ```<relation name>.csv``` in the current directory. If the parameter ```-D<output-dir>``` is given then the default output directory will be changed to that given. ```-D-``` can be used to redirect all file output to stdout.
 
 For example, the relation  
@@ -99,4 +100,4 @@ All execution modes of Soufflé provide parallel evaluation. The parallel evalua
 More verbose output can be produced by using the verbose flag ```-v```. 
 
 # Debugging 
-A debug report in HTML format is generated using the flag ```--debug-report=<report.html>```. Note that for debug report, it is essential that graphviz is installed to render the dependency graphs. 
+A debug report in HTML format is generated using the flag ```--debug-report=<report.html>```. Note that for the debug report, it is essential that graphviz is installed to render the dependency graphs. 
