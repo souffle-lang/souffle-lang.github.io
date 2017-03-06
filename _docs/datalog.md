@@ -4,13 +4,13 @@ title: Datalog
 permalink: /docs/datalog/
 ---
 
-Datalog is declarative programming language that has been
+Datalog is a declarative programming language that was
 introduced as a query language for deductive databases in the late 70s.
 Areas including web semantics,
 program analysis, and security analysis use Datalog as a domain specific 
 language. Datalog adapts the syntax style of [Prolog](https://en.wikipedia.org/wiki/Prolog).
 A full exposition is beyond the scope of this manual -- more details are available in the book Foundations of Databases by Abiteboul, 
-Hull and Vianu, or [tutorial material](http://blogs.evergreen.edu/sosw/files/2014/04/Green-Vol5-DBS-017.pdf)
+Hull and Vianu, or [tutorial material](http://blogs.evergreen.edu/sosw/files/2014/04/Green-Vol5-DBS-017.pdf).
 Datalog uses first-order predicate logic to express computations 
 in form of Horn clauses.
 A Horn clause is a disjunction of literals with at most one positive literal
@@ -18,20 +18,20 @@ that can be written in implication form as,
 
 **u** ⇐  **p** ∧ **q** ∧ ... ∧ **t**
 
-The Horn clause can be read as predicate **u** holds if the conditions
+The Horn clause can be read as: predicate **u** holds if the conditions
 **p** ∧ **q** ∧ ... ∧ **t** hold.
 We refer to predicate **u** as the head (aka. consequent), and 
 the condition **p** ∧ **q** ∧ ... ∧ **t**  as body (aka. antecedent),
 repectively. 
 
-There are three different types of Horn clauses: 
- * Facts are unconditional of the form, **u** ⇐  **true**
- * Definite clauses that have a predicate as a head, and one or more prediates in its body. 
+There are three different types of Horn clause: 
+ * Facts are of the form, **u** ⇐  **true**
+ * Definite clauses have a predicate as a head, and one or more predicates in the body, as above.
  * Goal clauses are horn clauses of the form **false** ⇐ **p** ∧ **q** ∧ ... ∧ **t** 
 
 The literals are predicates (i.e. logical functions with arguments that
 are either constants or variables), negated predicates, or constraints. 
-All variables of a clause must be grounded, i.e., a variable must occur 
+All variables of a clause must be *grounded*, i.e., a variable must occur 
 at least once as an argument of a positive predicate in the body of 
 a clause.  Soufflé permits arithmetic and string functors assuming 
 that their arguments are grounded. 
@@ -42,7 +42,7 @@ of the form ** false ** ⇐ **p** where **p** is a logical relation.
 However, for one logical program several goals may be specified. 
 
 Note that Soufflé's language permits the extension of the domain 
-while evaluting the logic program. Hence the Soufflé goes beyond
+while evaluting the logic program. Hence Soufflé goes beyond
 the standard semantics of Datalog (i.e., finite domains, stratified 
 negations, and totally ordered domains), and becomes Turing equivalent.
 As a consequence, some programs may not terminate because of this 
@@ -65,11 +65,11 @@ B(x,z) :- A(x,y), B(y,z).
 
 Relation ```A``` has two facts: ```A(1,2).``` and ```A(2,3)```. 
 A fact is a rule that holds unconditionally, i.e., a fact is a Horn Clause  ```A(1,2) ⇐ true```. 
-Relation ```B``` has two rules, i.e., ```B(x,y) :- A(x,y).``` and ```B(x,y) :- A(x,y), B(y,z).```.  The directive ```.output B``` queries the relation ```B``` at the end of the execution. Several queries may show up in the program. For example, by adding the directive ```.output A``` the relation ```A``` is queried at the end of execution as well. The location of the facts, rules, and queries (i.e., output directives) in the source code is irrelevant. 
+Relation ```B``` has two rules, i.e., ```B(x,y) :- A(x,y).``` and ```B(x,y) :- A(x,y), B(y,z).```.  The directive ```.output B``` queries the relation ```B``` at the end of the execution. Several queries may show up in the program. For example, by adding the directive ```.output A``` the relation ```A``` is queried at the end of execution as well. The locations of the facts, rules, and queries (i.e., output directives) in the source code are irrelevant. 
 
 ## Relations
 
-Soufflé requires to declare relations. A relation is a set
+Soufflé requires the declaration of relations. A relation is a set
 of ordered tuples (x<sub>1</sub>, ..., x<sub>k</sub>) where each
 element x<sub>i</sub> is a member of a data domain denoted
 by an attribute type. In the previous example, the declaration
@@ -84,14 +84,12 @@ named ``y``. Attributes have a type which is specified by an
 identifier followed by a colon after the attribute name. 
 In the above example, the type is a number. 
 
-The type cheker of Soufflé will infer the type of variables 
-in rules whether name
-bindings in clauses are correct at compile time. The details of the
-type system are covered below.
+The type-checker of Soufflé will infer the type of variables in rules where name bindings in clauses are correct at compile time.
+The details of the type system are covered below.
 
 # Types
 
-Souffle utilizes a typed Datalog dialect to conduct static checks enabling the early detection of errors in Datalog query specifications. Each attribute of involved relations has to be typed. Based on those, Souffle attempts to deduce a type for all terms within all the Horn clauses within a given Datalog program. In case no type can be deduced for some terms, a typing error is reported -- indicating a likely inconsistency in the query specification.
+Souffle utilises a typed Datalog dialect to conduct static checks enabling the early detection of errors in Datalog query specifications. Each attribute of involved relations has to be typed. Based on those, Souffle attempts to deduce a type for all terms within all the Horn clauses within a given Datalog program. In case no type can be deduced for some terms, a typing error is reported -- indicating a likely inconsistency in the query specification.
 
 ## Type Definitions 
 
@@ -99,13 +97,13 @@ There are two basic types in Souffle: (1) `symbol` and (2) `number`. Those types
 
 * **Numbers** are signed integer numbers and are fixed to a fixed range. At the moment the range is fixed to the `int32_t` type covering the range [ -2^31 .. 2^31 -1 ]. However, the type could be altered by a compile time flags to any basic type that the C++ compiler supports. 
 
-* **Symbols** are reference values that have a symbolic representation as well. They are currently represented as strings. Thus, string based operations, e.g. string concatenation, may introduce new values not being present in any input set to the stable result set.
+* **Symbols** are reference values that have a symbolic representation as well. They are currently represented as strings. Thus, string based operations, e.g. string concatenation, may introduce new values, not present in any input set, to the stable result set.
 
-Currently, no distinction between symbols representing entities and their string representation is made. As a consequence, any symbol may be interpreted as a string for string operations. This would, for instance, enable the creation of a new city "BrisbaneSydney" through an expression `cat(X,Y)` where the variables `X` and `Y` are bound correspondingly. It is the users responsibility to use `cat` only in sound contexts. Future development steps may resolve this shortcoming in the type system.
+Currently, no distinction between symbols representing entities and their string representation is made. As a consequence, any symbol may be interpreted as a string for string operations. This would, for instance, enable the creation of a new city "BrisbaneSydney" through an expression `cat(X,Y)` where the variables `X` and `Y` are bound correspondingly. It is the user's responsibility to use `cat` only in sound contexts. Future development may resolve this shortcoming in the type system.
 
 Based on those predefined types, user defined types may be specified. There are three ways of defining new types:
 
-* **Primitive Types** are independent, user-defined types covering a subset of one of the predefined types (symbols or numbers). A primitive types are defined by constructs of the form:
+* **Primitive Types** are independent, user-defined types covering a subset of one of the predefined types (symbols or numbers). Primitive types are defined by constructs of the form:
 ```
 .number_type weight       // creates a user defined number type
 .symbol_type City         // creates a user defined symbol type
@@ -117,24 +115,18 @@ Operators applicable to the corresponding base type (`number` or `symbol`) can a
 ```
 .type Place = Village | City
 ```
-where `Place` on the left side is the name of the new type and on the right side there is a list of one or more types to be aggregated -- in this case `Village` and `City`. Any village or city value will  be a valid place.
+where `Place` on the left side is the name of the new type and on the right side there is a list of one or more types to be aggregated -- in this case `Village` and `City`. Any village or city value will be a valid Place.
 
-The following sub-sections will provide more in-depth details on the semantic of types in Souffle's Datalog dialect.
+The following sub-sections will provide more in-depth details on the semantics of types in Souffle's Datalog dialect.
 
 # Relations
 
-Relations are declared using the directive .decl followed by a parenthesis with its attribute names and types. For example,  
-
+Relations are declared using the directive .decl followed by a parenthesis with its attribute names and types. For example,
 ```
 .decl A(x:number, y:number).
 ```
 
 defines the relation A with two columns of type number. 
-
-A relation can have additional qualifiers that indicate whether:
- * data should be read from a fact file with qualifier "input", 
- * the result of the relation is written to a file with qualifier "output", 
- * the number of tuples should be written at the end of execution with qualifier "printsize".
 
 # Clauses
 
@@ -146,7 +138,7 @@ a pair (x,y) is in A, if it is in B.
 
 Clauses have qualifiers which direct the query planner for better query execution. The qualifier  
 ".strict" forces the query planner to use the order of the specified clause. The qualifer ".plan" 
-permits the programmer to specify for each version of the clause an own schedule. Several versions 
+permits the programmer to specify a schedule for each version of the clause. Several versions 
 of a clause may occur if the clause is evaluated in a fixpoint. 
 
 # Negation
@@ -175,11 +167,11 @@ A(x,y) :- R(x), Scope(y), !S(y).
 where the relation "Scope" defines the set of values that "y" can take.
 
 # Comments and Pre-Processing
-Souffle utilizes the same comment syntax as C/C++. Furthermore, all souffle programs are passed through the C pre-processor. As a consequence, e.g. `#include` pragmas may be utilized to organize Datalog input queries into several files and reuse common constructs within several programs. Also, constants may be defined utilizing the `#define` pragma.
+Souffle utilises the same comment syntax as C/C++. Furthermore, all souffle programs are passed through the C pre-processor. As a consequence, e.g. `#include` pragmas may be utilized to organize Datalog input queries into several files and reuse common constructs within several programs. Also, constants may be defined utilizing the `#define` pragma.
 
 # Identifier Naming Rules
 Souffle Identifiers follow the C++ naming convention, except that a question mark may appear anywhere.
-- The identifier can only be composed of letters (lower or upper case), numbers, or the question mark and underscore characters. That means the name can not contain whitespace, or any symbols other than underscores or question marks.
+- The identifier can only be composed of letters (lower or upper case), numbers, or the question mark and underscore characters. That means the name cannot contain whitespace, or any symbols other than underscores or question marks.
 - The identifier must begin with a letter (lower or upper case), an underscore, or a question mark. It can not start with a number.
 
 # Examples
