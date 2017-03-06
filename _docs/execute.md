@@ -35,7 +35,7 @@ For example, the relation
 .decl result(a:number, b:number, c:symbol)
 .output result
 ```
-has three number columns that are written either to the file ```result.csv``` in the directory ```<output-dir>``` using the flag ```-D <output-dir>```  or to standard output using the flag ```-D-```. More options for specifying output parameters such as location or compression, or other forms of output, can be found in the [IO directive section](/docs/io).
+has three number columns that are written either to the file ```result.csv``` in the directory ```<output-dir>``` using the flag ```-D <output-dir>```  or to standard output using the flag ```-D-```. More options for specifying output parameters, such as a specific location or compression, can be found on the [IO directive page](/docs/io).
 
 # Execution Modes
 
