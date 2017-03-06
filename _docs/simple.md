@@ -22,7 +22,8 @@ Edge("n1","n4").
 // Reachable 
 //
 
-.decl Reachable(n:Node, m:Node) output
+.decl Reachable(n:Node, m:Node)
+.output Reachable(IO=stdout)
 
 // Relation Edge is a subset of relation Reachable
 Reachable(x,y) :- Edge(x,y).
@@ -40,9 +41,9 @@ The relation ```reachable``` computes the transitive closure of the relation ```
 
 With the command
 ```
-souffle -D- reachable.dl
+souffle reachable.dl
 ```
-the program is executed and the result is printed out standard output. The output is
+the program is executed and the result is printed to standard output. The output is
 
 
 ```
