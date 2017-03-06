@@ -4,7 +4,7 @@ title: Command Line Options
 permalink: /docs/execute/
 ---
 
-Soufflé has various command line options to control the execution mode and parameterize the compilation/interpretation.
+Soufflé has various command line options to control the execution mode and parameterise the Soufflé input program.
 
 # Include Directory
 
@@ -27,29 +27,29 @@ The input directive ```.input``` make the EDB read from
 a tab-separated file ```A.facts``` in either the current directory (if no ```-F``` flag was specified) or it expects the file ```A.facts``` in the directory ```<fact-dir>``` with the option ```-F <fact-dir>```. 
 Note that there is an exception if the filename is either changed in the [input directive](/docs/io) or the relation is a result of a component instantiation [component](components). 
 
-The output relations of a Datalog program are either written to standard output with the parameter ```-D-``` or to the output directory ```-D <output-dir>```. 
-If no flag ```-D``` is specified, the output is omitted. 
+The output relations of a Datalog program are written to a tab separated file name ```<relation name>.csv``` in the current directory. If the parameter ```-D<output-dir>``` is given then the default output directory will be changed to that given. ```-D-``` can be used to redirect all file output to stdout.
+
 For example, the relation  
 ```
 .decl result(a:number, b:number, c:symbol)
-.output 
+.output result
 ```
-has three number columns that are written either to the file ```result.csv``` in the directory ```<output-dir>``` using the flag ```-D <output-dir>```  or to standard output using the flag ```-D-```. 
+has three number columns that are written either to the file ```result.csv``` in the directory ```<output-dir>``` using the flag ```-D <output-dir>```  or to standard output using the flag ```-D-```. More options for specifying output parameters such as location or compression, or other forms of output, can be found in the [IO directive section](/docs/io).
 
 # Execution Modes
 
-Soufflé has various modes of execution. Souffle provides an interpreter, a compiler that synthesis C++ from Datalog, and a feedback-directed compilation infrastructure. 
+Soufflé has several modes of execution available. Souffle provides an interpreter, a compiler that synthesis C++ from Datalog, and a feedback-directed compilation infrastructure. 
 The execution mode is determined by the argument parameters of the souffle command.
 
 ## Interpreter
 
-The interpreter is the default option when invoking the ```souffle``` as a command line tool. When souffle is invoked in interpreter mode, the parser translates the Datalog program to a RAM program, and executes the RAM program on-the-fly. For computational intensive Soufflé programs, the interpretation mode is slower than the compilation to C++. However, the interpreter has no overheads for compilation. 
+The interpreter is the default option when invoking ```souffle``` as a command line tool. When souffle is invoked in interpreter mode, the parser translates the Datalog program to a RAM program, and executes the RAM program on-the-fly. The compiled mode can execute faster, but has an overhead for the initial compilation. For computationally intensive Soufflé programs, the interpretation mode is slower than the compilation to C++.
 
 ## Compiler 
 
 The compiler mode of souffle synthesizes a C++ program from an input program. The compiler mode is enabled using either the flag ```-c```, the flag ```-o <exec>```, or the flag ```-g <class>.cpp```.  
 
-The difference between the flag ```-c``` and ```-o``` (or its long version ```--dl-program```) is whether the program is compiled and immediately executed with the former option or whether an executable is generated with the latter option. If compiled with option ```-o <exec```, the executable is a stand-alone program whose options can be queried with flag ```-h```. The following message would be produced,
+The difference between the flag ```-c``` and ```-o``` (or its long version ```--dl-program```) is whether the program is compiled and immediately executed with the former option or whether an executable is generated with the latter option. If compiled with option ```-o <exec>```, the executable is a stand-alone program whose options can be queried with flag ```-h```. The following message would be produced,
 
 ```
 ====================================================================
@@ -89,11 +89,14 @@ the compiler.  The profiler is described in the [profiler](/docs/profiler) secti
 
 # Warning Options
 
-Soufflé can disable warnings by the option ```-w```.
+Warnings produced by Soufflé can be disabled with the option ```-w```.
 
 # Parallel Execution
 
 All execution modes of Soufflé provide parallel evaluation. The parallel evaluation is enabled with the option ```-j <num>```. 
 
-# Debugging and Verbose 
-The verbose flag ```-v``` enables verbose message. A debug report in HTML format is generated using the flag ```--debug-report=<report.html>```. Note that for debug report, it is essential that graphviz is installed to render the dependency graphs. 
+# Verbose message output
+More verbose output can be produced by using the verbose flag ```-v```. 
+
+# Debugging 
+A debug report in HTML format is generated using the flag ```--debug-report=<report.html>```. Note that for debug report, it is essential that graphviz is installed to render the dependency graphs. 
