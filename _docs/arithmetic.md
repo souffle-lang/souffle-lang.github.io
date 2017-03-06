@@ -35,7 +35,8 @@ F(a,c) :- a >= c.
 ```
 .decl A (n:number)
 .decl B (a:number, b:number)
-.decl C (a:number, b:number) output
+.decl C (a:number, b:number)
+.output C
 A(0).
 A(i+1) :- A(i), i<1000.		
 B($,i) :- A(i).		
