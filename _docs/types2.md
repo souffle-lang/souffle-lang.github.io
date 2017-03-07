@@ -52,7 +52,7 @@ Symbol types for attributes are defined by the `.symbol_type` declarative, e.g.,
 ```
 Here we have defined distinct sets of symbols from the universe of possible symbols.
 
-![location types as a subset of the universe](https://souffle-lang.org/img/universe_symbol_base.svg)
+![location types as a subset of the universe](http://souffle-lang.org/img/universe_symbol_base.svg)
 ### Union Type
 The Union type unifies a fixed number of symbol set types, of either base or union types.
 ```
@@ -62,7 +62,7 @@ For example,
 ```
 .type Place = City | Town | Village
 ```
-![Place as a union of the location types in the universe of symbols](https://souffle-lang.org/img/universe_symbol_place.svg)
+![Place as a union of the location types in the universe of symbols](http://souffle-lang.org/img/universe_symbol_place.svg)
 
 We can bring these together to define attributes that better describe a relation, e.g.,
 ```
