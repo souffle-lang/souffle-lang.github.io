@@ -70,7 +70,7 @@ This is backed by a database table to store the symbol table and a table to stor
 # Standard .input options
 
 ```
-.input <relation id> (IO=[file|stdin|sqlite] [optional parameters]
+.input <relation id> (IO=[file|stdin|sqlite] [optional parameters])
 ```
 
 ## IO=file
@@ -95,7 +95,7 @@ The path to the sqlite3 database.
 # Standard .output options
 
 ```
-.output <relation id> (IO=[file|stdout|sqlite] [optional parameters]
+.output <relation id> (IO=[file|stdout|sqlite] [optional parameters])
 ```
 
 ## IO=file
