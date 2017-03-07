@@ -13,9 +13,9 @@ A Type can be either the universe of all possible values, or a subset.
 Subsets can be composed of other subsets.
 
 ## Primitive Types
-Soufflé has two primitive types
-Symbol type: `symbol`
-Number type: `number`
+Soufflé has two primitive types:
+* Symbol type: `symbol`
+* Number type: `number`
 
 ### Symbol type
 The symbol type consists of the universe of all strings.
