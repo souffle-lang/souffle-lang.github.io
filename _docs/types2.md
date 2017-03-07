@@ -52,6 +52,7 @@ Symbol types for attributes are defined by the `.symbol_type` declarative, e.g.,
 ```
 Here we have defined distinct sets of symbols from the universe of possible symbols.
 
+![location types as a subset of the universe](/img/symbol_universe_base.png)
 ### Union Type
 The Union type unifies a fixed number of symbol set types, of either base or union types.
 ```
@@ -61,8 +62,9 @@ For example,
 ```
 .type Place = City | Town | Village
 ```
+![Place as a union of the location types in the universe of symbols](/img/symbol_universe_place.png)
 
-We can bring these together to better describe an attribute, e.g.,
+We can bring these together to define attributes that better describe a relation, e.g.,
 ```
 .symbol_type City
 .symbol_type Town
