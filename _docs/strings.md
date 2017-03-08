@@ -7,8 +7,9 @@ permalink: /docs/strings/
 * **cat** is used to concatenate two strings together. It can be nested to concatenate more than two strings.
 ```
 .type A
-.decl Y (a:A, b:A) 
-.decl Z (a:A, b:A, c:A) output
+.decl Y(a:A, b:A) 
+.decl Z(a:A, b:A, c:A)
+.output Z
 Y("a","b"). 
 Y("c","d"). 
 Z(a,b, cat(cat(a,b), a)) :- Y(a,b). 
@@ -22,9 +23,10 @@ c	d	cdc
 * **contains** is used to check if the latter string contains the former string.
 ```
 .type String
-.decl stringTable (t:String) 
-.decl substringTable (t:String) 
-.decl outputData  (substr:String, str:String) output
+.decl stringTable(t:String) 
+.decl substringTable(t:String) 
+.decl outputData(substr:String, str:String)
+.output outputData
 outputData(x,y) :- substringTable(x), stringTable(y), contains(x,y). 
 stringTable("aaaa").
 stringTable("abba").
@@ -49,8 +51,9 @@ cab	bcab
 * **match** is used to check if the latter string matches a wildcard pattern specified in the former string.
 ```
 .type String
-.decl inputData   (t:String) 
-.decl outputData  (t:String) output
+.decl inputData(t:String) 
+.decl outputData(t:String)
+.output outputData
 outputData(x) :- inputData(x), match("a.*",x). 
 inputData("aaaa").
 inputData("abba").
@@ -66,13 +69,14 @@ abba
 * **ord** is used to evaluate the Unicode values of the corresponding character in the string. It is useful for comparing the strings based on the order of characters.
 ```
 .type Name
-.decl n ( x : Name )
+.decl n(x:Name)
 n("Homer").
 n("Marge").
 n("Bart").
 n("Lisa").
 n("Maggie").
-.decl r ( x : number ) output
+.decl r(x:number)
+.output r
 r(1) :- n(x), n(y), ord(x) < ord(y).
 r(2) :- n(x), n(y), ord(x) > ord(y).
 ```
