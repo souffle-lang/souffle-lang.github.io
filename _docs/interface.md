@@ -1,6 +1,6 @@
 ---
 layout: docs
-title: Soufflé Interface
+title: C++ Interface
 permalink: /docs/interface/
 ---
 
