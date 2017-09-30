@@ -3,8 +3,6 @@ layout: docs
 title: Examples
 permalink: /docs/examples/
 ---
-# Examples
-
 ## Simple Typed VarPointsTo
 
 The following example encodes the most simple version of a var-points-to analysis.
