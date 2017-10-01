@@ -4,7 +4,7 @@ title: Contributors
 permalink: /docs/contributors/
 ---
 
-The current contributors with their code contributions are listed below:
+The contributors with their code contributions are listed below:
  * **Bernhard Scholz**: project lead, design and implementation
  * **Herbert Jordan**: high-performance parallel data-structures, language extensions including records and components, static type system, major refactoring of the system
  * **Paul Subotic**: index selection for relations, language extensions (incl. nullary relations, bit-vectors), analysis of networks
@@ -12,7 +12,7 @@ The current contributors with their code contributions are listed below:
  * **Alex Jordan**: support designing/implementing the object-oriented C++ interface for Soufflé
  * **Nicholas Allen**: refactoring of the front-end
  * **Kostyantyn Vorobyov**: build system improvements, packages
- * **Nathan Keynes**: facilitating the open source process
+ * **Nathan Keynes**: facilitating the open source process; uploading Soufflé to github.
  * **Nicholas Hollingum**: infrastructure, bug-fixes 
  * **Anton Jurisevic**: bug fixes
  * **Lyndon Henry**: numerous bug fixes, Soufflé in the Cloud 
