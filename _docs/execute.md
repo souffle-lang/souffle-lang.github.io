@@ -4,53 +4,51 @@ title: Command Line Options
 permalink: /docs/execute/
 ---
 
-Soufflé has various command line options to control the execution mode and parameterise the Soufflé input program.
+# Run Datalog Programs
 
-# Include Directory
+Soufflé provides an interpreter, a compiler, and a feedback-directed compilation infrastructure for compiling and executing Datalog programs. Profile information can be generated and visualized with a [profiling tool](profiler). The Soufflé execution mode (compile, interpret etc.) is determined by the argument parameters of the souffle command. 
 
-The flag ```-I <directory>``` specifies the include directory for Soufflé programs. Soufflé uses a C-preprocessor to preprocess the source code. The flag specifies the include directory such that include files included by```#include``` can be found in the directory ```<directory>```.
-
-# Input
-
-A Soufflé program may load the facts of a relation (aka. as EDB) from various input sources.
-The input source is specified by the ```.input``` directive of a relation.
-The default input source is a tab-separated file for a relation where
-each row in the tab-separated file represents a fact in the relation. 
-
-For example, 
+## Input / Output
+The Soufflé permits facts to be sourced from tab-separated input files to separate Datalog programs from their data. In Datalog literature the tab-separated input files can be seen as the extensional database (EDB) of the program. The default location of the input files is specified by the parameter ```-F <fact-dir>```. If the flag is not specified, it is assumed that the fact files are stored in the current directory. The default filenames of the input files consists of the name of the input relations with an extension ```.facts``. For example, the declaration 
 ```
-.decl A(a:number,b:number)
-.input A 
+.decl my_relation(a:number,b:number)
+.input my_relation
 ```
-defines an input relation ```A``` with two number attributes. 
-The input directive ```.input``` make the EDB read from 
-a tab-separated file ```A.facts``` in either the current directory (if no ```-F``` flag was specified) or it expects the file ```A.facts``` in the directory ```<fact-dir>``` with the option ```-F <fact-dir>```. 
-Note that there is an exception if the filename is either changed in the [input directive](/docs/io) or the relation is a result of a component instantiation [component](components). 
+defines an input relation ```my_relation``` with two number columns. Note that a relation becomes an input relation with the keyword ```input``` at the end of a declaration.  For the aforementioned example , souffle expects a tab-separated file ```my_relation.facts``` in either the current directory (if no ```-F``` flag was specified) or in the directory ```<fact-dir>``` with the option ```-F <fact-dir>```. Note that there is an exception if a relation is an input relation and is declared in an instantiation of a [component](components). 
 
-# Output
-The output relations of a Datalog program are written to a tab separated file name ```<relation name>.csv``` in the current directory. If the parameter ```-D<output-dir>``` is given then the default output directory will be changed to that given. ```-D-``` can be used to redirect all file output to stdout.
-
-For example, the relation  
+If more precise control over file location is needed, more options can be added to the input directive. For example
 ```
-.decl result(a:number, b:number, c:symbol)
+.decl my_relation(a:number,b:number)
+.input my_relation(filename="<path to input file>")
+```
+The output relations of a Datalog program are written to file in the current directory if no command line parameters, directives in the Datalog program, are given. The default output directory can be specified with the flag ```-D <output-dir>``` Output is written to standard output with the parameter ```-D-```. For example, the relation  
+```
+.decl result(a:number,b:number,c:number)
 .output result
 ```
-has three number columns that are written either to the file ```result.csv``` in the directory ```<output-dir>``` using the flag ```-D <output-dir>```  or to standard output using the flag ```-D-```. More options for specifying output parameters, such as a specific location or compression, can be found on the [IO directive page](/docs/io).
+has three number columns that are written either to the file ```result.csv``` in the directory ```<output-dir>``` using the flag ```-D <output-dir>```  or to standard output using the flag ```-D-```. As with the input directive, more detailed output can be specified via the output directive.
+```
+.decl result(a:number,b:number,c:number)
+.output result(filename="<path to output file")
+```
 
-# Execution Modes
-
-Soufflé has several modes of execution available. Souffle provides an interpreter, a compiler that synthesis C++ from Datalog, and a feedback-directed compilation infrastructure. 
-The execution mode is determined by the argument parameters of the souffle command.
+If the directive ```printsize``` is used, the size of the relation is printed to the standard output.
+For example, the relation  
+```
+.decl result(a:number,b:number,c:number)
+.printsize
+```
+is not printed to a file. Instead the number of tuples of relation ```result``` are written to standard output. 
 
 ## Interpreter
 
-The interpreter is the default option when invoking ```souffle``` as a command line tool. When souffle is invoked in interpreter mode, the parser translates the Datalog program to a RAM program, and executes the RAM program on-the-fly. The compiled mode can execute faster, but has an overhead for the initial compilation. For computationally intensive Soufflé programs, the interpretation mode is slower than the compilation to C++.
+The interpreter is the default option when invoking the ```souffle``` as a command line tool. When souffle is invoked in interpreter mode, the parser translates the Datalog program to a RAM program, and executes the RAM program on-the-fly. For computationally intensive Datalog programs, the interpretation is slower than the compilation to C++. However, the interpreter has no costs for compiling a RAM program to C++ and invoking the C++ compiler, which is for larger programs expensive (in the order of minutes). 
 
 ## Compiler 
 
-The compiler mode of souffle synthesizes a C++ program from an input program. The compiler mode is enabled using either the flag ```-c```, the flag ```-o <exec>```, or the flag ```-g <class>.cpp```.  
+The compiler of souffle is enabled using the flag ```-c```, the flag ```-o <exec>```, or the flag ```-g <class>.cpp``` (or its long version ```--dl-program=<exec>```). The compiler translates a Datalog program to a C++ program that is compiled to an executable and executed. The performance of a compiled Datalog is superior to the interpreter, however, the compilation of the C++ program may take some time. 
 
-The difference between the flag ```-c``` and ```-o``` (or its long version ```--dl-program```) is whether the program is compiled and immediately executed with the former option or whether an executable is generated with the latter option. If compiled with option ```-o <exec>```, the executable is a stand-alone program whose options can be queried with flag ```-h```. The following message would be produced,
+The difference between the flag ```-c``` and ```-o``` is whether the program is compiled and immediately executed with the former option or whether an executable is generated with the latter option. If compiled with option ```-o <exec>```, the executable is a standalone program whose options can be queried with flag ```-h```. The following message would be produced,
 
 ```
 ====================================================================
@@ -69,24 +67,21 @@ The difference between the flag ```-c``` and ```-o``` (or its long version ```--
 ===================================================================
 ```
 
-The defaults are taken from the compiler invocation, which may be overwritten with user defined parameters of the stand-alone executable. 
-
-The option ```-g <class>.cpp``` synthesizes a C++ class from a Soufflé input program. The C++ can be embedded in other tools. Ensure that the Soufflé include paths are enabled, and the flag ```__EMBEDDED_SOUFFLE__``` is set. More information about the C++ interface can be read in the [interface section](/docs/interface/).
+The defaults are taken from the compiler invocation, which may be overwritten with user defined parameters of the standalone executable. Note that if the profiling option is enabled, the standalone executable has the additional option ```-p``` (see below). 
 
 ## Feedback-Directed Compilation
 
-Soufflé facilitates feedback-directed compilation, i.e., the interpreter executes a Datalog program. While executing the Datalog program on-the-fly, the runtime behavior (relation sizes, etc.) is monitored, and used for producing a compiled executable of the input program. The feedback-directed compilation mode is enabled using the flags
+Soufflé has implemented feedback-directed compilation, i.e., the interpreter executes a Datalog program. Whilst executing the Datalog program on-the-fly, the runtime behaviour (relation sizes, etc.) are collected and used for producing a compiled executable of the input program. The feedback-directed compilation is enabled using the flags
 ```
 souffle --auto-schedule -o <exec> <prog>.dl
 ```
 where ```<exec>``` is the executable generated by the input program ```<prog>.dl``` using feedback-directed compilation. 
-At the moment the query planner is still very experimental and does not produce good query plans. Optimizing queries by hand give better performance. More details can be found in the section for [performance tuning](tuning).  
+At the moment the query planner is still very experimental and does not produce optimal query plans. Optimising queries by hand give better performance. More details can be found in the section for [performance tuning](performance-tuning).  
 
-# Profiling 
+## Profiling 
+As a side-effect of execution, a profile log can be generated. The profile log can be visualized using the souffle-profiler. The option for enabling the profile log is ```-p <log-file>``` that works for the interpreter as well as the compiler. The profiler is described in the [profiler](profiler) section. 
 
-Soufflé has a profiler. The profile log for profiler is generated by enabling 
-the option```-p <log-file>```. Profiling is available for the interpreter and
-the compiler.  The profiler is described in the [profiler](/docs/profiler) section of the manual. 
+Soufflé has various command line options to control the execution mode and parameterise the Soufflé input program.
 
 # Warning Options
 
