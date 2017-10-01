@@ -1,6 +1,6 @@
 ---
 layout: docs
-title: Command Line Options
+title: Run Soufflé
 permalink: /docs/execute/
 ---
 
