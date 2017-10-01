@@ -6,8 +6,7 @@ redirect_from: /docs/index.html
 ---
 Soufflé is a variant of Datalog for tool designers crafting static analyses. 
 Soufflé provides the ability to rapid prototype and make deep design space explorations possible.
-Applications include the points-to analysis framework  
- [DOOP](https://bitbucket.org/yanniss/doop),
+Applications include the points-to analysis framework [DOOP](https://bitbucket.org/yanniss/doop),
 [security analyses for large-scale problems](https://labs.oracle.com/pls/apex/f?p=labs:49:::::P49_PROJECT_ID:122),
 parallelizing compiler framework [Insieme](http://www.insieme-compiler.org),
  security analysis for cloud computing, and security analysis for smart contracts.
