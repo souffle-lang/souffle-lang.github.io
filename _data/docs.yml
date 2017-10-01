@@ -21,8 +21,10 @@
   - translate
   - tuning
   - profiler
+  - provenance
   - magicset
   - interface
+
 
 - title: Misc
   docs:
