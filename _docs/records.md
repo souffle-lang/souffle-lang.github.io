@@ -3,16 +3,6 @@ layout: docs
 title: Records
 permalink: /docs/records/
 ---
-* theory
-* overview
-* type system
-* syntax
-  * constructors
-  * field projection
-  * nil constant
-* example
-  * non-recursive example
-  * recursive example
 
 * **Record Types** are combining several values into a structured value similar to a `struct` in C. An example record definition is given by
 ```

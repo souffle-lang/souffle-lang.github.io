@@ -174,5 +174,3 @@ Souffle Identifiers follow the C++ naming convention, except that a question mar
 - The identifier can only be composed of letters (lower or upper case), numbers, or the question mark and underscore characters. That means the name cannot contain whitespace, or any symbols other than underscores or question marks.
 - The identifier must begin with a letter (lower or upper case), an underscore, or a question mark. It can not start with a number.
 
-# Examples
-A list of examples using the presented and advanced features can be found [here](examples).

@@ -3,8 +3,7 @@ layout: docs
 title: IO Directives
 permalink: /docs/io/
 ---
-
-# Input
+## Input
 
 A Soufflé program may load the facts of a relation (aka. as EDB) from various input sources.
 The input source is specified by the `.input` directive of a relation.
@@ -37,7 +36,7 @@ Data can also be read from stdin, and again the delimiter and columns to read ca
 Data will now be read from an sqlite3 database at the given path.
 The data is expected to be stored in the table matching the relation name.
 
-# Output
+## Output
 The output relations of a Datalog program are, by default, written to a tab separated file with name `<relation name>.csv`, located in the current directory. If the parameter `-D<output-dir>` is given then the default output directory will be changed to that given. `-D-` can be used to redirect all output to stdout.
 
 For example, the relation  

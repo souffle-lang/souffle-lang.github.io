@@ -6,7 +6,7 @@ redirect_from: /docs/index.html
 ---
 Soufflé is a variant of Datalog for tool designers crafting static analyses. 
 Soufflé provides the ability to rapid prototype and make deep design space explorations possible.
-Applications include points-to, taint, constant-propagation, and security analyses for large-scale problems.
+Applications include points-to, taint, constant-propagation, and security analyses for large-scale problems. Soufflé commenced at [Oracle Labs in Brisbane](https://github.com/oracle/souffle/wiki/Contributors), and was open-sourced in March 2016. 
 
 One of the major challenges in logic programming is scalability. 
 Soufflé applies advanced compilation techniques for logic programs over finite domains including semi-naïve evaluation, Futamura Projections, staged-compilation with a new abstract machine, partial evaluation, and automated parallelisation for achieving high performance.

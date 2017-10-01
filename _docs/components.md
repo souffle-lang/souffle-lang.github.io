@@ -186,6 +186,3 @@ As another example, we can use override semantics to implement a more precise ve
 ```
 In this example, PrecisePointsto inherits all the relations from AbstractPointsto, but only implements the HeapAllocationMerge relation differently. This feature avoids code duplications when we need several implementations of a generic analysis with small variations. 
 
-
-## Examples
-Examples on how to utilize components can be found [here](examples#component-inheritance).

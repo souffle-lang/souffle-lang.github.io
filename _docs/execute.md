@@ -3,9 +3,6 @@ layout: docs
 title: Run Soufflé
 permalink: /docs/execute/
 ---
-
-# Run Datalog Programs
-
 Soufflé provides an interpreter, a compiler, and a feedback-directed compilation infrastructure for compiling and executing Datalog programs. Profile information can be generated and visualized with a [profiling tool](profiler). The Soufflé execution mode (compile, interpret etc.) is determined by the argument parameters of the souffle command. 
 
 ## Input / Output

@@ -3,7 +3,6 @@ layout: docs
 title: C++ Interface
 permalink: /docs/interface/
 ---
-
 Applications may want to integrate Soufflé programs as a library rather than as a stand-alone tool. 
 For this purpose, we have developed a C++ interface to call Soufflé programs via a C++ interface. 
 

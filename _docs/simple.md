@@ -66,8 +66,3 @@ n0 n3
 ===============
 ```
 
-The execution and command line options are described on the next page.
-
-## [More Datalog Examples ...](https://github.com/souffle-lang/souffle/tree/master/tests/evaluation)
-
-
