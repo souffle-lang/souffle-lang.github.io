@@ -1,6 +1,6 @@
 ---
 layout: docs
-title: Magic-Set Transformation
+title: Magic-Set
 permalink: /docs/magicset/
 ---
 
