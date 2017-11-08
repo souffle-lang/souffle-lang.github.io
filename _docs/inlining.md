@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Inlining for Relations
-permalink: /docs/inlining
+permalink: /docs/inlining/
 ---
 
 Souffl&eacute; offers the ability to manually select one or more program relations to be inlined, i.e., a substitution of the relations are performed. For example, 
