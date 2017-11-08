@@ -23,6 +23,7 @@
   - profiler
   - provenance
   - magicset
+  - inlining
   - interface
 
 
