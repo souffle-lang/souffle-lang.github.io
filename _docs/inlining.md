@@ -1,10 +1,10 @@
 ---
 layout: docs
-title: Inlining for Relations
+title: Inlining
 permalink: /docs/inlining/
 ---
 
-Souffl&eacute; offers the ability to manually select one or more program relations to be inlined, i.e., a substitution of the relations are performed. For example, 
+Souffl&eacute; offers the ability to manually select one or more program relations to be inlined, i.e., a substitution of the relations are performed. This may lead to performance gains by re-computing results rather than storing them. For example, 
 
 ```
 .decl R(arg:number) inline
