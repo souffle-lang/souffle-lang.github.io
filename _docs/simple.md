@@ -11,7 +11,7 @@ Create the following Datalog program and save it to `reachable.dl`.
 //
 // Edge
 //
-.decl A(n:Node, m:Node)
+.decl Edge(n:Node, m:Node)
 
 Edge("n0","n1").
 Edge("n1","n2").
