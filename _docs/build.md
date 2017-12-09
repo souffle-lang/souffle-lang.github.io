@@ -11,7 +11,7 @@ Soufflé has pre-built packages for Debian and MAC OS X. You find the pre-built 
 
 To build and install Souffle, the following software must be installed:
 
-* Make, Autoconf tools, GNU G++ supporting C++11 and OpenMP (from version 4.8), Bison (from version 3.0.2), Flex, DoxyGen, Java JDK
+* Make, Autoconf tools, GNU G++ supporting C++11 and OpenMP (from version 4.8), Bison (from version 3.0.2), Flex, DoxyGen
 
 CLANG++ with OpenMP support can be used as an alternative for G++.
 
@@ -20,7 +20,7 @@ CLANG++ with OpenMP support can be used as an alternative for G++.
 On a Ubuntu/Debian system, following command installs the necessary developer tools to compile and build Soufflé:
 
 ```
-sudo apt-get install autoconf automake bison build-essential clang doxygen flex g++ git make openjdk-8-jdk python
+sudo apt-get install autoconf automake bison build-essential clang doxygen flex g++ git make mcpp python
 ```
 
 Note that the Ubuntu/Debian version needs to be recent such that G++ 4.8 is part of the standard distribution.
@@ -39,7 +39,7 @@ The Soufflé project follows automake/autoconf conventions for configuring, inst
 MAC OS X does not have OpenMP/C++ nor a bison version 3.0.2 or higher installed. We recommend [brew](http://brew.sh) to install the required tools to build Soufflé. Run the following commands prior to executing `./configure`:
 ```
 brew update
-brew install autoconf automake bison libtool
+brew install autoconf automake bison libtool mcpp
 brew reinstall gcc --without-multilib
 brew link bison --force
 ```
