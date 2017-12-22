@@ -9,9 +9,17 @@ Soufflé has pre-built packages for Debian and MAC OS X. You find the pre-built 
 
 ## Debian Systems
 
-For Debian systems, the latest version of Soufflé can be installed from the following Launchpad PPA:
+For Debian systems, the HEAD version of Soufflé can be installed from the Launchpad PPA,
 
 https://launchpad.net/~souffle-lang/+archive/ubuntu/souffle
+
+
+You can update your system with unsupported packages from this untrusted PPA by adding ppa:souffle-lang/souffle to your system's Software Sources using the following instructions:
+
+```
+sudo add-apt-repository ppa:souffle-lang/souffle
+sudo apt-get update
+```
 
 
 ## Software Requirements
