@@ -11,5 +11,6 @@ There is a cornucopia of Datalog systems for a wide range of applications:
  * [Coral](http://research.cs.wisc.edu/coral/): developed at the University of Wisconsin-Madison
  * [IRIS](http://repo.roscidus.com/java/iris): semantic extensions to Datalog, top&bottom-up.
  * [ABCDatalog](http://abcdatalog.seas.harvard.edu)
+ * [muZ in Z3](https://github.com/Z3Prover/z3/wiki)
 
 If we missed your Datalog engine, please let us know and/or add it to this page.
