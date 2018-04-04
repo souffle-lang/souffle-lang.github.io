@@ -35,7 +35,7 @@ CLANG++ with OpenMP support can be used as an alternative for G++.
 On a Ubuntu/Debian system, following command installs the necessary developer tools to compile and build Soufflé:
 
 ```
-sudo apt-get install autoconf automake bison build-essential clang doxygen flex g++ git make mcpp python
+sudo apt-get install autoconf automake bison build-essential clang doxygen flex g++ git make mcpp python libtool libsqlite3-dev
 ```
 
 Note that the Ubuntu/Debian version needs to be recent such that G++ 4.8 is part of the standard distribution.
