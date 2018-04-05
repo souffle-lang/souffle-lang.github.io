@@ -9,15 +9,16 @@ Soufflé has pre-built packages for Debian and MAC OS X. You find the pre-built 
 
 ## Debian Systems
 
-For Debian systems, the HEAD version of Soufflé can be installed from the Launchpad PPA,
+For Debian systems, the latest development version of Soufflé can be installed from the Bintray PPA,
 
-[Launchpad PPA](https://launchpad.net/~souffle-lang/+archive/ubuntu/souffle)
+[Bintray PPA](https://bintray.com/souffle-lang/deb-unstable)
 
 
-You can update your system with unsupported packages from this untrusted PPA by adding ppa:souffle-lang/souffle to your system's Software Sources using the following instructions:
+You can update your system with unsupported packages from this untrusted PPA by adding https://dl.bintray.com/souffle-lang/deb-unstable to your system's Software Sources using the following instructions:
 
 ```
-sudo add-apt-repository ppa:souffle-lang/souffle
+sudo apt-add-repository https://dl.bintray.com/souffle-lang/deb-unstable
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 379CE192D401AB61
 sudo apt-get update
 ```
 
