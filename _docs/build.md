@@ -39,7 +39,7 @@ On a Ubuntu/Debian system, following command installs the necessary developer to
 sudo apt-get install autoconf automake bison build-essential clang doxygen flex g++ git libncurses5-dev libtool libsqlite3-dev make mcpp python sqlite zlib1g-dev
 ```
 
-Support for C++11 is required, which is partly available in Ubuntu 16.04 with g++-4.8. More recent versions of Ubuntu, and Debian 8 and newer, have full support of C++11 with g++-4.9 on.
+Support for C++11 is required, which is partly available in Ubuntu 16.04 with g++-4.8. More recent versions of Ubuntu, and Debian 8 and newer, have full support of C++11 with g++-5.0 on.
 
 The Soufflé project follows automake/autoconf conventions for configuring, installing and building software. To configure, build, test, and install the project, type:
 ```
@@ -62,17 +62,11 @@ brew link bison --force
 
 Note: Be careful with the search path for bison, so it points to the correct one. By default, macOS includes bison 2.3 at `/usr/bin/bison`, however brew installs the newer version to `/usr/local/bin/bison`. This can be done by prepending this directory to the path, however, this can break other systems - `PATH=/usr/local/bin:$PATH`.
 
-Currently, the `souffle-wave` preprocessor crashes in macOS, and requires to overwrite the executable in `src/` with a symlink to `cpp-X`. Currently on macOSX, brew installs cpp to `/usr/local/Cellar/gcc/6.2.0/bin/cpp-6`. This step must occur after `make`, and will be overwritten each time it is built. In order to run the tests after we overwrite `souffle-wave`, run `make check` in the `tests/` directory **instead of** running `make check` in the the base directory.
-
-In addition, [Java JDK](https://java.com/en/download/) is necessary to build the profiler of Soufflé. 
-
 Soufflé is built by 
 
 ```
 cd souffle
-export CXX=/usr/local/bin/g++-5
-export CXXFLAGS=-fopenmp
-export SOUFFLECPP=/usr/local/bin/cpp-5
+export CXX=/usr/local/bin/g++-8
 sh ./bootstrap
 ./configure
 make
