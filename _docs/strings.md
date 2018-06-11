@@ -4,7 +4,7 @@ title: Strings
 permalink: /docs/strings/
 ---
 
-* **cat** is used to concatenate two strings together. It can be nested to concatenate more than two strings.
+* **cat(*string*, *string*)** is used to concatenate two strings together. It can be nested to concatenate more than two strings.
 ```
 .type A
 .decl Y(a:A, b:A) 
@@ -20,7 +20,7 @@ a	b	aba
 c	d	cdc
 ```
 
-* **contains** is used to check if the latter string contains the former string.
+* **contains(*string1*, *string2*)** is used to check if the latter string contains the former string.
 ```
 .type String
 .decl stringTable(t:String) 
@@ -66,7 +66,7 @@ aaaa
 abba
 ```
 
-* **ord** is used to evaluate the Unicode values of the corresponding character in the string. It is useful for comparing the strings based on the order of characters.
+* **ord(*string*)** is used to return the ordinal number associated with *string*. **This is not a lexicographic ordering.** The ordinal number is based on the order of appearance (see example below).
 ```
 .type Name
 .decl n(x:Name)
@@ -77,13 +77,56 @@ n("Lisa").
 n("Maggie").
 .decl r(x:number)
 .output r
-r(1) :- n(x), n(y), ord(x) < ord(y).
-r(2) :- n(x), n(y), ord(x) > ord(y).
+r(1) :- n(x), n(y), ord(x) < ord(y), x="Homer", y="Bart".
+r(2) :- n(x), n(y), ord(x) > ord(y), x="Maggie", y="Homer".
+r(3) :- n(x), n(y), ord(x) > ord(y), x="Marge", y="Bart".
 ```
 The output would be:
 ```
 1
 2
 ```
+`r(3)` is not set, since ord("Marge") is less than ord("Bart") (the string "Marge" appears before the string "Bart", therefore it has a smaller ordinal number).
 
 * Equality operations (**=** and **!=**) are also available for string types, by performing an ordinal comparison.
+
+* **strlen(*string*)** returns the length of *string* as number.
+```
+.decl length(n:number)
+.output length
+length(n) :- n=strlen("Hello").
+length(n) :- n=strlen("World!").
+```
+The output would be:
+```
+5
+6
+```
+
+* **substr(*string*, *from_index*, *to_index*)** is used to return the substring ranging from *from_index* to *to_index* of *string*. The indices are zero-based.
+```
+.type String
+.decl substring(s:String)
+.output substring
+substring(s) :- s=substr("Hello", 1, 3).
+substring(s) :- string="World!", s=substr(string, 3, strlen(string)).
+```
+The output would be:
+```
+ell
+ld!
+```
+
+* **to_number(*string*)** transforms a string representing a number to its associated number.
+```
+.decl tonumber(n:number)
+.output tonumber
+tonumber(n) :- n=to_number("123").
+tonumber(n) :- n=to_number("1534").
+```
+The output would be:
+```
+123
+1534
+```
+The reverse operation **to_string(*number*)** also exists, which turns a number to its string representation.
