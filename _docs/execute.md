@@ -6,7 +6,7 @@ permalink: /docs/execute/
 Soufflé provides an interpreter, a compiler, and a feedback-directed compilation infrastructure for compiling and executing Datalog programs. Profile information can be generated and visualized with a [profiling tool](profiler). The Soufflé execution mode (compile, interpret etc.) is determined by the argument parameters of the souffle command. 
 
 ## Input / Output
-The Soufflé permits facts to be sourced from tab-separated input files to separate Datalog programs from their data. In Datalog literature the tab-separated input files can be seen as the extensional database (EDB) of the program. The default location of the input files is specified by the parameter ```-F <fact-dir>```. If the flag is not specified, it is assumed that the fact files are stored in the current directory. The default filenames of the input files consists of the name of the input relations with an extension ```.facts``. For example, the declaration 
+The Soufflé permits facts to be sourced from tab-separated input files to separate Datalog programs from their data. In Datalog literature the tab-separated input files can be seen as the extensional database (EDB) of the program. The default location of the input files is specified by the parameter ```-F <fact-dir>```. If the flag is not specified, it is assumed that the fact files are stored in the current directory. The default filenames of the input files consists of the name of the input relations with an extension ```.facts```. For example, the declaration 
 ```
 .decl my_relation(a:number,b:number)
 .input my_relation
@@ -29,6 +29,15 @@ has three number columns that are written either to the file ```result.csv``` in
 .output result(filename="<path to output file")
 ```
 
+Both input and output file IO can also benefit from the `delimiter` and `compress` options, for example,
+```
+.decl result(a:number,b:number,c:number)
+.output result(filename="<path to output file", delimiter=",", compress=true)
+```
+This will output using "," as a column delimiter and compress the output using gzip.
+
+Multiple input and output directives may be given in order to read input from, or send output to, multiple locations.
+
 If the directive ```printsize``` is used, the size of the relation is printed to the standard output.
 For example, the relation  
 ```
@@ -43,7 +52,7 @@ The interpreter is the default option when invoking the ```souffle``` as a comma
 
 ## Compiler 
 
-The compiler of souffle is enabled using the flag ```-c```, the flag ```-o <exec>```, or the flag ```-g <class>.cpp``` (or its long version ```--dl-program=<exec>```). The compiler translates a Datalog program to a C++ program that is compiled to an executable and executed. The performance of a compiled Datalog is superior to the interpreter, however, the compilation of the C++ program may take some time. 
+The compiler of souffle is enabled using the flag ```-c```, the flag ```-o <exec>```, or the flag ```-g <class.cpp>``` (or the long versions, respectively, ```--compile```, ```--dl-program=<exec>```, and ```--generate=<class.cpp>```). The compiler translates a Datalog program to a C++ program that is compiled to an executable and executed. The performance of a compiled Datalog is superior to the interpreter, however, the compilation of the C++ program may take some time. 
 
 The difference between the flag ```-c``` and ```-o``` is whether the program is compiled and immediately executed with the former option or whether an executable is generated with the latter option. If compiled with option ```-o <exec>```, the executable is a standalone program whose options can be queried with flag ```-h```. The following message would be produced,
 
