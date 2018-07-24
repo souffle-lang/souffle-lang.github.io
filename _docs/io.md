@@ -103,8 +103,10 @@ The path to the sqlite3 database.
 ## IO=file
 `filename`
 Note that if the `-D<path>` command line option is used, that path will be prepended to the filename, unless the filename path is absolute.
+
 `delimiter`
 Used to specify the delimiter to separate columns in the input file. The default value is a tab character.
+
 `compress`
 Output is in gzip compressed format.
 
