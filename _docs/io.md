@@ -83,6 +83,9 @@ Used to specify the delimiter to separate columns in the input file. The default
 `columns`
 Particular columns can be selected from an input file. `columns="3:1"` will use the third input file column for the first attribute of the relation, and the first input file column for the second attribute. The default is to use the first columns of the input file until all attributes are described.
 
+`compress`
+Input is assumed to be in gzip compressed format. By default, gzip compressed input is automatically detected,
+
 ## IO=stdin
 `delimiter`
 Used to specify the delimiter to separate columns in the input file. The default value is a tab character.
@@ -102,6 +105,9 @@ The path to the sqlite3 database.
 Note that if the `-D<path>` command line option is used, that path will be prepended to the filename, unless the filename path is absolute.
 `delimiter`
 Used to specify the delimiter to separate columns in the input file. The default value is a tab character.
+`compress`
+Output is in gzip compressed format.
+
 
 ## IO=stdout
 `delimiter`
