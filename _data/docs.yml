@@ -17,6 +17,7 @@
   - components
   - records
   - aggregates
+  - io
 
 - title: Advanced Topics
   docs:
