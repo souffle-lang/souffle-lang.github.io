@@ -14,7 +14,7 @@ collections:
 
 name: Soufflé • A Datalog Synthesis Tool for Static Analysis
 description: Soufflé synthesizes a parallel C++ program from a declarative Datalog program
-url: https://www.souffle-lang.org
+url: https://souffle-lang.github.io
 
 twitter:
   username: soufflelang
