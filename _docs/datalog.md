@@ -38,7 +38,7 @@ that their arguments are grounded.
 
 A Soufflé program has no interactive mode and queries are reduced
 to whole relations. Goals are whole logical relations 
-of the form ** false ** ⇐ **p** where **p** is a logical relation. 
+of the form **false** ⇐ **p** where **p** is a logical relation. 
 However, for one logical program several goals may be specified. 
 
 Note that Soufflé's language permits the extension of the domain 

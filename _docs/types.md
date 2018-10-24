@@ -23,17 +23,17 @@ Internally, the symbol type is represented by an ordinal number.
 The ordinal number for a symbol can be determined by using the `ord` command, e.g., ord("hello") represents the ordinal number for "hello".
 
 ### Number type
-The number type consists of the universe of all numbers
+The number type consists of the universe of all numbers.
 The accepted range of numbers is restricted by architecture.
 Soufflé accepts 32 bit signed numbers.
 
 ### Primitive type usage
 ```
-decl Name(n: symbol ) 
+.decl Name(n: symbol) 
 Name("Hans").
 Name("Gretl").
 
-.decl Translate(n: symbol , o: number )
+.decl Translate(n: symbol , o: number)
 .output Translate
 Translate(x,ord(x)) :- Name(x).
 ```
