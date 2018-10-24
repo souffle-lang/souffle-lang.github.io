@@ -29,11 +29,11 @@ Soufflé accepts 32 bit signed numbers.
 
 ### Primitive type usage
 ```
-.decl Name(n: symbol ) 
+.decl Name(n: symbol) 
 Name("Hans").
 Name("Gretl").
 
-.decl Translate(n: symbol , o: number )
+.decl Translate(n: symbol , o: number)
 .output Translate
 Translate(x,ord(x)) :- Name(x).
 ```
