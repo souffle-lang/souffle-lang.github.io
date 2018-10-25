@@ -55,7 +55,7 @@ The Soufflé project follows automake/autoconf conventions for configuring, inst
 MAC OS X does not have OpenMP/C++ nor a bison version 3.0.2 or higher installed. We recommend [brew](http://brew.sh) to install the required tools to build Soufflé. Run the following commands prior to executing `./configure`:
 ```
 brew update
-brew install autoconf automake bison libtool mcpp
+brew install autoconf automake bison libtool mcpp libffi
 brew reinstall gcc --without-multilib
 brew link bison --force
 ```
