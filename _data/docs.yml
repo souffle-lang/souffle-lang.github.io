@@ -28,6 +28,7 @@
   - magicset
   - inlining
   - interface
+  - functors
 
 - title: Misc
   docs:
