@@ -17,9 +17,9 @@ the name of the functor, the argument types, and the return type
 of the functor. A functor declaration has the following
 format:
 ```
-.functor <name>(<type1>,...,<typek>):<type>
+.functor <name>():<type>
 ```
-where the types  ```<type1>,...,<typek>``` define the types 
+where the types  ```<type<sub>1</sub>>,...,<type<sub>k</sub>>``` define the types 
 of the arguments and ```<type>``` is the return type. Currently,
 the type arguments and result type can only assume the primitive types:
 * Symbol type: `symbol`
