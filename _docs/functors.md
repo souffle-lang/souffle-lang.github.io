@@ -7,9 +7,9 @@ permalink: /docs/functors/
 Soufflé is extensible with user-defined functors. Functors are 
 introduced via functor declarations and can be used subsequently.
 Functors are strongly typed and have a type signature. User-defined
-functors are implemented in form of a shared library, that will 
+functors are implemented in the form of a shared library, that will 
 be loaded at evaluation-time. User-defined functors can be 
-used in the interpreter and for the compiled Souffle program. 
+used in the interpreter and for the compiled Soufflé program. 
 
 ## Functor Declaration 
 A functor declaration contains
@@ -20,8 +20,8 @@ format:
 .functor <name>():<type>
 ```
 where the types  ```<type<sub>1</sub>>,...,<type<sub>k</sub>>``` define the types 
-of the arguments and ```<type>``` is the return type. Currently,
-the type arguments and result type can only assume the primitive types:
+of the functor arguments, and ```<type>``` defines the return type. Currently,
+the type arguments and result type can only assume the primitive types of Soufflé:
 * Symbol type: `symbol`
 * Number type: `number`
 
@@ -35,12 +35,10 @@ returns a number as a result.
 ## User-Defined Functor 
 
 After declaring the functor, the functor can be used in rules and facts. 
-User-defined functors are always represented in functional format, 
+User-defined functors have the prefix-notation, i.e., 
 ```
   <name>(<arg1>,...,<argk>)
 ```
-Note that we don't have an infix representation for user-defined functors
-in Souffle's grammar at the moment. 
 
 For example,
 
@@ -54,12 +52,12 @@ For example,
 A(1). 
 A(f(i)) :- A(i), f(i) < 100.
 ```
+declares a user-defined functor with name `f` that has a number as an argument and produces a number as a result. 
 
 ## Implementation of User-Defined functors.
 
-User-defined functors can be impmenented in any programming language of choice supporting callable external functions. 
-There are strong requirements for the the implementation of functors. 
-If they are violated, the execution of Datalog program cannot be guaranteed. 
+User-defined functors can be implemented in any programming language of choice supporting callable external functions. 
+There are strong requirements for the implementation of functors. If they are violated, the execution of Datalog program cannot be guaranteed. 
 
 The properties of the functor implementation are the following:
 
@@ -68,6 +66,8 @@ The properties of the functor implementation are the following:
  * The implementation of a functor must be reentrant. Souffle is highly parallel and several threads may execute the implementation of a user-defined functor in parallel. Pthread synchronisation techniques may be required.
 
  * A single shared-library `libfunctors.so` contains all user-defined functors.    The environment variable `LD_LIBRARY_PATH` must contain the path where the functor library is located so that either the interpreter or the executable Datalog program can load shared-library.
+ 
+ * The name of the user-defined functor must be a C-linkable name (not a C++ linkable name). For example, if the user-defined functor f is declared, the shared-library must have a function f in the shared library with a C style argument passing mechanism. 
 
 For example, we can implement the user-defined functor in C++ with the following code:
 
@@ -90,10 +90,10 @@ for the functor declarations
 .functor g():symbol
 ```
 
-Note that number types are implmented as ```int32_t``` and symbol types are implemented as ```char const *```. In Linux, a shared library can be generated with
-the following instructions:
+Note that number types are implmented as ```int32_t``` and symbol types are implemented as ```char const *```. In Linux, a shared library can be generated with the following instructions:
 ```
 g++ -fPIC -o functors.o 
 g++ -shared -o libfunctors.so functors.o 
+export LD_LIBRARY_PATH=LD_LIBRARY_PATH:`pwd`
 ```
-assuming that the source code of the user-defined functors is stored in the source file ```functors.cpp```.
+assuming that the source code of the user-defined functors is stored in the source file ```functors.cpp```. The export command ensures that either the Soufflé interpreter or the generated executable can find the shared library.
