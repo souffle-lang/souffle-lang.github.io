@@ -1,6 +1,6 @@
 ---
 layout: docs
-title: External Functors
+title: User-Defined Functors
 permalink: /docs/functors/
 ---
 
