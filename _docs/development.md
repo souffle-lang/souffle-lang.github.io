@@ -77,12 +77,12 @@ As this is more to do with usage than development, we will not go into detail on
 
 Most of the C++ for Soufflé lives in `//src`, and it is here you will typically make your changes. Say you have made some changes, and are ready to merge them with the Soufflé master branch.
 
-You will first need to ensure your code meets the Soufflé style requirements. Fortunately, this can be done automatically with Clang Format, which you will need to install. Note that (at this time), you *must* use version 4.0 -- Ubuntu provides a `clang-format-4.0` package for this purpose, but this may be more tricky to install for other operating systems.
+You will first need to ensure your code meets the Soufflé style requirements. Fortunately, this can be done automatically with Clang Format, which you will need to install. Note that (at this time), you *must* use version 6.0 -- Ubuntu provides a `clang-format-6.0` package for this purpose, but this may be more tricky to install for other operating systems.
 
 You can format your code with the following.
 
 ~~~
-$ clang-format-4.0 \
+$ clang-format-6.0 \
             -i \
             -style=file \
             ./src/*.cpp \
