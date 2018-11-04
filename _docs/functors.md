@@ -50,7 +50,7 @@ For example,
 .decl A(x:number) 
 .output A
 A(1). 
-A(f(i)) :- A(i), f(i) < 100.
+A(@f(i)) :- A(i), @f(i) < 100.
 ```
 declares a user-defined functor with name `f` that has a number as an argument and produces a number as a result. 
 
