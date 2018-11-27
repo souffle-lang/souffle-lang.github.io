@@ -6,7 +6,7 @@ redirect_from: /docs/index.html
 ---
 Soufflé is a variant of Datalog for tool designers crafting static analyses. 
 Soufflé provides the ability to rapid prototype and make deep design space explorations possible.
-Applications include the points-to analysis framework [DOOP](https://bitbucket.org/yanniss/doop), [security analyses for large-scale problems](https://labs.oracle.com/pls/apex/f?p=labs:49:::::P49_PROJECT_ID:122), parallelizing compiler framework [Insieme](http://www.insieme-compiler.org), security analysis for cloud computing, and security analysis for smart contracts.
+Applications include the points-to analysis framework [DOOP](https://bitbucket.org/yanniss/doop), [security analyses for large-scale problems](https://labs.oracle.com/pls/apex/f?p=labs:49:::::P49_PROJECT_ID:122), parallelizing compiler framework [Insieme](http://www.insieme-compiler.org), security analysis for cloud computing, and security analysis for smart contracts [VANDAL](https://github.com/usyd-blockchain/vandal).
 Soufflé commenced at [Oracle Labs in Brisbane](https://github.com/oracle/souffle/wiki/Contributors), and was open-sourced in March 2016. It is actively supported by universities and industrial research labs including [The University of Sydney](http://sydney.edu.au), the [University of Innsbruck](https://www.uibk.ac.at/index.html.en), the [University College London](https://www.ucl.ac.uk), and the [University of Athens](http://www.di.uoa.gr/).
 
 One of the major challenges in logic programming is scalability. 
