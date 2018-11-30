@@ -7,12 +7,12 @@ permalink: /docs/strings/
 * **cat(*string*, *string*)** is used to concatenate two strings together. It can be nested to concatenate more than two strings.
 ```
 .type A
-.decl Y(a:A, b:A) 
+.decl Y(a:A, b:A)
 .decl Z(a:A, b:A, c:A)
 .output Z
-Y("a","b"). 
-Y("c","d"). 
-Z(a,b, cat(cat(a,b), a)) :- Y(a,b). 
+Y("a","b").
+Y("c","d").
+Z(a,b, cat(cat(a,b), a)) :- Y(a,b).
 ```
 The output would be:
 ```
@@ -23,11 +23,11 @@ c	d	cdc
 * **contains(*string1*, *string2*)** is used to check if the latter string contains the former string.
 ```
 .type String
-.decl stringTable(t:String) 
-.decl substringTable(t:String) 
+.decl stringTable(t:String)
+.decl substringTable(t:String)
 .decl outputData(substr:String, str:String)
 .output outputData
-outputData(x,y) :- substringTable(x), stringTable(y), contains(x,y). 
+outputData(x,y) :- substringTable(x), stringTable(y), contains(x,y).
 stringTable("aaaa").
 stringTable("abba").
 stringTable("bcab").
@@ -51,10 +51,10 @@ cab	bcab
 * **match** is used to check if the latter string matches a wildcard pattern specified in the former string.
 ```
 .type String
-.decl inputData(t:String) 
+.decl inputData(t:String)
 .decl outputData(t:String)
 .output outputData
-outputData(x) :- inputData(x), match("a.*",x). 
+outputData(x) :- inputData(x), match("a.*",x).
 inputData("aaaa").
 inputData("abba").
 inputData("bcab").
@@ -103,17 +103,17 @@ The output would be:
 6
 ```
 
-* **substr(*string*, *from_index*, *to_index*)** is used to return the substring ranging from *from_index* to *to_index* of *string*. The indices are zero-based.
+* **substr(*string*, *index*, *length*)** is used to return the substring starting at *index* with length *length* of *string*. The index is zero-based.
 ```
 .type String
 .decl substring(s:String)
 .output substring
-substring(s) :- s=substr("Hello", 1, 3).
+substring(s) :- s=substr("Hello_", 2, 3).
 substring(s) :- string="World!", s=substr(string, 3, strlen(string)).
 ```
 The output would be:
 ```
-ell
+llo
 ld!
 ```
 
