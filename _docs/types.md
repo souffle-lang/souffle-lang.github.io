@@ -29,7 +29,7 @@ Soufflé accepts 32 bit signed numbers.
 
 ### Primitive type usage
 ```
-.decl Name(n: symbol) 
+.decl Name(n: symbol)
 Name("Hans").
 Name("Gretl").
 
@@ -70,7 +70,7 @@ We can bring these together to define attributes that better describe a relation
 .symbol_type Town
 .symbol_type Village
 .type Place = City | Town | Village
-.decl Data(c:City, t:Town, v:Village) 
+.decl Data(c:City, t:Town, v:Village)
 Data(“Sydney”, ”Ballina”, “Glenrowan”).
 
 .decl Location(p:Place)
@@ -85,7 +85,7 @@ The semantic of types is defined by their associated domains. Let T be a type an
 * D(symbol) is the set of all strings over the set of printable characters
 * D(U) ⊂ D(number) if U is defined by `.number_type U`
 * D(S) ⊂ D(symbol) if S is defined by `.symbol_type S`
-* D( T1 | T2 | ... | Tn ) ⊇ D(T1) ∪ D(T2) ∪ ... ∪ D(Tn)
+* D( T1 \| T2 \| ... \| Tn ) ⊇ D(T1) ∪ D(T2) ∪ ... ∪ D(Tn)
 * D( [ f1 : T1 , f2 : T2 , ... , fn : Tn ] ) ⊇ D(T1) x D(T2) x ... x D(Tn)
 
 Furthermore, for two primitive types U and S we have that
@@ -129,9 +129,9 @@ All primitive types are sub-types of their predefined base type:
 Thus, every value of a primitive type, e.g. the information that a weight is 40, can 'decay' to an ordinary number without the implicit type-tag of being a weight.
 
 Finally, for union types the following rules hold:
-* U <: T1 | ... | Tn if there is a 1 ≤ i ≤ n such that U <: Ti
-* T1 | ... | Tn <: U if for all 1 ≤ i ≤ n we have Ti <: U
-* U1 | ... | Un <: T1 | ... | Tm  if for all 1 ≤ i ≤ n there is a 1 ≤ j ≤ m such that Ui <: Tj
+* U <: T1 \| ... \| Tn if there is a 1 ≤ i ≤ n such that U <: Ti
+* T1 \| ... \| Tn <: U if for all 1 ≤ i ≤ n we have Ti <: U
+* U1 \| ... \| Un <: T1 \| ... \| Tm  if for all 1 ≤ i ≤ n there is a 1 ≤ j ≤ m such that Ui <: Tj
 
 The first two rules define the relation between union types and non-union types and the third rule defines the relation between two union types. Note that a union type consisting of a single type is a sub-type of this type as well as the other way around.
 
