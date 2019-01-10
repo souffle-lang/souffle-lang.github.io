@@ -5,20 +5,20 @@ permalink: /docs/arithmetic/
 ---
 * Souffle supports standard arithmetic operations **+**, **-**, **&#42;**, **&#47;**, **&#94;** and **&#37;**. Examples of this are given below.
 ```
-.decl e(x:number, t:txt, y:number)
-e(10 * 2,"10*2", 20) :- true(_). 
-e(10 + 2,"10+2", 12) :- true(_). 
-e(10 / 2,"10/2", 5) :- true(_).
-e(10 ^ 2 , "10^2", 100) :- true(_).
-e(10 % 3, "10%3", 1) :- true(_).
-e(2^4%13 , "2^4%13",3) :- true(_).
+.decl e(x:number, t:symbol, y:number)
+e(10 * 2,"10*2", 20).
+e(10 + 2,"10+2", 12).
+e(10 / 2,"10/2", 5).
+e(10 ^ 2 , "10^2", 100).
+e(10 % 3, "10%3", 1).
+e(2^4%13 , "2^4%13",3).
 ```
 
 * Souffle supports standard unary operation **-**.
 ```
-e(-2*10,"-20", -20) :- true(_).
-e(-2,"-2", -2) :- true(_).
-e(--2,"--2", 2) :- true(_).
+e(-2*10,"-20", -20).
+e(-2,"-2", -2).
+e(--2,"--2", 2).
 ```
 
 * Souffle supports standard binary operations **&#62;**, **&#60;**, **&#61;**, **&#33;&#61;**, **&#62;&#61;** and **&#60;&#61;**. Examples of this are given below.

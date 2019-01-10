@@ -20,7 +20,7 @@ Soufflé has two primitive types:
 ### Symbol type
 The symbol type consists of the universe of all strings.
 Internally, the symbol type is represented by an ordinal number.
-The ordinal number for a symbol can be determined by using the `ord` command, e.g., ord("hello") represents the ordinal number for "hello".
+The ordinal number for a symbol can be determined by using the `ord` command, e.g., `ord("hello")` represents the ordinal number for `"hello"`.
 
 ### Number type
 The number type consists of the universe of all numbers.
@@ -52,17 +52,32 @@ Symbol types for attributes are defined by the `.symbol_type` declarative, e.g.,
 ```
 Here we have defined distinct sets of symbols from the universe of possible symbols.
 
-![location types as a subset of the universe](http://souffle-lang.org/img/universe_symbol_base.svg)
+![location types as a subset of the universe](https://souffle-lang.github.io/img/universe_symbol_base.svg)
 ### Union Type
-The Union type unifies a fixed number of symbol set types, of either base or union types.
+The Union type unifies a fixed number of primitive types, of either base or union types, as long as all are derived from the sam primitive type, symbol or number.
 ```
-.type <ident1> = <ident1> | <ident2> | ... | <identk>
+.type <ident> = <ident1> | <ident2> | ... | <identk>
 ```
-For example,
+For example, the following are allowed:
 ```
+.symbol_type City
+.symbol_type Town
+.symbol_type Village
 .type Place = City | Town | Village
 ```
-![Place as a union of the location types in the universe of symbols](http://souffle-lang.org/img/universe_symbol_place.svg)
+```
+.number_type Postcodes
+.number_type ZipCodes
+.type PostalCode = Postcodes | ZipCodes
+```
+However, the following is not allowed:
+```
+.symbol_type Weekdays
+.number_type Dates
+.type Days = Weekdays | Dates // error
+```
+
+![Place as a union of the location types in the universe of symbols](https://souffle-lang.github.io/img/universe_symbol_place.svg)
 
 We can bring these together to define attributes that better describe a relation, e.g.,
 ```
@@ -85,8 +100,8 @@ The semantic of types is defined by their associated domains. Let T be a type an
 * D(symbol) is the set of all strings over the set of printable characters
 * D(U) ⊂ D(number) if U is defined by `.number_type U`
 * D(S) ⊂ D(symbol) if S is defined by `.symbol_type S`
-* D( T1 \| T2 \| ... \| Tn ) ⊇ D(T1) ∪ D(T2) ∪ ... ∪ D(Tn)
-* D( [ f1 : T1 , f2 : T2 , ... , fn : Tn ] ) ⊇ D(T1) x D(T2) x ... x D(Tn)
+* D( T1 \| T2 \| ... \| Tn ) ⊆ D(T1) ∪ D(T2) ∪ ... ∪ D(Tn)
+* D( [ f1 : T1 , f2 : T2 , ... , fn : Tn ] ) ⊆ D(T1) x D(T2) x ... x D(Tn)
 
 Furthermore, for two primitive types U and S we have that
 
