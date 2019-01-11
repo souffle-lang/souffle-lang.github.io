@@ -107,7 +107,7 @@ Based on those predefined types, user defined types may be specified. There are 
 ```
 .number_type weight       // creates a user defined number type
 .symbol_type City         // creates a user defined symbol type
-.type Village             // synonym to .symbol_type Village
+.type Village             // deprecated synonym to .symbol_type Village
 ```
 Operators applicable to the corresponding base type (`number` or `symbol`) can also be applied on the corresponding user-defined primitive type. For instance, arithmetic operations can be applied on values of the `weight` type above -- thus, weights might be added or multiplied.
 
@@ -115,7 +115,7 @@ Operators applicable to the corresponding base type (`number` or `symbol`) can a
 ```
 .type Place = Village | City
 ```
-where `Place` on the left side is the name of the new type and on the right side there is a list of one or more types to be aggregated -- in this case `Village` and `City`. Any village or city value will be a valid Place.
+where `Place` on the left side is the name of the new type and on the right side there is a list of one or more types to be aggregated -- in this case `Village` and `City`. Any village or city value will be a valid Place. More details are provided on the next page.
 
 The following sub-sections will provide more in-depth details on the semantics of types in Souffle's Datalog dialect.
 
@@ -136,10 +136,7 @@ A(x,y) :- B(x,y).
 ```
 a pair (x,y) is in A, if it is in B.
 
-Clauses have qualifiers which direct the query planner for better query execution. The qualifier  
-".strict" forces the query planner to use the order of the specified clause. The qualifer ".plan"
-permits the programmer to specify a schedule for each version of the clause. Several versions
-of a clause may occur if the clause is evaluated in a fixpoint.
+Clauses have qualifiers which direct the query planner for better query execution. The qualifier ".strict" forces the query planner to use the order of the specified clause. The qualifer ".plan" permits the programmer to specify a schedule for each version of the clause. Several versions of a clause may occur if the clause is evaluated in a fixpoint.
 
 # Negation
 

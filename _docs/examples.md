@@ -17,9 +17,9 @@ The following example encodes the most simple version of a var-points-to analysi
 //  v4 = v1.f;
 //
 
-.type var
-.type obj
-.type field
+.symbol_type var
+.symbol_type obj
+.symbol_type field
 
 // -- inputs --
 .decl assign( a:var, b:var )
@@ -52,10 +52,10 @@ alias(X,Y) :- ld(X,A,F), alias(A,B), st(B,F,Y).
 .output pointsTo
 pointsTo(X,Y) :- new(X,Y).
 pointsTo(X,Y) :- alias(X,Z), pointsTo(Z,Y).
-``` 
+```
 The example starts by declaring types for variables, objects and fields. Based on those, four input relations `assign`, `new`, `ld` and `st` are declared and filled with data corresponding to the small code snippet outlined in the comment above.
 
-The analysis itself is broken up in two parts: 
+The analysis itself is broken up in two parts:
 * computation of aliases
 * computation of the var-points-to relation based on aliases
 
@@ -65,10 +65,10 @@ Note that in particular for the last rule of the `alias` relation the utilisatio
 ## DefUse Chains with Composed Types
 The following example utilises a composed type to model a type hierarchy for instructions.
 ```
-.type Var
-.type Read
-.type Write
-.type Jump
+.symbol_type Var
+.symbol_type Read
+.symbol_type Write
+.symbol_type Jump
 
 .type Instr = Read | Write | Jump
 
@@ -99,15 +99,15 @@ flow(X,Z) :- flow(X,Y), flow(Y,Z).
 .output defUse
 defUse(W,R) :- write(W,X), flow(W,R), read(R,X).
 ```
-In this example an instruction is either a read operation, a write operation or a jump instruction. However, to model the control flow through instructions, the `flow` relation needs to be able to cover any of those. 
+In this example an instruction is either a read operation, a write operation or a jump instruction. However, to model the control flow through instructions, the `flow` relation needs to be able to cover any of those.
 
 To model this situation, the union type `Instr` is introduced and utilised as shown above.
 
 ## Context Sensitive Flow Graph
 The following example demonstrates one way of integrating context information into a control flow graph.
 ```
-.type Instr
-.type Context
+.symbol_type Instr
+.symbol_type Context
 
 .decl succ( i1:Instr, c1:Context, i2:Instr, c2:Context )
 
@@ -128,15 +128,15 @@ flow(I1,C1,I3,C3) :- flow(I1,C1,I2,C2), flow(I2,C2,I3,C3).
 res("OK")  :- flow("w1","c1","r2","c1").
 res("ERR") :- flow("w1","c1","r2","c2").
 ```
-In this example the `flow` relation describes a graph where each node consists of a pair of an instruction and some (abstract) context. Although correct, the increased number of attributes causes larger code bases, and thus an increased risk of typos leading to hard-to-identify bugs. 
+In this example the `flow` relation describes a graph where each node consists of a pair of an instruction and some (abstract) context. Although correct, the increased number of attributes causes larger code bases, and thus an increased risk of typos leading to hard-to-identify bugs.
 
 The fact that each node is represented by a pair of elements can be made explicit by utilising records, as demonstrated next.
 
 ### Context Sensitive Flow Graph with Records
 The following example is a refactored version of the context sensitive flow graph example above.
 ```
-.type Instr
-.type Context
+.symbol_type Instr
+.symbol_type Context
 .type ProgPoint = [
     i : Instr,
     c : Context
@@ -169,7 +169,7 @@ Also, as we will see below, the `flow` relation could now be modelled utilising 
 ## Sequences using Recursive Records
 The following example demonstrates the utilisation of recursive records for building sequences of strings over a given alphabet:
 ```
-.type Letter
+.symbol_type Letter
 .type Seq = [ l : Letter, r : Seq ]
 
 .decl letter( l : Letter )
@@ -194,16 +194,16 @@ res("ab") :- seq(["a", ["b", nil ]]).
 res("aba") :- seq(["a", ["b", ["a", nil ]]]).
 res("abc") :- seq(["a", ["b", ["c", nil ]]]).
 ```
-The `Seq` type is a recursive type where each instance is either `nil` or a pair of a `Letter` (head) and a tailing `Seq` r. 
+The `Seq` type is a recursive type where each instance is either `nil` or a pair of a `Letter` (head) and a tailing `Seq` r.
 
-The relation `seq` is defined to contain all sequences of length 5 or less over a given alphabet defined by the relation `letter`. The relation `len` is essentially a function assigning each sequence its length. 
+The relation `seq` is defined to contain all sequences of length 5 or less over a given alphabet defined by the relation `letter`. The relation `len` is essentially a function assigning each sequence its length.
 
 Finally, the `res` relation illustrates how to create constant values for recursive record types.
 
 ## Component Inheritance
 Components provide the means within Souffle's Datalog to build modular queries, thus fostering the reuse of code.
 ```
-.type node
+.symbol_type node
 
 .comp DiGraph {
     .decl node(a:node)
@@ -233,9 +233,9 @@ Net.edge("B","C").
 .output res
 res(X,Y) :- Net.reach(X,Y).
 ```
-The given example defines a component `DiGraph` comprising of four relations: `node`, `edge`, `reach` and `clique`. Furthermore, defining rules for those relations determining their mutual relation are established utilising ordinary Datalog rules. 
+The given example defines a component `DiGraph` comprising of four relations: `node`, `edge`, `reach` and `clique`. Furthermore, defining rules for those relations determining their mutual relation are established utilising ordinary Datalog rules.
 
-To model an undirected graph, the definition of the `DiGraph` is extended by an additional rule making all edges reflexive. This is expressed by the derived component `Graph`, which inherits all the declarations and definitions of the `DiGraph` component and extends it by one additional rule. 
+To model an undirected graph, the definition of the `DiGraph` is extended by an additional rule making all edges reflexive. This is expressed by the derived component `Graph`, which inherits all the declarations and definitions of the `DiGraph` component and extends it by one additional rule.
 
 Component hierarchies may be arbitrarily deep. A component may also have multiple base types, as long as their declared relations do not cause conflicts (e.g. two relations exhibiting the same name but different attributes).
 
@@ -283,18 +283,18 @@ NetB.edge(2,3).
 .output resB
 resB(X,Y) :- NetB.reach(X,Y).
 ```
-The type parameter `<N>` introduces an additional element that can be fixed during the instantiation of a component. This type may be an arbitrary structure, including unions, records and recursive records. As a result, a graph of numbers, a graph of symbols (or a graph of program points as mentioned in the control flow example above) can share the same implementation of the actual graph. 
+The type parameter `<N>` introduces an additional element that can be fixed during the instantiation of a component. This type may be an arbitrary structure, including unions, records and recursive records. As a result, a graph of numbers, a graph of symbols (or a graph of program points as mentioned in the control flow example above) can share the same implementation of the actual graph.
 
 ## Component Parameterised With Another Component
-In the following example, component `Reachability` is parameterised with the name of another component `T`. 
-When instantiating `Reachability` one must provide actual component that will be used as `T`. 
-Component `Reachability` can use any relations from the instantiated (but as yet unknown) component `T`. 
+In the following example, component `Reachability` is parameterised with the name of another component `T`.
+When instantiating `Reachability` one must provide actual component that will be used as `T`.
+Component `Reachability` can use any relations from the instantiated (but as yet unknown) component `T`.
 
 ```
 .comp Reachability<T> {
     .init graph = T
 
-    .decl reach(a:N,b:N)
+    .decl reach(a:number,b:number)
     reach(X,Y) :- graph.edge(X,Y).
     reach(X,Z) :- reach(X,Y),graph.edge(Y,Z).
 }
