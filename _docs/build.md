@@ -56,7 +56,7 @@ MAC OS X does not have OpenMP/C++ nor a bison version 3.0.2 or higher installed.
 ```
 brew update
 brew install autoconf automake bison libffi libtool mcpp pkg-config
-brew reinstall gcc --without-multilib
+brew reinstall gcc
 brew link bison --force
 brew link libffi --force
 export PKG_CONFIG_PATH=/usr/local/opt/libffi/lib/pkgconfig/
@@ -68,8 +68,9 @@ Soufflé is built by
 
 ```
 cd souffle
-export CXX=/usr/local/bin/g++-8
-sh ./bootstrap
+export CXX=g++-8
+export CC=gcc-8
+./bootstrap
 ./configure
 make
 ```
