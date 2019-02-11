@@ -8,13 +8,13 @@ There are some tools available under `benchmarks` that make it easy for you to c
 
 ## Available Benchmark Programs
 
-Under `benchmarks/benchmarks`, you can use `tc, accessX, cprogX, family, poX, tak, tc, ...`. You can `cd` into the program directory and run `./gen_facts.sh` to produce a set of facts. This script will create the facts directory in your current working directory. The facts are randomised.
-You can also find a collection of doop programs and facts under `benchmarks/benchmarks/2-object-sensitive+heap`. The directories with names `souffle-X` will contain a `2-object-sensitive+heap.dl` file and a `facts` directory.
+Under `souffle-lang/benchmarks/benchmarks`, you can use `tc, accessX, cprogX, family, poX, tak, tc, ...`. You can `cd` into the program directory and run `./gen_facts.sh` to produce a set of facts. This script will create the facts directory in your current working directory. The facts are randomised.
+You can also find a collection of doop programs and facts under `souffle-lang/benchmarks/benchmarks/2-object-sensitive+heap`. The directories with names `souffle-X` will contain a `2-object-sensitive+heap.dl` file and a `facts` directory.
 You can use either of these options to create scripts that exploit this file structure to run a series of customised benchmarks.
 
 ## Available Scripts
 
-### `big_benchmark.sh`
+### `big_benchmark.sh`in
 
 Use this script if you are interested in testing the performance of your souffle instance on a prechosen suite of doop programs that are available in `benchmarks/benchmarks/2-object-sensitive+heap`.
 
@@ -22,7 +22,7 @@ Use this script if you are interested in testing the performance of your souffle
 
 **Description:** `./big_benchmark.sh` executes `./timer.sh` for a small collection of doop benchmarks under `benchmarks/2-object-sensitive+heap`. If `outdir` does not exist yet, it is silently created and `.csv` files are created for each doop program in `antlr, xalan, eclipse`. If `outdir` already exists and has been used in the `big_benchmark.sh` command previously, the rows produced by `timer.sh` will be appended to each existing `.csv` file. If you wish to change which doop programs you want to make part of your own benchmark, just change the `programs` array in the `big_benchmark.sh` script.
 
-**Requirements:** You need to have `cd`'d into your `benchmarks` folder in order for the script to run. If the script runs unsuccessfully since you have not `cd`'d, the output directory and `.csv` files with headers will still be created.
+**Requirements:** You need to have `cd`'d into your `benchmarks/benchmarks` folder in order for the script to run. If the script runs unsuccessfully since you have not `cd`'d, the output directory and `.csv` files with headers will still be created.
 
 The available options are
 
