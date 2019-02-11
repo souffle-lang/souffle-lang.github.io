@@ -16,9 +16,9 @@ There are some tools available under `benchmarks` that make it easy for you to c
 
 The available options are
 
-| long | short | description | example |
-| --- | --- | --- |
-| `--outdir` | `-o` | Specify the output directory for the `.csv` files. | `./big_benchmark.sh --outdir=/home/user/out ...` |
+| Long  | Short | Description | Example |
+| :------------- | :------------- | :------------ | :------------ |
+ `--outdir` | `-o` | Specify the output directory for the `.csv` files. | `./big_benchmark.sh --outdir=/home/user/out ...` |
 | `--instance` | `-i` | Specify the instance of souffle to run | `./big_benchmark.sh ... --instance=/home/user/souffle/src/souffle` |
 
 ### `timer.sh`
@@ -33,7 +33,7 @@ where `d2c` means Datalog to C++ Souffle Compilation, `c2o` means `gcc`'s C++ to
 When one of these processes exit with a non-zero status, `0,0,0,0` will be given as a dummy result to indicate that something went wrong with this stage of compilation. In the case where all processes fail, an entire dummy row will be produced in the form `program.dl,0,0,0,0,0,0,0,0,0,0,0,0`.
 
 If you prefer, you can pass the optional flag `--pretty` or `-p` to have human-readable output.
-You can run this script from any context since it is context-independent.
+You can run this script from any context since it is context-independent, unlike `big_benchmark.sh`. 
 
 
 
