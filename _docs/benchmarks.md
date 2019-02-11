@@ -24,9 +24,9 @@ The available options are
 | `--instance` | `-i` | Specify the instance of souffle to run | `./big_benchmark.sh ... --instance=/home/user/souffle/src/souffle` |
 
 ### `timer.sh`
-**Synopsis:** `./timer.sh program.dl --facts=<FACT DIRECTORY> --instance=<SOUFFLE EXECUTABLE> [--pretty]`
-
 Use this script if you are interested in testing the performance of your instance of souffle on a particular datalog program and set of facts.
+
+**Synopsis:** `./timer.sh program.dl --facts=<FACT DIRECTORY> --instance=<SOUFFLE EXECUTABLE> [--pretty]`
 
 **Description:** This utility outputs time and memory performance statistics for `program.dl` in csv row format. To produce these statistics, it runs the `<SOUFFLE EXECUTABLE>` with the `-g` flag in order to produce a `.cpp` file. Then it gives `program.dl, elapsed real time (seconds), Total number of CPU-seconds that the process spent in user mode, Total number of CPU-seconds that the process spent in kernel mode, Maximum resident set size of the process during its lifetime in Kbytes`. Then it outputs the same statistics for the process `souffle-compile result.cpp`, and then for the execution of the final executable `./result`. The columns of the row output have the following meaning:
 
