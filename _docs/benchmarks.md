@@ -8,6 +8,8 @@ There are some tools available under `benchmarks` that make it easy for you to c
 
 ### `big_benchmark.sh`
 
+Use this script if you are interested in testing the performance of your souffle instance on a prechosen suite of doop programs.
+
 **Synopsis:** `./big_benchmark.sh --outdir=<OUTPUT DIRECTORY> --instance=<SOUFFLE EXECUTABLE>`
 
 **Description:** `./big_benchmark.sh` executes `./timer.sh` for a small collection of doop benchmarks under `benchmarks/2-object-sensitive+heap`. If `outdir` does not exist yet, it is silently created and `.csv` files are created for each doop program in `antlr, xalan, eclipse`. If `outdir` already exists and has been used in the `big_benchmark.sh` command previously, the rows produced by `timer.sh` will be appended to each existing `.csv` file. If you wish to change which doop programs you want to make part of your own benchmark, just change the `programs` array in the `big_benchmark.sh` script.
@@ -23,6 +25,8 @@ The available options are
 
 ### `timer.sh`
 **Synopsis:** `./timer.sh program.dl --facts=<FACT DIRECTORY> --instance=<SOUFFLE EXECUTABLE> [--pretty]`
+
+Use this script if you are interested in testing the performance of your instance of souffle on a particular datalog program and set of facts.
 
 **Description:** This utility outputs time and memory performance statistics for `program.dl` in csv row format. To produce these statistics, it runs the `<SOUFFLE EXECUTABLE>` with the `-g` flag in order to produce a `.cpp` file. Then it gives `program.dl, elapsed real time (seconds), Total number of CPU-seconds that the process spent in user mode, Total number of CPU-seconds that the process spent in kernel mode, Maximum resident set size of the process during its lifetime in Kbytes`. Then it outputs the same statistics for the process `souffle-compile result.cpp`, and then for the execution of the final executable `./result`. The columns of the row output have the following meaning:
 
