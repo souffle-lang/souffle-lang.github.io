@@ -8,7 +8,7 @@ There are some tools available under `benchmarks` that make it easy for you to c
 
 ## Available Benchmark Programs
 
-Under `souffle-lang/benchmarks/benchmarks`, you can use `tc, accessX, cprogX, family, poX, tak, tc, ...`. You can `cd` into the program directory and run `./gen_facts.sh` to produce a set of facts. This script will create the facts directory in your current working directory. The facts are randomised.
+Under `souffle-lang/benchmarks/benchmarks`, you can use `tc, accessX, cprogX, family, poX, tak, tc, ...`. You can `cd` into the program directory and run `./gen_facts.sh` to produce a set of facts. This script will create the facts directory in your current working directory and the facts are randomised. There is an example script in `benchmarks/small_benchmark.sh`.
 You can also find a collection of [doop](http://doop.program-analysis.org/benchmarks.html) programs and facts under `souffle-lang/benchmarks/benchmarks/2-object-sensitive+heap`. The directories with names `souffle-X` will contain a `2-object-sensitive+heap.dl` file and a `facts` directory.
 You can use either of these options to create scripts that exploit this file structure to run a series of customised benchmarks.
 
