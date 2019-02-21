@@ -4,6 +4,11 @@ title: Publications & Talks
 permalink: /docs/publications/
 ---
 ## Publications
+ * `Herbert Jordan, Pavle Subotic, David Zhao, Bernhard Scholz:
+A specialized B-tree for concurrent datalog evaluation. PPoPP 2019: 327-339`
+ * `Herbert Jordan, Pavle Subotic, David Zhao, Bernhard Scholz:
+Brie: A Specialized Trie for Concurrent Datalog. PMAM@PPoPP 2019: 31-40`
+ * `Pavle Subotic, Herbert Jordan, Lijun Chang, Alan Fekete, Bernhard Scholz: Automatic Index Selection for Large-Scale Datalog Computation. PVLDB 12(2): 141-153 (2018)`
  *  `Herbert Jordan, Bernhard Scholz, Pavle Subotic: Souffle: On Synthesis of Program Analyzers. CAV 2016`
  * `Bernhard Scholz, Herbert Jordan, Pavle Subotic, Till Westmann: On fast large-scale program analysis in Datalog. CC 2016: 196-206`
  * `Bernhard Scholz, Kostyantyn Vorobyov, Padmanabhan Krishnan, Till Westmann: A Datalog Source-to-Source Translator for Static Program Analysis: An Experience Report. ASWEC 2015: 28-37`
