@@ -3,25 +3,6 @@ layout: docs
 title: Build Soufflé
 permalink: /docs/build/
 ---
-## Pre-Build Packages
-
-Soufflé has pre-built packages for Debian and MAC OS X. You find the pre-built packages [here](http://github.com/souffle-lang/souffle/releases/latest).
-
-## Debian Systems
-
-For Debian systems, the latest development version of Soufflé can be installed from the Bintray PPA,
-
-[Bintray PPA](https://bintray.com/souffle-lang/deb-unstable)
-
-
-You can update your system with unsupported packages from this untrusted PPA by adding https://dl.bintray.com/souffle-lang/deb-unstable to your system's Software Sources using the following instructions:
-
-```
-sudo apt-add-repository https://dl.bintray.com/souffle-lang/deb-unstable
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 379CE192D401AB61
-sudo apt-get update
-```
-
 
 ## Software Requirements
 
@@ -68,8 +49,8 @@ Soufflé is built by
 
 ```
 cd souffle
-export CXX=g++-8
-export CC=gcc-8
+export CXX=g++-8 #Your version of g++ may vary
+export CC=gcc-8  #Your version of gcc may vary
 ./bootstrap
 ./configure
 make
@@ -88,7 +69,7 @@ TESTSUITEFLAGS=-j8 make check
 ```
 which will run 8 jobs at a time.
 
-### Installing Soufflé 
+### Installing Soufflé
 
 If you would like to install Soufflé in your system, specify an installation directory with `./configure --prefix=<install-dir>`. The executable, scripts, and header files will be stored in the directory ```<install-dir>```. Use an absolute path for ```<install-dir>```. Type 
 ```
