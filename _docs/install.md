@@ -1,6 +1,6 @@
 ---
 layout: docs
-title: Build Soufflé
+title: Install Soufflé
 permalink: /docs/install/
 ---
 ## Installation
