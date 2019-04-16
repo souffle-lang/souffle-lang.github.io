@@ -25,19 +25,19 @@ The last two lines say that 1) "there is a path from x to y if there is an edge 
 
 So if the input `edge` relation is pairs of vertices in a graph, by these two rules the output `path` relation will give us all pairs of vertices x and y for which a path exists in that graph from x to y.
 
-For instance, if the contents of the input file `edge.facts` is
+For instance, if the contents of the tab-separated input file `edge.facts` is
 
 ~~~
-1    2
-2    3
+1	2
+2	3
 ~~~
 
 The contents of the output file `path.csv`, after we evaluate this program, will be
 
 ~~~
-1    2
-2    3
-1    3
+1	2
+2	3
+1	3
 ~~~
 
 We can evaluate this program by running
