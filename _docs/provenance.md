@@ -1,3 +1,9 @@
+---
+layout: docs
+title: Provenance
+permalink: /docs/provenance/
+---
+
 Souffle supports provenance to explain how tuples were computed in Souffle programs.
 
 #### Souffle command line option
