@@ -3,12 +3,11 @@ layout: docs
 title: Provenance
 permalink: /docs/provenance/
 ---
-é
 
-Provenance is a way to explain the execution of a Souffle program, potentially useful for debugging. These explanations come in the form of a proof tree. In Souffle, for any tuple, these proof trees are of *minimal height* for that tuple.
+Provenance is a way to explain the execution of a Soufflé program, potentially useful for debugging. These explanations come in the form of a proof tree. In Soufflé, for any tuple, these proof trees are of *minimal height* for that tuple.
 
 ## Using Provenance
-To enable the provenance system, the Souffle command line option is `-t`
+To enable the provenance system, the Soufflé command line option is `-t`
 - Use `-t none` for provenance transformer without any explain interface
 - Use `-t explain` for provenance with a command line interface to `stdout`
 - Use `-t explore` for provenance with an interface in `ncurses` - this allows scrolling around a large proof tree
@@ -19,7 +18,7 @@ souffle -t explain foo.dl
 ```
 
 ### The `explain` interface
-To illustrate the interface with an example, given the simple Souffle program
+To illustrate the interface with an example, given the simple Soufflé program
 ```
 .decl edge, path(x:number, y:number)
 edge(1, 2).
@@ -82,7 +81,7 @@ The approach here is required as it is not technically feasible to automatically
 - Other commands allow to control the output (`output <filename>`, `format <json|proof>`), print rules of the program (`rule <relation> <rulenumber>`), and exit (`exit`, `quit`, or `q`)
 
 ## Internals of Provenance
-The approach for provenance in Souffle is a lazy one, where no proof trees are computed until the user queries for them.
+The approach for provenance in Soufflé is a lazy one, where no proof trees are computed until the user queries for them.
 
 However, to answer provenance queries efficiently, the provenance system requires to keep track of some extra information during evaluation.
 
