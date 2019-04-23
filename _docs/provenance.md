@@ -18,7 +18,7 @@ souffle -t explain foo.dl
 ```
 
 ### The `explain` interface
-To illustrate the interface with an example, given the simple Soufflé program
+To illustrate the interface with an example, assume we have the following simple Soufflé program
 ```
 .decl edge, path(x:number, y:number)
 edge(1, 2).
@@ -30,8 +30,8 @@ path(x, y) :- edge(x, y).
 path(x, z) :- edge(x, y), path(y, z).
 ```
 
-the explain interface consists of a number of commands:
-- `explain path(1, 3)` prints the proof tree for the tuple `path(1, 3)`:   
+The explain interface consists of a number of commands:
+- `explain path(1, 3)` prints the proof tree for the tuple `path(1, 3)`, showing all input and intermediate tuples required to generate the query tuple:   
 ```
 > explain path(1, 3)
            edge(2, 3)
@@ -65,14 +65,12 @@ path(3, 4)
 > explainnegation path(1, 6)
 1: path(x,y) :-
    edge(x,y).
-
 2: path(x,z) :-
    edge(x,y),
    path(y,z).
-
 Pick a rule number: 2
 Pick a value for y: 2
-
+====
 edge(1, 2) ✓ path(2, 6) x
 ------------------------(R2)
          path(1,6)
