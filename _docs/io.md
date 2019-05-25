@@ -23,7 +23,7 @@ A more detailed specification for each relation can be defined in the input dire
 .decl A(a:number,b:number)
 .input A(IO=file, filename="path/to/infile", columns="4:7", delimiter=",")
 ```
-This will load the relation data from file (the default if no IO type is specified) using the filename "path/to/infile" and a comma as a delimiter, and will use the fourth and seventh columns for input data.
+This will load the relation data from file (the default if no IO type is specified) using the filename "path/to/infile" and a comma as a delimiter, and will use columns four and seven (zero-indexed) for input data.
 ```
 .decl A(a:number,b:number)
 .input A(IO=stdin, columns="4:7", delimiter=",")
@@ -81,7 +81,7 @@ Note that if the `-F<path>` command line option is used, that path will be prepe
 Used to specify the delimiter to separate columns in the input file. The default value is a tab character.
 
 `columns`
-Particular columns can be selected from an input file. `columns="3:1"` will use the third input file column for the first attribute of the relation, and the first input file column for the second attribute. The default is to use the first columns of the input file until all attributes are described.
+Particular columns can be selected from an input file. `columns="2:0"` will use the third input file column for the first attribute of the relation, and the first input file column for the second attribute. The default is to use the first columns of the input file until all attributes are described.
 
 `compress`
 Input is assumed to be in gzip compressed format. By default, gzip compressed input is automatically detected,
