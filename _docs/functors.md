@@ -65,7 +65,7 @@ The properties of the functor implementation are the following:
 
  * The implementation of a functor must be reentrant. Souffle is highly parallel and several threads may execute the implementation of a user-defined functor in parallel. Pthread synchronisation techniques may be required.
 
- * A single shared-library `libfunctors.so` contains all user-defined functors.    The environment variable `LD_LIBRARY_PATH` must contain the path where the functor library is located so that either the interpreter or the executable Datalog program can load shared-library.
+ * By default a single shared-library `libfunctors.so` contains all user-defined functors. Custom libraries may be used by starting souffle with `-l<libraryname>` and `-L<library path>`, e.g. `souffle a.dl -lfunctors -lmorefunctors`. The environment variable `LD_LIBRARY_PATH` can also be used to specify library paths. Note that if you use souffle to compile a standalone executable, the path for dynamic dlls may still be required at execution time, so `LD_LIBRARY_PATH` must be specified for the executable to run.
  
  * The name of the user-defined functor must be a C-linkable name (not a C++ linkable name). For example, if the user-defined functor f is declared, the shared-library must have a function f in the shared library with a C style argument passing mechanism. 
 
