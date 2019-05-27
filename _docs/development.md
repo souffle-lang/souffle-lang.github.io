@@ -77,12 +77,12 @@ As this is more to do with usage than development, we will not go into detail on
 
 Most of the C++ for Soufflé lives in `//src`, and it is here you will typically make your changes. Say you have made some changes, and are ready to merge them with the Soufflé master branch.
 
-You will first need to ensure your code meets the Soufflé style requirements. Fortunately, this can be done automatically with Clang Format, which you will need to install. Note that (at this time), you *must* use version 6.0 -- Ubuntu provides a `clang-format-6.0` package for this purpose, but this may be more tricky to install for other operating systems.
+You will first need to ensure your code meets the Soufflé style requirements. Fortunately, this can be done automatically with Clang Format version 4.0 or greater, which you will need to install. Ubuntu provides a `clang-format` package for this purpose, but this may be more tricky to install for other operating systems.
 
 You can format your code with the following.
 
 ~~~
-$ clang-format-6.0 \
+$ clang-format \
             -i \
             -style=file \
             ./src/*.cpp \
@@ -132,6 +132,12 @@ If some test fails, say at `//tests/foo/bar`, then a directory will be created a
 You will need to make changes to fix your bugs, and then repeat everything from the above "Making Changes" section.
 
 When all tests pass successfully, you are ready to do a pull request.
+
+
+## Debugging
+Debug mode can be enabled by configuring with `--enable-debug`. You may also find `--enable-sanitise-memory` useful to find memory leak,reuse, and use after free issues.
+
+Souffle has a signal handler that will catch common errors and print error messages helpful for end users. As a developer, you may want to temporarily disable that by setting the environment variable `SOUFFLE_ALLOW_SIGNALS=1`.
 
 ## Making a Pull Request
 
