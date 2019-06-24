@@ -5,6 +5,10 @@ topnav:
   items:
     - title: GitHub
       external_url: https://github.com/souffle-lang/souffle
+    - title: Download
+      url: /download.html
+    - title: Docs
+      url: /docs.html
     - title: News
       url: /news
 
@@ -12,16 +16,6 @@ topnav:
 topnav_dropdowns:
 - title: Topnav dropdowns
   folders:
-    - title: Jekyll Help
-      folderitems:
-        - title: Jekyll Talk
-          external_url: https://talk.jekyllrb.com
-        - title: Jekyll documentation
-          external_url: http://jekyllrb.com/docs/home/
-        - title: Jekyll on Stack Overflow
-          external_url: http://stackoverflow.com/questions/tagged/jekyll
-        - title: Jekyll on my blog
-          external_url: http://idratherbewriting.com/category-jekyll/
     - title: Products
       folderitems:
         - title: Jekyll Documentation Theme

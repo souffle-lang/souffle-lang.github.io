@@ -1,5 +1,4 @@
 ---
-layout: docs
 title: Aggregates
 permalink: /docs/aggregates/
 ---

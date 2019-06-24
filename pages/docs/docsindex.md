@@ -1,8 +1,9 @@
 ---
-layout: docs
 title: Welcome
-permalink: /docs/home/
-redirect_from: /docs/index.html
+permalink: docs.html
+sidebar: docs_sidebar
+toc: false
+folder: docs
 ---
 Soufflé is a variant of Datalog for tool designers crafting static analyses. 
 Soufflé provides the ability to rapid prototype and make deep design space explorations possible.
@@ -27,3 +28,5 @@ uncooked Soufflé  and the IDB causes the Soufflé  to rise, i.e., monotonically
 
 If there are errors, and/or explanations in the documentation can be improved, please let us know.
 You can either click on the ```Improve this page``` button at the top right-hand side, and trigger a pull request for your improved documentation, or please [file an issue]({{ site.repository }}/issues/new).
+
+{% include links.html %}
