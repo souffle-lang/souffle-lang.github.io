@@ -1,14 +1,14 @@
-repository: tomjoht/documentation-theme-jekyll
+repository: souffle-lang/souffle-lang.github.io
 
 output: web # this property is useful for conditional filtering of content that is separate from the PDF.
 
-topnav_title: Souffle
+topnav_title: Soufflé
 # this appears on the top navigation bar next to the home button
 
 site_title: Soufflé • A Datalog Synthesis Tool for Static Analysis
 # this appears in the html browser tab for the site title (seen mostly by search engines, not users)
 
-company_name: Your company
+#company_name: Your company
 # this appears in the footer
 
 github_editme_path: souffle-lang/souffle-lang.github.io/blob/master/
@@ -35,12 +35,12 @@ exclude:
   - vendor
 # these are the files and directories that jekyll will exclude from the build
 
-feedback_subject_line: Jekyll documentation theme
+feedback_subject_line: Souffle documentation theme
 
-feedback_email: tomjoht@gmail.com
+feedback_email: 
 # used as a contact email for the Feedback link in the top navigation bar
 
-# feedback_disable: true
+ feedback_disable: true
 # if you uncomment the previous line, the Feedback link gets removed
 
 # feedback_text: "Need help?"
@@ -102,6 +102,7 @@ defaults:
 
 sidebars:
 - home_sidebar
+- docs_sidebar
 - mydoc_sidebar
 - product1_sidebar
 - product2_sidebar

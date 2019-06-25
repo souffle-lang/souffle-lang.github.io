@@ -4,6 +4,7 @@ permalink: download.html
 sidebar: docs_sidebar
 toc: false
 folder: download
+hide_sidebar: true
 ---
 ### [Releases](https://github.com/souffle-lang/souffle/releases/)
 The current releases are built automatically for Debian-based systems and MAC OS X.
