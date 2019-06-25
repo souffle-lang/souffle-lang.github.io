@@ -1,7 +1,8 @@
 ---
-layout: docs
 title: Inlining
-permalink: /docs/inlining/
+permalink: /inlining
+sidebar: docs_sidebar
+folder: docs
 ---
 
 Souffl&eacute; offers the ability to manually select one or more program relations to be inlined, i.e., a substitution of the relations are performed. This may lead to performance gains by re-computing results rather than storing them. For example, 

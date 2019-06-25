@@ -1,7 +1,9 @@
 ---
-layout: docs
 title: Install Soufflé
-permalink: /docs/install/
+permalink: /install
+redirect_from: /docs/install
+sidebar: docs_sidebar
+folder: docs
 ---
 ## Installation
 
@@ -49,3 +51,4 @@ For the latest updates follow the development head
 brew install --HEAD souffle-lang/souffle/souffle
 ```
 
+{% include links.html %}

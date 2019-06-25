@@ -1,7 +1,8 @@
 ---
-layout: docs
 title: Publications & Talks
-permalink: /docs/publications/
+permalink: /publications
+sidebar: docs_sidebar
+folder: docs
 ---
 ## Publications
  * `Herbert Jordan, Pavle Subotic, David Zhao, Bernhard Scholz:

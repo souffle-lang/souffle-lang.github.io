@@ -1,7 +1,8 @@
 ---
-layout: docs
 title: Profiler
-permalink: /docs/profiler/
+permalink: /profiler
+sidebar: docs_sidebar
+folder: docs
 ---
 Profiling is an important aspect of logic programming with Soufflé. 
 Programmers require to identify the performance bottlenecks in Soufflé programs

@@ -1,7 +1,8 @@
 ---
-layout: docs
 title: User-Defined Functors
-permalink: /docs/functors/
+permalink: /functors
+sidebar: docs_sidebar
+folder: docs
 ---
 
 Soufflé is extensible with user-defined functors. Functors are 

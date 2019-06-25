@@ -1,7 +1,8 @@
 ---
-layout: docs
 title: Synthesis
-permalink: /docs/translate/
+permalink: /translate
+sidebar: docs_sidebar
+folder: docs
 ---
 
 Soufflé synthesizes a native parallel C++ program from a logic specification. 

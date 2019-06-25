@@ -1,7 +1,8 @@
 ---
-layout: docs
 title: Developer Tutorial
-permalink: /docs/development/
+permalink: /development
+sidebar: docs_sidebar
+folder: docs
 ---
 
 This is a tutorial for getting started with development on Soufflé. It is by no means comprehensive, but aims to give a good overview of the basic workflow.
@@ -161,3 +162,5 @@ If any tests fail, you must fix them locally, then add, commit, and push again. 
 Your code will also need to undergo a review, and a reviewer will make comments on the pull request about things you have to change. Again, fix any issues locally, then add, commit, and push with git.
 
 After all tests pass, and the reviewer approves your pull request, you will need to wait for your changes to be merged. Note that you must never merge your own changes. When this eventually happens, your pull request is complete, and your current fork will be the same as the upstream.
+
+{% include links.html %}

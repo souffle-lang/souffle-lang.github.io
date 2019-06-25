@@ -1,6 +1,8 @@
 ---
 title: Aggregates
-permalink: /docs/aggregates/
+permalink: /aggregates
+sidebar: docs_sidebar
+folder: docs
 ---
 * theory - stratification
 * list of aggregates
@@ -29,3 +31,5 @@ Finally, more complex terms may be minimized for. For instance, in
 min Z+Y : { a(A,Z), a(B,Y), A!=B }.
 ```
 the sum of two values is minimized. The given term computes the smallest sum of values assigned to two different elements in `a`.
+
+{% include links.html %}

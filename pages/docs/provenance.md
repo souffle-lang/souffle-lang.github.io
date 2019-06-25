@@ -1,7 +1,8 @@
 ---
-layout: docs
 title: Provenance
-permalink: /docs/provenance/
+permalink: /provenance
+sidebar: docs_sidebar
+folder: docs
 ---
 
 Provenance is a way to explain the execution of a Soufflé program, potentially useful for debugging. These explanations come in the form of a proof tree. In Soufflé, for any tuple, these proof trees are of *minimal height* for that tuple.

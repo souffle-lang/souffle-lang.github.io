@@ -1,7 +1,8 @@
 ---
-layout: docs
 title: Tuning
-permalink: /docs/tuning/
+permalink: /tuning
+sidebar: docs_sidebar
+folder: docs
 ---
 
 Determining a good execution schedule for a given rule requires some insight regarding the internal operation of the data log engine. In general, a rule like

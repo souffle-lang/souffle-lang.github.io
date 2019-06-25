@@ -1,7 +1,8 @@
 ---
-layout: docs
 title: IO Directives
-permalink: /docs/io/
+permalink: /io
+sidebar: docs_sidebar
+folder: docs
 ---
 ## Input
 

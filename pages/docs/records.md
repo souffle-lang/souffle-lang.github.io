@@ -1,7 +1,8 @@
 ---
-layout: docs
 title: Records
-permalink: /docs/records/
+permalink: /records
+sidebar: docs_sidebar
+folder: docs
 ---
 
 * **Record Types** are combining several values into a structured value similar to a `struct` in C. An example record definition is given by

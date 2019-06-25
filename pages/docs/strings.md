@@ -1,7 +1,8 @@
 ---
-layout: docs
 title: Strings
-permalink: /docs/strings/
+permalink: /strings
+sidebar: docs_sidebar
+folder: docs
 ---
 
 * **cat(*string*, *string*)** is used to concatenate two strings together. It can be nested to concatenate more than two strings.

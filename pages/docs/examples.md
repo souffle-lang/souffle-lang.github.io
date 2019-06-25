@@ -1,7 +1,8 @@
 ---
-layout: docs
 title: Examples
-permalink: /docs/examples/
+permalink: /examples
+sidebar: docs_sidebar
+folder: docs
 ---
 ## Simple Typed VarPointsTo
 
@@ -323,3 +324,5 @@ res1(X,Y) :- reach1.reach(X,Y). // output (1,2), (2,3), (3,4), (1,3), (1,4), (2,
 .output res2
 res2(X,Y) :- reach2.reach(X,Y). // output (1,2), (3,4)
 ```
+
+{% include links.html %}

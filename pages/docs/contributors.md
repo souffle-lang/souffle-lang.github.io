@@ -1,7 +1,8 @@
 ---
-layout: docs
 title: Contributors
-permalink: /docs/contributors/
+permalink: /contributors
+sidebar: docs_sidebar
+folder: docs
 ---
 
 The contributors with their code contributions are listed below:
@@ -21,3 +22,5 @@ The contributors with their code contributions are listed below:
  * **Abdul Karim Zreika**: magic set transformation, inlining 
  * **Martin McGrane**: new I/O system for relations, numerous bug fixes
  * **David Zhao**: provenance/debugging for Datalog
+
+{% include links.html %}

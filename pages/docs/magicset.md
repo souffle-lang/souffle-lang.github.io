@@ -1,7 +1,8 @@
 ---
-layout: docs
 title: Magic-Set
-permalink: /docs/magicset/
+permalink: /magicset
+sidebar: docs_sidebar
+folder: docs
 ---
 
 The magic set transformation is a technique used to reduce the number of irrelevant tuples computed during the evaluation of a Souffl&eacute; program. Irrelevant tuples are avoided by specialising program clauses based on constraints that appear in the body and the bodies of their dependencies. An example of rule specialisation is transforming the following program snippet

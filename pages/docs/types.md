@@ -1,7 +1,8 @@
 ---
-layout: docs
 title: Types
-permalink: /docs/types/
+permalink: /types
+sidebar: docs_sidebar
+folder: docs
 ---
 Soufflé's type system is static.
 Types are used to define the attributes of a relation.

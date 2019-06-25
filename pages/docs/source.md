@@ -1,7 +1,8 @@
 ---
-layout: docs
 title: Source Code
-permalink: /docs/source/
+permalink: /source
+sidebar: docs_sidebar
+folder: docs
 ---
 The code of Soufflé is developed on github and the reopository can be found below:
 

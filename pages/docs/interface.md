@@ -1,7 +1,8 @@
 ---
-layout: docs
 title: C++ Interface
-permalink: /docs/interface/
+permalink: /interface
+sidebar: docs_sidebar
+folder: docs
 ---
 Applications may want to integrate Soufflé programs as a library rather than as a stand-alone tool. 
 For this purpose, we have developed a C++ interface to call Soufflé programs. 

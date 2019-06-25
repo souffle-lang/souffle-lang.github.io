@@ -1,7 +1,8 @@
 ---
-layout: docs
 title: Components
-permalink: /docs/components/
+permalink: /components
+sidebar: docs_sidebar
+folder: docs
 ---
 A component is a set of related relations. Component can be seen as a template.
 Once we instantiate a component, under the hood Souffle copies all the relations from
@@ -175,3 +176,5 @@ As another example, we can use override semantics to implement a more precise ve
 .init precise_pointsto = PrecisePointsto
 ```
 In this example, PrecisePointsto inherits all the relations from AbstractPointsto, but only implements the HeapAllocationMerge relation differently. This feature avoids code duplications when we need several implementations of a generic analysis with small variations.
+
+{% include links.html %}

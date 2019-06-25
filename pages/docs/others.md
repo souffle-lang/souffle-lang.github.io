@@ -1,7 +1,8 @@
 ---
-layout: docs
 title: Other Systems
-permalink: /docs/others/
+permalink: /others
+sidebar: docs_sidebar
+folder: docs
 ---
 There is a cornucopia of Datalog systems for a wide range of applications:
  

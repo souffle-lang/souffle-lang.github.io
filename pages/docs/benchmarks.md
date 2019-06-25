@@ -1,7 +1,8 @@
 ---
-layout: docs
 title: Benchmarks
-permalink: /docs/benchmarks/
+permalink: /benchmarks
+sidebar: docs_sidebar
+folder: docs
 ---
 
 There are some tools available under `benchmarks` that make it easy for you to compare the performance of your branch of souffle to another.
@@ -79,3 +80,5 @@ There is also colour but I cannot convey this here unfortunately. You can run th
 
 
 
+
+{% include links.html %}

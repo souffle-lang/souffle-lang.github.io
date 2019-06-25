@@ -1,7 +1,9 @@
 ---
-layout: docs
 title: Arithmetic
-permalink: /docs/arithmetic/
+permalink: /arithmetic
+sidebar: docs_sidebar
+folder: docs
+toc: false
 ---
 * Souffle supports standard arithmetic operations **+**, **-**, **&#42;**, **&#47;**, **&#94;** and **&#37;**. Examples of this are given below.
 ```
@@ -43,3 +45,5 @@ B($,i) :- A(i).
 C(i,j) :- B(c,i), B(c,j), i!=j.
 ```
 The above example does not output anything.
+
+{% include links.html %}

@@ -1,8 +1,9 @@
 ---
 title: Welcome
 permalink: docs.html
-sidebar: docs_sidebar
+redirect_from: docs
 toc: false
+sidebar: docs_sidebar
 folder: docs
 ---
 Soufflé is a variant of Datalog for tool designers crafting static analyses. 

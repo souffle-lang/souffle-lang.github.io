@@ -1,7 +1,8 @@
 ---
-layout: docs
 title: Datalog
-permalink: /docs/datalog/
+permalink: /datalog
+sidebar: docs_sidebar
+folder: docs
 ---
 
 Datalog is a declarative programming language that was
@@ -180,3 +181,5 @@ Souffle utilises the same comment syntax as C/C++. Furthermore, all souffle prog
 Souffle Identifiers follow the C++ naming convention, except that a question mark may appear anywhere.
 - The identifier can only be composed of letters (lower or upper case), numbers, or the question mark and underscore characters. That means the name cannot contain whitespace, or any symbols other than underscores or question marks.
 - The identifier must begin with a letter (lower or upper case), an underscore, or a question mark. It can not start with a number.
+
+{% include links.html %}

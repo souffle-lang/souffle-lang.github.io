@@ -1,7 +1,8 @@
 ---
-layout: docs
 title: Build Soufflé
-permalink: /docs/build/
+permalink: /build
+sidebar: docs_sidebar
+folder: docs
 ---
 
 ## Software Requirements
@@ -81,3 +82,5 @@ to install Soufflé. By setting the path variable
 ``` 
 the Soufflé commands ```souffle``` and ```souffle-profile``` are available to the users.
 
+
+{% include links.html %}

@@ -1,7 +1,8 @@
 ---
-layout: docs
 title: A Simple Example
-permalink: /docs/simple/
+sidebar: docs_sidebar
+folder: docs
+permalink: /simple
 ---
 
 We now consider a simple Datalog program, and explore some of the features of Soufflé. This only introduces some of the most basic functionality available, and advanced users are encouraged to look elsewhere.
