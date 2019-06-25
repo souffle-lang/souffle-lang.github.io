@@ -7,7 +7,7 @@ folder: docs
 
 This is a tutorial for getting started with development on Soufflé. It is by no means comprehensive, but aims to give a good overview of the basic workflow.
 
-Developers are encouraged to refer to the [user documentation](http://souffle-lang.org/docs/home/), the [source code documentation](http://souffle-lang.org/souffle/), and [the wiki](https://github.com/souffle-lang/souffle/wiki) for more detailed information.
+Developers are encouraged to refer to the [user documentation](docs.html), the [source code documentation](http://souffle-lang.org/souffle/), and [the wiki](https://github.com/souffle-lang/souffle/wiki) for more detailed information.
 
 ## Making a Fork
 

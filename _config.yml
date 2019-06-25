@@ -1,9 +1,11 @@
-repository: souffle-lang/souffle-lang.github.io
+repository: https://github.com/souffle-lang/souffle
 
 output: web # this property is useful for conditional filtering of content that is separate from the PDF.
 
 topnav_title: Soufflé
 # this appears on the top navigation bar next to the home button
+
+timezone: Australia/Sydney
 
 site_title: Soufflé • A Datalog Synthesis Tool for Static Analysis
 # this appears in the html browser tab for the site title (seen mostly by search engines, not users)
@@ -40,7 +42,7 @@ feedback_subject_line: Souffle documentation theme
 feedback_email: 
 # used as a contact email for the Feedback link in the top navigation bar
 
- feedback_disable: true
+feedback_disable: true
 # if you uncomment the previous line, the Feedback link gets removed
 
 # feedback_text: "Need help?"

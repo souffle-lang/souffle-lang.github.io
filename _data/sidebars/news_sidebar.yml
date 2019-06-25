@@ -71,6 +71,10 @@ entries:
       url: /cav-paper
       output: web
 
+    - title: 'Soufflé is open-source!'
+      url: /open-source
+      output: web
+
     - title: On fast large-scale program analysis in Datalog
       url: /cc-paper
       output: web

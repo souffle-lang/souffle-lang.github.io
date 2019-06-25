@@ -8,7 +8,7 @@ hide_sidebar: true
 
 Need support for Soufflé? Try the following:
 
-### [Documentation](/docs/home/)
+### [Documentation](/docs.html)
 
 Our guide to Soufflé covering building, installation, writing logic programs, compiling and running programs, interfaces, and more.
 

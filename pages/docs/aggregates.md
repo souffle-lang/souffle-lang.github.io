@@ -3,6 +3,7 @@ title: Aggregates
 permalink: /aggregates
 sidebar: docs_sidebar
 folder: docs
+toc: false
 ---
 * theory - stratification
 * list of aggregates

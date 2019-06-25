@@ -3,6 +3,7 @@ title: Publications & Talks
 permalink: /publications
 sidebar: docs_sidebar
 folder: docs
+toc: false
 ---
 ## Publications
  * `Herbert Jordan, Pavle Subotic, David Zhao, Bernhard Scholz:
