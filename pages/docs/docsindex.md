@@ -22,12 +22,12 @@ Soufflé has been designed such that,
 
 # Why the name Soufflé?
 Soufflé  is short for **Systematic, Ontological, Undiscovered Fact Finding Logic Engine**. The EDB represents the
-uncooked Soufflé  and the IDB causes the Soufflé  to rise, i.e., monotonically increasing knowledge. When it stops rising and a fixed-point is reached, the result is a puffed-up ready-to-eat Soufflé. Big thanks to Nicholas Allen and Diane Corney from [Oracle Labs/Brisbane](https://labs.oracle.com/pls/apex/f?p=labs:23:::::P23_LOCATION_ID:46) for finding a translation :+1:.
+uncooked Soufflé  and the IDB causes the Soufflé  to rise, i.e., monotonically increasing knowledge. When it stops rising and a fixed-point is reached, the result is a puffed-up ready-to-eat Soufflé. Big thanks to Nicholas Allen and Diane Corney from [Oracle Labs/Brisbane](https://labs.oracle.com/pls/apex/f?p=labs:23:::::P23_LOCATION_ID:46) for finding a translation.
 
 
 ## Improving Documentation
 
 If there are errors, and/or explanations in the documentation can be improved, please let us know.
-You can either click on the ```Improve this page``` button at the top right-hand side, and trigger a pull request for your improved documentation, or please [file an issue]({{ site.repository }}/issues/new).
+You can either click on the ```Edit me``` button at the top of the relevant page, and trigger a pull request for your improved documentation, or please [file an issue]({{ site.repository }}/issues/new).
 
 {% include links.html %}
