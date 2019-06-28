@@ -37,7 +37,7 @@ sudo yum install souffle
 
 ### [Source Code](https://github.com/souffle-lang/souffle)
 
-Follow the [build instructions](/docs/build) to build and install Soufflé locally on your computer. 
+Follow the [build instructions](/build) to build and install Soufflé locally on your computer.
 
 The source code can be obtained by git, as a zip-file, or as tar-ball.
 
