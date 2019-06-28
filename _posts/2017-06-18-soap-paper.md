@@ -1,9 +1,11 @@
 ---
-layout: news_item
+sidebar: news_sidebar
 title: 'An efficient tunable selective points-to analysis for large codebases'
 date: 2017-06-18
 author: psubotic
 categories: [paper]
+permalink: soap-paper.html
+layout: post
 ---
 This is the [paper that uses Souffle](/pdf/soap117.pdf).  It was published in SOAP@PLDI'17.
 
@@ -24,3 +26,5 @@ We have implemented our approach using Souffle (a Datalog compiler) and an exten
 large programs, including OpenJDK, show that our technique is efficient and precise. For the OpenJDK, our analysis reduces 27% 
 of runtime and 18% of memory usage in comparison with 2O1H points-to analysis for a negligible loss of precision, while for 
 Jython from the DaCapo benchmark suite, the same analysis reduces 91% of runtime for no loss of precision.
+
+{% include links.html %}

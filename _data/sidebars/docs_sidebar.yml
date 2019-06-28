@@ -1,0 +1,144 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+entries:
+- title: sidebar
+  product: Soufflé
+  folders:
+
+  - title:
+    output: pdf
+    type: frontmatter
+    folderitems:
+    - title:
+      url: /titlepage.html
+      output: pdf
+      type: frontmatter
+    - title:
+      url: /tocpage.html
+      output: pdf
+      type: frontmatter
+
+  - title: Getting Started
+    output: web, pdf
+    folderitems:
+
+    - title: Welcome
+      url: /docs.html
+      output: web
+      type: homepage
+
+    - title: Install Soufflé
+      url: /install
+      output: web, pdf
+
+    - title: Build Soufflé
+      url: /build
+      output: web, pdf
+
+    - title: A Simple Example
+      url: /simple
+      output: web, pdf
+
+    - title: Run Soufflé
+      url: /execute
+      output: web, pdf
+
+    - title: Examples
+      url: /examples
+      output: web, pdf
+
+    - title: Source Code and Documentation
+      url: /source
+      output: web, pdf
+
+    - title: Developer Tutorial
+      url: /development
+      output: web, pdf
+
+  - title: Language
+    output: web, pdf
+    folderitems:
+
+    - title: Datalog
+      url: /datalog
+      output: web
+
+    - title: Types
+      url: /types
+      output: web
+
+    - title: Strings
+      url: /strings
+      output: web
+
+    - title: Arithmetic
+      url: /arithmetic
+      output: web
+
+    - title: Components
+      url: /components
+      output: web
+
+    - title: Records
+      url: /records
+      output: web
+
+    - title: Aggregates
+      url: /aggregates
+      output: web
+
+    - title: IO Directives
+      url: /io
+      output: web
+
+  - title: Advanced Topics
+    output: web, pdf
+    folderitems:
+
+    - title: Synthesis
+      url: /translate
+      output: web
+
+    - title: Tuning
+      url: /tuning
+      output: web
+
+    - title: Profiler
+      url: /profiler
+      output: web
+
+    - title: Provenance
+      url: /provenance
+      output: web
+
+    - title: Magic-Set
+      url: /magicset
+      output: web
+
+    - title: Inlining
+      url: /inlining
+      output: web
+
+    - title: C++ Interface
+      url: /interface
+      output: web
+
+    - title: User-Defined Functors
+      url: /functors
+      output: web
+
+  - title: Misc.
+    output: web, pdf
+    folderitems:
+
+    - title: Other Systems
+      url: /others
+      output: web
+
+    - title: Contributors
+      url: /contributors
+      output: web
+
+    - title: Publications & Talks
+      url: /publications
+      output: web
