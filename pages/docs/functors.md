@@ -80,8 +80,10 @@ int32_t f(int32_t x) {
     return x + 1;
 }
 
-cost char *g() {
+const char *g() {
     return "Hello world";
+}
+
 }
 ```
 
@@ -91,10 +93,10 @@ for the functor declarations
 .functor g():symbol
 ```
 
-Note that number types are implmented as ```int32_t``` and symbol types are implemented as ```char const *```. In Linux, a shared library can be generated with the following instructions:
+Note that number types are implmented as ```int32_t``` and symbol types are implemented as ```const char *```. In Linux, a shared library can be generated with the following instructions:
 ```
 g++ -fPIC -o functors.o 
 g++ -shared -o libfunctors.so functors.o 
 export LD_LIBRARY_PATH=LD_LIBRARY_PATH:`pwd`
 ```
-assuming that the source code of the user-defined functors is stored in the source file ```functors.cpp```. The export command ensures that either the Soufflé interpreter or the generated executable can find the shared library.
+Assuming that the source code of the user-defined functors is stored in the source file ```functors.cpp```. The export command ensures that either the Soufflé interpreter or the generated executable can find the shared library.
