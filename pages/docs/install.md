@@ -17,6 +17,13 @@ sudo apt-add-repository https://dl.bintray.com/souffle-lang/deb-unstable
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 379CE192D401AB61
 sudo apt-get update
 ```
+If apt-add-repository is not available, the repository can instead be manually added:
+```
+sudo echo "deb https://dl.bintray.com/souffle-lang/deb-unstable bionic main" >> /etc/apt/sources.list
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 379CE192D401AB61
+sudo apt-get update
+```
+
 
 Then to install souffle itself
 ```
