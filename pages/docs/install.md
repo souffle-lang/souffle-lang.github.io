@@ -13,13 +13,7 @@ For Debian systems, the latest development version of Soufflé can be installed 
 
 To add the repository:
 ```
-sudo apt-add-repository https://dl.bintray.com/souffle-lang/deb-unstable
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 379CE192D401AB61
-sudo apt-get update
-```
-If apt-add-repository is not available, the repository can instead be manually added:
-```
-sudo echo "deb https://dl.bintray.com/souffle-lang/deb-unstable bionic main" >> /etc/apt/sources.list
+echo "deb https://dl.bintray.com/souffle-lang/deb-unstable bionic main" | sudo tee -a /etc/apt/sources.list
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 379CE192D401AB61
 sudo apt-get update
 ```
@@ -27,7 +21,7 @@ sudo apt-get update
 
 Then to install souffle itself
 ```
-apt-get install souffle
+sudo apt-get install souffle
 ```
 
 ## Centos7
