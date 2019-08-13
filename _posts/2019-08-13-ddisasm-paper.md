@@ -29,3 +29,5 @@ inference process is particularly well suited for disassembly and the required a
 experiments supports this claim. We have implemented our approach into an open-source tool called Ddisasm. In extensive
 experiments in which we rewrite thousands of x64 binaries we find Ddisasm is both faster and more accurate than the
 current state-of-the-art binary reassembling tool, Ramblr."  type="primary" %} 
+
+{% include links.html %}
