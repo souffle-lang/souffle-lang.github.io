@@ -8,8 +8,8 @@ permalink: ddiasm.html
 layout: post
 ---
 
-A fast disassembler/binary translator for x86-binaries have 
-been developed by GrammarTech and open-sourced under the 
+A fast disassembler/binary translator for x86-binaries has
+been developed by GrammarTech using Soufflé and open-sourced under the 
 GNU Affero General Public License v3.0.
 The source code can be found on [github](https://github.com/GrammaTech/ddisasm).
 
