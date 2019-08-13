@@ -8,6 +8,10 @@ entries:
   - title: Releases
     output: web, pdf
     folderitems:
+    - title: Version 1.6.2
+      url: /release-1.6.2
+      output: web, pdf
+
     - title: Version 1.5.1
       url: /release-1.5.1
       output: web, pdf
