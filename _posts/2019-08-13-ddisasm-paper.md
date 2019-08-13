@@ -17,7 +17,7 @@ The disassembler parses ELF files and translates the binary
 to a symbolic representation exposing control-flow and data-flow dependencies. 
 Antonio Flores-Montoya and Eric Schulte have written a technical 
 report summarising the work and have published the work on 
-Arxiv.org. The abstract and link are below,
+Arxiv.org. The title, link, and abstract are below,
 
 [Datalog Disassembly, Antonio Flores-Montoya, Eric Schulte](https://arxiv.org/abs/1906.03969)
 
