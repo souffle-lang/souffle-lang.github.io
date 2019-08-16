@@ -19,10 +19,10 @@ TODO?
 
 ## Soufflé: The Language
 ### Motivation
-There does not exist a unified standard for the specification of Datalog syntactically. Thus, each implementation of Datalog may differ.
 The syntax of Soufflé is inspired by implementations of Datalog, namely [bddbddb](http://bddbddb.sourceforge.net/) and [muZ in Z3](https://github.com/Z3Prover/z3/wiki).
+There there is no unified standard for the specification of Datalog syntax. Thus, each implementation of Datalog may differ.
 A principle goal of the Soufflé project is speed, tailoring to multi-core servers with large amounts of memory.
-With this in mind, Soufflé provides software engineering features (components, for example.) for large-scale logic-oriented programming
+With this in mind, Soufflé provides software engineering features (components, for example.) for large-scale logic-oriented programming.
 For practical usage, Soufflé extends Datalog to make it Turing-equivalent through arithmetic functors.
 This results in the ability of the programmer to write programs that may never terminate.V
 For example, a program where the fact ``A(0).`` and rule  ``A(i + 1) :- A(i).`` exist without additional constraints causes Soufflé to attempt to output an infinite number of relations ``A(n)`` where ``n >= 0``.
@@ -317,7 +317,7 @@ The value ``ord("hello")`` corresponds to this ordinal number for a given progra
 The number type comprises the universe of all numbers.
 
 ### Arithmetic expressions
-Among others functors, Soufflé permits arithmetic functors, which extends Datalog semantics.
+Among others functors, Soufflé permits arithmetic functors, which extend traditional Datalog semantics.
 Variables in functors must be grounded for use. That is, they may not contain any free variables.
 As described earlier, termination may be a problem as in the case of an imperative ``while`` loop.
 
@@ -381,11 +381,242 @@ A(0xaffe).
 Note that in fact files only decimal numbers are permitted.
 
 #### Number encoding
+Numbers can be used as logical values, as in C:
+- 0 represents false
+- != 0 represents true
+As such, they can be used for logical operations: ``x land y``, ``x lor y`` and ``lnot x``
+An example is as follows:
+```prolog
+.decl A(x:number)
+.output A
+A(0 lor 1).
+```
+
+#### The functor $
+The functor ``$`` issues a new number every time it is evaluated.
+However, it is not permitted in recursive relations. It can be used to create unique numbers (acting as identifiers) for symbols, such as in the following example:
+```prolog
+.decl A(x: symbol)
+A(“a”). A(“b”). A(“c”). A(“d”).
+
+.decl B(x: symbol, y: number) 
+.output B
+B(x, $) :- A(x).
+```
+
+<ul id="exerciseThreeTabs" class="nav nav-tabs">
+    <li class="active"><a href="#exercise2" data-toggle="tab">Exercise</a></li>
+    <li><a href="#solution2" data-toggle="tab">Exercise Solution</a></li>
+    <li><a href="#extension" data-toggle="tab">Extension</a></li>
+    <li><a href="#extensionsolution" data-toggle="tab">Extension Solution</a></li>
+</ul>
+  <div class="tab-content">
+<div role="tabpanel" class="tab-pane active" id="exercise2">
+Given a set A(x:symbol), create a successor relation Succ(x:symbol, y:symbol) such that the first argument contains an element x in A, and the second argument contains the successor of x, which is also an element of A.
+
+For example, the set A = {"a", "b", "c", "d"} would have successor relation Succ=(("a", "b"), ("b", "c"), ("c", "d")}.
+
+Assume that the total order of an element (a symbol in this case) is given by its ordinal number, its internal representation as a number. For example, ord("hello") returns the ordinal number of string "hello" for a given program.
+</div>
+
+<div role="tabpanel" class="tab-pane" id="solution2">
+
+{% highlight prolog %}
+.decl A(x:symbol) input
+.decl Less(x:symbol, y:symbol)
+Less(x,y) :- A(x), A(y), ord(x) < ord(y). 
+
+.decl Transitive(x:symbol, y:symbol) 
+Transitive(x,z) :- Less(x,y), Less(y,z). 
+
+.decl Succ(x:symbol, y:symbol) 
+Succ(x,y) :- Less(x,y), !Transitive(x,y).
+
+.output Less, Transitive, Succ
+{% endhighlight %}
+
+</div>
+
+<div role="tabpanel" class="tab-pane" id="extension">
+Compute the first and the last element of the successor relation.
+</div>
+
+<div role="tabpanel" class="tab-pane" id="extensionsolution">
+
+{% highlight prolog %}
+.decl First(x: symbol) output
+First(x) :- A(x), ! Succ(_, x). 
+
+.decl Last(x: symbol) output
+Last(x) :- A(x), ! Succ(x, _). 
+{% endhighlight %}
+
+</div>
+</div>
+
+#### String functors
+The usage and characterisation of the string (symbol) functors supported by Soufflé can be found [here](/strings).
 
 ### Aggregation
+Aggregation in Soufflé refers to the use of particular functors to summarise information about queries.
+Aggregates can only be applied on stable relations in Soufflé.
+Types of aggregates include counting, finding the minimum/maximum of a set of numbers, and summation.
+Generally in Soufflé, information cannot flow from the sub-goal (the argument/s of the aggregate functor) to the outer scope.
+For example, if one wishes to find the minimum value of the relation ``Cost(x)``, they cannot find a specific value of ``x`` that minimises ``Cost``.
+Indeed, such a value of ``x`` may not be unique.
+
+#### Counting
+The counting functor allows the user to count the set size of a sub-goal.
+The syntax is ``count{<sub-goal>}``.
+The following example outputs the number of "blue" cars - that is, the number of elements in ``Car`` with second argument "blue":
+```prolog
+.decl Car(name: symbol, colour:symbol) 
+Car(“Audi”, ”blue”).
+Car(“VW”, “red”).
+Car(“BMW”, “blue”).
+
+.decl BlueCarCount(x: number) 
+BlueCarCount(c) :- c = count:{Car(_,”blue”)}. 
+ .output BlueCarCount
+```
+
+#### Maximum
+The ``max`` functor outputs the maximum value of a set.
+The syntax is ``max <var>:{<sub-goal(<var>)>}``.
+An example:
+```prolog
+.decl A(n:number) 
+A(1). A(10). A(100).
+.decl MaxA(x: number) 
+MaxA(y) :- y = max x:{A(x)}. 
+ .output MaxA
+```
+
+#### Minimum & Sum
+Similarly to the above, these functors compute the minimum/sum of a sub-goal.
+The ``min`` syntax is ``min <var>:{<sub-goal(<var>)>}``, and the ``sum`` syntax is ``sum <var>:{<sub-goal>(<var>)>}``.
+
+#### Witnesses are not permitted
+Consider the following example which will not compile:
+```prolog
+.decl A(n:number, w:symbol) 
+A(1, ”a”). A(10, ”b”). A(100, ”c”).
+.decl MaxA(x: number,w:symbol) 
+MaxA(y, w) :- y = max x:{A(x, w)}.
+```
+Here, the user wishes to produce a witness for the maximum value of the first argument of ``A``.
+This causes semantic and performance issues.
+Semantically, it is not clear what it means to find a witness for the ``count`` and ``sum`` functors.
+In terms of performance, there is overhead.
+As such, this kind of code is forbidden by the type-checker.
+
 ### Records
+Relations are two-dimensional structures in Datalog.
+With a large code-base and/or a complex problem, it can be convenient to consider relations with more complex structure (recursion/hierarchy, etc.).
+Records provide such an abstraction, breaking out of the flat world of Datalog at the price of performance, due to an additional table lookup required when invoking records.
+Their semantics are comparable to those in Pascal/C.
+Currently, polymorphic types are not supported. #TODO - true?
+The syntax of a Record Type definition is as follows:
+```prolog
+.type <name> = [ <name_1>: <type_1>, ..., <name_k>: <type_k> ]
+```
+Currently, there is no output facility, but Soufflé 2.0 will support this.
+In the meantime, this can be simulated by mapping records to relations, where ``.output`` can then be called.
+The following example creates a record corresponding to a pair of numbers, in which the ``Flatten`` relation can be then be printed.
+```prolog
+// Pair of numbers
+.type Pair = [a:number, b:number]
+
+.decl A(p: Pair)  // declare a set of pairs
+A([1,2]). 
+A([3,4]). 
+A([4,5]).
+
+.decl Flatten(a:number, b:number) output
+Flatten(a,b) :- A([a,b]).
+```
+
+#### Overview of record internals
+Each record type has a hidden type relation.
+There, elements of a record are translated to a number.
+During evaluation, if a record does not exist, it is created on the fly.
+Considering the example as above:
+```prolog
+.type Pair = [a: number, b: number]
+.decl A(p: Pair)
+A([1,2]).
+A([3,4]).
+A([4,5]).
+```
+Internally, these records are represented and stored as per this diagram:
+<img src="img/record_table.jpg" alt="Record table example">
+
+#### Recursive records
+Recursively-defined records are permitted in Soufflé.
+The recursion is terminated by the existence of a ``nil`` record.
+Consider the following:
+```prolog
+.type IntList = [next: IntList, x: number]
+.decl L(l: IntList)  
+L([nil,10]). 
+L([r1,x+10]) :- L(r1), r1=[r2,x], x < 30.  
+.decl Flatten(x: number) 
+Flatten(x) :- L([_,x]).
+.output Flatten
+```
+Here, an ``IntList`` contains a reference to the next element, which is an ``IntList`` itself.
+Internally, this is represented as follows:
+<img src="img/record_recursive.jpg" alt="Record table with recursion example">
+
+As before, the ``Flatten`` relation allows for output.
+
+The semantics of recursive records are tricky.
+Records are relations and sets of recursive elements, which monotonically grow in size over time.
+They are equivalent to relations with the use of the `nil`` record.
+In the future, polymorphism may be possible at the expense of execution time and space.
+
 ### Components
+Components are defined and showcased in [this](/components) article.
+
+An interesting exercise for the reader is to develop a library of components for graphs. The library should be extensible and contain various items of functionality, including:
+- A component for a directed graph
+- A component for an undirected graph
+- A component that checks for a cycle in a graph
+- A component that checks whether a graph is acyclic.
+
 ### Performance and profiling facilities
+To gain performance in the execution of Datalog progrsm, we can:
+- Compile, rather than interpret code
+- Schedule queries, through user annotations or automation
+- Find faster queries that perform the same desired task
+- Find faster data models
+
+To achieve these aims, profiling a given program is paramount. An overview of Soufflé's profiler, which provides a textual and graphical UI, can be found [here](/profiler).
+
+To compile and immediately execute a Soufflé program, the option ``-c`` can be used, e.g. ``souffle -c test.dl`` executes the binary produced from the ``.cpp`` file produced by ``test.dl``. To just generate the executable, the option ``-o`` can be used.
+
+TODO: depricated: Feedback-directed compilation can be used with the option ``--auto-schedule``, e.g. ``souffle --auto-schedule test.dl``.
+
+To achieve high performance, the programmer can manually re-order the atoms in the body of a rule. The auto-scheduler can be disabled for a rule by the strict qualifier, with syntax ``<rule>. .strict``. One can also provide their own query schedule, which for a given rule has syntax ``<rule>. .plan{ <#version> : (idx_1, ..., idx_k) }``.
+
+An exercise for the reader is to execute the following code, varying the choice of the last three lines each time, and benchmarking using the profiler:
+```prolog
+.decl Edge(x:number, y:number) 
+Edge(1,2).
+Edge(500,1).
+Edge(i+1,i+2) :- Edge(i,i+1), i < 499. 
+
+.decl Path(x:number, y:number) 
+.printsize Path
+Path(x,y) :- Edge(x,y). 
+// Path(x,z) :- Path(x,y), Path(y,z). .strict
+// Path(x,z) :- Path(x,y), Edge(y,z). .strict
+// Path(x,z) :- Edge(x,y), Path(y,z). .strict
+```
+
+### Lambda Calculus Case Study
+
+TODO?
 
 é
 
