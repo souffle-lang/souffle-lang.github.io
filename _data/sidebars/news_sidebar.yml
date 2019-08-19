@@ -39,6 +39,22 @@ entries:
   - title: Other News
     output: web, pdf
     folderitems:
+    - title: Fast Parallel Equivalence Relations
+      url: /pact19
+      output: web
+
+    - title: Datalog Disassembly
+      url: /ddiasm
+      output: web
+
+    - title: Provenance for Large-scale Datalog
+      url: /provenance2
+      output: web
+
+    - title: A Smart-Contract Decompiler - Gigahorse
+      url: /icse19-paper
+      output: web
+
     - title: A Specialized B-Tree for Concurrent Datalog Evaluation
       url: /ppopp19-paper
       output: web
