@@ -1,7 +1,7 @@
 ---
 sidebar: news_sidebar
 title: 'Provenance Tracking for Static Analysis with Datalog'
-date: 2019-08-31
+date: 2019-07-31
 author: b-scholz
 categories: [thesis]
 permalink: sallinger19.html
@@ -11,10 +11,10 @@ layout: post
 Sarah has just finished her MPhil thesis on provenance in Datalog. 
 She improved David's provenance system by using a neat trick:
 storing the arguments of the max-calculation to speed up 
-the proof-generation time. 
+the proof-generation time. Well done Sarah!
 
 You find her thesis [Provenance Tracking for Static Analysis
-with Datalog](/pdf/thesis_salinger.pdf) here.  
+with Datalog](/pdf/thesis_sallinger.pdf) here.  
 
 ## Abstract 
 Logic programming languages such as Datalog are gaining popularity for industrial static program
