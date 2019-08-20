@@ -8,7 +8,7 @@ permalink: sallinger19.html
 layout: post
 ---
 
-Sarah has just finished her thesis on provenance in Datalog. 
+Sarah has just finished her MPhil thesis on provenance in Datalog. 
 She improved David's provenance system by using a neat trick:
 storing the arguments of the max-calculation to speed up 
 the proof-generation time. 
