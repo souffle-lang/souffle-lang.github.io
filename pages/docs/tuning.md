@@ -56,6 +56,28 @@ for( e1 : A ) {
 ```
 eliminating an entire loop, significantly reducing the number of times the loop body is processed.
 
+## Datastructure
+The datastructure for a relation can be specifically chosen by adding an appropriate attribute to the relation declaration, e.g.,
+```
+.decl A(x:number, y:number) btree
+.decl B(x:number, y:number) brie
+.decl C(x:number, y:number) eqrel
+```
+The default datastructure for most relations in Souffle is a B-Tree. A Brie structure can improve performance in some cases, and is more memory efficient for particularly large relations.
+
+`eqrel` is a high performance datastructure optimised specifically for equivalence relations. In the example below, eqrel_fast has the same functionality as eqrel_slow, but with greatly improved performance. 
+```
+.decl rel1, rel2(x:number)
+.decl eqrel_fast(x : number, y : number) eqrel
+eqrel_fast(a,b) :- rel1(a), rel2(b).
+
+.decl eqrel_slow(x : number, y : number)
+eqrel_slow(a,b) :- rel1(a), rel2(b).
+eqrel_slow(a,a) :- rel1(a).             // reflexivity
+eqrel_slow(b,a) :- eqrel_slow(a,b).     // symmetry
+eqrel_slow(a,c) :- eqrel_slow(a,b), eqrel_slow(b, c).   // transitivity
+```
+
 ## Profiler
 
 The performance impact of the rule order can be measured using the profiling tool of Souffle. The runtime of a rule, how may tuples are produced by the rule, and the performance behaviour for each iteration of a recursively defined rule can be measured and visualised. In practice, only a few rules are performance critical and need to be considered for performance tuning. 
