@@ -13,10 +13,6 @@ In its pure form, it is based on a decidable fragment of first-order logic (FIL)
 Here, the universe -- the colleciton of elements by which computation can be performed within -- is finite, and functors are not permitted.
 Applications of Datalog include program analysis, security, graph databases, and declarative networking.
 
-### Syntax
-Computations are represented in terms of Horn clauses.
-TODO?
-
 ## Soufflé: The Language
 ### Motivation
 The syntax of Soufflé is inspired by implementations of Datalog, namely [bddbddb](http://bddbddb.sourceforge.net/) and [muZ in Z3](https://github.com/Z3Prover/z3/wiki).
@@ -295,8 +291,6 @@ path(x,y) :- edge(x,q), path(q,y).
 </table>
 
 ### Type system for attributes
-TODO: refer to type page?
-
 Soufflé's type system is static, like languages like C and unlike languages like Python.
 The attributes of a relation must be defined before compilation (or interpretation), and types are checked at compile-time.
 This supports programmers having a clear idea of the definition of relations and their usage.
@@ -595,8 +589,6 @@ To achieve these aims, profiling a given program is paramount. An overview of So
 
 To compile and immediately execute a Soufflé program, the option ``-c`` can be used, e.g. ``souffle -c test.dl`` executes the binary produced from the ``.cpp`` file produced by ``test.dl``. To just generate the executable, the option ``-o`` can be used.
 
-TODO: depricated: Feedback-directed compilation can be used with the option ``--auto-schedule``, e.g. ``souffle --auto-schedule test.dl``.
-
 To achieve high performance, the programmer can manually re-order the atoms in the body of a rule. The auto-scheduler can be disabled for a rule by the strict qualifier, with syntax ``<rule>. .strict``. One can also provide their own query schedule, which for a given rule has syntax ``<rule>. .plan{ <#version> : (idx_1, ..., idx_k) }``.
 
 An exercise for the reader is to execute the following code, varying the choice of the last three lines each time, and benchmarking using the profiler:
@@ -613,11 +605,5 @@ Path(x,y) :- Edge(x,y).
 // Path(x,z) :- Path(x,y), Edge(y,z). .strict
 // Path(x,z) :- Edge(x,y), Path(y,z). .strict
 ```
-
-### Lambda Calculus Case Study
-
-TODO?
-
-é
 
 {% include links.html %}
