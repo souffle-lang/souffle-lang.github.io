@@ -16,19 +16,19 @@ Applications of Datalog include program analysis, security, graph databases, and
 ## Soufflé: The Language
 ### Motivation
 The syntax of Soufflé is inspired by implementations of Datalog, namely [bddbddb](http://bddbddb.sourceforge.net/) and [muZ in Z3](https://github.com/Z3Prover/z3/wiki).
-There there is no unified standard for the specification of Datalog syntax. Thus, each implementation of Datalog may differ.
-A principle goal of the Soufflé project is speed, tailoring to multi-core servers with large amounts of memory.
-With this in mind, Soufflé provides software engineering features (components, for example.) for large-scale logic-oriented programming.
+There is no unified standard for the specification of Datalog syntax. Thus, each implementation of Datalog may differ.
+A principle goal of the Soufflé project is speed, tailoring program execution to multi-core servers with large amounts of memory.
+With this in mind, Soufflé provides software engineering features (components, for example) for large-scale logic-oriented programming.
 For practical usage, Soufflé extends Datalog to make it Turing-equivalent through arithmetic functors.
-This results in the ability of the programmer to write programs that may never terminate.V
-For example, a program where the fact ``A(0).`` and rule  ``A(i + 1) :- A(i).`` exist without additional constraints causes Soufflé to attempt to output an infinite number of relations ``A(n)`` where ``n >= 0``.
+This results in the ability of the programmer to write programs that may never terminate.
+An example of non-termination is a program where the fact ``A(0).`` and rule  ``A(i + 1) :- A(i).`` exist without additional constraints. This causes Soufflé to attempt to output an infinite number of relations ``A(n)`` where ``n >= 0``.
 This is in some way analogous to an infinite while loop in an imperative programming language like C.
 However, the increased expressiveness afforded by arithmetic functors is very convenient for programming.
 
 ### First example
 Soufflé supports UNIX, FreeBSD, Mac OS X and Windows, and can be installed as per [these instructions](/install).
 
-Soufflé is invoked by command line in the format ``souffle <flags> <program>.dl``, where ``<program>.dl`` is the input program that is to be evaluated.
+Soufflé is invoked by command line in the format ``souffle <flags> <program.dl>``, where ``<program.dl>`` is the input program that is to be evaluated.
 The input fact directory is set with flag ``-F <dir>``, specifying the input directory for relations. The default directory is the current directory.
 The output directory for relations is set with flag ``-D <dir>``, and also defaults to the current directory. Note that if ``<dir>`` is set to ``-``, the output will be written to stdout.
 
@@ -514,7 +514,7 @@ The syntax of a Record Type definition is as follows:
 ```prolog
 .type <name> = [ <name_1>: <type_1>, ..., <name_k>: <type_k> ]
 ```
-Currently, there is no output facility, but Soufflé 2.0 will support this.
+Currently, there is no output facility, but it is planned that Soufflé 2.0 will support this.
 In the meantime, this can be simulated by mapping records to relations, where ``.output`` can then be called.
 The following example creates a record corresponding to a pair of numbers, in which the ``Flatten`` relation can be then be printed.
 ```prolog
