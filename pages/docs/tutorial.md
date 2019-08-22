@@ -118,30 +118,30 @@ The above example contains unambiguous definitions d<sub>1</sub> and d<sub>2</su
 // define control flow graph
 // via the Edge relation
 .decl Edge(n: symbol, m: symbol)
-Edge("start", "b1"). 
-Edge("b1", "b2"). 
-Edge("b1", "b3"). 
-Edge("b2", "b4").  
-Edge("b3", "b4"). 
-Edge("b4", "b1"). 
+Edge("start", "b1").
+Edge("b1", "b2").
+Edge("b1", "b3").
+Edge("b2", "b4").
+Edge("b3", "b4").
+Edge("b4", "b1").
 Edge("b4", "end").
 
 // Generating Definitions
-.decl GenDef(n: symbol, d:symbol) 
-GenDef("b2", "d1"). 
-GenDef("b4", "d2"). 
+.decl GenDef(n: symbol, d:symbol)
+GenDef("b2", "d1").
+GenDef("b4", "d2").
 
 // Killing Definitions
-.decl KillDef(n: symbol, d:symbol) 
-KillDef("b4", "d1"). 
-KillDef("b2", "d2"). 
+.decl KillDef(n: symbol, d:symbol)
+KillDef("b4", "d1").
+KillDef("b2", "d2").
 
-// Reachable 
-.decl Reachable(n: symbol, d:symbol) 
-Reachable(u,d) :- GenDef(u,d). 
-Reachable(v,d) :- Edge(u,v), Reachable(u,d), !KillDef(u,d). 
+// Reachable
+.decl Reachable(n: symbol, d:symbol)
+Reachable(u,d) :- GenDef(u,d).
+Reachable(v,d) :- Edge(u,v), Reachable(u,d), !KillDef(u,d).
 
-.output Reachable 
+.output Reachable
 ```
 
 #### Remarks on Input and C-Preprocessor.
@@ -178,11 +178,11 @@ The following example illustrates the aforementioned functionality:
 .decl B(n: symbol)
 B(n) :- A(n).
 
-.decl C(n: symbol) 
+.decl C(n: symbol)
 .output C // output appears in C.csv
-C(n) :- B(n). 
+C(n) :- B(n).
 
-.decl D(n: symbol) 
+.decl D(n: symbol)
 .printsize D // the number of facts in D is printed
 D(n) :- C(n).
 ```
@@ -225,11 +225,11 @@ Rules with multiple heads can be written. This is syntactic sugar to minimise co
 
 {% highlight prolog %}
 .decl A(x:number)
-A(1). A(2). A(3). 
+A(1). A(2). A(3).
 .decl B(x:number)
 .decl C(x:number)
 
-B(x), C(x) :- A(x).  
+B(x), C(x) :- A(x).
 .output B,C
 {% endhighlight %}
 
@@ -238,11 +238,11 @@ B(x), C(x) :- A(x).
 
 {% highlight prolog %}
 .decl A(x:number)
-A(1). A(2). A(3). 
+A(1). A(2). A(3).
 .decl B(x:number)
-B(x) :- A(x).  
+B(x) :- A(x).
 .decl C(x:number)
-C(x) :- A(x).  
+C(x) :- A(x).
 .output B,C
 {% endhighlight %}
 
@@ -270,10 +270,10 @@ Similarly, disjunctions in rule bodies are permitted as syntactic sugar, such as
 
 {% highlight prolog %}
 .decl edge(x:number, y:number)
-edge(1,2). edge(2,3). 
+edge(1,2). edge(2,3).
 .decl path(x:number, y:number)
-path(x,y) :- 
-  edge(x,y); 
+path(x,y) :-
+  edge(x,y);
   edge(x,q), path(q,y).
 .output path
 {% endhighlight %}
@@ -283,7 +283,7 @@ path(x,y) :-
 
 {% highlight prolog %}
 .decl edge(x:number, y:number)
-edge(1,2). edge(2,3). 
+edge(1,2). edge(2,3).
 .decl path(x:number, y:number)
 path(x,y) :- edge(x,y).
 path(x,y) :- edge(x,q), path(q,y).
@@ -303,7 +303,7 @@ This supports programmers having a clear idea of the definition of relations and
 To minimise evaluation time, no dynamic checks are made at runtime.
 
 Types correspond to the subdivision of elements (relations) and sets of elements over the universe.
-In particular, a type refers to either a subset of a universe or the universe itself. 
+In particular, a type refers to either a subset of a universe or the universe itself.
 Elements of subsets are not defined explicitly.
 As we shall see with union types, subsets can be composed of other subsets.
 
@@ -323,7 +323,7 @@ As described earlier, termination may be a problem as in the case of an imperati
 
 A basic example is as follows:
 ```prolog
-.decl A(n: number) 
+.decl A(n: number)
 .output A
 A(1).
 A(x+1) :- A(x), x < 9.
@@ -342,7 +342,7 @@ Here, the sequence is 1, 1, 2, 3, 5, ...
 <div role="tabpanel" class="tab-pane" id="solution">
 
 {% highlight prolog %}
-.decl Fib(i:number, a:number) 
+.decl Fib(i:number, a:number)
 .output Fib
 Fib(1, 1).
 Fib(2, 1).
@@ -355,12 +355,12 @@ Fib(i + 1, a + b) :- Fib(i, a), Fib(i-1, b), i < 10.
 The following arithmetic functors are allowed in Soufflé:
 - Addition: ``x + y``
 - Subtraction: ``x - y``
-- Division: ``x / y`` 
+- Division: ``x / y``
 - Multiplication: ``x * y``
 - Modulo: ``a % b``
 - Power:  ``a ^ b``
 - Counter: ``$``
-- Bit operations: ``x band y``, ``x bor y``, ``x bxor y``, and ``bnot x`` 
+- Bit operations: ``x band y``, ``x bor y``, ``x bxor y``, and ``bnot x``
 - Logical operations: ``x land y``, ``x lor y``, and ``lnot x``
 
 The following arithmetic constraints are allowed in Soufflé:
@@ -373,7 +373,7 @@ The following arithmetic constraints are allowed in Soufflé:
 
 In source code, numbers can be written in decimal, binary and hexadecimal. Below is an example illustrating such:
 ```prolog
-.decl A(x:number) 
+.decl A(x:number)
 A(4711).
 A(0b101).
 A(0xaffe).
@@ -399,7 +399,7 @@ However, it is not permitted in recursive relations. It can be used to create un
 .decl A(x: symbol)
 A(“a”). A(“b”). A(“c”). A(“d”).
 
-.decl B(x: symbol, y: number) 
+.decl B(x: symbol, y: number)
 .output B
 B(x, $) :- A(x).
 ```
@@ -424,12 +424,12 @@ Assume that the total order of an element (a symbol in this case) is given by it
 {% highlight prolog %}
 .decl A(x:symbol) input
 .decl Less(x:symbol, y:symbol)
-Less(x,y) :- A(x), A(y), ord(x) < ord(y). 
+Less(x,y) :- A(x), A(y), ord(x) < ord(y).
 
-.decl Transitive(x:symbol, y:symbol) 
-Transitive(x,z) :- Less(x,y), Less(y,z). 
+.decl Transitive(x:symbol, y:symbol)
+Transitive(x,z) :- Less(x,y), Less(y,z).
 
-.decl Succ(x:symbol, y:symbol) 
+.decl Succ(x:symbol, y:symbol)
 Succ(x,y) :- Less(x,y), !Transitive(x,y).
 
 .output Less, Transitive, Succ
@@ -445,10 +445,10 @@ Compute the first and the last element of the successor relation.
 
 {% highlight prolog %}
 .decl First(x: symbol) output
-First(x) :- A(x), ! Succ(_, x). 
+First(x) :- A(x), ! Succ(_, x).
 
 .decl Last(x: symbol) output
-Last(x) :- A(x), ! Succ(x, _). 
+Last(x) :- A(x), ! Succ(x, _).
 {% endhighlight %}
 
 </div>
@@ -470,13 +470,13 @@ The counting functor allows the user to count the set size of a sub-goal.
 The syntax is ``count{<sub-goal>}``.
 The following example outputs the number of "blue" cars - that is, the number of elements in ``Car`` with second argument "blue":
 ```prolog
-.decl Car(name: symbol, colour:symbol) 
+.decl Car(name: symbol, colour:symbol)
 Car(“Audi”, ”blue”).
 Car(“VW”, “red”).
 Car(“BMW”, “blue”).
 
-.decl BlueCarCount(x: number) 
-BlueCarCount(c) :- c = count:{Car(_,”blue”)}. 
+.decl BlueCarCount(x: number)
+BlueCarCount(c) :- c = count:{Car(_,”blue”)}.
  .output BlueCarCount
 ```
 
@@ -485,10 +485,10 @@ The ``max`` functor outputs the maximum value of a set.
 The syntax is ``max <var>:{<sub-goal(<var>)>}``.
 An example:
 ```prolog
-.decl A(n:number) 
+.decl A(n:number)
 A(1). A(10). A(100).
-.decl MaxA(x: number) 
-MaxA(y) :- y = max x:{A(x)}. 
+.decl MaxA(x: number)
+MaxA(y) :- y = max x:{A(x)}.
  .output MaxA
 ```
 
@@ -499,9 +499,9 @@ The ``min`` syntax is ``min <var>:{<sub-goal(<var>)>}``, and the ``sum`` syntax 
 #### Witnesses are not permitted
 Consider the following example which will not compile:
 ```prolog
-.decl A(n:number, w:symbol) 
+.decl A(n:number, w:symbol)
 A(1, ”a”). A(10, ”b”). A(100, ”c”).
-.decl MaxA(x: number,w:symbol) 
+.decl MaxA(x: number,w:symbol)
 MaxA(y, w) :- y = max x:{A(x, w)}.
 ```
 Here, the user wishes to produce a witness for the maximum value of the first argument of ``A``.
@@ -528,8 +528,8 @@ The following example creates a record corresponding to a pair of numbers, in wh
 .type Pair = [a:number, b:number]
 
 .decl A(p: Pair)  // declare a set of pairs
-A([1,2]). 
-A([3,4]). 
+A([1,2]).
+A([3,4]).
 A([4,5]).
 
 .decl Flatten(a:number, b:number) output
@@ -557,10 +557,10 @@ The recursion is terminated by the existence of a ``nil`` record.
 Consider the following:
 ```prolog
 .type IntList = [next: IntList, x: number]
-.decl L(l: IntList)  
-L([nil,10]). 
-L([r1,x+10]) :- L(r1), r1=[r2,x], x < 30.  
-.decl Flatten(x: number) 
+.decl L(l: IntList)
+L([nil,10]).
+L([r1,x+10]) :- L(r1), r1=[r2,x], x < 30.
+.decl Flatten(x: number)
 Flatten(x) :- L([_,x]).
 .output Flatten
 ```
@@ -601,14 +601,14 @@ To achieve high performance, the programmer can manually re-order the atoms in t
 
 An exercise for the reader is to execute the following code, varying the choice of the last three lines each time, and benchmarking using the profiler:
 ```prolog
-.decl Edge(x:number, y:number) 
+.decl Edge(x:number, y:number)
 Edge(1,2).
 Edge(500,1).
-Edge(i+1,i+2) :- Edge(i,i+1), i < 499. 
+Edge(i+1,i+2) :- Edge(i,i+1), i < 499.
 
-.decl Path(x:number, y:number) 
+.decl Path(x:number, y:number)
 .printsize Path
-Path(x,y) :- Edge(x,y). 
+Path(x,y) :- Edge(x,y).
 // Path(x,z) :- Path(x,y), Path(y,z). .strict
 // Path(x,z) :- Path(x,y), Edge(y,z). .strict
 // Path(x,z) :- Edge(x,y), Path(y,z). .strict
