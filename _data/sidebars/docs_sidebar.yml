@@ -47,6 +47,10 @@ entries:
       url: /examples
       output: web, pdf
 
+    - title: Tutorial
+      url: /tutorial
+      output: web, pdf
+
     - title: Source Code and Documentation
       url: /source
       output: web, pdf
