@@ -21,7 +21,7 @@ On a Ubuntu/Debian system, following command installs the necessary developer to
 sudo apt-get install autoconf automake bison build-essential clang doxygen flex g++ git libncurses5-dev libtool libsqlite3-dev make mcpp python sqlite zlib1g-dev
 ```
 
-Support for C++11 is required, which is fully supported in g++-5.1 on.
+Support for C++11 is required, which is fully supported in g++ 5.1/clang++ 4.0 on.
 
 The Soufflé project follows automake/autoconf conventions for configuring, installing and building software. To configure, build, test, and install the project, type:
 ```
