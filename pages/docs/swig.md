@@ -8,6 +8,10 @@ folder: docs
 # Using SWIG
 [SWIG](http://swig.org/) is a software development tool that connects programs written in C and C++ with a variety of high-level programming languages. Soufflé uses SWIG as a programming interface such that other languages can interface it. This enables a program written in other languages to read in the Datalog input file through the wrapper files and output the corresponding CSV files. These wrapper files are generated through first generating the C++ file for the Datalog file and then compiling it using SWIG. Swig Interface currently supports **Java**  and **Python**.
 
+To use the SWIG feature, it must be enabled through configuring Soufflé with the following:
+
+`./configure --enable-swig` 
+
 ## SWIG Command Line Option in Souffle
 To run the SWIG command line option in Souffle, run:
 
