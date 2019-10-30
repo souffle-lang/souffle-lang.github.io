@@ -72,3 +72,7 @@ Run your program to see the outputted CSV files.
 `run()`: executes the Datalog program
 
 `printAll("<output directory>")`: prints all output relations
+
+`dumpInputs()`: prints the input relations to standard output
+
+`dumpOutputs()`: prints the output relations to standard output
