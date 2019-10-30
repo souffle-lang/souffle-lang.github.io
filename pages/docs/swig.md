@@ -63,7 +63,6 @@ Run your program to see the outputted CSV files.
  ## Supported functions
 `newInstance("<name of .dl file without extension>")`: creates a new instance from a Datalog file
 
-
 `loadAll("<input directory>")`: loads all input relations
 
 `run()`: executes the Datalog program
