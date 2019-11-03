@@ -99,6 +99,10 @@ entries:
     output: web, pdf
     folderitems:
 
+    - title: Swig
+      url: /swig
+      output: web
+      
     - title: Synthesis
       url: /translate
       output: web
