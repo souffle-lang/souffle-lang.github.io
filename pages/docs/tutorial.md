@@ -57,7 +57,7 @@ Indeed, all elements in ``edge`` are in ``reachable`` (by the base rule), and th
 <li>Extend the previous code to add a new relation SCC(x, y), that is defined as: if node x reaches node y and node y reaches node x, then (x, y) is in SCC.</li>
 <li>Check whether a node is cyclic.</li>
 <li>Check whether the graph is acyclic.</li>
-<li>Omit the flag ``-D-`` - where is the output?</li>
+<li>Omit the flag `-D-` - where is the output?</li>
 </ol>
 </div>
 
@@ -378,6 +378,7 @@ Note that in fact files only decimal numbers are permitted.
 Numbers can be used as logical values, as in C:
 - 0 represents false
 - != 0 represents true
+
 As such, they can be used for logical operations: ``x land y``, ``x lor y`` and ``lnot x``
 An example is as follows:
 ```prolog
@@ -509,7 +510,7 @@ Relations are two-dimensional structures in Datalog.
 With a large code-base and/or a complex problem, it can be convenient to consider relations with more complex structure (recursion/hierarchy, etc.).
 Records provide such an abstraction, breaking out of the flat world of Datalog at the price of performance, due to an additional table lookup required when invoking records.
 Their semantics are comparable to those in Pascal/C.
-Currently, polymorphic types are not supported. #TODO - true?
+In future, unions of records will be allowed to simulate polymorphism.
 The syntax of a Record Type definition is as follows:
 ```prolog
 .type <name> = [ <name_1>: <type_1>, ..., <name_k>: <type_k> ]
@@ -543,7 +544,7 @@ A([3,4]).
 A([4,5]).
 ```
 Internally, these records are represented and stored as per this diagram:
-<img src="img/record_table.jpg" alt="Record table example">
+<img src="img/record_table.png" alt="Record table example">
 
 #### Recursive records
 Recursively-defined records are permitted in Soufflé.
@@ -560,13 +561,13 @@ Flatten(x) :- L([_,x]).
 ```
 Here, an ``IntList`` contains a reference to the next element, which is an ``IntList`` itself.
 Internally, this is represented as follows:
-<img src="img/record_recursive.jpg" alt="Record table with recursion example">
+<img src="img/record_recursive.png" alt="Record table with recursion example">
 
 As before, the ``Flatten`` relation allows for output.
 
 The semantics of recursive records are tricky.
 Records are relations and sets of recursive elements, which monotonically grow in size over time.
-They are equivalent to relations with the use of the `nil`` record.
+They are equivalent to relations with the use of the `nil` record.
 In the future, polymorphism may be possible at the expense of execution time and space.
 
 ### Components
