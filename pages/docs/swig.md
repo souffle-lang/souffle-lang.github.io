@@ -1,6 +1,6 @@
 ---
 title: Swig
-permalink: /Swig
+permalink: /swig
 sidebar: docs_sidebar
 folder: docs
 ---
