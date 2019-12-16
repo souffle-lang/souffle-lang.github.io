@@ -78,31 +78,29 @@ edge(1, 2) ✓ path(2, 6) x
 ```   
 The approach here is required as it is not technically feasible to automatically generate explanations for non-existence, and a bit of user guidance is required.   
 
-- `query` command can be used to check existence of tuple(s) in the result. `query path(1, 3)` checks existence of  the tuple `path(1, 3)` in the result.
+- `query` command can be used to check existence of tuples in the result. `query path(1, 3)` checks existence of  the tuple `path(1, 3)` in the result.
 ```
 > query path(1, 3)
-Tuple path(1, 3) exists
+true.
 ```
 Or if the given tuple does not exist in the result such as `path(3, 1)`
 ```
 > query path(3, 1)
+false.
 Tuple path(3, 1) does not exist
 ```
-`query` can check existence of multiple tuples at once, use `,` to delimit tuples
+`query` can check existence of multiple tuples at once, use `,` to delimit tuples. Evaluation would stop if there is at least one tuple does not exist and output that tuple.
 ```
 > query path(1, 3), path(3, 2), path(1, 10), path(2, 4)
-Tuple path(1, 3) exists
+false.
 Tuple path(3, 2) does not exist
-Tuple path(1, 10) does not exist
-Tuple path(2, 4) exists
 ```
-`query` command can have parameters where the tuples additionally contain variables as opposed to numbers or strings only. Parametrised query provides select and join functionality and print values for variables.
+`query` command can have parameters where the tuples additionally contain variables as opposed to numbers or strings only. Parameterised query provides select and join functionality and print values for variables interactively. If a parameterised query has multiple solutions, use `;` to find next solution or `.` to break from current query.
 ```
 > query edge(1, x), path(x, y)
-|x       |y       |
-|2       |3       |
-|2       |4       |
-|2       |5       |
+x = 2, y = 3 ;
+x = 2, y = 4 ;
+x = 2, y = 5 .
 ```
 - Other commands allow to control the output (`output <filename>`, `format <json|proof>`), print rules of the program (`rule <relation> <rulenumber>`), and exit (`exit`, `quit`, or `q`)
 
