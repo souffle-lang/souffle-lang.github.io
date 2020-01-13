@@ -9,7 +9,7 @@ folder: docs
 
 To build and install Souffle, the following software must be installed:
 
-* Make, Autoconf tools, GNU G++ supporting C++11 and OpenMP (from version 4.8), Bison (from version 3.0.4), Flex, DoxyGen
+* Make, Autoconf tools, GNU G++ supporting C++17 and OpenMP (from version 4.8), Bison (from version 3.0.4), Flex, DoxyGen
 
 Clang++ with OpenMP support can be used as an alternative for G++.
 
@@ -21,7 +21,7 @@ On a Ubuntu/Debian system, following command installs the necessary developer to
 sudo apt-get install autoconf automake bison build-essential clang doxygen flex g++ git libncurses5-dev libtool libsqlite3-dev make mcpp python sqlite zlib1g-dev
 ```
 
-Support for C++11 is required, which is fully supported in g++ 5.1/clang++ 4.0 on.
+Support for C++17 is required, which is supported in g++ 7/clang++ 7 on.
 
 The Soufflé project follows automake/autoconf conventions for configuring, installing and building software. To configure, build, test, and install the project, type:
 ```
