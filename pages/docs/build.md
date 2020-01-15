@@ -34,7 +34,9 @@ The Soufflé project follows automake/autoconf conventions for configuring, inst
 
 ### MAC OS X Build
 
-MAC OS X does not have OpenMP/C++ nor a bison version 3.0.2 or higher installed. We recommend [brew](http://brew.sh) to install the required tools to build Soufflé. Run the following commands prior to executing `./configure`:
+MAC OS X does not have OpenMP/C++ nor a bison version 3.0.2 or higher installed by default. OpenMP is not required, but does improve runtime for large programs. Testing with multiple threads will also fail if OpenMP is not installed.
+
+We recommend [brew](http://brew.sh) to install the required tools to build Soufflé. Run the following commands prior to executing `./configure`:
 ```
 brew update
 brew install autoconf automake bison libffi libtool mcpp pkg-config
@@ -44,14 +46,14 @@ brew link libffi --force
 export PKG_CONFIG_PATH=/usr/local/opt/libffi/lib/pkgconfig/
 ```
 
-Note: Be careful with the search path for bison, so it points to the correct one. By default, macOS includes bison 2.3 at `/usr/bin/bison`, however brew installs the newer version to `/usr/local/bin/bison`. This can be done by prepending this directory to the path, however, this can break other systems - `PATH=/usr/local/bin:$PATH`.
+Note: Be careful with the search path for bison, so it points to the correct one. By default, macOS includes bison 2.3 at `/usr/bin/bison`, however brew installs the newer version to `/usr/local/bin/bison`. This can be done by prepending this directory to the path, however, this can break other systems - `PATH=/usr/local/bin:$PATH`. Also note that the version of gcc installed may be different, so 'g++-8' may need to be changed.
 
 Soufflé is built by 
 
 ```
 cd souffle
-export CXX=g++-8 #Your version of g++ may vary
-export CC=gcc-8  #Your version of gcc may vary
+export CXX=g++-9 #Your version of g++ may vary
+export CC=gcc-9  #Your version of gcc may vary
 ./bootstrap
 ./configure
 make
