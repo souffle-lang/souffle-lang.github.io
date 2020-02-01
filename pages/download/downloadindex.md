@@ -14,11 +14,13 @@ A repository for the latest unstable Ubuntu debs can be set up with
 ```
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 379CE192D401AB61
 sudo add-apt-repository https://dl.bintray.com/souffle-lang/deb-unstable/
+sudo apt-get install souffle
 ```
 The stable release repository can be set up with
 ```
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 379CE192D401AB61
 sudo add-apt-repository https://dl.bintray.com/souffle-lang/deb/
+sudo apt-get install souffle
 ```
 
 ### Fedora
