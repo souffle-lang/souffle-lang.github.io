@@ -95,7 +95,7 @@ for the functor declarations
 
 Note that number types are implmented as ```int32_t``` and symbol types are implemented as ```const char *```. In Linux, a shared library can be generated with the following instructions:
 ```
-g++ -fPIC -o functors.o 
+g++ functors.cpp -c -fPIC -o functors.o 
 g++ -shared -o libfunctors.so functors.o 
 export LD_LIBRARY_PATH=LD_LIBRARY_PATH:`pwd`
 ```
