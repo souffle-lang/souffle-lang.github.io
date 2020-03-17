@@ -35,7 +35,11 @@ Data can also be read from stdin, and again the delimiter and columns to read ca
 .input A(IO=sqlite, dbname="path/to/sqlite3db")
 ```
 Data will now be read from an sqlite3 database at the given path.
-The data is expected to be stored in the table matching the relation name.
+The data is expected to be stored in a table matching the relation name
+prefixed by an underscore and the sqlite3 database is expected to contain a
+view matching the relation name. For example, for the relation `edge`, the
+sqlite3 database should have a table named `_edge` containing the data and a
+view named `edge` that returns the data from `_edge`.
 
 ## Output
 The output relations of a Datalog program are, by default, written to a tab separated file with name `<relation name>.csv`, located in the current directory. If the parameter `-D<output-dir>` is given then the default output directory will be changed to that given. `-D-` can be used to redirect all output to stdout.
