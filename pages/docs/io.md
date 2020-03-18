@@ -71,13 +71,13 @@ The data will be stored with a view that shows the symbols and numbers contained
 This is backed by a database table to store the symbol table and a table to store the relations numbers or symbol indices.
 
 
-# Standard .input options
+## Standard .input options
 
 ```
 .input <relation id> (IO=[file|stdin|sqlite] [optional parameters])
 ```
 
-## IO=file
+### IO=file
 
 `filename`
 Note that if the `-F<path>` command line option is used, that path will be prepended to the filename, unless the filename path is absolute.
@@ -91,21 +91,21 @@ Particular columns can be selected from an input file. `columns="2:0"` will use 
 `compress`
 Input is assumed to be in gzip compressed format. By default, gzip compressed input is automatically detected,
 
-## IO=stdin
+### IO=stdin
 `delimiter`
-Used to specify the delimiter to separate columns in the input file. The default value is a tab character.
+Used to specify the delimiter to separate columns in the input file. The default value is a tab character. The order of evaluation of relations is not fixed. This method is not reliable when reading more than one relation from stdin.
 
-## IO=sqlite
-`dbname`
-The path to the sqlite3 database.
+### IO=sqlite
+`filename`
+The path to the sqlite3 database. Note that if the `-F<path>` command line option is used, that path will be prepended to the filename, unless the filename path is absolute.
 
-# Standard .output options
+## Standard .output options
 
 ```
 .output <relation id> (IO=[file|stdout|sqlite] [optional parameters])
 ```
 
-## IO=file
+### IO=file
 `filename`
 Note that if the `-D<path>` command line option is used, that path will be prepended to the filename, unless the filename path is absolute.
 
@@ -116,11 +116,11 @@ Used to specify the delimiter to separate columns in the input file. The default
 Output is in gzip compressed format.
 
 
-## IO=stdout
+### IO=stdout
 `delimiter`
 Used to specify the delimiter to separate columns in the input file. The default value is a tab character.
 
-## IO=sqlite
-`dbname`
-The path to the sqlite3 database.
+### IO=sqlite
+`filename`
+The path to the sqlite3 database. Note that if the `-D<path>` command line option is used, that path will be prepended to the filename, unless the filename path is absolute.
 
