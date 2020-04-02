@@ -47,7 +47,7 @@ The range is given by the word-size.
 The number type consists of the universe of floating point numbers. 
 The precision is given by the wordsize, i.e., 32 bit or 64 bit. 
 
-### Primitive type usage
+### Primitive Type Example
 ```
 .decl Name(n: symbol)
 Name("Hans").
@@ -56,6 +56,11 @@ Name("Gretl").
 .decl Translate(n: symbol , o: number)
 .output Translate
 Translate(x,ord(x)) :- Name(x).
+
+.decl Magic(x:number, y:unsigned, z:float)
+Magic(-1,1,2.718).
+.output Magic
+
 ```
 ## Beyond Primitive Types
 Primitive types are insufficient for large projects.
