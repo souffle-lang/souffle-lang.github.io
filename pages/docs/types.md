@@ -74,15 +74,21 @@ partial orders over subsets permit the formation of
 type ontologies.
 
 ### Base Type
-Symbol types for attributes are defined by the `.symbol_type` declarative, e.g.,
+Base types are defined by the directive ```.type <name> <: <primitive-type>```  where
+```<name>``` is the name of the base type and ```<primitive-type>``` is one of the
+four primitive types. For example, 
 ```
-.symbol_type City
-.symbol_type Town
-.symbol_type Village
+.type City <: symbol
+.type Town <: symbol
+.type Village <: symbol
 ```
-Here we have defined distinct sets of symbols from the universe of possible symbols.
+defines base type ```City```, ```Town```, and ```Village```. Although 
+all three types are derived from the same primitive type ```symbol```, they are 
+distinct sets of symbols from the universe of possible symbols. 
 
 ![location types as a subset of the universe](https://souffle-lang.github.io/img/universe_symbol_base.svg)
+
+
 ### Union Type
 The Union type unifies a fixed number of primitive types, of either base or union types, as long as all are derived from the sam primitive type, symbol or number.
 ```
