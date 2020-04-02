@@ -5,7 +5,11 @@ sidebar: docs_sidebar
 folder: docs
 ---
 
-* **Record Types** are combining several values into a structured value similar to a `struct` in C. An example record definition is given by
+# Record Types
+
+Record types are combining several values into a structured value similar to a `struct` in C. In logical languages it is also known as a functor term or a constructor in functional languages. Record types permit to hold complex data in tuples of relations. A record type may rely on other record types and allow recursive type declarations. 
+
+An example record definition is given by
 ```
 .type Connection = [
     from : Place,
@@ -38,4 +42,10 @@ A([1,nil]).
 A([2,[3,nil]]).
 ```
 
-Union types involving records are currently not supported.
+# I/O 
+
+Record types are supported by the I/O system. 
+
+## Limitations
+
+Union types involving records and sub-typing of record types are currently not supported.
