@@ -38,7 +38,6 @@ The number type consists of the universe of all numbers.
 The accepted range of numbers is given by the two-complement 
 scheme of the word-size. 
 
-
 ### Unsigned Type
 The number type consists of the universe of all positive numbers including zero.
 The range is given by the word-size. 
@@ -62,7 +61,6 @@ Magic(-1,1,2.718).
 .output Magic
 
 ```
-
 
 ## Equivalence Types 
 
@@ -169,4 +167,18 @@ The above example will prodcue a type clash
 .decl B(x:odd)
 A(X) :- B(X) // type clash
 ```
-In this version, `even` and `odd` are defined as two disjoint sub-types of the type number, each exhibiting its own domain of values. From this definition Souffle can deduce that the users intention was to define two disjoint sets and will report an error for the rule in the last line. For logic programmers it is crucial to accurately model the categories of values in form of a type system -- as has been illustrated by the example above.
+In this example, `even` and `odd` are defined as two disjoint sub-types of the type number, each exhibiting its own domain of values. From this definition Soufflé can deduce that the users intention was to define two disjoint sets and will report an error for the rule in the last line. For logic programmers it is crucial to accurately model the categories of values in form of a type system -- as has been illustrated by the example above.
+
+# Legacy
+
+In older versions of Soufflé we used the base type declarations such as 
+```
+.number_type Even
+.symbol_type Place
+``` 
+that is equivalent to 
+```
+.type Even <: number
+.type Place <: symbol
+```
+in the latest version of Soufflé.
