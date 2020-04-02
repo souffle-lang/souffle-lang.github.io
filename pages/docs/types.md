@@ -71,7 +71,7 @@ defining a new type ```<name>``` that is equivalent to type ```<other-type>```. 
 ```
 introduces the new type ```myNumber``` that is equivalent to the primitive type ```number```.
 
-## Beyond Primitive Types
+## Ontologies with Base and Union Types
 The sole usage of primitive types (and equivalent types) is 
 hazardous for large projects.
 Binding wrong attributes via name equivalences is a 
