@@ -40,6 +40,7 @@ Thus, a record may contain (directly or indirectly) fields of its own type. As a
 A(nil).
 A([1,nil]).
 A([2,[3,nil]]).
+.output A
 ```
 
 ## I/O 
