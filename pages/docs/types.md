@@ -18,17 +18,34 @@ or a subset of it; subsets can be composed of other subsets.
 ## Primitive Types
 Soufflé has two primitive types:
 * Symbol type: `symbol`
-* Number type: `number`
+* Signed number type: `number`
+* Unsigned number type: `unsigned`
+* Float number type: `float`
+
+The wordsize of a primitive type is 32 bit. The word-size can be 
+changed to 64 bit by appropriately configuring Soufflé using
+the configuration option ```--enable-64bit-domain``` in the
+```configure``` script. 
 
 ### Symbol type
 The symbol type consists of the universe of all strings.
 Internally, the symbol type is represented by an ordinal number.
-The ordinal number for a symbol can be determined by using the `ord` command, e.g., `ord("hello")` represents the ordinal number for `"hello"`.
+The ordinal number for a symbol can be determined by using the `ord` functor, e.g., 
+`ord("hello")` represents the ordinal number for `"hello"`.
 
 ### Number type
 The number type consists of the universe of all numbers.
-The accepted range of numbers is restricted by architecture.
-Soufflé accepts 32 bit signed numbers.
+The accepted range of numbers is given by the two-complement 
+scheme of the word-size. 
+
+
+### Unsigned type
+The number type consists of the universe of all positive numbers including zero.
+The range is given by the word-size. 
+
+### Float type
+The number type consists of the universe of floating point numbers. 
+The precision is given by the wordsize, i.e., 32 bit or 64 bit. 
 
 ### Primitive type usage
 ```
@@ -42,9 +59,13 @@ Translate(x,ord(x)) :- Name(x).
 ```
 ## Beyond Primitive Types
 Primitive types are insufficient for large projects.
-There is a need for a way to ensure that the wrong attributes will not be bound.
-Symbols of different types need to be differentiated.
-The ability to form partial orders over subsets allows the formation of ontologies.
+Binding wrong attributes via name equivalences is a 
+common mistake writing large logic code bases. 
+To avoid wrong bindings, we need to introduce notions 
+of base types and union types. Base types are subtypes 
+of primitive types and union types permit merging 
+several base types. With base and union types, 
+partial orders over subsets permit the formation of ontologies.
 
 ### Base Type
 Symbol types for attributes are defined by the `.symbol_type` declarative, e.g.,
