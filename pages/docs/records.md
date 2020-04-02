@@ -42,7 +42,7 @@ A([1,nil]).
 A([2,[3,nil]]).
 ```
 
-# I/O 
+## I/O 
 
 Record types are supported by the I/O system. 
 
