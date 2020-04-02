@@ -4,14 +4,16 @@ permalink: /types
 sidebar: docs_sidebar
 folder: docs
 ---
-Soufflé's type system is static.
-Types are used to define the attributes of a relation.
-Static types have the advantage that they can be enforced at compile-time; evaluation speed is improved as no dynamic checks are needed.
-Another advantage of the type system is that it supports the programmer by enforcing the correct use of relations.
+Soufflé is a statically typed language. The main purpose of Souffle's 
+type system is the correct usage of relations and records in rules.  
+The type system defines types for relation attributes and records
+and is enforced at compiletime. Static types have the advantage 
+that they do not have runtime overheads while evaluating a 
+logic program. 
 
-The Type system is based on the idea of sets.
-A Type can be either the universe of all possible values, or a subset.
-Subsets can be composed of other subsets.
+Our type system is based on the idea of sets. A type can be 
+either the universe of all possible values of a primitive type, 
+or a subset of it; subsets can be composed of other subsets.
 
 ## Primitive Types
 Soufflé has two primitive types:
