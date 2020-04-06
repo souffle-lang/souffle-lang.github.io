@@ -169,7 +169,7 @@ A(X) :- B(X) // type clash
 ```
 In this example, `even` and `odd` are defined as two disjoint sub-types of the type number, each exhibiting its own domain of values. From this definition Soufflé can deduce that the users intention was to define two disjoint sets and will report an error for the rule in the last line. For logic programmers it is crucial to accurately model the categories of values in form of a type system -- as has been illustrated by the example above.
 
-## Legacy
+## Legacy Syntax
 
 In older versions of Soufflé we used 
 ```
