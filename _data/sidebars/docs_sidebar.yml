@@ -67,6 +67,10 @@ entries:
       url: /datalog
       output: web
 
+    - title: Relations
+      url: /relations
+      output: web
+
     - title: Types
       url: /types
       output: web
