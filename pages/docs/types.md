@@ -171,16 +171,16 @@ In this example, `even` and `odd` are defined as two disjoint sub-types of the t
 
 ## Legacy
 
-In older versions of Soufflé we used the base type declarations such as 
+In older versions of Soufflé we used 
 ```
 .number_type Even
 .symbol_type Place
 .type Town
 ``` 
-that is equivalent to 
+to define base types that are equivalent to 
 ```
 .type Even <: number
 .type Place <: symbol
 .type Town <: symbol
 ```
-in the latest version of Soufflé.
+in recent versions.
