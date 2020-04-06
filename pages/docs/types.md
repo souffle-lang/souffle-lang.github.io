@@ -175,10 +175,12 @@ In older versions of Soufflé we used the base type declarations such as
 ```
 .number_type Even
 .symbol_type Place
+.type Town
 ``` 
 that is equivalent to 
 ```
 .type Even <: number
 .type Place <: symbol
+.type Town <: symbol
 ```
 in the latest version of Soufflé.
