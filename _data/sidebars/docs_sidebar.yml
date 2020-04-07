@@ -47,6 +47,10 @@ entries:
       url: /examples
       output: web, pdf
 
+    - title: Tutorial
+      url: /tutorial
+      output: web, pdf
+
     - title: Source Code and Documentation
       url: /source
       output: web, pdf
@@ -61,6 +65,10 @@ entries:
 
     - title: Datalog
       url: /datalog
+      output: web
+
+    - title: Relations
+      url: /relations
       output: web
 
     - title: Types
@@ -95,6 +103,10 @@ entries:
     output: web, pdf
     folderitems:
 
+    - title: Swig
+      url: /swig
+      output: web
+      
     - title: Synthesis
       url: /translate
       output: web

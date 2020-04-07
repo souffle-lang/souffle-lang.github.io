@@ -35,7 +35,11 @@ Data can also be read from stdin, and again the delimiter and columns to read ca
 .input A(IO=sqlite, dbname="path/to/sqlite3db")
 ```
 Data will now be read from an sqlite3 database at the given path.
-The data is expected to be stored in the table matching the relation name.
+The data is expected to be stored in a table matching the relation name
+prefixed by an underscore and the sqlite3 database is expected to contain a
+view matching the relation name. For example, for the relation `edge`, the
+sqlite3 database should have a table named `_edge` containing the data and a
+view named `edge` that returns the data from `_edge`.
 
 ## Output
 The output relations of a Datalog program are, by default, written to a tab separated file with name `<relation name>.csv`, located in the current directory. If the parameter `-D<output-dir>` is given then the default output directory will be changed to that given. `-D-` can be used to redirect all output to stdout.
@@ -67,13 +71,13 @@ The data will be stored with a view that shows the symbols and numbers contained
 This is backed by a database table to store the symbol table and a table to store the relations numbers or symbol indices.
 
 
-# Standard .input options
+## Standard .input options
 
 ```
 .input <relation id> (IO=[file|stdin|sqlite] [optional parameters])
 ```
 
-## IO=file
+### IO=file
 
 `filename`
 Note that if the `-F<path>` command line option is used, that path will be prepended to the filename, unless the filename path is absolute.
@@ -87,21 +91,21 @@ Particular columns can be selected from an input file. `columns="2:0"` will use 
 `compress`
 Input is assumed to be in gzip compressed format. By default, gzip compressed input is automatically detected,
 
-## IO=stdin
+### IO=stdin
 `delimiter`
-Used to specify the delimiter to separate columns in the input file. The default value is a tab character.
+Used to specify the delimiter to separate columns in the input file. The default value is a tab character. The order of evaluation of relations is not fixed. This method is not reliable when reading more than one relation from stdin.
 
-## IO=sqlite
-`dbname`
-The path to the sqlite3 database.
+### IO=sqlite
+`filename`
+The path to the sqlite3 database. Note that if the `-F<path>` command line option is used, that path will be prepended to the filename, unless the filename path is absolute.
 
-# Standard .output options
+## Standard .output options
 
 ```
 .output <relation id> (IO=[file|stdout|sqlite] [optional parameters])
 ```
 
-## IO=file
+### IO=file
 `filename`
 Note that if the `-D<path>` command line option is used, that path will be prepended to the filename, unless the filename path is absolute.
 
@@ -112,11 +116,11 @@ Used to specify the delimiter to separate columns in the input file. The default
 Output is in gzip compressed format.
 
 
-## IO=stdout
+### IO=stdout
 `delimiter`
 Used to specify the delimiter to separate columns in the input file. The default value is a tab character.
 
-## IO=sqlite
-`dbname`
-The path to the sqlite3 database.
+### IO=sqlite
+`filename`
+The path to the sqlite3 database. Note that if the `-D<path>` command line option is used, that path will be prepended to the filename, unless the filename path is absolute.
 

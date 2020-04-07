@@ -9,7 +9,7 @@ layout: post
 ---
 
 A fast disassembler/binary translator for x86-binaries has
-been developed by GrammarTech using Soufflé and open-sourced under the 
+been developed by GrammaTech using Soufflé and open-sourced under the 
 GNU Affero General Public License v3.0.
 The source code can be found on [github](https://github.com/GrammaTech/ddisasm).
 
@@ -19,7 +19,7 @@ Antonio Flores-Montoya and Eric Schulte have written a technical
 report summarising the work and have published the work on 
 Arxiv.org. The title, link, and abstract are below,
 
-[Datalog Disassembly, Antonio Flores-Montoya, Eric Schulte](https://arxiv.org/abs/1906.03969)
+[Datalog Disassembly, Antonio Flores Montoya, Eric Schulte](https://arxiv.org/abs/1906.03969)
 
 {% include callout.html content="Disassembly is fundamental to binary analysis and rewriting. We present a novel disassembly technique that takes a
 stripped binary and produces reassembleable assembly code. The resulting assembly code has accurate symbolic information

@@ -9,9 +9,9 @@ folder: docs
 
 To build and install Souffle, the following software must be installed:
 
-* Make, Autoconf tools, GNU G++ supporting C++11 and OpenMP (from version 4.8), Bison (from version 3.0.2), Flex, DoxyGen
+* Make, Autoconf tools, GNU G++ supporting C++17 and OpenMP (from version 4.8), Bison (from version 3.0.4), Flex, DoxyGen
 
-CLANG++ with OpenMP support can be used as an alternative for G++.
+Clang++ with OpenMP support can be used as an alternative for G++.
 
 ### Ubuntu/Debian Build
 
@@ -21,7 +21,7 @@ On a Ubuntu/Debian system, following command installs the necessary developer to
 sudo apt-get install autoconf automake bison build-essential clang doxygen flex g++ git libncurses5-dev libtool libsqlite3-dev make mcpp python sqlite zlib1g-dev
 ```
 
-Support for C++11 is required, which is partly available in Ubuntu 16.04 with g++-4.8. More recent versions of Ubuntu, and Debian 8 and newer, have full support of C++11 with g++-5.0 on.
+Support for C++17 is required, which is supported in g++ 7/clang++ 7 on.
 
 The Soufflé project follows automake/autoconf conventions for configuring, installing and building software. To configure, build, test, and install the project, type:
 ```
@@ -34,7 +34,9 @@ The Soufflé project follows automake/autoconf conventions for configuring, inst
 
 ### MAC OS X Build
 
-MAC OS X does not have OpenMP/C++ nor a bison version 3.0.2 or higher installed. We recommend [brew](http://brew.sh) to install the required tools to build Soufflé. Run the following commands prior to executing `./configure`:
+MAC OS X does not have OpenMP/C++ nor a bison version 3.0.2 or higher installed by default. OpenMP is not required, but does improve runtime for large programs. Testing with multiple threads will also fail if OpenMP is not installed.
+
+We recommend [brew](http://brew.sh) to install the required tools to build Soufflé. Run the following commands prior to executing `./configure`:
 ```
 brew update
 brew install autoconf automake bison libffi libtool mcpp pkg-config
@@ -44,14 +46,14 @@ brew link libffi --force
 export PKG_CONFIG_PATH=/usr/local/opt/libffi/lib/pkgconfig/
 ```
 
-Note: Be careful with the search path for bison, so it points to the correct one. By default, macOS includes bison 2.3 at `/usr/bin/bison`, however brew installs the newer version to `/usr/local/bin/bison`. This can be done by prepending this directory to the path, however, this can break other systems - `PATH=/usr/local/bin:$PATH`.
+Note: Be careful with the search path for bison, so it points to the correct one. By default, macOS includes bison 2.3 at `/usr/bin/bison`, however brew installs the newer version to `/usr/local/bin/bison`. This can be done by prepending this directory to the path, however, this can break other systems - `PATH=/usr/local/bin:$PATH`. Also note that the version of gcc installed may be different, so 'g++-8' may need to be changed.
 
 Soufflé is built by 
 
 ```
 cd souffle
-export CXX=g++-8 #Your version of g++ may vary
-export CC=gcc-8  #Your version of gcc may vary
+export CXX=g++-9 #Your version of g++ may vary
+export CC=gcc-9  #Your version of gcc may vary
 ./bootstrap
 ./configure
 make

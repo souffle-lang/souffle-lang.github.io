@@ -18,10 +18,10 @@ The following example encodes the most simple version of a var-points-to analysi
 //  v4 = v1.f;
 //
 
-.symbol_type var
-.symbol_type obj
-.symbol_type field
-
+.type var <: symbol
+.type obj <: symbol
+.type field <: symbol
+ 
 // -- inputs --
 .decl assign( a:var, b:var )
 .decl new( v:var, o:obj )
@@ -54,7 +54,7 @@ alias(X,Y) :- ld(X,A,F), alias(A,B), st(B,F,Y).
 pointsTo(X,Y) :- new(X,Y).
 pointsTo(X,Y) :- alias(X,Z), pointsTo(Z,Y).
 ```
-The example starts by declaring types for variables, objects and fields. Based on those, four input relations `assign`, `new`, `ld` and `st` are declared and filled with data corresponding to the small code snippet outlined in the comment above.
+The example starts by declaring types for variables, objects and fields as subtypes of symbol. Based on those, four input relations `assign`, `new`, `ld` and `st` are declared and filled with data corresponding to the small code snippet outlined in the comment above.
 
 The analysis itself is broken up in two parts:
 * computation of aliases
@@ -66,10 +66,10 @@ Note that in particular for the last rule of the `alias` relation the utilisatio
 ## DefUse Chains with Composed Types
 The following example utilises a composed type to model a type hierarchy for instructions.
 ```
-.symbol_type Var
-.symbol_type Read
-.symbol_type Write
-.symbol_type Jump
+.type Var <: symbol
+.type Read <: symbol
+.type Write <: symbol
+.type Jump <: symbol
 
 .type Instr = Read | Write | Jump
 
@@ -107,8 +107,8 @@ To model this situation, the union type `Instr` is introduced and utilised as sh
 ## Context Sensitive Flow Graph
 The following example demonstrates one way of integrating context information into a control flow graph.
 ```
-.symbol_type Instr
-.symbol_type Context
+.type Instr <: symbol
+.type Context <: symbol
 
 .decl succ( i1:Instr, c1:Context, i2:Instr, c2:Context )
 
@@ -136,8 +136,8 @@ The fact that each node is represented by a pair of elements can be made explici
 ### Context Sensitive Flow Graph with Records
 The following example is a refactored version of the context sensitive flow graph example above.
 ```
-.symbol_type Instr
-.symbol_type Context
+.type Instr <: symbol
+.type Context <: symbol
 .type ProgPoint = [
     i : Instr,
     c : Context
@@ -170,7 +170,7 @@ Also, as we will see below, the `flow` relation could now be modelled utilising 
 ## Sequences using Recursive Records
 The following example demonstrates the utilisation of recursive records for building sequences of strings over a given alphabet:
 ```
-.symbol_type Letter
+.type Letter <: symbol
 .type Seq = [ l : Letter, r : Seq ]
 
 .decl letter( l : Letter )
@@ -204,7 +204,7 @@ Finally, the `res` relation illustrates how to create constant values for recurs
 ## Component Inheritance
 Components provide the means within Souffle's Datalog to build modular queries, thus fostering the reuse of code.
 ```
-.symbol_type node
+.type node <: symbol
 
 .comp DiGraph {
     .decl node(a:node)
@@ -273,7 +273,7 @@ Frequently, components can be described in an abstract, generic way such that it
 NetA.edge("A","B").
 NetA.edge("B","C").
 
-.decl resA(a:symbol,b:symbol) output
+.decl resA(a:symbol, b:symbol) output
 resA(X,Y) :- NetA.reach(X,Y).
 
 
