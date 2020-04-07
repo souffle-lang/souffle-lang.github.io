@@ -130,7 +130,6 @@ The following sub-sections will provide more in-depth details on the semantics o
 .type List = [next:List, value:number]
 ```
 
-
 # Relations
 
 Relations are declared using the directive .decl followed by a parenthesis with its attribute names and types. For example,
@@ -149,6 +148,17 @@ A(x,y) :- B(x,y).
 a pair (x,y) is in A, if it is in B.
 
 Clauses have qualifiers which direct the query planner for better query execution. The qualifier ".strict" forces the query planner to use the order of the specified clause. The qualifer ".plan" permits the programmer to specify a schedule for each version of the clause. Several versions of a clause may occur if the clause is evaluated in a fixpoint.
+
+
+Clauses can have multiple heads:
+```
+A(x,y), C(x,y) :- B(x,y). 
+```
+which is syntactic sugar for
+```
+A(x,y) :- B(x,y). 
+C(x,y) :- B(x,y). 
+```
 
 # Negation
 
