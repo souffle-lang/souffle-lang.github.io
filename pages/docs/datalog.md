@@ -125,6 +125,12 @@ where `Place` on the left side is the name of the new type and on the right side
 
 The following sub-sections will provide more in-depth details on the semantics of types in Souffle's Datalog dialect.
 
+* **Record Types** are compositions of other values of different types. They permit recursive type definition as well. For example, a recursive list type could be defined as follows:
+```
+.type List = [next:List, value:number]
+```
+
+
 # Relations
 
 Relations are declared using the directive .decl followed by a parenthesis with its attribute names and types. For example,
