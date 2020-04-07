@@ -14,8 +14,16 @@ The user can specify a data-structure via relation qualifiers.
 ## BTree Relations 
 
 Direct/Indirect indexing
+```
+.decl A(x:number, y:symbol) btree
+```
+
 
 ## Brie Relations 
+
+```
+.decl A(x:number, y:symbol) brie
+```
 
 ## Equivalence Relations
 
@@ -26,6 +34,7 @@ The following demo demonstrates the special relation `eqrel_fast` which is equiv
 eqrel_fast(a,b) :- rel1(a), rel2(b).
 
 
+// this does the same but is slow
 .decl eqrel_slow(x : number, y : number)
 eqrel_slow(a,b) :- rel1(a), rel2(b).
 eqrel_slow(a,a) :- rel1(a).             // reflexivity
@@ -35,9 +44,6 @@ eqrel_slow(a,c) :- eqrel_slow(a,b), eqrel_slow(b, c).   // transitivity
 
 
 ## Auto Selection
-
 Strategy ...
-
-
 
 {% include links.html %}
