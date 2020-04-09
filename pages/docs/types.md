@@ -183,3 +183,4 @@ to define base types. These definitions should be rewritten to the new syntax li
 .type Place <: symbol
 .type Town <: symbol
 ```
+You can still use this syntax in the current versions of Souffle, but you will receive a warning that this legacy syntax is deprecated. 
