@@ -4,6 +4,13 @@ permalink: /io
 sidebar: docs_sidebar
 folder: docs
 ---
+# Soufflé's I/O System
+
+The I/O system supports various data-sources for input and output using various formats.
+Soufflé supports terminal output, file I/O, and I/O utilising a SQLite as a database. 
+For a relation in a Datalog program, several input and output directives can be issued. 
+The syntax of the input and output statements is given below:
+
 ## Input
 
 A Soufflé program may load the facts of a relation (aka. as EDB) from various input sources.
@@ -123,4 +130,19 @@ Used to specify the delimiter to separate columns in the input file. The default
 ### IO=sqlite
 `filename`
 The path to the sqlite3 database. Note that if the `-D<path>` command line option is used, that path will be prepended to the filename, unless the filename path is absolute.
+
+# Legacy Syntax
+Older versions supported I/O qualifiers in the relation declaration such as 
+```
+.decl A(x:number, y:symbol) input
+.decl B(x:number, y:symbol) output
+```
+that should be rewritten to 
+```
+.decl A(x:number, y:symbol)
+.input A
+.decl B(x:number, y:symbol) 
+.output B
+```
+Current versions of Soufflé still support the legacy syntax, but a warning message will be issued.
 
