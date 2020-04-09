@@ -69,6 +69,18 @@ eqrel_fast(a,b) :- rel1(a), rel2(b).
 
 More details on Eqrel can be found in [this paper](https://doi.org/10.1109/PACT.2019.00015).
 
+## Nullaries
+
+Nullary relations are special relations. Their arity is zero, i.e., they don't have attributes. 
+They are defined as 
+```
+.decl A()
+```
+These relations are either empty or contain the empty tuple `()`. Internatlly, they are implemented 
+as a boolean variable. 
+
+Semantically, they can be seen as a proposition rather than a relation. 
+
 ## Auto Selection
 In Soufflé, the default data structure is the B-tree, with the *direct* version for relations with arity ≤ 6, or the *indirect* version for relations with arity > 6.
 
