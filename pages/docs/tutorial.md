@@ -199,8 +199,6 @@ More information about the possibilites for I/O can be found in the documentatio
 A goal in Datalog is a logical relation of the form ``false <= p``, where ``p`` is a logical relation.
 In the case of Soufflé, goals are simulated by output directives.
 The advantage is that several independent goals can be evaluated in a single execution of a Soufflé program.
-TODO: provenance and query processor and interactive processing
-
 
 #### Syntactic conveniences:
 Rules with multiple heads can be written. This is syntactic sugar to minimise coding effort. Here is a code snippet taking advantage of this feature and the equivalent code without the transformation applied:
