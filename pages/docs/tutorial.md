@@ -60,16 +60,6 @@ Indeed, all elements in ``edge`` are in ``reachable`` (by the base rule), and th
 <li>Omit the flag `-D-` - where is the output?</li>
 </ol>
 </div>
-
-<div role="tabpanel" class="tab-pane" id="solutions">
-<ol>
-<li>TODO</li>
-<li>TODO</li>
-<li>TODO</li>
-<li>TODO</li>
-</ol>
-</div>
-
 </div>
 
 #### Same generation example
