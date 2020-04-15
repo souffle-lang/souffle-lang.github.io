@@ -17,12 +17,15 @@ echo "deb https://dl.bintray.com/souffle-lang/deb-unstable bionic main" | sudo t
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 379CE192D401AB61
 sudo apt-get update
 ```
-
+Packages for Debian buster and Ubuntu focal are also available by replacing 'bionic' with 'buster' or 'focal'.
 
 Then to install souffle itself
 ```
 sudo apt-get install souffle
 ```
+
+Stable versions do not have the latest features, but if you require a stable version replace 'deb-unstable' with 'deb' in the above instructions.
+
 
 ## Centos7
 
@@ -39,6 +42,8 @@ To add the repository and install souffle:
 yum install https://dl.bintray.com/souffle-lang/rpm-unstable/fedora/27/x86_64/souffle-fedora-repo-1.0.2-1.x86_64.rpm
 yum install souffle
 ```
+
+Stable versions do not have the latest features, but if you require a stable version replace 'rpm-unstable' with 'rpm' in the above instructions.
 
 ## MAC OS X with [brew](http://brew.sh)
 
