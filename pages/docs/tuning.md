@@ -6,6 +6,116 @@ folder: docs
 toc: false
 ---
 
+# Performance
+
+Performance tuning in Souffle is complicated. It will take time and experience to become effective
+with performance tuning for Souffle programs. If you want to study 
+highly-tuned Datalog code, I suggest that you study the Souffle code of DOOP.
+
+Souffle has a profiler which is the main instrument to guide you with performance tuning. The process of performance 
+tuning starts with using a suitable input for your Souffle program. The runtime of the your program with the chosen input should be acceptable so that the tuning cycle is short. The shorter the cycle is the faster you will make progress in
+your tuning effort.
+
+The tuning cycle consists of: 
+ 1) Run the Souffle program with the profile option (`-p <file>`) 
+ 2) Run the profiler (`souffle-profile <file> -o <html>`) 
+ 3) Idendity the most dominant performance bottlenecks 
+ 4) Eliminate the most dominant performance bottlenecks 
+ 5) Go to step 1 until the performance is satisfactory for the current input 
+ 6) Choose a larger input for your program with acceptable performance
+ 7) Go to step 1 until the performance of the program becomes acceptable
+ 
+
+# Relational Schemas 
+
+Performance tuning most likely will focus on relational schemas and rules. Both have an impact on 
+the performance. The relational schemas determine how much data is stored for computing your 
+problem and hence will influence the runtime of the rules. Also, the access to the data (i.e. how 
+they are stored) and the number of relations will determine the overall performance of your
+program. 
+
+It is worthwile to note that there are infinite many ways to express your relational 
+schemas that give you the same result. However, some are more effective than others 
+and it is the art of the logic programmer to choose the right relational schemas. 
+
+Sometimes, the concept  of  (database normilization)[https://en.wikipedia.org/wiki/Database_normalization] that 
+exploits functional dependencies (cf. Edgar F. Codd) helps to improve the performance.
+Whether normalization is fruitful dependens on the case. Howerver, familiarizing with the 
+concept of normalization is a powerful tool understanding how relational schemas 
+can be rewritten. 
+
+
+We came across various programs in the past, that used cross-products in their modelling. 
+Cross-products are particularly bad because they let the data-explode rather than condense.
+For example,
+```
+#define N 10000
+.decl A,B(x:number)
+A(1).
+A(x+1) :- A(x), x < N.
+B(x) :- A(x). 
+
+.decl C(x:number, y:number) 
+C(x) :- A(x), B(x). 
+
+.decl D(x:number, y:number) 
+D(x,x) :- C(x,x).
+.printsize D
+```
+introduces the relation `A`, `B`, `C`, and `D` where relation `C` is a cross-product of relation `A` and `B`. 
+
+The effort of computing and storing relation `C` is quadratic in the size of the inputs of `A` and `B`. 
+Your storage and computation complexity jumped from *O(N)* to *O(N^2)*.
+
+This is expensive especially if you don't need all the data of your cross-product. In our example,
+the cross-product is later filtered in relation `D`. 
+A short fix to this problem is to add relational qualifier `inline` to relation `C` 
+```
+...
+.decl C(x:number, y:number) inline 
+...
+```
+that will substitute the occurrences of predicate C by the right-hand side of its rules. 
+This is also called resolution (but only for one relation). After adding the relational
+qualifier `inline`, relation `C` will not physically exist while evaluating the program. 
+
+This transformation can also be done by hand and the result is as follows:
+```
+#define N 10000
+.decl A,B(x:number)
+A(1).
+A(x+1) :- A(x), x < N.
+B(x) :- A(x). 
+
+
+.decl D(x:number, y:number) 
+D(x,x) :-  A(x), B(x).
+.printsize D
+``` 
+The runtime complexity of this program is substantially reduced because it will be linear in the size of N. 
+
+# Rule Rewriting 
+
+Rules can be written in many ways to express the same computation. For example, consider a simple transitive closure of a graph:
+```
+#define N 10000
+.decl G,T(x:number)
+G(1,2).
+G(N,1).
+G(x,x+1) :- G(x,_), x < N.
+
+T(x,y) :-  G(x,y).
+T(x,z) :-  T(x,y), T(y,z).
+.printsize D
+```
+
+Althouh it computes the transitive closure, it is a bad formulation of the transitive. A better way of writing the transitive closure is the following:
+```
+T(x,y) :- G(x,y). 
+T(x,z) :- T(x,y), G(y,z). 
+```
+
+# Rule Scheduling 
 Determining a good execution schedule for a given rule requires some insight regarding the internal operation of the data log engine. In general, a rule like
 ```
 C(X,Z) :- A(X,Y), B(Y,Z).
