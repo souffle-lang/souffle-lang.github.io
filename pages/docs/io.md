@@ -131,6 +131,29 @@ Used to specify the delimiter to separate columns in the input file. The default
 `filename`
 The path to the sqlite3 database. Note that if the `-D<path>` command line option is used, that path will be prepended to the filename, unless the filename path is absolute.
 
+
+## I/O Types 
+
+Attributes types are signed numbers, unsigned numnbers, float, strings, and records. If for primitive types (i.e. numbers, unsigned, and float) wrong input values are provided while readong from a data-source, an error will be issued. 
+
+Records are written in a recursive format for input and output directives. A recursive data-structure is expanded completely
+and printed.  For example:
+```
+.type List = [data:number, next:List]
+.decl A(l:List,y:number)
+A([1,[2,[3,nil]]],10). 
+.output A
+```
+produces following output
+```
+---------------
+A
+l	y
+===============
+[1, [2, [3, nil]]]	10
+===============
+```
+
 # Legacy Syntax
 Older versions supported I/O qualifiers in the relation declaration such as 
 ```
