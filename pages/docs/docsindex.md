@@ -8,7 +8,7 @@ folder: docs
 ---
 Soufflé is a logic programming language inspired by Datalog. It overcomes some of the limitations in classical Datalog.
 For example, programmers are not restricted to finite domains, and the usage of functors (intrinsic, user-defined, records/constructors, etc.) are permitted. Soufflé has a component model so that large logic projects can be 
-expressed. Initially, Soufflé has been designed for crafting static analyses in logic at Oracle Labs. 
+expressed. Initially, Soufflé has been designed for crafting static analysis in logic at Oracle Labs. 
 Recently, there are many other applications written in the Soufflé language, including applications in network analysis and data analytics. 
 
 Soufflé provides the ability to rapid prototype and make deep design space explorations possible.
