@@ -1,10 +1,12 @@
 ---
-title: Aggregates
+title: Aggregates and Generative Functors
 permalink: /aggregates
 sidebar: docs_sidebar
 folder: docs
 toc: false
 ---
+
+## Aggregates 
 
 Aggregate functions `min`, `max`, `sum`, and `count` are available in souffle. Here are syntactically correct uses of each of these:
 
@@ -76,7 +78,7 @@ min Z+Y : { a(A,Z), a(B,Y), A!=B }.
 ```
 The given term computes the smallest sum of values assigned to two different elements in `a`.
 
-## The Witness Problem
+### The Witness Problem
 
 You cannot export information from within the body of an aggregate. This means that you cannot ground a variable from within the scope of the aggregate body and expect this grounding to transfer to the outer scope. In this example, `y` is grounded by the inner scope of the aggregate and we attempt to discover its value within the head `a(x, y)`. 
 
@@ -98,7 +100,7 @@ youngest(p, n) :- n = min x : family(p, x).
 ```
 This will raise a Witness Problem Error because we attempt to export the assignment of `p` that gives the minimum age.
 
-## Nested Aggregates Are Disallowed
+### Nested Aggregates Are Disallowed
 
 You cannot nest aggregates within aggregates. For example, 
 
@@ -106,5 +108,29 @@ You cannot nest aggregates within aggregates. For example,
 D(s) :- s = sum y : { Prime(n), y = sum z : { Prime(z), z < n }, y < 10 }.
 ```
 This rule attempts to sum together all the increasing sums of prime numbers that are less than 10, starting from the first prime number. This is currently disallowed within the souffle language.
+
+## Generative Functors
+
+
+Souffle supporst generative range functors that produce values within a numeric range. 
+The format of the functors are 
+```
+range(bgn, endExcl, step = sign(endExcl - bgn))
+```
+This functor is intended to roughly match Python's slice indexing semantics.
+
+For example, 
+ - `range(0, 5)` produces the sequence `0, 1, 2, 3, 4`.
+ - `range(5, 3.75, -0.5)` produces the sequence `5, 4.5, 4`.
+ - `range(5, x, 0)` produces the sequence `5` iff `x != 5` (i.e. non-empty range).
+
+The program
+```
+.decl A(x:number)
+A(x) :- x = range(1,5,1). 
+.output A
+```
+produces the values one to four in relation A. 
+
 
 {% include links.html %}
