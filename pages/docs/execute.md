@@ -4,7 +4,7 @@ permalink: /execute
 sidebar: docs_sidebar
 folder: docs
 ---
-Soufflé provides an interpreter, a compiler, and a feedback-directed compilation infrastructure for compiling and executing Datalog programs. Profile information can be generated and visualized with a [profiling tool](profiler). The Soufflé execution mode (compile, interpret etc.) is determined by the argument parameters of the souffle command. 
+Soufflé has an interpreter and a compiler for executing Datalog programs. Profile information can be generated and visualized with a [profiling tool](profiler) to understand the performance of a program. The Soufflé execution mode (compile, interpret etc.) is determined by the argument parameters of the souffle command. 
 
 ## Input / Output
 The Soufflé permits facts to be sourced from tab-separated input files to separate Datalog programs from their data. In Datalog literature the tab-separated input files can be seen as the extensional database (EDB) of the program. The default location of the input files is specified by the parameter ```-F <fact-dir>```. If the flag is not specified, it is assumed that the fact files are stored in the current directory. The default filenames of the input files consists of the name of the input relations with an extension ```.facts```. For example, the declaration 
