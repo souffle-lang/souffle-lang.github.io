@@ -1,0 +1,100 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+entries:
+- title: sidebar
+  product: Soufflé
+  folders:
+
+  - title: Releases
+    output: web, pdf
+    folderitems:
+    - title: Version 1.6.2
+      url: /release-1.6.2
+      output: web, pdf
+
+    - title: Version 1.5.1
+      url: /release-1.5.1
+      output: web, pdf
+
+    - title: Version 1.4.0
+      url: /release-1.4.0
+      output: web, pdf
+
+    - title: Version 1.3.1
+      url: /release-1.3.1
+      output: web, pdf
+
+    - title: Version 1.2.0
+      url: /release-1.2.0
+      output: web, pdf
+
+    - title: Version 1.1.0
+      url: /release-1.1.0
+      output: web, pdf
+
+    - title: Version 1.0.0
+      url: /release-1.0.0
+      output: web, pdf
+
+  - title: Other News
+    output: web, pdf
+    folderitems:
+    - title: Fast Parallel Equivalence Relations
+      url: /pact19
+      output: web
+
+    - title: Datalog Disassembly
+      url: /ddiasm
+      output: web
+
+    - title: Provenance for Large-scale Datalog
+      url: /provenance2
+      output: web
+
+    - title: A Smart-Contract Decompiler - Gigahorse
+      url: /icse19-paper
+      output: web
+
+    - title: A Specialized B-Tree for Concurrent Datalog Evaluation
+      url: /ppopp19-paper
+      output: web
+
+    - title: 'Brie: A Specialized Trie for Concurrent Datalog'
+      url: /pmam19-paper
+      output: web
+
+    - title: Equivalence Relations in Soufflé
+      url: /eqrel-post
+      output: web
+
+    - title: High performance data structures in Soufflé
+      url: /ds
+      output: web
+
+    - title: Provenance in Soufflé
+      url: /provenance-post
+      output: web
+
+    - title: PLDI Tutorial
+      url: /pldi-tutorial
+      output: web
+
+    - title: An efficient tunable selective points-to analysis for large codebases
+      url: /soap-paper
+      output: web
+
+    - title: First conference tutorial
+      url: /apsec-tutorial
+      output: web
+
+    - title: 'Soufflé: On Synthesis of Program Analyzers'
+      url: /cav-paper
+      output: web
+
+    - title: 'Soufflé is open-source!'
+      url: /open-source
+      output: web
+
+    - title: On fast large-scale program analysis in Datalog
+      url: /cc-paper
+      output: web
