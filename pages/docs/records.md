@@ -41,7 +41,7 @@ as well as recursive, as in
 Thus, a record may contain (directly or indirectly) fields of its own type. As a base case for recursive records, every record type contains the value `nil`, so we can represent lists as
 ```
 .type List = [
-    head : number
+    head : number,
     tail : List
 ]
 .decl A(x : List)
