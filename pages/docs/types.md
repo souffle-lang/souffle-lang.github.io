@@ -177,10 +177,10 @@ In older versions of Soufflé we used
 .symbol_type Place
 .type Town
 ``` 
-to define base types that are equivalent to 
+to define base types. These definitions should be rewritten to the new syntax listed below, 
 ```
 .type Even <: number
 .type Place <: symbol
 .type Town <: symbol
 ```
-in recent versions.
+You can still use this syntax in the current versions of Souffle, but you will receive a warning that this legacy syntax is deprecated. 

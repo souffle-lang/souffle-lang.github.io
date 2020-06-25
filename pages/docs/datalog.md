@@ -94,21 +94,26 @@ Souffle utilises a typed Datalog dialect to conduct static checks enabling the e
 
 ## Type Definitions
 
-There are two basic types in Souffle: (1) `symbol` and (2) `number`. Those types have the following properties:
+There are four primitive types in Souffle: (1) `symbol`, (2) `number`, (3) `unsigned`, and (4) `float`. Those types have the following properties:
 
-* **Numbers** are signed integer numbers and are fixed to a fixed range. At the moment the range is fixed to the `int32_t` type covering the range [ -2^31 .. 2^31 -1 ]. However, the type could be altered by a compile time flags to any basic type that the C++ compiler supports.
+* **Numbers** are signed integer numbers and are fixed to a fixed range. The range is fixed to the `int32_t` type covering the range [ -2^31 .. 2^31 -1 ]. However, the wordsize can be altered by a configuration flag in the configure script. 
 
 * **Symbols** are reference values that have a symbolic representation as well. They are currently represented as strings. Thus, string based operations, e.g. string concatenation, may introduce new values, not present in any input set, to the stable result set.
 
-Currently, no distinction between symbols representing entities and their string representation is made. As a consequence, any symbol may be interpreted as a string for string operations. This would, for instance, enable the creation of a new city "BrisbaneSydney" through an expression `cat(X,Y)` where the variables `X` and `Y` are bound correspondingly. It is the user's responsibility to use `cat` only in sound contexts. Future development may resolve this shortcoming in the type system.
+* **Unsigned** are unsigned integer numbers and are fixed to a fixed range. The range is fixed to the `uint32_t` type covering the range [ 0 .. 2^32 ]. However, the wordsize can be altered by a configuration flag in the configure script.
 
-Based on those predefined types, user defined types may be specified. There are three ways of defining new types:
+* **Float** are reference values that have a symbolic representation as well. They are currently represented as strings. Thus, string based operations, e.g. string concatenation, may introduce new values, not present in any input set, to the stable result set.
 
-* **Primitive Types** are independent, user-defined types covering a subset of one of the predefined types (symbols or numbers). Primitive types are defined by constructs of the form:
+Note that there is no distinction made between symbols and their string representation. As a consequence, any symbol may be interpreted as a string for string operations. This would, for instance, enable the creation of a new city "BrisbaneSydney" through an expression `cat(X,Y)` where the variables `X` and `Y` are bound correspondingly. It is the user's responsibility to use `cat` only in sound contexts. Future development may resolve this shortcoming in the type system.
+
+User-defined types can be specified as sub-types of primitive types, and unions of these types can be formed:
+
+* **Base Types** are independent, user-defined types covering a subset of one of the primitive types (symbols, numbers, unsigned, and float). Base types are defined by constructs of the form:
 ```
-.number_type weight       // creates a user defined number type
-.symbol_type City         // creates a user defined symbol type
-.type Village             // deprecated synonym to .symbol_type Village
+.type Position <: number     // creates a user-defined number type
+.type weight <: float        // creates a user-defined float type
+.type PostCode <: usigned    // creates a user-defined unsigned type
+.type Village <: symbol      // creates a user-defined symbol type
 ```
 Operators applicable to the corresponding base type (`number` or `symbol`) can also be applied on the corresponding user-defined primitive type. For instance, arithmetic operations can be applied on values of the `weight` type above -- thus, weights might be added or multiplied.
 
@@ -119,6 +124,11 @@ Operators applicable to the corresponding base type (`number` or `symbol`) can a
 where `Place` on the left side is the name of the new type and on the right side there is a list of one or more types to be aggregated -- in this case `Village` and `City`. Any village or city value will be a valid Place. More details are provided on the next page.
 
 The following sub-sections will provide more in-depth details on the semantics of types in Souffle's Datalog dialect.
+
+* **Record Types** are compositions of other values of different types. They permit recursive type definition as well. For example, a recursive list type could be defined as follows:
+```
+.type List = [next:List, value:number]
+```
 
 # Relations
 
@@ -138,6 +148,17 @@ A(x,y) :- B(x,y).
 a pair (x,y) is in A, if it is in B.
 
 Clauses have qualifiers which direct the query planner for better query execution. The qualifier ".strict" forces the query planner to use the order of the specified clause. The qualifer ".plan" permits the programmer to specify a schedule for each version of the clause. Several versions of a clause may occur if the clause is evaluated in a fixpoint.
+
+
+Clauses can have multiple heads:
+```
+A(x,y), C(x,y) :- B(x,y). 
+```
+which is syntactic sugar for
+```
+A(x,y) :- B(x,y). 
+C(x,y) :- B(x,y). 
+```
 
 # Negation
 
