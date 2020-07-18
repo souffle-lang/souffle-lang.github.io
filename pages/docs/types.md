@@ -104,7 +104,7 @@ The Union type unifies types including base and union types, as long as all are 
 ```
 .type <ident> = <ident-1> | <ident-2> | ... | <ident-k>
 ```
-where `<ident>` is the name of the union type and `<ident-...>` referes to the base and other union types used in the union type.  For example, the union type `Place`
+where `<ident>` is the name of the union type and `<ident-...>` refers to the base and other union types used in the union type.  For example, the union type `Place`
 ```
 .type City <: symbol
 .type Town <: symbol
