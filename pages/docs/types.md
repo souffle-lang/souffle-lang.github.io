@@ -169,6 +169,51 @@ A(X) :- B(X) // type clash
 ```
 In this example, `even` and `odd` are defined as two disjoint sub-types of the type number, each exhibiting its own domain of values. From this definition Soufflé can deduce that the users intention was to define two disjoint sets and will report an error for the rule in the last line. For logic programmers it is crucial to accurately model the categories of values in form of a type system -- as has been illustrated by the example above.
 
+##  Algebraic Data Types (ADT)
+
+The syntax for defining an ADT is:
+```
+ADT ::= ".type " IDENT "=" branch (| branch)*
+branch ::= IDENT "{" "}"
+branch ::= IDENT "{" attr (, attr)* "}"
+```
+Examples:
+```
+.type T = A { x: number }
+        | B { x: symbol }
+
+.type Nat = S {x : Nat}
+          | Zero {}
+
+.type Expression = Number { x : number }
+                 | Variable { v : symbol}
+                 | Add {e_1 : Expression, e_2 :Expression}
+                 | Minus {e_1 : Expression, e_2 : Expression}
+                 | Mult {e_1 : Expression, e_2 : Expression}
+                 | Divide {e_1 : Expression, e_2 : Expression}
+
+.type Tree = Empty {}
+           | Node {t1: Tree, val: unsigned, t2: Tree}
+```
+Branches are initialized by `$branch_constructor(args...)`, and in case of a branch without arguments `$branch_constructor`.
+
+For example, shows how to use branches in rules:
+
+```
+.type Expression = Number { x : number }
+                 | Variable { v : symbol}
+                 | Add {e_1 : Expression, e_2 :Expression}
+                 | Imaginary {}
+
+.decl A(x:Expression)
+A($Number(10)).
+A($Add($Number(10),$Imaginary)).
+A($Add($Number(10), $Variable("x"))).
+A($Number(x+1)) :- A($Number(x)), x < 20.
+
+.output A
+```
+
 ## Legacy Syntax
 
 In older versions of Soufflé we used
