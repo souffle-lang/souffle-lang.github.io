@@ -224,6 +224,25 @@ the following type definition is illegal:
 ```
 Since the constructors `Numeber` and `Symbol` show up twice in ADT `A` and ADT `B`. 
 
+## Type Conversion
+
+Soufflé permits type conversion with the as functor that takes as a first argument an functor expression and as a second argument the new type of the expression. 
+
+For example, 
+```
+.type Variable <: symbol
+.type StackIndex <: symbol
+.type VariableOrStackIndex = Variable | StackIndex
+
+.decl A(a: VariableOrStackIndex)
+
+.decl B(a: Variable)
+
+B(as(a, Variable)) :- A(a).
+```
+
+Converts the expression `as(a, Variable)` to an expression of type `Variable` although `a` is of type `VariableOrStackIndex`. 
+
 
 ## Legacy Syntax
 
