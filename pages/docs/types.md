@@ -214,6 +214,17 @@ A($Number(x+1)) :- A($Number(x)), x < 20.
 .output A
 ```
 
+Note that a constructor can only be used for an ADT once. For example, 
+the following type definition is illegal:
+```
+.type A = Number { x:number }
+        | Symbol { v:symbol }
+.type B = Number { x:number }
+        | Symbol { v:symbol }
+```
+Since the constructors `Numeber` and `Symbol` show up twice in ADT `A` and ADT `B`. 
+
+
 ## Legacy Syntax
 
 In older versions of Soufflé we used
