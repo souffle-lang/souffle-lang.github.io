@@ -87,10 +87,6 @@ entries:
       url: /components
       output: web
 
-    - title: Records
-      url: /records
-      output: web
-
     - title: Aggregates
       url: /aggregates
       output: web
