@@ -1,9 +1,11 @@
 ---
-title: Inlining
+title: Inlining and Limitsize
 permalink: /inlining
 sidebar: docs_sidebar
 folder: docs
 ---
+
+# Inlining 
 
 Souffl&eacute; offers the ability to manually select one or more program relations to be inlined, i.e., a substitution of the relations are performed. This may lead to performance gains by re-computing results rather than storing them. For example, 
 
@@ -95,3 +97,26 @@ Inlining works in all situations, provided the following conditions are met:
     * The restriction is theoretically necessary, as otherwise no ordering for the inlining process can be imposed such that all relations in the cycle are removed.
 * The counter argument, `$`, cannot be used as an argument or in the rule body of an inlined relation.
 * At the moment, relations appearing in aggregators cannot be inlined, though this is only a restriction in practice due to the way certain functors are handled.
+
+# Limit-Size Directive 
+
+Souffle can stop the fix-point calculation after a certain number of 
+tuples have been computed. This number is a soft-limit and should be
+used for debugging purposes only.
+
+The main application for the limit-size directive is to debug non-terminating or slow-terminating programs.
+After the limit-size directive is set, the program will terminate early and the output of the program
+can be inspected.  For example, the program
+```
+.decl A(x:number)
+A(1).
+A(x+1) :- A(x), x< 1000.
+.output A
+
+.limitsize A(n=47)
+```
+computes the first 47 numbers in set `A` rather than 1000 numbers. 
+This is a consequence of the limitsize directive that stops the fix-point computation when the size of `A` reaches 47 tuples or more. 
+
+Note that if there are other mutual recursive relations in the same stratum, they will be stopped as well. 
+
