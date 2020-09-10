@@ -312,7 +312,7 @@ the following type definition is illegal:
 .type B = Number { x:number }
         | Symbol { v:symbol }
 ```
-Since the constructors `Numeber` and `Symbol` show up twice in ADT `A` and ADT `B`. 
+Since the constructors `Number` and `Symbol` show up twice in ADT `A` and ADT `B`. 
 
 ## Type Conversion
 
@@ -349,3 +349,4 @@ to define base types. These definitions should be rewritten to the new syntax li
 .type Town <: symbol
 ```
 You can still use this syntax in the current versions of Souffle, but you will receive a warning that this legacy syntax is deprecated.
+You can enable the old legacy syntax using the flag `--legacy`.
