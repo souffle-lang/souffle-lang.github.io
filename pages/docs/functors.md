@@ -100,3 +100,41 @@ g++ -shared -o libfunctors.so functors.o
 export LD_LIBRARY_PATH=LD_LIBRARY_PATH:`pwd`
 ```
 Assuming that the source code of the user-defined functors is stored in the source file ```functors.cpp```. The export command ensures that either the Soufflé interpreter or the generated executable can find the shared library.
+
+## Stateful User-Defined Functors 
+A call to a stateful user-defined functor pass 
+on the symbol and the record table so that the 
+user-defined functors can access and manipulate 
+records and symbols/directly directly.
+ 
+For example, the following line
+``` 
+.functor mycat(symbol, symbol):symbol stateful
+```
+declares a stateful user-defined functor in 
+the Souffle program. The C++ implementation 
+is shown below:
+
+```
+extern "C" { 
+ souffle::RamDomain mycat(souffle::SymbolTable* symbolTable, souffle::RecordTable* recordTable,
+        souffle::RamDomain arg1, souffle::RamDomain arg2) {
+    assert(symbolTable && "NULL symbol table");
+    assert(recordTable && "NULL record table");
+    const std::string& sarg1 = symbolTable->resolve(arg1);
+    const std::string& sarg2 = symbolTable->resolve(arg2);
+    std::string result = sarg1 + sarg2;
+    return symbolTable->lookup(result);
+ }
+}
+```
+The first two parameters are pointers to Souffle's symbol and record table that can be accessed and manipulated in the C++ implementation of the functor. 
+Although the two arguments of the functor are symbols, only the ordinal numbers 
+are passed on when the functor is called. To implement a concatenation, 
+the ordinal values of the symbols need to be converted to strings using 
+the `resolve()` method. The return value must be an ordinal number as well, 
+hence the result of the concatenation is converted to an ordinal number
+using the `lookup` method. 
+
+ 
+
