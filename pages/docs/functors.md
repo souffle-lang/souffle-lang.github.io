@@ -136,5 +136,45 @@ the `resolve()` method. The return value must be an ordinal number as well,
 hence the result of the concatenation is converted to an ordinal number
 using the `lookup` method. 
 
+### Records
+A stateful user-defined functor can be defined for records and ADTs 
+as well. However, records need to be converted to their ordinal 
+numbers when passed on as parameters and similar conversion 
+must be done for the return value. We suggest using a macro
+for the conversion as shown below:
+
+```
+.functor _myappend(number):number stateful
+#define myappend(a) as(@_myappend(as(a,number)),List)
  
+.type List = [x:number, y:List]
+.decl L(x:List)
+L([1,nil]).
+L(myappend(l)) :- L(l), l = [x, _l1], x < 10.
+.output L
+``` 
+
+The C++ implementation has direct access to the record table:
+
+```
+souffle::RamDomain _myappend(
+        souffle::SymbolTable* symbolTable, souffle::RecordTable* recordTable, souffle::RamDomain arg) {
+    assert(symbolTable && "NULL symbol table");
+    assert(recordTable && "NULL record table");
+ 
+    if (arg == 0) {
+        // Argument is nil
+        souffle::RamDomain myTuple[2] = {0, 0};
+        // Return [0, nil]
+        return recordTable->pack(myTuple, 2);
+    } else {
+        // Argument is a list element [x, l] where
+        // x is a number and l is another list element
+        const souffle::RamDomain* myTuple0 = recordTable->unpack(arg, 2);
+        souffle::RamDomain myTuple1[2] = {myTuple0[0] + 1, myTuple0[0]};
+        // Return [x+1, [x, l]]
+        return recordTable->pack(myTuple1, 2);
+    }
+}
+``` 
 
