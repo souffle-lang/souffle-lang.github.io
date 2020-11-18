@@ -101,6 +101,15 @@ export LD_LIBRARY_PATH=LD_LIBRARY_PATH:`pwd`
 ```
 Assuming that the source code of the user-defined functors is stored in the source file ```functors.cpp```. The export command ensures that either the Soufflé interpreter or the generated executable can find the shared library.
 
+If you are on the MAC OS X system, you need to create a dynamic library as well so that it works with the interpreter and synthesiser. For the creation you need following instructions: 
+
+```
+g++ functors.cpp -c -fPIC -o functors.o 
+g++ -shared -o libfunctors.so functors.o 
+g++ -dynamiclib -install_name libfunctors.dylib -o libfunctors.dylib functors.o
+export DYLD_LIBRARY_PATH=LD_LIBRARY_PATH:`pwd`
+```
+
 ## Stateful User-Defined Functors 
 A call to a stateful user-defined functor pass 
 on the symbol and the record table so that the 
