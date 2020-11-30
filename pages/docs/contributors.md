@@ -22,5 +22,6 @@ The contributors with their code contributions are listed below:
  * **Abdul Karim Zreika**: magic set transformation, inlining 
  * **Martin McGrane**: new I/O system for relations, numerous bug fixes
  * **David Zhao**: provenance/debugging for Datalog
+ * **Samuel Isaac Arch**: index selection for inequalities
 
 {% include links.html %}
