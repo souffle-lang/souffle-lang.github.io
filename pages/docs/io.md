@@ -68,7 +68,7 @@ This will store the relation data to file (the default if no IO type is specifie
 .decl A(a:number,b:number)
 .output A(IO=stdout, delimiter=",")
 ```
-Data can also be sent to stdin, and again the delimiter can be specified.
+Data can also be sent to stdout, and again the delimiter can be specified.
 ```
 .decl A(a:number,b:number)
 .output A(IO=sqlite, dbname="path/to/sqlite3db")
