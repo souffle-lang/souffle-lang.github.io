@@ -134,7 +134,7 @@ The path to the sqlite3 database. Note that if the `-D<path>` command line optio
 
 ## I/O Types 
 
-Attributes types are signed numbers, unsigned numnbers, float, strings, and records. If for primitive types (i.e. numbers, unsigned, and float) wrong input values are provided while readong from a data-source, an error will be issued. 
+Attributes types are signed numbers, unsigned numnbers, float, strings, and records. If for primitive types (i.e. numbers, unsigned, and float) wrong input values are provided while reading from a data-source, an error will be issued. 
 
 Records are written in a recursive format for input and output directives. A recursive data-structure is expanded completely
 and printed.  For example:
