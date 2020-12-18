@@ -17,11 +17,11 @@ A functor declaration contains
 the name of the functor, the argument types, and the return type 
 of the functor. A functor declaration has the following
 format:
-```
-.functor <name>():<type>
-```
-where the types  ```<type<sub>1</sub>>,...,<type<sub>k</sub>>``` define the types 
-of the functor arguments, and ```<type>``` defines the return type. Currently,
+
+`.functor <name>(<type>`<sub>1</sub>`,...,<type>`<sub>k</sub>`):<type>`
+  
+where the types  `<type>`<sub>1</sub>,...,`<type>`<sub>k</sub> define the types 
+of the functor arguments, and `<type>` defines the return type. Currently,
 the type arguments and result type can only assume the primitive types of Soufflé:
 * Symbol type: `symbol`
 * Number type: `number`
@@ -93,7 +93,7 @@ for the functor declarations
 .functor g():symbol
 ```
 
-Note that number types are implmented as ```int32_t``` and symbol types are implemented as ```const char *```. In Linux, a shared library can be generated with the following instructions:
+Note that number types are implemented as ```int32_t``` and symbol types are implemented as ```const char *```. In Linux, a shared library can be generated with the following instructions:
 ```
 g++ functors.cpp -c -fPIC -o functors.o 
 g++ -shared -o libfunctors.so functors.o 
@@ -114,7 +114,7 @@ export DYLD_LIBRARY_PATH=LD_LIBRARY_PATH:`pwd`
 A call to a stateful user-defined functor pass 
 on the symbol and the record table so that the 
 user-defined functors can access and manipulate 
-records and symbols/directly directly.
+records and symbols directly.
  
 For example, the following line
 ``` 
