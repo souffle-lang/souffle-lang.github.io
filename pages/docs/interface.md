@@ -172,7 +172,7 @@ if (souffle::SouffleProgram *prog = souffle::ProgramFactory::newInstance("<name>
 
     if (souffle::Relation *rel = prog->getRelation("<in-rel>")) {
         souffle::tuple myTuple(rel);
-        myTuple << "Hello" << 10;
+        myTuple << "Hello" << souffle::RamSigned(10);
         rel->insert(myTuple);
     } else {
         std::cerr << "Failed to get input relation\n";
@@ -182,14 +182,14 @@ if (souffle::SouffleProgram *prog = souffle::ProgramFactory::newInstance("<name>
     prog->run();
 
     if (souffle::Relation *rel = prog->getRelation("<out-rel>")) {
-        int myInt;
+        souffle::RamSigned myInt;
         std::string mySymbol;
         for (auto &output : *rel) {
-          output >> mySymbol >> myString;
+          output >> mySymbol >> myInt;
         }
 
         souffle::tuple myTuple(rel);
-        myTuple << "A" << 123;
+        myTuple << "A" << souffle::RamSigned(123);
         if (rel->contains(myTuple)) {
         }
     } else {
