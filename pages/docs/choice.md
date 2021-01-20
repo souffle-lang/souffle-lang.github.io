@@ -28,7 +28,7 @@ declaration in Souffle with the following syntax:
 <constraint>               ::= <attribute> | "(" <attributes> ")"
 ```
 
-Note here, for the sake of brevity, our syntax omit the co-domain (i.e. the right hand side of the arrow). 
+Note here, for the sake of brevity, our syntax omits the co-domain (i.e. the right hand side of the arrow). 
 Therefore, a choice-domain `D` for a relation with attribute set `X` implicitly defines a functional dependency of `D -> X \ D`.
 
 
