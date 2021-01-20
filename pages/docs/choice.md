@@ -60,7 +60,7 @@ each node can be visited only once in the spanning tree.
 advisor(s, y, p) :- student(s, y, m), professor(p, m).
 ```
 The above program allocates an advisor for each student. The `choice-domain (s, year)`
-on `advisor` makes sure that the combination of `(stundet, year)` is unique,
+on `advisor` makes sure that the combination of `(student, year)` is unique,
 i.e., student from each year is assigned to a professor only once.
 
 ### Total order.
