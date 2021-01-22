@@ -91,6 +91,10 @@ entries:
       url: /aggregates
       output: web
 
+    - title: Choice
+      url: /choice
+      output: web
+
     - title: IO Directives
       url: /io
       output: web
