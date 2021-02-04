@@ -89,14 +89,17 @@ This is backed by a database table to store the symbol table and a table to stor
 `filename`
 Note that if the `-F<path>` command line option is used, that path will be prepended to the filename, unless the filename path is absolute.
  
- `delimiter`
+`delimiter`
 Used to specify the delimiter to separate columns in the input file. The default value is a tab character.
 
 `columns`
 Particular columns can be selected from an input file. `columns="2:0"` will use the third input file column for the first attribute of the relation, and the first input file column for the second attribute. The default is to use the first columns of the input file until all attributes are described.
 
 `compress`
-Input is assumed to be in gzip compressed format. By default, gzip compressed input is automatically detected,
+Input is assumed to be in gzip compressed format. By default, gzip compressed input is automatically detected.
+
+`headers`
+The header can be enabled by `headers=on` (which is default) or surpressed by `headers=off`. 
 
 ### IO=stdin
 `delimiter`
