@@ -15,7 +15,8 @@ e(10 ^ 2 , "10^2", 100).
 e(10 % 3, "10%3", 1).
 e(2^4%13 , "2^4%13",3).
 ```
-* Souffle supports bitwise logical operations: **band** (bitwise and), **bor** (bitwise or), **bxor** (bitwise xor).
+* Souffle supports bitwise logical operations: **band** (bitwise and), **bor** (bitwise or), **bxor** (bitwise exclusive-or), **bshl** (bitwise shift left), **bshr** (bitwise shift right), and **bshru** (bitwise shift right/unsigned). 
+
 Examples of this are given below.
 ```
 e(0xFFF1 band 0xF, "0xFFF1 band 0xF", 0x1).
@@ -23,7 +24,8 @@ e(0xFF00 bor 0x000F, "0xFF00 bor 0x000F", 0xFF0F).
 e(0xFFFF bxor 0x000F, "0xFFFF bxor 0x000F", 0xFFF0).
 ```
 
-* Souffle supports logical operations that consider every non-zero number as true and always return 1 or 0: **land** (logical and), **lor** (logical or).
+* Souffle supports logical operations that consider every non-zero number as true and always return 1 or 0: **land** (logical and), **lor** (logical or), **lxor** (logical exclusive-or), and **lnot** (logical not).
+
 Examples of this are given below.
 ```
 e(1 land 2, "1 land 2", 1).
