@@ -21,7 +21,7 @@ A C++ class generated from a Soufflé program can be instantiated and executed a
 ### 0. Including the Soufflé interface
 
 #### `souffle/SouffleInterface.h`
-The C++ interface is included by including `souffle/SouffleInterface.h` as shown in the example. For any information not covered by this documentation, please refer to [the comments in this header file](https://github.com/souffle-lang/souffle/blob/master/src/SouffleInterface.h).
+The C++ interface is included by including `souffle/SouffleInterface.h` as shown in the example. For any information not covered by this documentation, please refer to [the comments in this header file](https://github.com/souffle-lang/souffle/blob/master/src/include/souffle/SouffleInterface.h).
 
 *Example*
 
