@@ -22,6 +22,7 @@ Brie: A Specialized Trie for Concurrent Datalog. PMAM@PPoPP 2019: 31-40` [link](
  * `Bernhard Scholz, Kostyantyn Vorobyov, Padmanabhan Krishnan, Till Westmann: A Datalog Source-to-Source Translator for Static Program Analysis: An Experience Report. ASWEC 2015: 28-37`
 
 ## Talks
+ * `Bernhard Scholz: Tool Talk: Soufflé, PLDI 2020 - SOAP, London, UK` https://www.youtube.com/watch?v=Qp3zfM-JSx8
  * `Pavle Subotić: Souffle, 27/10/16, Amazon AWS, Automated Reasoning Group, Seattle, USA`
  * `Pavle Subotić: Souffle: On Synthesis of Analyzers, 23/7/16, Computer Aided Verification (CAV), Toronto, Canada`
  * `Bernhard Scholz: An Experience Report: Efficient Analysis using Souffle, 8/7/16, Oracle Labs in Brisbane, Australia.`
