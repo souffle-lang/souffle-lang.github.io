@@ -568,7 +568,7 @@ An interesting exercise for the reader is to develop a library of components for
 - A component that checks whether a graph is acyclic.
 
 ### Performance and profiling facilities
-To gain performance in the execution of Datalog progrsm, we can:
+To gain performance in the execution of Datalog program, we can:
 - Compile, rather than interpret code
 - Schedule queries, through user annotations or automation
 - Find faster queries that perform the same desired task
