@@ -158,7 +158,7 @@ In this example, the types `even` and `odd` are defined as equivalence types for
 
 When the aim of defining the two types `even` and `odd` was to enforce that those are two disjoint sets of integer values, the rule stated for `A` should trigger a type clash.
 
-The above example will prodcue a type clash
+The above example will produce a type clash
 ```
 .type even <: number
 .type odd <: number
