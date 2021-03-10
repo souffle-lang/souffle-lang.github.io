@@ -16,14 +16,14 @@ A functional dependency `x -> y` on relation `R(x:number, y:number)` means that
 each `x` in `R` will uniquely define a value of `y`.
 For example, during the computation, if a set of tuples `{(1,1), (1,2), (1,3)}`
 are about to be inserted into `R`, Souffle only chooses arbitrary one of them
-(hence the "non-determinism"), since inserting more then one would break the
+(hence the "non-determinism"), since inserting more than one would break the
 functional dependency.
 
 Functional dependency can be enforced on relation using the keyword `choice-domain` during relation
 declaration in Souffle with the following syntax:
 
 ```
-<relation-declartion>      ::= ".decl" <relation-name> "(" <attributes> ")" <choice-domain>
+<relation-declaration>      ::= ".decl" <relation-name> "(" <attributes> ")" <choice-domain>
 <choice-domain>            ::= "" | "choice-domain" (<constraint>)+
 <constraint>               ::= <attribute> | "(" <attributes> ")"
 ```
