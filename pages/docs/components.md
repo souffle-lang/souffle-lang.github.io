@@ -38,7 +38,7 @@ All the relations inside a component can be extended with new rules.
 myComp.TheAnswer(33).
 
 .decl Test(x:number)
-Test(x) :- myCompoInstance1.TheAnswer(x). // output: 42, 33
+Test(x) :- myComp.TheAnswer(x). // output: 42, 33
 ```
 
 One usage is to declare a relation inside a component, but leave it empty.
