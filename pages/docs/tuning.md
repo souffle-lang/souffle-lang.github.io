@@ -190,7 +190,7 @@ eqrel_slow(a,c) :- eqrel_slow(a,b), eqrel_slow(b, c).   // transitivity
 
 ## Profiler
 
-The performance impact of the rule order can be measured using the profiling tool of Souffle. The runtime of a rule, how may tuples are produced by the rule, and the performance behaviour for each iteration of a recursively defined rule can be measured and visualised. In practice, only a few rules are performance critical and need to be considered for performance tuning. 
+The performance impact of the rule order can be measured using the profiling tool of Souffle. The runtime of a rule, how many tuples are produced by the rule, and the performance behaviour for each iteration of a recursively defined rule can be measured and visualised. In practice, only a few rules are performance critical and need to be considered for performance tuning. 
 
 More detailed description follows. First, souffle is executed with the profiler log option enabled on a given Datalog specification and a set of input facts. Then the generated log file is opened with souffle profiler. As described in the user manual section of souffle profiler, the profiler can be made to list the rules in the descending order of the total time consumed by each rule of the given Datalog specification. This list is very useful in the sense that one can compare the time taken by each rule with the number of tuples it generated. The rules which consume more time by generating less tuples are the candidates for optimisation. Typically optimising the top 10 rules in the list is sufficient.
 
