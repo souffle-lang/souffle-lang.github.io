@@ -10,7 +10,7 @@ folder: docs
 Datalog is a (declarative) logic-based query language, allowing the user to perform recursive queries.
 It adopts syntax in the style of Prolog.
 In its pure form, it is based on a decidable fragment of first-order logic (FIL).
-Here, the universe -- the colleciton of elements by which computation can be performed within -- is finite, and functors are not permitted.
+Here, the universe -- the collection of elements by which computation can be performed within -- is finite, and functors are not permitted.
 Applications of Datalog include program analysis, security, graph databases, and declarative networking.
 
 ## Soufflé: The Language
