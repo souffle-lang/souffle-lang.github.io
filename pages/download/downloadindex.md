@@ -7,6 +7,12 @@ folder: download
 hide_sidebar: true
 ---
 ### [Releases](https://github.com/souffle-lang/souffle/releases/)
+
+This is outdated information. Bintray stopped its service and we need to find an alternative. 
+In the meantime, please build souffle from scracth via the build instructions. Sorry for this inconvenience. 
+
+<!---
+
 The current releases are built automatically for Debian-based systems and MAC OS X.
 
 ### Ubuntu
@@ -50,5 +56,7 @@ The source code can be obtained by git, as a zip-file, or as tar-ball.
 The latest build status for various systems can be found below:
 
 [Jenkins Build System](http://plang1.it.usyd.edu.au/jenkins)
+
+-->
 
 {% include links.html %}
