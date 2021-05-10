@@ -25,6 +25,7 @@ of the functor arguments, and `<type>` defines the return type. Currently,
 the type arguments and result type can only assume the primitive types of Soufflé:
 * Symbol type: `symbol`
 * Number type: `number`
+* Float type: `float`
 
 For example, 
 ```
@@ -66,9 +67,9 @@ The properties of the functor implementation are the following:
 
  * The implementation of a functor must be reentrant. Souffle is highly parallel and several threads may execute the implementation of a user-defined functor in parallel. Pthread synchronisation techniques may be required.
 
- * By default a single shared-library `libfunctors.so` contains all user-defined functors. Custom libraries may be used by starting souffle with `-l<libraryname>` and `-L<library path>`, e.g. `souffle a.dl -lfunctors -lmorefunctors`. The environment variable `LD_LIBRARY_PATH` can also be used to specify library paths. Note that if you use souffle to compile a standalone executable, the path for dynamic dlls may still be required at execution time, so `LD_LIBRARY_PATH` must be specified for the executable to run.
+ * By default a single shared-library `libfunctors.so` in the current folder contains all user-defined functors. Custom libraries may be used by starting souffle with `-l<libraryname>` and `-L<library path>`, e.g. `souffle -lfunctors -lmorefunctors a.dl`. Note that these options precede the Datalog file. The environment variable `LD_LIBRARY_PATH` can also be used to specify library paths. Note that if you use souffle to compile a standalone executable, the path for dynamic dlls may still be required at execution time, so `LD_LIBRARY_PATH` must be specified for the executable to run.
  
- * The name of the user-defined functor must be a C-linkable name (not a C++ linkable name). For example, if the user-defined functor f is declared, the shared-library must have a function f in the shared library with a C style argument passing mechanism. 
+ * The name of the user-defined functor must be a C-linkable name (not a C++ linkable name). For example, if the user-defined functor `f` is declared, the shared-library must have a function `f` in the shared library with a C style argument passing mechanism.
 
 For example, we can implement the user-defined functor in C++ with the following code:
 
@@ -93,11 +94,11 @@ for the functor declarations
 .functor g():symbol
 ```
 
-Note that number types are implemented as ```int32_t``` and symbol types are implemented as ```const char *```. In Linux, a shared library can be generated with the following instructions:
+Note that number types are implemented as ```int32_t``` and symbol types are implemented as ```const char *```. The float types are by default implemented as C `float` (or as C `double` if configured with `--enable-64bit-domain`). In Linux, a shared library can be generated with the following instructions:
 ```
 g++ functors.cpp -c -fPIC -o functors.o 
 g++ -shared -o libfunctors.so functors.o 
-export LD_LIBRARY_PATH=LD_LIBRARY_PATH:`pwd`
+export LD_LIBRARY_PATH=${LD_LIBRARY_PATH:+$LD_LIBRARY_PATH:}`pwd`
 ```
 Assuming that the source code of the user-defined functors is stored in the source file ```functors.cpp```. The export command ensures that either the Soufflé interpreter or the generated executable can find the shared library.
 
@@ -107,7 +108,7 @@ If you are on the MAC OS X system, you need to create a dynamic library as well 
 g++ functors.cpp -c -fPIC -o functors.o 
 g++ -shared -o libfunctors.so functors.o 
 g++ -dynamiclib -install_name libfunctors.dylib -o libfunctors.dylib functors.o
-export DYLD_LIBRARY_PATH=LD_LIBRARY_PATH:`pwd`
+export DYLD_LIBRARY_PATH=${DYLD_LIBRARY_PATH:+$DYLD_LIBRARY_PATH:}`pwd`
 ```
 
 ## Stateful User-Defined Functors 
