@@ -25,7 +25,7 @@ name of the instance, equals sign and name of the component type.
 ```
 .init myCompInstance1 = MyComponent
 .decl Test(x:number)
-Test(x) :- myCompoInstance1.TheAnswer(x).
+Test(x) :- myCompInstance1.TheAnswer(x).
 ```
 
 Another instantiation of the same component will duplicate all the tables!
@@ -66,7 +66,7 @@ injection of rules from the base component into its subcomponent. The syntax is 
 ```
 .comp Base {
     .decl TheAnswer(x:number)
-    TheAnswer(x) :- 42.
+    TheAnswer(42).
 }
 
 .comp Child : Base {
