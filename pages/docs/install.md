@@ -7,6 +7,14 @@ folder: docs
 ---
 ## Installation
 
+Currently the only way to install Soufflé is by building from source. 
+Please follow the instructions from [Build Soufflé](https://souffle-lang.github.io/build). 
+However, MAC OS X with [brew](http://brew.sh) can automate the build process: 
+```
+brew install --HEAD souffle-lang/souffle/souffle
+```
+
+<!---
 ## Debian/Ubuntu Systems
 
 For Debian systems, the latest development version of Soufflé can be installed from the Bintray PPA,
@@ -56,5 +64,6 @@ For the latest updates follow the development head
 ```
 brew install --HEAD souffle-lang/souffle/souffle
 ```
+-->
 
 {% include links.html %}
