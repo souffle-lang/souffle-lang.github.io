@@ -101,6 +101,9 @@ Input is assumed to be in gzip compressed format. By default, gzip compressed in
 `headers`
 The header can be enabled by `headers=on` (which is default) or surpressed by `headers=off`. 
 
+`rfc4180=[false|true]`
+Enables the [rfc4180](https://datatracker.ietf.org/doc/html/rfc4180) compatibility mode. Delimiter is set to `,` by default and double-quotes are only allowed to enclose fields. Two consecutive double-quote characters `""` in a double-quote enclosed field encode for a single double-quote in the actual value. The `"` delimiter is forbidden.
+
 ### IO=stdin
 `delimiter`
 Used to specify the delimiter to separate columns in the input file. The default value is a tab character. The order of evaluation of relations is not fixed. This method is not reliable when reading more than one relation from stdin.
@@ -125,6 +128,9 @@ Used to specify the delimiter to separate columns in the input file. The default
 `compress`
 Output is in gzip compressed format.
 
+`rfc4180=[false|true]`
+Produces an rfc4180 compliant CSV file. Delimiter is set to `,` by default and all fields are double-quote delimited.  The `"` delimiter is forbidden.
+
 
 ### IO=stdout
 `delimiter`
@@ -135,9 +141,9 @@ Used to specify the delimiter to separate columns in the input file. The default
 The path to the sqlite3 database. Note that if the `-D<path>` command line option is used, that path will be prepended to the filename, unless the filename path is absolute.
 
 
-## I/O Types 
+## I/O Types
 
-Attributes types are signed numbers, unsigned numnbers, float, strings, and records. If for primitive types (i.e. numbers, unsigned, and float) wrong input values are provided while reading from a data-source, an error will be issued. 
+Attributes types are signed numbers, unsigned numbers, float, strings, and records. If for primitive types (i.e. numbers, unsigned, and float) wrong input values are provided while reading from a data-source, an error will be issued. 
 
 Records are written in a recursive format for input and output directives. A recursive data-structure is expanded completely
 and printed.  For example:
@@ -147,13 +153,43 @@ and printed.  For example:
 A([1,[2,[3,nil]]],10). 
 .output A
 ```
-produces following output
+produces following output:
 ```
 ---------------
 A
 l	y
 ===============
 [1, [2, [3, nil]]]	10
+===============
+```
+
+To read or write arbitrary complex records and symbols without ambiguity, you may use the `rfc4180=true` I/O option. For example:
+```
+.type ListOfSymbols = [data:symbol, next:ListOfSymbols]
+.decl A(l:ListOfSymbols,y:symbol,z:number)
+A(["comma=,",["double-quote=\"",["space= ",["bracket=]",["nil",nil]]]]],"double-quote=\" comma=,",10).
+.output A(rfc4180=true,delimiter="\t")
+```
+
+Produces following output:
+
+```
+---------------
+A
+l       y       z
+===============
+"[""comma=,"", [""double-quote=\\"""", [""space= "", [""bracket=]"", [""nil"", nil]]]]]"        "double-quote=\\"" comma=,"     10
+===============
+```
+
+Compared to (without the `rfc4180` option):
+
+```
+---------------
+A
+l       y       z
+===============
+[comma=,, [double-quote=\", [space= , [bracket=], [nil, nil]]]]]        double-quote=\" comma=, 10
 ===============
 ```
 
