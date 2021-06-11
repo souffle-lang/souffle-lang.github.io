@@ -450,7 +450,7 @@ Indeed, such a value of ``x`` may not be unique.
 
 #### Counting
 The counting functor allows the user to count the set size of a sub-goal.
-The syntax is ``count{<sub-goal>}``.
+The syntax is ``count:{<sub-goal>}``.
 The following example outputs the number of "blue" cars - that is, the number of elements in ``Car`` with second argument "blue":
 ```prolog
 .decl Car(name: symbol, colour:symbol)
