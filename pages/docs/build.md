@@ -84,5 +84,34 @@ to install Soufflé. By setting the path variable
 ``` 
 the Soufflé commands ```souffle``` and ```souffle-profile``` are available to the users.
 
+## Building from CMake
+
+### Setup
+cmake >= 3.15 is required.
+
+In the source directory, run `cmake -S . -B <build_dir>`.
+To specify building options, run `cmake -S . -B <build_dir> -D<option>=<value>`.
+The avaiable options are documented in `CmakeLists.txt` under the project root directory.
+Alternatively, run `ccmake <build_dir>` to invoke cmake with a gui interface and configure the options there.
+
+### Build & Install
+In the source directory, run `cmake --build <build_dir> [-jN]` and souffle will build, you can enable
+build with multiple threads by specifying `N`.
+
+To install Souffle, during the setup, run `cmake -S . -B <build_dir> -DCMAKE_INSTALL_PREFIX=<install_dir>` then
+`cmake --build <build_dir> --target install [-jN]`.
+
+### Test
+To run tests, `cd <build_dir>` and run `ctest [-jN]`.
+For more control, `-R <regex>` allows you to run tests that matching the regular expression;
+`-L <regex>` allows you to run tests with _labels_ matching the regular expression, use `--print-labels` to show all available labels;
+`--rerun-failed` allows you to run only the tests that failed previously.
+For more options: `ctest --help`.
+
+## IDE/Editor
+With CMake you can easily integrate Souffle project with your IDE/editor.
+For example, if you are using clangd, simply run `cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1` to generate the configuration file.
+
+
 
 {% include links.html %}
