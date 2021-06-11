@@ -24,8 +24,8 @@ declaration in Souffle with the following syntax:
 
 ```
 <relation-declaration>      ::= ".decl" <relation-name> "(" <attributes> ")" <choice-domain>
-<choice-domain>            ::= "" | "choice-domain" (<constraint>)+
-<constraint>               ::= <attribute> | "(" <attributes> ")"
+<choice-domain>             ::= "" | "choice-domain" <constraint> { "," <constraint>}
+<constraint>                ::= <variable> | "(" <variable> { "," <variable> } ")"
 ```
 
 Note here, for the sake of brevity, our syntax omits the co-domain (i.e. the right hand side of the arrow). 
