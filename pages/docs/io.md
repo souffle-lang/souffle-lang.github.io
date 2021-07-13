@@ -99,7 +99,7 @@ Particular columns can be selected from an input file. `columns="2:0"` will use 
 Input is assumed to be in gzip compressed format. By default, gzip compressed input is automatically detected.
 
 `headers`
-The header can be enabled by `headers=on` (which is default) or surpressed by `headers=off`. 
+The header can be enabled by `headers=true` or surpressed by `headers=false` (which is default) for CSV files. 
 
 `rfc4180=[false|true]`
 Enables the [rfc4180](https://datatracker.ietf.org/doc/html/rfc4180) compatibility mode. Delimiter is set to `,` by default and double-quotes are only allowed to enclose fields. Two consecutive double-quote characters `""` in a double-quote enclosed field encode for a single double-quote in the actual value. The `"` delimiter is forbidden.
