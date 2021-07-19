@@ -205,7 +205,7 @@ Soufflé Identifiers follow the C++ naming convention, except that a question ma
 
 # Syntax 
 
-The whole syntax of Soufflé can be found as a (railroad grammar)(http://souffle-lang.github.io/syntax.xhtml).
+The whole syntax of Soufflé can be found as a [railroad grammar](http://souffle-lang.github.io/syntax.xhtml).
 
 
 {% include links.html %}
