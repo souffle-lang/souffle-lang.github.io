@@ -196,11 +196,17 @@ LivesAt(person, building) :-
 expresses the rule that a person lives in a building if they are the owner, or a housemate of the owner. Thus the conditions `person=owner` and `Housemate(owner, person)` are joined by `;` to indicate that either must hold.
 
 # Comments and Pre-Processing
-Souffle utilises the same comment syntax as C/C++. Furthermore, all souffle programs are passed through the C pre-processor. As a consequence, e.g. `#include` pragmas may be utilized to organize Datalog input queries into several files and reuse common constructs within several programs. Also, constants may be defined utilizing the `#define` pragma.
+Soufflé utilises the same comment syntax as C/C++. Furthermore, all souffle programs are passed through the C pre-processor. As a consequence, e.g. `#include` pragmas may be utilized to organize Datalog input queries into several files and reuse common constructs within several programs. Also, constants may be defined utilizing the `#define` pragma.
 
 # Identifier Naming Rules
-Souffle Identifiers follow the C++ naming convention, except that a question mark may appear anywhere.
+Soufflé Identifiers follow the C++ naming convention, except that a question mark may appear anywhere.
 - The identifier can only be composed of letters (lower or upper case), numbers, or the question mark and underscore characters. That means the name cannot contain whitespace, or any symbols other than underscores or question marks.
 - The identifier must begin with a letter (lower or upper case), an underscore, or a question mark. It can not start with a number.
+
+# Syntax 
+
+The syntax of Soufflé can be found here:
+http://souffle-lang.github.io/syntax.xhtml
+
 
 {% include links.html %}
