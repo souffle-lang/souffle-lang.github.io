@@ -115,7 +115,7 @@ To specify building options, run `cmake -S . -B <build_dir> -D<option>=<value>`.
  - `SOUFFLE_USE_ZLIB` Enable(=`ON`)/disable(=`OFF`) use of libz file compression in I/O directives (i.e. `.input`/`.output`); default is `ON`.
  - `SOUFFLE_USE_SQLITE` Enable(=`ON`)/disable use of sqlite3 in I/O directives (i.e. `.input`/`.output`);  default is `ON`. 
 
-The avaiable options are documented in `souffle/CmakeLists.txt`. Alternatively, run `ccmake <build_dir>` that invokes cmake with a GUI interface and configure the options there.
+The avaiable options are documented in `souffle/CmakeLists.txt`. Alternatively, run `ccmake build` that invokes cmake with a GUI interface and configure the options there.
 
 ## IDE/Editor
 With CMake, you can easily integrate the Souffle project with your IDE/editor.
