@@ -335,7 +335,17 @@ Converts the expression `as(a, Variable)` to an expression of type `Variable` al
 
 ## Syntax 
 
-![Typename] (https://souffle-lang.github.io/img/type_name.svg)
+A type name is defined as follows:
+
+![Type Declaration](https://souffle-lang.github.io/img/type_decl.svg)
+```
+type_decl ::= TYPE IDENT (SUBTYPE type_name | EQUALS ( type_name ( PIPE type_name )* | record_list | adt_branch ( PIPE adt_branch )* ))
+```
+
+![Type Name](https://souffle-lang.github.io/img/type_name.svg)
+```
+type_name ::= IDENT ( DOT IDENT )* | "unsigned" | "number" | "float" | "symbol" 
+```
 
 ## Legacy Syntax
 
