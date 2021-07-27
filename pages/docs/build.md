@@ -23,7 +23,7 @@ sudo apt-get install cmake bison build-essential clang doxygen flex g++ git libf
 
 Support for C++17 is required, which is supported in gnu c++ 7/clang++ 7 on.
 
-The Soufflé project follows cmake conventions for configuring, installing and building software. If not familiar, please refer to the [following document](https://cliutils.gitlab.io/modern-cmake/chapters/intro/running.html) for configuring, building, testing, and installing the project. You can build Souffle by typing:
+The Soufflé project follows cmake conventions for configuring, installing and building software. If not familiar, please refer to the [following document](https://cliutils.gitlab.io/modern-cmake/chapters/intro/running.html) for configuring, building, testing, and installing a project with cmake. You can build Souffle by typing:
 ``
 cd souffle
 cmake -S . -B build
