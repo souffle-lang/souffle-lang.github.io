@@ -333,6 +333,9 @@ B(as(a, Variable)) :- A(a).
 
 Converts the expression `as(a, Variable)` to an expression of type `Variable` although `a` is of type `VariableOrStackIndex`. 
 
+## Syntax 
+
+![Typename] (https://souffle-lang.github.io/img/type_name.svg)
 
 ## Legacy Syntax
 
