@@ -47,7 +47,7 @@ The precision is given by the word size, i.e., 32 bit or 64 bit.
 
 ### Primitive Type Example
 The following is an example of some Soufflé code that uses the primitive types:
-```
+```prolog
 .decl Name(n: symbol)
 Name("Hans").
 Name("Gretl").
@@ -66,7 +66,7 @@ Magic(-1,1,2.718).
 
 You can define equivalence types in Soufflé using the directive `.type <name> = <other-type>`
 defining a new type `<name>` that is equivalent to type `<other-type>`.  For example,
-```
+```prolog
 .type myNumber = number
 ```
 introduces the new type `myNumber` that is equivalent to the primitive type `number`.
@@ -87,7 +87,7 @@ type ontologies.
 Base types are defined by the directive `.type <name> <: <primitive-type>`  where
 `<name>` is the name of the base type and `<primitive-type>` is one of the
 four primitive types. For example,
-```
+```prolog
 .type City <: symbol
 .type Town <: symbol
 .type Village <: symbol
@@ -101,11 +101,11 @@ from the universe of possible symbols.
 
 ### Union Type
 The Union type unifies types including base and union types, as long as all are derived from the same primitive type. The union type declaration is given below
-```
+```prolog
 .type <ident> = <ident-1> | <ident-2> | ... | <ident-k>
 ```
 where `<ident>` is the name of the union type and `<ident-...>` refers to the base and other union types used in the union type.  For example, the union type `Place`
-```
+```prolog
 .type City <: symbol
 .type Town <: symbol
 .type Village <: symbol
@@ -113,7 +113,7 @@ where `<ident>` is the name of the union type and `<ident-...>` refers to the ba
 ```
 is the union of base types `City`, `Town`, and `Village`.
 The union type `PostalCode`,
-```
+```prolog
 .type PostCodes <: number
 .type ZipCodes <: number
 .type PostalCode = PostCodes | ZipCodes
@@ -218,7 +218,6 @@ A([2,[3,nil]]).
 ```
 Note that in rules, we use the bracket notation to describe a record as an argument. 
 
-#### Recursive records
 Recursively-defined records are allowed in Soufflé.
 The recursion is terminated by the existence of a ``nil`` record.
 Consider the following:
@@ -231,19 +230,11 @@ L([r1,x+10]) :- L(r1), r1=[r2,x], x < 30.
 Flatten(x) :- L([_,x]).
 .output Flatten
 ```
-Here, an ``IntList`` contains a reference to the next element, which is an ``IntList`` itself.
-Internally, this is represented as follows:
-<img src="img/record_recursive.png" alt="Record table with recursion example">
-
-#### I/O 
 
 Record types are supported by the I/O system. You can use ```.input``` and ```.output``` directives
 to print tuples of relations with record elements. If a records contains another record, 
 the whole record with all its composed records will be either read or written. 
-
-
-### Limitations
-In the current verion,  union types involving records and sub-typing of record types are currently not supported.
+Note that union types involving records and sub-typing of record types are currently not supported in Souffle.
 
 
 ##  Algebraic Data Types (ADT)
@@ -340,7 +331,7 @@ type_name ::= IDENT ("." IDENT )* | "unsigned" | "number" | "float" | "symbol"
 
 ### Record Declaration 
 
-![Record Declaration](https://souffle-lang.github.io/img/record_decl.svg)
+![Record Declaration](https://souffle-lang.github.io/img/record_list.svg)
 ```
 record_list ::= "[" attribute ( "," attribute)* "]"
 ```
@@ -396,6 +387,10 @@ A([4,5]).
 ```
 Internally, these records are represented and stored as shown in this diagram:
 <img src="img/record_table.png" alt="Record table example">
+
+For the above example, an ``IntList`` contains a reference to the next element, which is an ``IntList`` itself.
+Internally, this is represented as follows:
+<img src="img/record_recursive.png" alt="Record table with recursion example">
 
 # ADT 
 TODO: Encoding
