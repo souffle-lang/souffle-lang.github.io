@@ -313,10 +313,12 @@ Converts the expression `as(a, Variable)` to an expression of type `Variable` al
 
 ## Syntax 
 
-In the following we define the syntax of type declarations in Souffle. The sSyntax is expressed as rail-road grammars and EBNF.
+In the following, we define type declarations in Souffle more formally using [syntax diagrams](https://en.wikipedia.org/wiki/Syntax_diagram) and [EBNF](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form). The syntax diagrams were produced using [Bottlecaps](https://www.bottlecaps.de/rr/ui).
 
 ### Type Declaration 
  
+A type declaration binds a name with a new type. The type is either a subtype, an equivalence/union type, a record type, of an ADT.
+
 ![Type Declaration](https://souffle-lang.github.io/img/type_decl.svg)
 ```
 type_decl ::= TYPE IDENT ("<:" type_name | "=" ( type_name ( "|" type_name )* | record_list | adt_branch ( "|" adt_branch )* ))
@@ -324,26 +326,35 @@ type_decl ::= TYPE IDENT ("<:" type_name | "=" ( type_name ( "|" type_name )* | 
 
 ### Type Name 
 
+Souffle has pre-defined types such as `number`, `symbol`, `unsigned`, and `float`. Used-defined types have a name. If a type has been defined in a component, the type can be still accessed outside the component using a qualified name. 
+
 ![Type Name](https://souffle-lang.github.io/img/type_name.svg)
 ```
-type_name ::= IDENT ("." IDENT )* | "unsigned" | "number" | "float" | "symbol" 
+type_name ::=  "number" | "symbol" |"unsigned" | "float"  | IDENT ("." IDENT )*
 ```
 
 ### Record Declaration 
+
+A record declaration consists of a list of attributes. Record declarations can be recursive.
 
 ![Record Declaration](https://souffle-lang.github.io/img/record_list.svg)
 ```
 record_list ::= "[" attribute ( "," attribute)* "]"
 ```
 
-### ADT Branch
+### ADT Declaration
+
+An ADT consists of a several ADT branches. An ADT branch consists of a list of attributes which 
+is associated with a branch identifier. The branch identifier must be unique in Souffle.
 
 ![ADT Branch](https://souffle-lang.github.io/img/adt_branch.svg)
 ```
 adt_branch ::= IDENT "{" attribute ( "," attribute)* "}"
 ```
 
-### Attribute 
+### Attribute Declaration
+
+An attribute binds a name with a type. 
 
 ![Attribute](https://souffle-lang.github.io/img/attribute.svg)
 ```
@@ -352,7 +363,8 @@ attribute ::= IDENT ":" type_name
 
 ### Legacy Syntax
 
-In older versions of Soufflé we used
+The syntax of Souffle changed over time. Older code bases can be still used with 
+modern versions of Souffle.  In older versions of Soufflé we used
 ```
 .number_type Even
 .symbol_type Place
@@ -364,8 +376,7 @@ to define base types. These definitions should be rewritten to the new syntax li
 .type Place <: symbol
 .type Town <: symbol
 ```
-You can still use this syntax in the current versions of Souffle, but you will receive a warning that this legacy syntax is deprecated.
-You can enable the old legacy syntax using the flag `--legacy`.
+You can enable the old legacy syntax using the command-line flag `--legacy`, but you will receive a warning that this legacy syntax is deprecated.
 
 # Implementation Details 
 
