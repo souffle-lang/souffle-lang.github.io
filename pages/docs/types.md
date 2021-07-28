@@ -365,7 +365,7 @@ attribute ::= IDENT ":" type_name
 ```
 
 
-      <xhtml:p xmlns:xhtml="http://www.w3.org/1999/xhtml" style="font-size: 14px; font-weight:bold"><xhtml:a name="type_name">type_name:</xhtml:a></xhtml:p><svg xmlns="http://www.w3.org/2000/svg" width="197" height="257">
+<svg xmlns="http://www.w3.org/2000/svg" width="197" height="257">
          <defs>
             <style type="text/css">
     @namespace "http://www.w3.org/2000/svg";
@@ -416,7 +416,10 @@ attribute ::= IDENT ":" type_name
          <text class="terminal" x="59" y="241">symbol</text>
          <svg:path xmlns:svg="http://www.w3.org/2000/svg" class="line" d="m17 61 h2 m40 0 h10 m58 0 h10 m-98 0 l20 0 m-1 0 q-9 0 -9 -10 l0 -24 q0 -10 10 -10 m78 44 l20 0 m-20 0 q10 0 10 -10 l0 -24 q0 -10 -10 -10 m-78 0 h10 m24 0 h10 m0 0 h34 m-118 44 h20 m118 0 h20 m-158 0 q10 0 10 10 m138 0 q0 -10 10 -10 m-148 10 v24 m138 0 v-24 m-138 24 q0 10 10 10 m118 0 q10 0 10 -10 m-128 10 h10 m82 0 h10 m0 0 h16 m-128 -10 v20 m138 0 v-20 m-138 20 v24 m138 0 v-24 m-138 24 q0 10 10 10 m118 0 q10 0 10 -10 m-128 10 h10 m72 0 h10 m0 0 h26 m-128 -10 v20 m138 0 v-20 m-138 20 v24 m138 0 v-24 m-138 24 q0 10 10 10 m118 0 q10 0 10 -10 m-128 10 h10 m50 0 h10 m0 0 h48 m-128 -10 v20 m138 0 v-20 m-138 20 v24 m138 0 v-24 m-138 24 q0 10 10 10 m118 0 q10 0 10 -10 m-128 10 h10 m68 0 h10 m0 0 h30 m23 -176 h-3"/>
          <polygon points="187 61 195 57 195 65"/>
-         <polygon points="187 61 179 57 179 65"/></svg><xhtml:p xmlns:xhtml="http://www.w3.org/1999/xhtml">
+         <polygon points="187 61 179 57 179 65"/>
+</svg>
+
+<xhtml:p xmlns:xhtml="http://www.w3.org/1999/xhtml">
          <xhtml:div class="ebnf"><xhtml:code>
                <div><a href="#type_name" title="type_name">type_name</a></div>
                <div>         ::= <a href="#IDENT" title="IDENT">IDENT</a> ( '.' <a href="#IDENT" title="IDENT">IDENT</a> )*</div>
@@ -678,7 +681,7 @@ attribute ::= IDENT ":" type_name
                         </g></svg></xhtml:a></xhtml:td>
             </xhtml:tr>
          </xhtml:table>
-      </xhtml:p>
+</xhtml:p>
 ## Legacy Syntax
 
 In older versions of Soufflé we used
