@@ -335,7 +335,7 @@ Converts the expression `as(a, Variable)` to an expression of type `Variable` al
 
 ## Syntax 
 
-![Type Grammar](https://souffle-lang.github.io/pages/doc/type-grammar.xhtml)
+![Type Grammar](type-grammar.xhtml)
 
 In the following we define the syntax of type declarations in Souffle. The sSyntax is expressed as rail-road grammars and EBNF.
 
