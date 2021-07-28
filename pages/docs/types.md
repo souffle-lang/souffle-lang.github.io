@@ -335,9 +335,9 @@ Converts the expression `as(a, Variable)` to an expression of type `Variable` al
 
 ## Syntax 
 
-![Type Grammar](type-grammar.xhtml)
+![Type Grammar](https://souffle-lang.github.io/pages/doc/type-grammar.xhtml)
 
-In the following we define the syntax of type declarations in Souffle. The Syntax is expressed as rail road grammars for sake of readability.
+In the following we define the syntax of type declarations in Souffle. The sSyntax is expressed as rail-road grammars and EBNF.
 
 ![Type Declaration](https://souffle-lang.github.io/img/type_decl.svg)
 ```
@@ -353,9 +353,15 @@ type_name ::= IDENT ("." IDENT )* | "unsigned" | "number" | "float" | "symbol"
 ```
 record_decl ::= "[" attribute ( "," attribute)* "]"
 ```
+
 ![ADT Branch](https://souffle-lang.github.io/img/adt_branch.svg)
 ```
 adt_branch ::= IDENT "{" attribute ( "," attribute)* "}"
+```
+
+![Attribute](https://souffle-lang.github.io/img/attribute.svg)
+```
+attribute ::= IDENT ":" type_name 
 ```
 
 ## Legacy Syntax
