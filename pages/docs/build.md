@@ -27,13 +27,13 @@ The Soufflé project follows cmake conventions for configuring, installing and b
 ```
 cd souffle
 cmake -S . -B build
-make --build build
+cmake --build build
 ```
 This may take up some time. However, this may be sped up with, for instance:
 ```
-make --build build -j8
+cmake --build build -j8
 ```
-which will run `make` with 8 jobs at a time.
+which will run `cmake` with 8 jobs at a time.
 
 ### MAC OS X Build
 
@@ -56,13 +56,13 @@ Soufflé is built by
 ```
 cd souffle
 cmake -S . -B build
-make --build build
+cmake --build build
 ```
 This may take up some time. However, this may be sped up with, for instance:
 ```
-make --build build -j8
+cmake --build build -j8
 ```
-which will run `make` with 8 jobs at a time.
+which will run `cmake` with 8 jobs at a time.
 
 ### Testing Soufflé
 
