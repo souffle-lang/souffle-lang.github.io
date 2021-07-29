@@ -24,16 +24,16 @@ sudo apt-get install cmake bison build-essential clang doxygen flex g++ git libf
 Support for C++17 is required, which is supported in gnu c++ 7/clang++ 7 on.
 
 The Soufflé project follows cmake conventions for configuring, installing and building software. If not familiar, please refer to the [following document](https://cliutils.gitlab.io/modern-cmake/chapters/intro/running.html) for configuring, building, testing, and installing a project with cmake. You can build Soufflé by typing:
-``
+```
 cd souffle
 cmake -S . -B build
 make --build build
-``
+```
 This may take up some time. However, this may be sped up with, for instance:
 ```
 make --build build -j8
 ```
-which will run make with 8 jobs at a time.
+which will run `make` with 8 jobs at a time.
 
 ### MAC OS X Build
 
@@ -62,7 +62,7 @@ This may take up some time. However, this may be sped up with, for instance:
 ```
 make --build build -j8
 ```
-which will run make with 8 jobs at a time.
+which will run `make` with 8 jobs at a time.
 
 ### Testing Soufflé
 
@@ -89,7 +89,7 @@ If you would like to install Soufflé in your system, specify an installation di
 ```
  cd souffle
  cmake -S . -B build -DCMAKE_INSTALL_PREFIX=<install-dir>
- cmake --build buiild --target install
+ cmake --build build --target install
 ```
 to install Soufflé. By setting the path variable 
 ```
@@ -115,7 +115,7 @@ To specify building options, run `cmake -S . -B build -D<option>=<value>`. See b
  - `SOUFFLE_USE_ZLIB` Enable(=`ON`)/disable(=`OFF`) use of libz file compression in I/O directives (i.e. `.input`/`.output`); default is `ON`.
  - `SOUFFLE_USE_SQLITE` Enable(=`ON`)/disable use of sqlite3 in I/O directives (i.e. `.input`/`.output`);  default is `ON`. 
 
-The avaiable options are documented in `souffle/CmakeLists.txt`. Alternatively, run `ccmake build` that invokes cmake with a GUI interface and configure the options there.
+The avaiable options are documented in `souffle/CMakeLists.txt`. Alternatively, run `ccmake build` that invokes cmake with a GUI interface and configure the options there.
 
 ## IDE/Editor
 With CMake, you can easily integrate the Souffle project with your IDE/editor.
