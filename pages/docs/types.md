@@ -237,13 +237,8 @@ Note that union types involving records and sub-typing of record types are curre
 
 
 ##  Algebraic Data Types (ADT)
+Alebraic Data Types are extended versions of records, which permit several type shapes for a given record type. 
 
-The syntax for defining an ADT is:
-```
-ADT ::= ".type " IDENT "=" branch (| branch)*
-branch ::= IDENT "{" "}"
-branch ::= IDENT "{" attr (, attr)* "}"
-```
 Examples:
 ```prolog
 .type T = A { x: number }
