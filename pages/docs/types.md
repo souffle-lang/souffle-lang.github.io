@@ -123,7 +123,7 @@ The union type `PostalCode`,
 unifies the base types `PostCodes` and `ZipCodes`.
 
 However, the following union type is not allowed
-```
+```prolog
 .type Weekdays <: symbol
 .type Dates <: number
 .type Days = Weekdays | Dates // error
@@ -133,7 +133,7 @@ and will result in a compile error, because `Weekdays` and `Dates` are not deriv
 ![Place as a union of the location types in the universe of symbols](https://souffle-lang.github.io/img/universe_symbol_place.svg)
 
 We can bring these together to define attributes that better describe a relation, e.g.,
-```
+```prolog
 .type City <: symbol
 .type Town <: symbol
 .type Village <: symbol
@@ -147,7 +147,7 @@ Location(p) :- Data(p,_,_); Data(_,p,_); Data(_,_,p).
 ```
 
 There can be some pitfalls. As an example,  consider the following code fragment:
-```
+```prolog
 .type even = number
 .type odd = number
 .decl A(x:even)
@@ -159,7 +159,7 @@ In this example, the types `even` and `odd` are defined as equivalence types for
 When the aim of defining the two types `even` and `odd` was to enforce that those are two disjoint sets of integer values, the rule stated for `A` should trigger a type clash.
 
 The above example will correctly produce a type clash 
-```
+```prolog
 .type even <: number
 .type odd <: number
 
@@ -292,7 +292,6 @@ the following type definition is illegal:
 Since the constructors `Number` and `Symbol` show up twice in ADT `A` and ADT `B`. 
 
 ## Type Conversion
-
 Soufflé permits type conversion with the as functor that takes as a first argument an functor expression and as a second argument the new type of the expression. 
 
 For example, 
@@ -375,7 +374,7 @@ attribute ::= IDENT ":" type_name
 
 The syntax of Souffle changed over time. Older code bases can be still used with 
 modern versions of Souffle.  In older versions of Soufflé we used
-```
+```prolog
 .number_type Even
 .symbol_type Place
 .type Town
