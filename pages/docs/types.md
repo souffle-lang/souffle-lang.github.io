@@ -4,7 +4,7 @@ permalink: /types
 sidebar: docs_sidebar
 folder: docs
 ---
-Soufflé is a statically typed language. The main purpose of Souffle's
+Soufflé is a statically typed language. The main purpose of Soufflé's
 type system is helping programmers writing correct rules.
 The type system defines types for relation attributes whose use in
 rule is enforced at compile time. Static typing has the advantage
@@ -21,7 +21,7 @@ Soufflé has four primitive types:
 
 The word size of a primitive type is 32 bits. The word size can be
 changed to 64 bits by appropriately configuring Soufflé using
-the configuration option (see [Building](build.m)).
+the configuration option (see [Build Soufflé](build)).
 
 ### Symbol Type
 The symbol type consists of the universe of all strings.
