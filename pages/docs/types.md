@@ -245,7 +245,7 @@ branch ::= IDENT "{" "}"
 branch ::= IDENT "{" attr (, attr)* "}"
 ```
 Examples:
-```
+```prolog
 .type T = A { x: number }
         | B { x: symbol }
 
@@ -266,7 +266,7 @@ Branches are initialized by `$branch_constructor(args...)`, and in case of a bra
 
 For example, shows how to use branches in rules:
 
-```
+```prolog
 .type Expression = Number { x : number }
                  | Variable { v : symbol}
                  | Add {e_1 : Expression, e_2 :Expression}
@@ -283,7 +283,7 @@ A($Number(x+1)) :- A($Number(x)), x < 20.
 
 Note that a constructor can only be used for an ADT once. For example, 
 the following type definition is illegal:
-```
+```prolog
 .type A = Number { x:number }
         | Symbol { v:symbol }
 .type B = Number { x:number }
@@ -295,7 +295,7 @@ Since the constructors `Number` and `Symbol` show up twice in ADT `A` and ADT `B
 Soufflé permits type conversion with the as functor that takes as a first argument an functor expression and as a second argument the new type of the expression. 
 
 For example, 
-```
+```prolog
 .type Variable <: symbol
 .type StackIndex <: symbol
 .type VariableOrStackIndex = Variable | StackIndex
