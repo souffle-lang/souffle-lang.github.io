@@ -22,10 +22,9 @@ c	d	cdc
 
 * **contains(*string1*, *string2*)** is used to check if the latter string contains the former string.
 ```
-.type String
-.decl stringTable(t:String)
-.decl substringTable(t:String)
-.decl outputData(substr:String, str:String)
+.decl stringTable(t:symbol)
+.decl substringTable(t:symbol)
+.decl outputData(substr:symbol, str:symbol)
 .output outputData
 outputData(x,y) :- substringTable(x), stringTable(y), contains(x,y).
 stringTable("aaaa").
@@ -50,9 +49,8 @@ cab	bcab
 
 * **match** is used to check if the latter string matches a wildcard pattern specified in the former string.
 ```
-.type String
-.decl inputData(t:String)
-.decl outputData(t:String)
+.decl inputData(t:symbol)
+.decl outputData(t:symbol)
 .output outputData
 outputData(x) :- inputData(x), match("a.*",x).
 inputData("aaaa").
@@ -68,8 +66,7 @@ abba
 
 * **ord(*string*)** is used to return the ordinal number associated with *string*. **This is not a lexicographic ordering.** The ordinal number is based on the order of appearance (see example below).
 ```
-.type Name
-.decl n(x:Name)
+.decl n(x:symbol)
 n("Homer").
 n("Marge").
 n("Bart").
