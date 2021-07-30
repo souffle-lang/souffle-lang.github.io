@@ -5,17 +5,14 @@ sidebar: docs_sidebar
 folder: docs
 ---
 Soufflé is a statically typed language. The main purpose of Souffle's
-type system is the correct usage of relations and records in rules.
-The type system defines types for relation attributes and records
-and is enforced at compile time. Static types have the advantage
-that they do not have runtime overheads while evaluating a
+type system is helping programmers writing correct rules.
+The type system defines types for relation attributes whose use in
+rule is enforced at compile time. Static typing has the advantage
+that it does not have runtime overheads while evaluating a
 logic program.
 
-Our type system is based on the idea of sets. A type can be
-either the universe of all possible values of a primitive type,
-or a subset of it; subsets can be composed of other subsets.
-
 ## Primitive Types
+
 Soufflé has four primitive types:
 * Symbol type: `symbol`
 * Signed number type: `number`
@@ -23,14 +20,18 @@ Soufflé has four primitive types:
 * Float number type: `float`
 
 The word size of a primitive type is 32 bits. The word size can be
-changed to 64 bit by appropriately configuring Soufflé using
-the configuration option `--enable-64bit-domain` in the `configure` script.
+changed to 64 bits by appropriately configuring Soufflé using
+the configuration option (see [Building](build.m)).
 
 ### Symbol Type
 The symbol type consists of the universe of all strings.
-Internally, the symbol type is represented by an ordinal number.
-The ordinal number for a symbol can be determined by using the `ord` functor, e.g.,
-`ord("hello")` represents the ordinal number for `"hello"`.
+Internally, the symbol type is represented by an 
+ordinal number. The ordinal number for a symbol can 
+be determined by using the `ord` functor, e.g.,
+`ord("hello")` represents the ordinal number 
+for `"hello"`. In an internal symbol table, the 
+ordinal number is converted to a string
+(and vice versa).
 
 ### Number Type
 The number type consists of the universe of all numbers.
@@ -45,8 +46,8 @@ The range is given by the word size.
 The float type consists of the universe of floating point numbers.
 The precision is given by the word size, i.e., 32 bit or 64 bit.
 
-### Primitive Type Example
-The following is an example of some Soufflé code that uses the primitive types:
+### Example
+The following example shows the use of the primitive types:
 ```prolog
 .decl Name(n: symbol)
 Name("Hans").
@@ -61,6 +62,7 @@ Magic(-1,1,2.718).
 .output Magic
 
 ```
+Relation `Name` is a set of symbols; relation `Translate` has two attributes `n` and `o` of type `symbol` and `number`, respectively; relation `Magic`'s attributes are of type `number`, `unsigned`, and `float`. 
 
 ## Equivalence Types
 
