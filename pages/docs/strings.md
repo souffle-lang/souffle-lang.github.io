@@ -21,7 +21,7 @@ c	d	cdc
 ```
 
 * **contains(*string1*, *string2*)** is used to check if the latter string contains the former string.
-```
+```prolog
 .decl stringTable(t:symbol)
 .decl substringTable(t:symbol)
 .decl outputData(substr:symbol, str:symbol)
@@ -48,7 +48,7 @@ cab	bcab
 ```
 
 * **match** is used to check if the latter string matches a wildcard pattern specified in the former string.
-```
+```prolog
 .decl inputData(t:symbol)
 .decl outputData(t:symbol)
 .output outputData
@@ -65,7 +65,7 @@ abba
 ```
 
 * **ord(*string*)** is used to return the ordinal number associated with *string*. **This is not a lexicographic ordering.** The ordinal number is based on the order of appearance (see example below).
-```
+```prolog
 .decl n(x:symbol)
 n("Homer").
 n("Marge").
@@ -88,7 +88,7 @@ The output would be:
 * Equality operations (**=** and **!=**) are also available for string types, by performing an ordinal comparison.
 
 * **strlen(*string*)** returns the length of *string* as number.
-```
+```prolog
 .decl length(n:number)
 .output length
 length(n) :- n=strlen("Hello").
@@ -101,7 +101,7 @@ The output would be:
 ```
 
 * **substr(*string*, *index*, *length*)** is used to return the substring starting at *index* with length *length* of *string*. The index is zero-based.
-```
+```prolog
 .decl substring(s:symbol)
 .output substring
 substring(s) :- s=substr("Hello_", 2, 3).
@@ -114,7 +114,7 @@ ld!
 ```
 
 * **to_number(*string*)** transforms a string representing a number to its associated number.
-```
+```prolog
 .decl tonumber(n:number)
 .output tonumber
 tonumber(n) :- n=to_number("123").
