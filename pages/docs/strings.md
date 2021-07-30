@@ -6,10 +6,9 @@ folder: docs
 ---
 
 * **cat(*string*, *string*)** is used to concatenate two strings together. It can be nested to concatenate more than two strings.
-```
-.type A
-.decl Y(a:A, b:A)
-.decl Z(a:A, b:A, c:A)
+```prolog
+.decl Y(a:symbol, b:symbol)
+.decl Z(a:symbol, b:symbol, c:symbol)
 .output Z
 Y("a","b").
 Y("c","d").
@@ -106,8 +105,7 @@ The output would be:
 
 * **substr(*string*, *index*, *length*)** is used to return the substring starting at *index* with length *length* of *string*. The index is zero-based.
 ```
-.type String
-.decl substring(s:String)
+.decl substring(s:symbol)
 .output substring
 substring(s) :- s=substr("Hello_", 2, 3).
 substring(s) :- string="World!", s=substr(string, 3, strlen(string)).
