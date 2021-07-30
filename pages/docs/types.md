@@ -65,13 +65,13 @@ Magic(-1,1,2.718).
 Relation `Name` is a set of symbols; relation `Translate` has two attributes `n` and `o` of type `symbol` and `number`, respectively; relation `Magic`'s attributes are of type `number`, `unsigned`, and `float`. 
 
 ## Equivalence Types
-
 You can define equivalence types in Soufflé using the directive `.type <name> = <other-type>`
-defining a new type `<name>` that is equivalent to type `<other-type>`.  For example,
+defining a user-defined type `<name>` that is equivalent to type `<other-type>`.  For example,
 ```prolog
 .type myNumber = number
 ```
-introduces the new type `myNumber` that is equivalent to the primitive type `number`.
+introduces the user-defined type `myNumber` that is equivalent to the primitive type `number`.
+The types `myNumber` and `number` can be synomiously be used. 
 
 ## Ontologies with Base and Union Types
 The sole usage of primitive types (and equivalent types) is
@@ -146,33 +146,30 @@ Data(“Sydney”, ”Ballina”, “Glenrowan”).
 Location(p) :- Data(p,_,_); Data(_,p,_); Data(_,_,p).
 ```
 
-## Pitfalls
-
-As an example,  consider the following code fragment:
+There can be some pitfalls. As an example,  consider the following code fragment:
 ```
 .type even = number
 .type odd = number
 .decl A(x:even)
 .decl B(x:odd)
-A(X) :- B(X)
+A(X) :- B(X).
 ```
-In this example, the types `even` and `odd` are defined as equivalence types for `number`. Thus, they are effectively equivalent and no typing error will result from the rule stated for relation `A`, which copies odd numbers into an even domain.
+In this example, the types `even` and `odd` are defined as equivalence types for `number`. Thus, they are effectively equivalent to type `number`, and no typing error will result from the rule stated for relation `A`, which copies odd numbers into an even domain.
 
 When the aim of defining the two types `even` and `odd` was to enforce that those are two disjoint sets of integer values, the rule stated for `A` should trigger a type clash.
 
-The above example will produce a type clash
+The above example will correctly produce a type clash 
 ```
 .type even <: number
 .type odd <: number
 
 .decl A(x:even)
 .decl B(x:odd)
-A(X) :- B(X) // type clash
+A(X) :- B(X). // type clash
 ```
 In this example, `even` and `odd` are defined as two disjoint sub-types of the type number, each exhibiting its own domain of values. From this definition Soufflé can deduce that the users intention was to define two disjoint sets and will report an error for the rule in the last line. For logic programmers it is crucial to accurately model the categories of values in form of a type system -- as has been illustrated by the example above.
 
 ## Record Types
-
 In classical Datalog, a relation is a two-dimensional data-structure consisting of a set of rows and fixed number of columns. 
 With a large code-base and/or a complex problem, it is convenient having more complex data-structures, including linked lists, trees in form of terms. 
 Souffle provides such an abstraction, which are typed records.  
