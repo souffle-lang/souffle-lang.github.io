@@ -4,12 +4,10 @@ permalink: /types
 sidebar: docs_sidebar
 folder: docs
 ---
-Soufflé is a statically typed language. The main purpose of Soufflé's
-type system is helping programmers writing correct rules.
-The type system defines types for relation attributes whose use in
-rule is enforced at compile time. Static typing has the advantage
-that it does not have runtime overheads while evaluating a
-logic program.
+Soufflé is a statically typed language. The primary purpose of Soufflé’s type system is to help programmers writing correct rules. 
+The proper use of rules becomes more complex when writing large software systems in Soufflé with hundreds of rules and relations. 
+The type system assists the programmer to define types for relation attributes, whose usage in rules is checked statically. 
+Static typing has the advantage that it does not have runtime overheads while evaluating a logic program.
 
 ## Primitive Types
 
