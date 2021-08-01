@@ -70,14 +70,8 @@ The types `myNumber` and `number` can be synomiously be used.
 
 ## Ontologies with Base and Union Types
 The sole usage of primitive types (and equivalent types) is
-hazardous for large projects.
-Binding wrong attributes via name equivalences is a
-common mistake writing large logic code bases.
-To avoid wrong bindings,
-base types and union types have been introduced. Base types are subtypes
-of primitive types and union types permit merging
-several base types. With base and union types,
-partial orders over subsets permit the formation of
+hazardous for large projects. Binding wrong attributes via name equivalences is a common mistake in writing large logic code bases.
+Base types and union types have been introduced to avoid wrong bindings. Base types are subtypes of primitive types, and union types permit merging several base types or other union types. With base and union types, partial orders over subsets allow the formation of
 type ontologies.
 
 ### Base Type
