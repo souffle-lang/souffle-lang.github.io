@@ -23,16 +23,13 @@ the configuration option (see [Build Soufflé](build)).
 
 ### Symbol Type
 The symbol type consists of the universe of all strings.
-Internally, the symbol type is represented by an 
-ordinal number. The ordinal number for a symbol can 
-be determined by using the `ord` functor, e.g.,
-`ord("hello")` represents the ordinal number 
-for `"hello"`. In an internal symbol table, the 
-ordinal number is converted to a string
-(and vice versa).
+Internally, a symbol is represented by an ordinal number. 
+The `ord` functor determines the ordinal number of a symbol, e.g., 
+`ord("hello")` gives the ordinal number for the symbol `"hello"`
+which can change from a run to another one.
 
 ### Number Type
-The number type consists of the universe of all numbers.
+The number type consists of the universe of all signed interger numbers.
 The accepted range of numbers is given by the two's complement
 scheme of the word size.
 
