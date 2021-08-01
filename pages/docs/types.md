@@ -34,14 +34,14 @@ The accepted range of numbers is given by the two's complement
 scheme of the word size.
 
 ### Unsigned Type
-The unsigned type consists of the universe of all non-negative numbers.
+The unsigned type consists of the universe of all non-negative integer numbers.
 The range is given by the word size.
 
 ### Float Type
-The float type consists of the universe of floating point numbers.
-The precision is given by the word size, i.e., 32 bit or 64 bit.
+The float type consists of the universe of floating point numbers in the [IEEE 754
+Standard for Floating-Point Arithmetic](https://en.wikipedia.org/wiki/IEEE_754).
+The precision of the floating point number type is given by the word size, i.e., 32 bit or 64 bit.
 
-### Example
 The following example shows the use of the primitive types:
 ```prolog
 .decl Name(n: symbol)
