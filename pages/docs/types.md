@@ -60,13 +60,28 @@ Magic(-1,1,2.718).
 Relation `Name` is a set of symbols; relation `Translate` has two attributes `n` and `o` of type `symbol` and `number`, respectively; relation `Magic`'s attributes are of type `number`, `unsigned`, and `float`. 
 
 ## Equivalence Types
-You can define equivalence types in Soufflé using the directive `.type <name> = <other-type>`
-defining a user-defined type `<name>` that is equivalent to type `<other-type>`.  For example,
+You can define equivalence types in Soufflé using the directive `.type <new-type> = <other-type>`
+defining a user-defined type `<new-type>` that is equivalent to type `<other-type>`.  For example,
 ```prolog
 .type myNumber = number
 ```
 introduces the user-defined type `myNumber` that is equivalent to the primitive type `number`.
 The types `myNumber` and `number` can be synomiously be used. 
+
+## Subtypes 
+You can define subtypes in Soufflé using the directive `.type <new-type> <: <other-type>`
+defining a user-defined type `<new-type>` that is equivalent to type `<other-type>`. 
+If type `<new-type>` is a subtype of `<other-type>`, any term/expression of type `<new-type>` 
+can be safely used in  context, where a term of type `<other-type>` is expected, 
+but not vice versa. For example,
+```prolog
+.type myEvenNumber <: number
+```
+introduces the user-defined type `myEvenNumber` that is a subtype of the primitive type `number`. You can define subtypes of subtypes, e.g., 
+```prolog
+.type myEvenNumber <: number
+.type myMultiplesOfFour <: myEvenNumber
+```
 
 ## Ontologies with Base and Union Types
 The sole usage of primitive types (and equivalent types) is
