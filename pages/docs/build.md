@@ -139,9 +139,6 @@ To specify build options, run `cmake -S . -B build -D<option>=<value>`. Alternat
 The most relevant options are listed below.
 
  - `SOUFFLE_DOMAIN_64BIT` Enable(=`ON`)/disable(=`OFF`) 64-bit number values in Datalog tuples; default is `OFF`, i.e., domain size is 32 bit.
- - `SOUFFLE_FAST_DEBUG` Enable(=`ON`)/disable(=`OFF`) 'fast debug' mode; default is `ON`.
- - `SOUFFLE_NDEBUG` Enable(=`ON`)/disable(=`OFF`) runtime checks even in release mode; default is `OFF`.
- - `SOUFFLE_FAST_RELEASE` Enable(=`ON`)/disable(=`OFF`) fast release mode; default is `ON`.
  - `SOUFFLE_SANITISE_MEMORY` Enable(=`ON`)/disable(=`OFF`) memory sanitiser; default is `OFF`.
  - `SOUFFLE_SANITISE_THREAD` Enable(=`ON`)/disable(=`OFF`) thread sanitiser; default is `OFF`.
  - `SOUFFLE_SWIG` Enable(=`ON`)/disable(=`OFF`) SWIG language interface for various languages; default is `OFF`.
