@@ -383,15 +383,16 @@ You can enable the old legacy syntax using the command-line flag `--legacy`, but
 # Implementation Details 
 
 # Symbols 
-Symbols are maintained in the symbol table. The symbol converts an ordinal number to a string and vice versa. 
-The symbol table is defined [here](https://github.com/souffle-lang/souffle/blob/master/src/include/souffle/SymbolTable.h). 
+Symbols are maintained in the symbol table. A symbol is represented as an ordinal number, and the conversion between its string representation and its ordinal number is handled by the symbol table. 
+The source code of the symbol table can be found [here](https://github.com/souffle-lang/souffle/blob/master/src/include/souffle/SymbolTable.h). 
 In relations, the ordinal number is stored. In case, the actual string of a symbol is needed, Souffle looks up in the symbol table to translate the ordinal number to its string representation. Conversely, if a functor computes a new string or a new string is read by an input directive, the symbol table receives a new entry and an ordinal for this string is computed. 
 
 # Records 
-In the implementation, elements of a record are translated to a number.
-We records with the same arity are stored in the same record pool and 
-share the name number space.  During evaluation, if a record does not exist, 
-it is created on the fly. Considering the example as above:
+Records are maintained in the record table. Similar to symbols, a record 
+is stored using its ordinal number, and the conversion between the values of a 
+record and its ordinal number is handled by the record table. 
+The source code of the record table can be found [here](https://github.com/souffle-lang/souffle/blob/master/src/include/souffle/RecordTable.h). 
+Considering the example below,
 ```prolog
 .type Pair = [a: number, b: number]
 .decl A(p: Pair)
@@ -400,6 +401,7 @@ A([3,4]).
 A([4,5]).
 .output A
 ```
+generates three new record `[1,2]`,`[3,4]`, and `[4,5]`. 
 Internally, these records are represented and stored as shown in this diagram:
 <img src="img/record_table.png" alt="Record table example">
 
@@ -408,4 +410,4 @@ Internally, this is represented as follows:
 <img src="img/record_recursive.png" alt="Record table with recursion example">
 
 # ADT 
-TODO: Encoding
+TBD.
