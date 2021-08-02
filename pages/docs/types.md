@@ -91,9 +91,7 @@ Base types are subtypes, and union types permit merging several base types or ot
 type ontologies.
 
 ### Base Type
-Base types are defined by the directive `.type <name> <: <primitive-type>`  where
-`<name>` is the name of the base type and `<primitive-type>` is one of the
-four primitive types. For example,
+Base types are subtypes of primitive types. For example,
 ```prolog
 .type City <: symbol
 .type Town <: symbol
@@ -105,13 +103,12 @@ from the universe of possible symbols.
 
 ![location types as a subset of the universe](https://souffle-lang.github.io/img/universe_symbol_base.svg)
 
-
 ### Union Type
-The Union type unifies types including base and union types, as long as all are derived from the same primitive type. The union type declaration is given below
+The Union type unifies types including base and other union types. We assume that all unified types are derived from the same primitive type. The union type declaration is given below
 ```prolog
 .type <ident> = <ident-1> | <ident-2> | ... | <ident-k>
 ```
-where `<ident>` is the name of the union type and `<ident-...>` refers to the base and other union types used in the union type.  For example, the union type `Place`
+where `<ident>` is the name of the user-defined union type and `<ident-...>` refers to the base and other union types used in the union type.  For example, the union type `Place`
 ```prolog
 .type City <: symbol
 .type Town <: symbol
@@ -127,17 +124,17 @@ The union type `PostalCode`,
 ```
 unifies the base types `PostCodes` and `ZipCodes`.
 
-However, the following union type is not allowed
+In the following example, a union type is ill-defined,
 ```prolog
 .type Weekdays <: symbol
 .type Dates <: number
-.type Days = Weekdays | Dates // error
+.type Days = Weekdays | Dates // error: unified types origin from different primitive types
 ```
-and will result in a compile error, because `Weekdays` and `Dates` are not derived from the same primitive types.
+because `Weekdays` and `Dates` do not orginiate from the same primitive types.
 
 ![Place as a union of the location types in the universe of symbols](https://souffle-lang.github.io/img/universe_symbol_place.svg)
 
-We can bring these together to define attributes that better describe a relation, e.g.,
+In the following example, we show the use of a union type for a relation,
 ```prolog
 .type City <: symbol
 .type Town <: symbol
@@ -150,6 +147,7 @@ Data(“Sydney”, ”Ballina”, “Glenrowan”).
 .output Location
 Location(p) :- Data(p,_,_); Data(_,p,_); Data(_,_,p).
 ```
+where the set `Location` can contain values from the subtypes `City`,`Town`, and `Village`.
 
 There can be some pitfalls. As an example,  consider the following code fragment:
 ```prolog
@@ -157,7 +155,7 @@ There can be some pitfalls. As an example,  consider the following code fragment
 .type odd = number
 .decl A(x:even)
 .decl B(x:odd)
-A(X) :- B(X).
+A(X) :- B(X). // silent error 
 ```
 In this example, the types `even` and `odd` are defined as equivalence types for `number`. Thus, they are effectively equivalent to type `number`, and no typing error will result from the rule stated for relation `A`, which copies odd numbers into an even domain.
 
@@ -170,9 +168,9 @@ The above example will correctly produce a type clash
 
 .decl A(x:even)
 .decl B(x:odd)
-A(X) :- B(X). // type clash
+A(X) :- B(X). // error: type clash
 ```
-In this example, `even` and `odd` are defined as two disjoint sub-types of the type number, each exhibiting its own domain of values. From this definition Soufflé can deduce that the users intention was to define two disjoint sets and will report an error for the rule in the last line. For logic programmers it is crucial to accurately model the categories of values in form of a type system -- as has been illustrated by the example above.
+In this example, `even` and `odd` are defined as two disjoint sub-types of the type number, each exhibiting its own domain of values. From this definition Soufflé can deduce that the users intention was to define two disjoint (non-overlapping) sets and will report an error for the rule in the last line. For logic programmers it is crucial to accurately model the categories of values in form of a type system -- as has been illustrated by the example above.
 
 ## Record Types
 In classical Datalog, a relation is a two-dimensional data-structure consisting of a set of rows and fixed number of columns. 
