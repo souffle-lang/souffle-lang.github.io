@@ -22,7 +22,7 @@ Clang++ (with OpenMP support) can be used as an alternative for C++.
 
 ### Ubuntu/Debian Build
 
-On an Ubuntu/Debian system the following command installs the necessary dependencies to compile and build Soufflé:
+On a Ubuntu/Debian system the following command installs the necessary dependencies to compile and build Soufflé:
 
 ```
 sudo apt-get install cmake bison build-essential clang doxygen flex g++ git libffi-dev libncurses5-dev libsqlite3-dev make mcpp python sqlite zlib1g-dev
