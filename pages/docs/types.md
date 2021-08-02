@@ -236,9 +236,16 @@ the whole record with all its composed records will be either read or written.
 Note that union types involving records and sub-typing of record types are currently not supported in Souffle.
 
 ##  Algebraic Data Types (ADT)
-Alebraic Data Types are extended versions of records, which permit several type shapes for a given record type. 
 
-Examples:
+Alebraic Data Types are extended versions of records, which permit several type shapes for an ADT. Each shape in the ADT we call a branch. A branch is defined similar to a record, however, it has a unique branch identifier. 
+
+A record-type is defined as follows,
+```prolog
+.type <new-adt> = <branch-id> { <name_1>: <type_1>, ..., <name_k>: <type_k> } | ...
+```
+where `<new-adt>` is the name of the ADT. Each branch has a unique identifier `<branch-id>` followed by the fields in that branch. The fields of a branch are defined in curly braces. 
+
+Below is given an example for an ADT definition,
 ```prolog
 .type T = A { x: number }
         | B { x: symbol }
@@ -256,9 +263,10 @@ Examples:
 .type Tree = Empty {}
            | Node {t1: Tree, val: unsigned, t2: Tree}
 ```
-Branches are initialized by `$branch_constructor(args...)`, and in case of a branch without arguments `$branch_constructor`.
+Note that `nil` cannot be used for ADTs and termination branches for recursive definition must be expressed explicitly by the programmer. 
 
-For example, shows how to use branches in rules:
+In rules, branches can by constructes using the dollar sign followed by the branch identifier, i.e.,  `$branch_constructor(args...)`. In case there is a branch without arguments, the programmer can use `$branch_constructor`.
+The following example demonstrate how branch constructors can be used in rules:
 
 ```prolog
 .type Expression = Number { x : number }
@@ -280,10 +288,10 @@ the following type definition is illegal:
 ```prolog
 .type A = Number { x:number }
         | Symbol { v:symbol }
-.type B = Number { x:number }
-        | Symbol { v:symbol }
+.type B = Number { x:number }  // error: reuse of branch identifier
+        | Symbol { v:symbol }  // error: reuse of branch identifier
 ```
-Since the constructors `Number` and `Symbol` show up twice in ADT `A` and ADT `B`. 
+Since the branch identifier `Number` and `Symbol` are reused in the ADT `B`. 
 
 ## Type Conversion
 Soufflé permits type conversion with the as functor that takes as a first argument an functor expression and as a second argument the new type of the expression. 
