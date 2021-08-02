@@ -294,7 +294,7 @@ the following type definition is illegal:
 Since the branch identifier `Number` and `Symbol` are reused in the ADT `B`. 
 
 ## Type Conversion
-Soufflé permits type conversion with the as functor that takes as a first argument an functor expression and as a second argument the new type of the expression. 
+Soufflé permits type conversion in expressions/terms. The type of expression/term `<expr>` is converted to a new type `<new-type>` using the type cast `as(<expr>, <new-type>)` expression. The correctness of the cast is left to the user. 
 
 For example, 
 ```prolog
@@ -310,6 +310,7 @@ B(as(a, Variable)) :- A(a).
 ```
 
 Converts the expression `as(a, Variable)` to an expression of type `Variable` although `a` is of type `VariableOrStackIndex`. 
+Note that type casts between numbers and symbols are particular dangerous because strings for certain ordinal numbers may not exist. E.g., the fact `A(as(1034234234, symbol).` most likely will cause troubles in conjunction with an output directive since a symbol with ordinal number 1034234234 may not exist. 
 
 ## Syntax 
 
@@ -382,7 +383,9 @@ You can enable the old legacy syntax using the command-line flag `--legacy`, but
 # Implementation Details 
 
 # Symbols 
-TODO: Symbol Table 
+Symbols are maintained in the symbol table. The symbol converts an ordinal number to a string and vice versa. 
+The symbol table is defined [here](https://github.com/souffle-lang/souffle/blob/master/src/include/souffle/SymbolTable.h). 
+In relations, the ordinal number is stored. In case, the actual string of a symbol is needed, Souffle looks up in the symbol table to translate the ordinal number to its string representation. Conversely, if a functor computes a new string or a new string is read by an input directive, the symbol table receives a new entry and an ordinal for this string is computed. 
 
 # Records 
 In the implementation, elements of a record are translated to a number.
