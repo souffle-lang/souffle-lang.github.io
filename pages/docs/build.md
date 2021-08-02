@@ -119,7 +119,7 @@ For more options please type `ctest --help`.
 
 ### Installing Soufflé
 
-If you would like to install Soufflé in your system, specify an installation directory with `./configure --prefix=<install-dir>`. The executable, scripts, and header files will be stored in the directory ```<install-dir>```. Use an absolute path for ```<install-dir>```. Type 
+If you would like to install Soufflé in your system, specify an installation directory with `-DCMAKE_INSTALL_PREFIX=<install-dir>`. The executable, scripts, and header files will be stored in the directory ```<install-dir>```. Use an absolute path for ```<install-dir>```. Type 
 ```
  cd souffle
  cmake -S . -B build -DCMAKE_INSTALL_PREFIX=<install-dir>
