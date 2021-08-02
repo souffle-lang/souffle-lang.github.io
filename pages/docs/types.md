@@ -173,17 +173,17 @@ A(X) :- B(X). // error: type clash
 In this example, `even` and `odd` are defined as two disjoint sub-types of the type number, each exhibiting its own domain of values. From this definition Soufflé can deduce that the users intention was to define two disjoint (non-overlapping) sets and will report an error for the rule in the last line. For logic programmers it is crucial to accurately model the categories of values in form of a type system -- as has been illustrated by the example above.
 
 ## Record Types
-In classical Datalog, a relation is a two-dimensional data-structure consisting of a set of rows and fixed number of columns. 
-With a large code-base and/or a complex problem, it is convenient having more complex data-structures, including linked lists, trees in form of terms. 
-Souffle provides such an abstraction, which are typed records.  
-The intuition of records is similar to Pascal/C. 
 
-The syntax of a record-type definition is as follows:
+With a large code-base and/or a complex problem, it is convenient having more complex datatypes, including linked lists, trees, etc.  Soufflé provides such an abstraction, which are typed records. The intuition of records is similar to 
+Pascal/C. In logical languages it is also known as a functor/term; and a constructor in functional languages:
+
+A record-type is defined as follows,
 ```prolog
-.type <name> = [ <name_1>: <type_1>, ..., <name_k>: <type_k> ]
+.type <new-record> = [ <name_1>: <type_1>, ..., <name_k>: <type_k> ]
 ```
-
-Record types are combining several values into a structured value similar to a `struct` in C or a record in Pascal. In logical languages it is also known as a functor/term; and a constructor in functional languages. Record types permit to hold complex data in tuple elements. A record type may rely on other record types and allow recursive type declarations. 
+where `<new-record>` is the name of the newly defined record. The record combines several values into a 
+structured value.  Records permit to hold complex data in tuple elements. A record type may rely on other 
+record types and allow recursive type declarations. 
 
 An example record definition is given by
 ```prolog
@@ -206,7 +206,7 @@ as well as recursive, as in
     rest : Path
 ]
 ```
-Thus, a record may contain (directly or indirectly) fields of its own type. As a base case for recursive records, every record type contains the value `nil`, so we can represent lists as
+Thus, a record may contain (directly or indirectly) fields of its own type. Every record type has the `nil` value. As a base case we can use the `nil` value to construct lists, e.g.,
 ```prolog
 .type List = [
     head : number,
@@ -218,11 +218,7 @@ A([1,nil]).
 A([2,[3,nil]]).
 .output A
 ```
-Note that in rules, we use the bracket notation to describe a record as an argument. 
-
-Recursively-defined records are allowed in Soufflé.
-The recursion is terminated by the existence of a ``nil`` record.
-Consider the following:
+Note that in rules, we use the bracket notation to describe a record as an argument. Consider another record example below,
 ```prolog
 .type IntList = [next: IntList, x: number]
 .decl L(l: IntList)
@@ -232,12 +228,12 @@ L([r1,x+10]) :- L(r1), r1=[r2,x], x < 30.
 Flatten(x) :- L([_,x]).
 .output Flatten
 ```
+which transfers the lists into a set called `Flatten`. 
 
-Record types are supported by the I/O system. You can use ```.input``` and ```.output``` directives
+Note that record types are supported by the I/O system. You can use the ```.input``` and ```.output``` directives
 to print tuples of relations with record elements. If a records contains another record, 
 the whole record with all its composed records will be either read or written. 
 Note that union types involving records and sub-typing of record types are currently not supported in Souffle.
-
 
 ##  Algebraic Data Types (ADT)
 Alebraic Data Types are extended versions of records, which permit several type shapes for a given record type. 
