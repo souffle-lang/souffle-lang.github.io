@@ -82,11 +82,12 @@ introduces the user-defined type `myEvenNumber` that is a subtype of the primiti
 .type myEvenNumber <: number
 .type myMultiplesOfFour <: myEvenNumber
 ```
+In Soufflé's type system, we assume that the a subtype is a strict subset of its supertype. For example, in the above example we assume that `myEvenNumber` is a strict subset of all values of type `number` (i.e. it is not equivalent), and we assume that `myMultipleOfFour` is a strict subset of type `myEvenNumber`.
 
 ## Ontologies with Base and Union Types
 The sole usage of primitive types (and equivalent types) is
-hazardous for large projects. Binding wrong attributes via name equivalences is a common mistake in writing large logic code bases.
-Base types and union types have been introduced to avoid wrong bindings. Base types are subtypes of primitive types, and union types permit merging several base types or other union types. With base and union types, partial orders over subsets allow the formation of
+hazardous for large projects. Binding wrong attributes via variable name bindings in rules is a common mistake in writing large logic code bases. Soufflé uses base types in the form of subtypes and union types to avoid wrong bindings. 
+Base types are subtypes, and union types permit merging several base types or other union types. With base and union types, partial orders over subsets allow the formation of
 type ontologies.
 
 ### Base Type
