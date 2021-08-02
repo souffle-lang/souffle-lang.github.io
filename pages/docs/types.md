@@ -403,10 +403,12 @@ A([4,5]).
 ```
 generates three new record `[1,2]`,`[3,4]`, and `[4,5]`. 
 Internally, these records are represented and stored as shown in this diagram:
+
 <img src="img/record_table.png" alt="Record table example">
 
 For the above example, an ``IntList`` contains a reference to the next element, which is an ``IntList`` itself.
 Internally, this is represented as follows:
+
 <img src="img/record_recursive.png" alt="Record table with recursion example">
 
 ## ADT 
