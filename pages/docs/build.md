@@ -136,7 +136,7 @@ the Soufflé commands ```souffle``` and ```souffle-profile``` are available to t
 
 To specify build options, run `cmake -S . -B build -D<option>=<value>`. Alternatively, run `ccmake build` to start cmake with a terminal GUI interface that lets you configure the options.
 
-The most relevant options are given below.
+The most relevant options are listed below.
 
  - `SOUFFLE_DOMAIN_64BIT` Enable(=`ON`)/disable(=`OFF`) 64-bit number values in Datalog tuples; default is `OFF`, i.e., domain size is 32 bit.
  - `SOUFFLE_FAST_DEBUG` Enable(=`ON`)/disable(=`OFF`) 'fast debug' mode; default is `ON`.
