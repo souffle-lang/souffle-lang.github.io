@@ -1,5 +1,5 @@
 ---
-title: Datalog
+title: Rules
 permalink: /rules
 sidebar: docs_sidebar
 folder: docs
@@ -47,7 +47,7 @@ A(x,y) :- B(x,y).
 C(x,y) :- B(x,y). 
 ```
 
-# Negation in Rules
+## Negation in Rules
 
 A rules of the form
 ```
@@ -70,7 +70,7 @@ A(x,y) :- R(x), Scope(y), !S(y).
 ```
 where the relation "Scope" defines the set of values that "y" can take.
 
-# Disjunction
+## Disjunction
 
 A rule of the form
 ```
@@ -79,5 +79,9 @@ LivesAt(person, building) :-
     ( person=owner ; Housemate(owner, person) ).
 ```
 expresses the rule that a person lives in a building if they are the owner, or a housemate of the owner. Thus the conditions `person=owner` and `Housemate(owner, person)` are joined by `;` to indicate that either must hold.
+
+## Syntax 
+
+
 
 {% include links.html %}
