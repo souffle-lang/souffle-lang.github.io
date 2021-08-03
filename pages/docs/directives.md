@@ -18,7 +18,7 @@ The default input source is a tab-separated file for a relation where
 each row in the tab-separated file represents a fact in the relation. 
 
 For example, 
-```
+```prolog
 .decl A(a:number,b:number)
 .input A 
 ```
@@ -28,17 +28,17 @@ a tab-separated file `A.facts`.
 
 
 For example,
-```
+```prolog
 .decl A(a:number,b:number)
 .input A(IO=file, filename="path/to/infile", columns="4:7", delimiter=",")
 ```
 This will load the relation data from file (the default if no IO type is specified) using the filename "path/to/infile" and a comma as a delimiter, and will use columns four and seven (zero-indexed) for input data.
-```
+```prolog
 .decl A(a:number,b:number)
 .input A(IO=stdin, columns="4:7", delimiter=",")
 ```
 Data can also be read from stdin, and again the delimiter and columns to read can be specified.
-```
+```prolog
 .decl A(a:number,b:number)
 .input A(IO=sqlite, dbname="path/to/sqlite3db")
 ```
@@ -50,7 +50,7 @@ sqlite3 database should have a table named `_edge` containing the data and a
 view named `edge` that returns the data from `_edge`.
 
 A more detailed specification for each relation can be defined in the input directive. 
-```
+```prolog
 .input <relation id> (IO=[file|stdin|sqlite] [optional parameters])
 ```
 
@@ -85,24 +85,24 @@ The path to the sqlite3 database. Note that if the `-F<path>` command line optio
 The output relations of a Datalog program are, by default, written to a tab separated file with name `<relation name>.csv`, located in the current directory. If the parameter `-D<output-dir>` is given then the default output directory will be changed to that given. `-D-` can be used to redirect all output to stdout.
 
 For example, the relation  
-```
+```prolog
 .decl result(a:number, b:number, c:symbol)
 .output result
 ```
 has three number columns that are written to the file `result.csv` in the current directory, or `<output-dir>` when using the flag `-D <output-dir>`.
 
 As for input more detailed specification for each relation can be defined in the output directive. For example,
-```
+```prolog
 .decl A(a:number,b:number)
 .output A(IO=file, filename="path/to/outfile", delimiter=":")
 ```
 This will store the relation data to file (the default if no IO type is specified) using the filename "path/to/outfile" and a colon as a delimiter.
-```
+```prolog
 .decl A(a:number,b:number)
 .output A(IO=stdout, delimiter=",")
 ```
 Data can also be sent to stdout, and again the delimiter can be specified.
-```
+```prolog
 .decl A(a:number,b:number)
 .output A(IO=sqlite, dbname="path/to/sqlite3db")
 ```
@@ -112,7 +112,7 @@ This is backed by a database table to store the symbol table and a table to stor
 
 The output can be parameterised:
 
-```
+```prolog
 .output <relation id> (IO=[file|stdout|sqlite] [optional parameters])
 ```
 
@@ -142,7 +142,7 @@ Attributes types are signed numbers, unsigned numbers, float, strings, and recor
 
 Records are written in a recursive format for input and output directives. A recursive data-structure is expanded completely
 and printed.  For example:
-```
+```prolog
 .type List = [data:number, next:List]
 .decl A(l:List,y:number)
 A([1,[2,[3,nil]]],10). 
@@ -159,7 +159,7 @@ l	y
 ```
 
 To read or write arbitrary complex records and symbols without ambiguity, you may use the `rfc4180=true` I/O option. For example:
-```
+```prolog
 .type ListOfSymbols = [data:symbol, next:ListOfSymbols]
 .decl A(l:ListOfSymbols,y:symbol,z:number)
 A(["comma=,",["double-quote=\"",["space= ",["bracket=]",["nil",nil]]]]],"double-quote=\" comma=,",10).
@@ -198,7 +198,7 @@ used for debugging purposes only.
 The main application for the limit-size directive is to debug non-terminating or slow-terminating programs.
 After the limit-size directive is set, the program will terminate early and the output of the program
 can be inspected.  For example, the program
-```
+```prolog
 .decl A(x:number)
 A(1).
 A(x+1) :- A(x), x< 1000.
@@ -250,12 +250,12 @@ directive_value ::= STRING | IDENT | NUMBER | 'true' | 'false'
 
 ### Legacy Syntax
 Older versions supported I/O qualifiers in the relation declaration such as 
-```
+```prolog
 .decl A(x:number, y:symbol) input
 .decl B(x:number, y:symbol) output
 ```
 that should be rewritten to 
-```
+```prolog
 .decl A(x:number, y:symbol)
 .input A
 .decl B(x:number, y:symbol) 
