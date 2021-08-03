@@ -35,7 +35,7 @@ B(x,z) :- A(x,y), B(y,z).
 ```
 Relation ```B``` has two rules: ```B(x,y) :- A(x,y).``` and ```B(x,y) :- A(x,y), B(y,z).``` The first rule says, there is a tuple in `B` if this tuple shows up in `A`. The second rule says there is a tuple `(x,z)` in `B`, if there is a tuple in `(x,y)` in `A` and a tuple `(y,z)` in `B`.
 
-Rules may have qualifiers, which are used to change the execution behavior / semantics. Qualifiers are used to set a query plan for a rule. For example, the qualifier `.strict` forces the query planner to use the lexicographical order of the rule (how it is written). The qualifer `.plan` let's the programmer chose a query plan for a rule. There are other qualifiers that are used to override rules of the a component (cf. [component model](components)). 
+Rules may have qualifiers, which are used to change the execution behavior / semantics. Qualifiers are used to set a query plan for a rule. The qualifer `.plan` let's the programmer chose a query plan for a rule. There are other qualifiers that are used to override rules of the a component (cf. [component model](components)). 
 
 Rules can have multiple heads:
 ```
