@@ -211,7 +211,7 @@ This is a consequence of the limitsize directive that stops the fix-point comput
 
 Note that if there are other mutual recursive relations in the same stratum, they will be stopped as well. 
 
-# Legacy Syntax
+## Legacy Syntax
 Older versions supported I/O qualifiers in the relation declaration such as 
 ```
 .decl A(x:number, y:symbol) input
