@@ -5,11 +5,11 @@ sidebar: docs_sidebar
 folder: docs
 ---
 
-# Relation Representation in Souffle
+## Relation Representation in Souffle
 
 Relations can be represented using different internal data structures in Soufflé, each exhibiting different performance characteristics. By default, the B-tree is used to store tuples of a relation. However, this default selection can be overridden by users, by specifying a relation qualifier. Currently, the possible data structures are B-tree, Brie, and Eqrel (for equivalence relations).
 
-## B-tree Relations 
+### B-tree Relations 
 
 The B-tree data structure is used by default, however the *direct* flavour (see below) can be forced by adding the `btree` qualifier to a relation declaration:
 ```
@@ -24,7 +24,7 @@ Note, however, that adding the `btree` qualifier to the relation declaration for
 
 More details on the Soufflé B-tree can be found in [this paper](https://doi.org/10.1145/3293883.3295719).
 
-## Brie Relations 
+### Brie Relations 
 
 The Brie data structure is a specialised data structure designed for *dense* data. It can be used by adding the `brie` qualifier to a relation declaration.
 ```
@@ -47,7 +47,7 @@ The Brie data structure in Soufflé similarly provides a performance benefit for
 
 More details on the Brie can be found in [this paper](https://doi.org/10.1145/3303084.3309490).
 
-## Equivalence Relations
+### Equivalence Relations
 
 An equivalence relation is a special kind of binary relation which exhibits three properties: *reflexivity*, *symmetry*, and *transitivity*. An equivalence relation could be expressed in Datalog as follows:
 ```
@@ -69,7 +69,7 @@ eqrel_fast(a,b) :- rel1(a), rel2(b).
 
 More details on Eqrel can be found in [this paper](https://doi.org/10.1109/PACT.2019.00015).
 
-## Nullaries
+### Nullaries
 
 Nullary relations are special relations. Their arity is zero, i.e., they don't have attributes. 
 They are defined as 
@@ -81,7 +81,7 @@ as a boolean variable.
 
 Semantically, they can be seen as a proposition rather than a relation. 
 
-## Auto Selection
+### Auto Selection
 In Soufflé, the default data structure is the B-tree, with the *direct* version for relations with arity ≤ 6, or the *indirect* version for relations with arity > 6.
 
 ## Syntax 
@@ -128,7 +128,6 @@ can be either a single attribute or a subset of attributes.
 ```
 choice_domain ::= ( 'choice-domain' ( IDENT | '(' IDENT ( ',' IDENT )* ')' ) ( ',' ( IDENT | '(' IDENT ( ',' IDENT )* ')' ) )* )?
 ```
-
 
 ### Legacy Syntax
 
