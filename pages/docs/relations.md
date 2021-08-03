@@ -5,11 +5,11 @@ sidebar: docs_sidebar
 folder: docs
 ---
 # Relations
-In Souffle, relations declaraitons define the domain of the relations, their constraints, and the execution behaviour. Souffle uses different relation representations internally that can be chosen by the programmer. Inlining, magic-set transformations, and component behaviour is also controlled by
-relation declarations. 
+In Souffle, relations declarations define the domain of relations, their constraints, and their execution behaviour. Souffle uses different relation representations internally that can be chosen by the programmer. Inlining, magic-set transformations, and component behaviour is also controlled by
+the relation declarations.
 
 ## Relation Representation in Souffle
-Relations can be represented using different internal data structures in Soufflé, each exhibiting different performance characteristics. By default, the B-tree is used to store tuples of a relation. However, this default selection can be overridden by users, by specifying a relation qualifier. Currently, the possible data structures are B-tree, Brie, and Eqrel (for equivalence relations).
+Relations can be represented using different internal data structures in Soufflé, each exhibiting different performance characteristics. By default, the B-tree is used to store tuples of a relation. However, this default representation can be overridden by users, by specifying a relation qualifier for an alternative representation. Currently, the possible data structures are B-tree, Brie, and Eqrel (for equivalence relations).
 
 ### B-tree Relations 
 The B-tree data structure is used by default, however the *direct* flavour (see below) can be forced by adding the `btree` qualifier to a relation declaration:
@@ -17,11 +17,9 @@ The B-tree data structure is used by default, however the *direct* flavour (see 
 .decl A(x:number, y:symbol) btree
 ```
 
-The B-tree is a good default data structure that performs reasonably well in general use cases. In Soufflé, two flavours of the B-tree are offered. The first is a *direct* version, where tuple data is stored directly in the B-tree. The second is an *indirect* version, where the B-tree stores pointers to an external table data structure which holds the actual tuple data.
+The B-tree is the default data structure, which performs reasonably well in general use cases. In Soufflé, two flavours of the B-tree are offered. The first is a *direct* version, where tuple data is stored directly in the B-tree. The second is an *indirect* version, where the B-tree stores pointers to an external table data structure which holds the actual tuple data.
 
-By default, a relation without qualifiers will be *direct* if it has arity ≤ 6, and *indirect* if it has arity > 6. This choice is made because larger arity tuples take more space in the B-tree data structure, so cache coherence can be improved by using pointers instead.
-
-Note, however, that adding the `btree` qualifier to the relation declaration forces the *direct* B-tree.
+By default, a relation without qualifiers will be *direct* if it has arity ≤ 6, and *indirect* if it has arity > 6. This choice is made because larger arity tuples take more space in the B-tree data structure, so cache coherence can be improved by using pointers instead (and storing the tuples in an efficient list data structure. If  the `btree` qualifier is specified for a relation, the *direct* B-tree representation is used even if the arity > 6. 
 
 More details on the Soufflé B-tree can be found in [this paper](https://doi.org/10.1145/3293883.3295719).
 
@@ -43,7 +41,7 @@ In this case, all tuples share the common prefix `0, 0`, and differ only in the 
 ```
 is not dense, and the prefix tree provides no benefit.
 
-The Brie data structure in Soufflé similarly provides a performance benefit for highly dense data. However, it is slower than the B-tree in the average case, and so its use must be considered carefully.
+The Brie data structure in Soufflé similarly provides a performance benefit for highly dense data (arity <= 2). However, it is slower than the B-tree in the average case, and so its use must be considered carefully and its performance will depend on the data in the relation.
 
 More details on the Brie can be found in [this paper](https://doi.org/10.1145/3303084.3309490).
 
@@ -58,15 +56,14 @@ equivalence(a, b) :- equivalence(b, a).     // symmetry
 equivalence(a, c) :- equivalence(a, b), equivalence(b, c).  // transitivity
 ```
 
-However, this expression of an equivalence relation would require a quadratic number of tuples to be stored. In Soufflé, the Eqrel data structure provides a linear representation of equivalence relations, by using a union-find based algorithm. Eqrel can be used by adding the `eqrel` qualifier to a relation declaration.
+However, this expression of an equivalence relation may require a quadratic number of tuples in the size of the input domain. In Soufflé, the Eqrel data structure provides a linear representation of equivalence relations, by using a union-find based algorithm. The `eqrel` qualifier specifies that a relation is an equivalence relation relation and it becomes a self-computing data-structure. The rules for reflexivity, symmetry, and transitivity can be ommitted. 
 
-The following example demonstrates the use of Eqrel, and is semantically equivalent to the example above. However, using Eqrel carries at best a quadratic speed and memory improvement over the above example.
+The following example demonstrates the use of an equivalence relation, and is semantically equivalent to the example above with the benefit of using less memory and faster execution time.
 ```
 .decl eqrel_fast(x : number, y : number) eqrel
 eqrel_fast(a,b) :- rel1(a), rel2(b).
 ```
-
-More details on Eqrel can be found in [this paper](https://doi.org/10.1109/PACT.2019.00015).
+More details on equivalence relation in Souffle can be found in [this paper](https://doi.org/10.1109/PACT.2019.00015).
 
 ### Nullaries
 Nullary relations are special relations. Their arity is zero, i.e., they don't have attributes. 
@@ -75,9 +72,7 @@ They are defined as
 .decl A()
 ```
 These relations are either empty or contain the empty tuple `()`. Internatlly, they are implemented 
-as a boolean variable. 
-
-Semantically, they can be seen as a proposition rather than a relation. 
+as a boolean variable.  Semantically, they can be seen as a proposition rather than a relation. 
 
 ### Auto Selection
 In Soufflé, the default data structure is the B-tree, with the *direct* version for relations with arity ≤ 6, or the *indirect* version for relations with arity > 6.
@@ -179,37 +174,30 @@ Inlining works in all situations, provided the following conditions are met:
 * At the moment, relations appearing in aggregators cannot be inlined, though this is only a restriction in practice due to the way certain functors are handled.
 
 ## Override 
-The relation qualifier `override` controlls whether rules in a relation which is defined in a component can be overwritten in a sub-component. The component model of Souffle is described [here](components).
+The relation qualifier `override` controls whether rules in a relation that is defined in a component, can be overwritten in a sub-component. 
+The component model of Souffle is described [here](components).
 
 ### Choice Domain / Functional-Dependency Constraint
-
-Programmers can impose a functional dependency constraint for a relation to support a notion of non-determinism.
-With choice, it is now much easier to express worklist algorithm in Souffle by specifying functional dependencies on the relations.
+Programmers can impose a functional dependency constraint on relation. 
+With functional dependencies, non-determistic selections are available for use-cases 
+such as expressing worklist algorithm in Souffle.
 
 A functional dependency `x -> y` on relation `R(x:number, y:number)` ensures that
 each `x` in `R` will uniquely define a value of `y`.
-For example, during the computation, if a set of tuples `{(1,1), (1,2), (1,3)}`
-are about to be inserted into `R`, Souffle only chooses arbitrary one of them
-(hence the "non-determinism"), since inserting more than one would break the
-functional dependency.
+For example, during the evaluation, if a set of tuples `{(1,1), (1,2), (1,3)}`
+are about to be inserted into `R`, Souffle only chooses arbitrary one of them 
+(the first one in the evaluation order). Any subsequent functionally dependent 
+tuples will be ommitted. 
 
-Functional dependency can be enforced on relation using the keyword `choice-domain` during relation
-declaration in Souffle with the following syntax:
-
-```
-<relation-declaration>      ::= ".decl" <relation-name> "(" <attributes> ")" <choice-domain>
-<choice-domain>             ::= "" | "choice-domain" <constraint> { "," <constraint>}
-<constraint>                ::= <variable> | "(" <variable> { "," <variable> } ")"
-```
-
-Note here, for the sake of brevity, our syntax omits the co-domain (i.e. the right hand side of the arrow). 
-Therefore, a choice-domain `D` for a relation with attribute set `X` implicitly defines a 
-functional dependency of `D -> X \ D`.
+Functional dependency is defined using the keyword `choice-domain` in a relation
+declaration.  For the sake of brevity, our syntax omits the co-domain (i.e. the
+right hand side of the arrow).  Therefore, a choice-domain `D` for a relation with 
+attribute set `X` implicitly defines a functional dependency of `D -> X \ D`.
 
 Consider the following example,
 ```
 .decl edge(u:symbol, v:symbol)
-.decl st(u:symbol, v:symbol) choice-domain v
+.decl st(u:symbol, v:symbol) choice-domain v // functional dependency: v -> u 
 .decl startNode(x:symbol)
 
 st("root", x) :- startNode(x).
@@ -226,7 +214,7 @@ Here is another example,
 ```
 .decl student (s:symbol, majr:symbol, year:number)
 .decl professor (s:symbol, majr:symbol)
-.decl advisor (s:symbol, year:number, p:symbol) choice-domain (s, year)
+.decl advisor (s:symbol, year:number, p:symbol) choice-domain (s, year) // functional dependency: (s,year) -> p
 
 advisor(s, y, p) :- student(s, y, m), professor(p, m).
 ```
@@ -237,11 +225,11 @@ i.e., student from each year is assigned to a professor only once.
 In the following example,
 ```
 .decl d(x:symbol)
-.decl list(prev:symbol, next:symbol) choice-domain prev, next
+.decl list(prev:symbol, next:symbol) choice-domain prev, next // functional dependencies: prev -> next & next -> prev
 
 list(p, n) :- d(n), list(_, p).
 ```
-the  an unordered set of elements is ordered using a list.
+an unordered set of elements is ordered using a list.
 The program effectively computes a total order over the set.
 The rule states that, `p` is before `e` if `p` is already assigned into the total order list.
 With the help of the two choice-domains `prev` and `next`: 
@@ -249,13 +237,10 @@ With the help of the two choice-domains `prev` and `next`:
 it; similarly, `next` makes sure for each element, there can be only one unique
 element before it. Those constraints defines the property of a total order set.
 
-
 ## Syntax 
-
 In the following, we define type declarations in Souffle more formally using [syntax diagrams](https://en.wikipedia.org/wiki/Syntax_diagram) and [EBNF](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form). The syntax diagrams were produced using [Bottlecaps](https://www.bottlecaps.de/rr/ui).
 
 ### Type Name 
-
 Souffle has pre-defined types such as `number`, `symbol`, `unsigned`, and `float`. Used-defined types have a name. If a type has been defined in a component, the type can be still accessed outside the component using a qualified name. 
 
 ![Type Name](https://souffle-lang.github.io/img/type_name.svg)
@@ -264,7 +249,6 @@ type_name ::=  "number" | "symbol" |"unsigned" | "float"  | IDENT ("." IDENT )*
 ```
 
 ### Attribute Declaration
-
 An attribute binds a name with a type. 
 
 ![Attribute](https://souffle-lang.github.io/img/attribute.svg)
@@ -274,7 +258,6 @@ attribute ::= IDENT ":" type_name
 ```
 
 ### Relation Declaration
-
 A relation declaration declares one or more relations. Each relation has a fixed number of attributes.
 The definition of attributes is followed by relation qualifiers. 
 
@@ -285,7 +268,6 @@ relation_decl ::= '.decl' IDENT ( ',' IDENT )* '(' attribute ( ',' attribute )* 
 ```
 
 ### Choice-Domain
-
 A choice-domain imposes a functional dependency constraint. The functional dependency constraint is expressed by its domain only. A domain 
 can be either a single attribute or a subset of attributes. 
 
@@ -296,7 +278,6 @@ choice_domain ::= ( 'choice-domain' ( IDENT | '(' IDENT ( ',' IDENT )* ')' ) ( '
 ```
 
 ### Legacy Syntax
-
 The syntax of Souffle changed over time. Older code bases can be still used with 
 modern versions of Souffle.  In older versions of Soufflé we used
 ```prolog
