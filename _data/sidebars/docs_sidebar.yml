@@ -75,6 +75,10 @@ entries:
       url: /types
       output: web
 
+    - title: Rules
+      url: /rules
+      output: web
+
     - title: Strings
       url: /strings
       output: web
