@@ -228,11 +228,15 @@ qualified_name ::= IDENT ( '.' IDENT )*
 
 ![Directive](https://souffle-lang.github.io/img/directive.svg)
 
+A directive changes the I/O or execution behaviour for a relation or a list or relations. The relation qualifier specifies the type of the directive, i.e., input, output, printsize, and limitsize. Relations in a directive are separated by a comma symbol. Each directive may have parameters. The parameters can be ommitted. Parameters are listed in parenthesis. Parameter has an identifier which is assigned a directive value. 
+
 ```ebnf
 directive ::= directive_qualifier qualified_name ( ',' qualified_name )* ( '(' ( IDENT '=' directive_value ( ',' IDENT '=' directive_value )* )? ')' )?
 ```
 
 ### Directive Qualifier
+
+A directive qualifier defines the type of the directive. 
 
 ![Directive Qualifier](https://souffle-lang.github.io/img/directive_qualifier.svg)
 
@@ -241,6 +245,8 @@ directive_qualifier  ::= '.input' | '.output' | '.printsize' | '.limitsize'
 ```
 
 ### Directive Value
+
+A directive value defines values of parameters. They can either be identifiers, symbols, numbers, and `true` and `false` values.  
 
 ![Directive Value](https://souffle-lang.github.io/img/directive_value.svg)
 
