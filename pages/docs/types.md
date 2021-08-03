@@ -321,7 +321,7 @@ In the following, we define type declarations in Souffle more formally using [sy
 A type declaration binds a name with a new type. The type is either a subtype, an equivalence/union type, a record type, of an ADT.
 
 ![Type Declaration](https://souffle-lang.github.io/img/type_decl.svg)
-```
+```ebnf
 type_decl ::= TYPE IDENT ("<:" type_name | "=" ( type_name ( "|" type_name )* | record_list | adt_branch ( "|" adt_branch )* ))
 ```
 
@@ -330,7 +330,7 @@ type_decl ::= TYPE IDENT ("<:" type_name | "=" ( type_name ( "|" type_name )* | 
 Souffle has pre-defined types such as `number`, `symbol`, `unsigned`, and `float`. Used-defined types have a name. If a type has been defined in a component, the type can be still accessed outside the component using a qualified name. 
 
 ![Type Name](https://souffle-lang.github.io/img/type_name.svg)
-```
+```ebnf
 type_name ::=  "number" | "symbol" |"unsigned" | "float"  | IDENT ("." IDENT )*
 ```
 
@@ -339,7 +339,7 @@ type_name ::=  "number" | "symbol" |"unsigned" | "float"  | IDENT ("." IDENT )*
 A record declaration consists of a list of attributes. Record declarations can be recursive.
 
 ![Record Declaration](https://souffle-lang.github.io/img/record_list.svg)
-```
+```ebnf
 record_list ::= "[" attribute ( "," attribute)* "]"
 ```
 
@@ -349,7 +349,7 @@ An ADT consists of a several ADT branches. An ADT branch consists of a list of a
 is associated with a branch identifier. The branch identifier must be unique in Souffle.
 
 ![ADT Branch](https://souffle-lang.github.io/img/adt_branch.svg)
-```
+```ebnf
 adt_branch ::= IDENT "{" attribute ( "," attribute)* "}"
 ```
 
@@ -359,7 +359,7 @@ An attribute binds a name with a type.
 
 ![Attribute](https://souffle-lang.github.io/img/attribute.svg)
 
-```
+```ebnf
 attribute ::= IDENT ":" type_name 
 ```
 
