@@ -75,20 +75,16 @@ entries:
       url: /types
       output: web
 
+    - title: Facts
+      url: /facts
+      output: web
+
     - title: Rules
       url: /rules
       output: web
 
-    - title: Strings
-      url: /strings
-      output: web
-
-    - title: Arithmetic
-      url: /arithmetic
-      output: web
-
-    - title: Components
-      url: /components
+    - title: Constraints & Expressions
+      url: /constr_expr
       output: web
 
     - title: Aggregates
@@ -99,17 +95,21 @@ entries:
       url: /directives
       output: web
 
+    - title: Components
+      url: /components
+      output: web
+
+    - title: User-Defined Functors
+      url: /functors
+      output: web
+
+    - title: Pragmas
+      url: /pragmas
+      output: web
+
   - title: Advanced Topics
     output: web, pdf
     folderitems:
-
-    - title: Swig
-      url: /swig
-      output: web
-      
-    - title: Synthesis
-      url: /translate
-      output: web
 
     - title: Tuning
       url: /tuning
@@ -131,8 +131,12 @@ entries:
       url: /interface
       output: web
 
-    - title: User-Defined Functors
-      url: /functors
+    - title: Swig
+      url: /swig
+      output: web
+      
+    - title: Synthesis
+      url: /translate
       output: web
 
   - title: Misc.
