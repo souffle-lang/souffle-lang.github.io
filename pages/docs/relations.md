@@ -82,10 +82,6 @@ Semantically, they can be seen as a proposition rather than a relation.
 ### Auto Selection
 In Soufflé, the default data structure is the B-tree, with the *direct* version for relations with arity ≤ 6, or the *indirect* version for relations with arity > 6.
 
-## Override 
-The relation qualifier `override` controlls whether rules in a relation which is defined in a component can be overwritten in a sub-component. The component model of Souffle is described [here](components).
-
-
 ## Magic-Set Transformation
 The relation qualifier `magic` enables the magic-set transformation for a relation. A magic set transformation specialies the evaluation for a Datalog program for a given set of output relations. The magic-set transformation does not always lead to better performance. Souffle provides the relation qualifier `magic` to control the magic-set transformation. More information can be found [here](magicset).
 
@@ -182,6 +178,8 @@ Inlining works in all situations, provided the following conditions are met:
 * The counter argument, `$`, cannot be used as an argument or in the rule body of an inlined relation.
 * At the moment, relations appearing in aggregators cannot be inlined, though this is only a restriction in practice due to the way certain functors are handled.
 
+## Override 
+The relation qualifier `override` controlls whether rules in a relation which is defined in a component can be overwritten in a sub-component. The component model of Souffle is described [here](components).
 
 ## Syntax 
 
