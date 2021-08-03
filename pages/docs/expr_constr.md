@@ -195,4 +195,54 @@ C(i,j) :- B(c,i), B(c,j), i!=j.
 ```
 The above example does not output anything.
 
+## Syntax 
+In the following, we define constraints and argument values in Souffle more formally using [syntax diagrams](https://en.wikipedia.org/wiki/Syntax_diagram) and [EBNF](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form). The syntax diagrams were produced using [Bottlecaps](https://www.bottlecaps.de/rr/ui).
+
+### Constraint
+
+![constraint](https://souffle-lang.github.io/img/constraint.svg)
+
+```ebnf
+constraint ::= argument ( '<' | '>' | '<=' | '>=' | '=' | '!=' ) argument
+           | ( 'match' | 'contains' ) '(' argument ',' argument ')'
+           | 'true'
+           | 'false'
+```
+
+
+### Argument List
+
+![Argument List](https://souffle-lang.github.io/img/argument_list.svg)
+
+```ebnf
+argument_list ::= ( argument ( ',' argument )* )?
+```
+
+### Argument Value
+
+![Argument](https://souffle-lang.github.io/img/argument.svg)
+
+```ebnf
+argument ::= 
+      STRING
+    | FLOAT
+    | UNSIGNED
+    | NUMBER
+    | '_'
+    | '$' ( IDENT ( '(' argument_list ')' )? )?
+    | IDENT
+    | 'nil'
+    | '[' argument_list ']'
+    | ( '(' argument | 'as' '(' argument ',' type_name | ( '@' IDENT | intrinsic_functor ) '(' argument_list ) ')'
+    | aggregator
+    | ( '-' | 'bnot' | 'lnot' | argument ( '+' | '-' | '*' | '/' | '%' | '^' | 'land' | 'lor' | 'lxor' | 'band' | 'bor' | 'bxor' | 'bshl' | 'bshr' | 'bshru' ) ) argument     
+```
+### Intrinsic Functor
+
+![Intrinsic Functor](https://souffle-lang.github.io/img/intrinsic_functor.svg)
+
+```ebnf
+intrinsic_functor ::= 'cat' | 'ord' | 'range' | 'strlen' | 'substr' | 'to_float' | 'to_number' | 'to_string' | 'to_unsigned'
+```           
+
 {% include links.html %}
