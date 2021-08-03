@@ -4,13 +4,14 @@ permalink: /relations
 sidebar: docs_sidebar
 folder: docs
 ---
+# Relations
+In Souffle, relations declaraitons define the domain of the relations, their constraints, and the execution behaviour. Souffle uses different relation representations internally that can be chosen by the programmer. Inlining, magic-set transformations, and component behaviour is also controlled by
+relation declarations. 
 
 ## Relation Representation in Souffle
-
 Relations can be represented using different internal data structures in Soufflé, each exhibiting different performance characteristics. By default, the B-tree is used to store tuples of a relation. However, this default selection can be overridden by users, by specifying a relation qualifier. Currently, the possible data structures are B-tree, Brie, and Eqrel (for equivalence relations).
 
 ### B-tree Relations 
-
 The B-tree data structure is used by default, however the *direct* flavour (see below) can be forced by adding the `btree` qualifier to a relation declaration:
 ```
 .decl A(x:number, y:symbol) btree
@@ -25,7 +26,6 @@ Note, however, that adding the `btree` qualifier to the relation declaration for
 More details on the Soufflé B-tree can be found in [this paper](https://doi.org/10.1145/3293883.3295719).
 
 ### Brie Relations 
-
 The Brie data structure is a specialised data structure designed for *dense* data. It can be used by adding the `brie` qualifier to a relation declaration.
 ```
 .decl A(x:number, y:symbol) brie
@@ -48,7 +48,6 @@ The Brie data structure in Soufflé similarly provides a performance benefit for
 More details on the Brie can be found in [this paper](https://doi.org/10.1145/3303084.3309490).
 
 ### Equivalence Relations
-
 An equivalence relation is a special kind of binary relation which exhibits three properties: *reflexivity*, *symmetry*, and *transitivity*. An equivalence relation could be expressed in Datalog as follows:
 ```
 .decl equivalence(x:number, y:number)
@@ -70,7 +69,6 @@ eqrel_fast(a,b) :- rel1(a), rel2(b).
 More details on Eqrel can be found in [this paper](https://doi.org/10.1109/PACT.2019.00015).
 
 ### Nullaries
-
 Nullary relations are special relations. Their arity is zero, i.e., they don't have attributes. 
 They are defined as 
 ```
@@ -84,8 +82,14 @@ Semantically, they can be seen as a proposition rather than a relation.
 ### Auto Selection
 In Soufflé, the default data structure is the B-tree, with the *direct* version for relations with arity ≤ 6, or the *indirect* version for relations with arity > 6.
 
-## Inlining Relations
+## Override 
+The relation qualifier `override` controlls whether rules in a relation which is defined in a component can be overwritten in a sub-component. The component model of Souffle is described [here](components).
 
+
+## Magic-Set Transformation
+The relation qualifier `magic` enables the magic-set transformation for a relation. A magic set transformation specialies the evaluation for a Datalog program for a given set of output relations. The magic-set transformation does not always lead to better performance. Souffle provides the relation qualifier `magic` to control the magic-set transformation. More information can be found [here](magicset).
+
+## Inlining Relations
 Souffl&eacute; offers the ability to manually select one or more program relations to be inlined, i.e., a substitution of the relations are performed. This may lead to performance gains by re-computing results rather than storing them. For example, 
 
 ```
@@ -177,6 +181,7 @@ Inlining works in all situations, provided the following conditions are met:
     * The restriction is theoretically necessary, as otherwise no ordering for the inlining process can be imposed such that all relations in the cycle are removed.
 * The counter argument, `$`, cannot be used as an argument or in the rule body of an inlined relation.
 * At the moment, relations appearing in aggregators cannot be inlined, though this is only a restriction in practice due to the way certain functors are handled.
+
 
 ## Syntax 
 
