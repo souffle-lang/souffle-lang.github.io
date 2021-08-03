@@ -211,7 +211,32 @@ This is a consequence of the limitsize directive that stops the fix-point comput
 
 Note that if there are other mutual recursive relations in the same stratum, they will be stopped as well. 
 
-## Legacy Syntax
+## Syntax 
+In the following, we define type declarations in Souffle more formally using [syntax diagrams](https://en.wikipedia.org/wiki/Syntax_diagram) and [EBNF](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form). The syntax diagrams were produced using [Bottlecaps](https://www.bottlecaps.de/rr/ui).
+
+### Qualified Name
+
+```ebnf
+qualified_name ::= IDENT ( '.' IDENT )*
+```
+
+### Directive 
+
+```ebnf
+directive ::= directive_qualifier qualified_name ( ',' qualified_name )* ( '(' ( IDENT '=' directive_value ( ',' IDENT '=' directive_value )* )? ')' )?
+```
+
+### Directive Qualifier
+```ebnf
+directive_qualifier  ::= '.input' | '.output' | '.printsize' | '.limitsize'
+```
+
+### Directive Value
+```ebnf
+directive_value ::= STRING | IDENT | NUMBER | 'true' | 'false'
+```
+
+### Legacy Syntax
 Older versions supported I/O qualifiers in the relation declaration such as 
 ```
 .decl A(x:number, y:symbol) input
