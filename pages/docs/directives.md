@@ -188,7 +188,21 @@ l       y       z
 ===============
 ```
 
+## Printsize Directive
 
+The printsize directive prints the name and number of tuples in the relation (separated by a tabulator symbol). 
+
+For example,
+```prolog
+.decl A(x:number)
+A(1).
+A(2).
+.printsize A
+```
+prints the name `A` and the number 2, i.e., 
+```
+A   2
+```
 
 ## Limit-Size Directive 
 Souffle can stop the fix-point calculation after a certain number of 
