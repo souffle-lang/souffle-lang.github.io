@@ -5,10 +5,11 @@ sidebar: docs_sidebar
 folder: docs
 ---
 # Directives 
-The I/O system supports various data-sources for input and output using various formats.
+Souffle has directives controlling the I/O behaviour of relations, and their execution behaviour.
+The I/O system for relations supports various data-sources for input and output using various formats.
 Soufflé supports terminal output, file I/O, and I/O utilising a SQLite as a database. 
 For a relation in a Datalog program, several input and output directives can be issued. 
-The syntax of the input and output statements is given below:
+Souffle supports directies to limit the number of tuples per relation. 
 
 ## Input Directive
 A Soufflé program may load the facts of a relation (aka. as EDB) from various input sources.
@@ -210,7 +211,44 @@ This is a consequence of the limitsize directive that stops the fix-point comput
 
 Note that if there are other mutual recursive relations in the same stratum, they will be stopped as well. 
 
-# Legacy Syntax
+## Syntax 
+In the following, we define type declarations in Souffle more formally using [syntax diagrams](https://en.wikipedia.org/wiki/Syntax_diagram) and [EBNF](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form). The syntax diagrams were produced using [Bottlecaps](https://www.bottlecaps.de/rr/ui).
+
+### Qualified Name
+
+![Qualifier Name](https://souffle-lang.github.io/img/qualified_name.svg)
+
+A qualified name is a sequence of identifiers separated by `.` to disambiguate relations that are instantiated by components.
+
+```ebnf
+qualified_name ::= IDENT ( '.' IDENT )*
+```
+
+### Directive 
+
+![Directive](https://souffle-lang.github.io/img/directive.svg)
+
+```ebnf
+directive ::= directive_qualifier qualified_name ( ',' qualified_name )* ( '(' ( IDENT '=' directive_value ( ',' IDENT '=' directive_value )* )? ')' )?
+```
+
+### Directive Qualifier
+
+![Directive Qualifier](https://souffle-lang.github.io/img/directive_qualifier.svg)
+
+```ebnf
+directive_qualifier  ::= '.input' | '.output' | '.printsize' | '.limitsize'
+```
+
+### Directive Value
+
+![Directive Value](https://souffle-lang.github.io/img/directive_value.svg)
+
+```ebnf
+directive_value ::= STRING | IDENT | NUMBER | 'true' | 'false'
+```
+
+### Legacy Syntax
 Older versions supported I/O qualifiers in the relation declaration such as 
 ```
 .decl A(x:number, y:symbol) input
