@@ -216,22 +216,34 @@ In the following, we define type declarations in Souffle more formally using [sy
 
 ### Qualified Name
 
+![Qualifier Name](https://souffle-lang.github.io/img/qualified_name.svg)
+
+A qualified name is a sequence of identifiers separated by `.` to disambiguate relations that are instantiated by components.
+
 ```ebnf
 qualified_name ::= IDENT ( '.' IDENT )*
 ```
 
 ### Directive 
 
+![Directive](https://souffle-lang.github.io/img/directive.svg)
+
 ```ebnf
 directive ::= directive_qualifier qualified_name ( ',' qualified_name )* ( '(' ( IDENT '=' directive_value ( ',' IDENT '=' directive_value )* )? ')' )?
 ```
 
 ### Directive Qualifier
+
+![Directive Qualifier](https://souffle-lang.github.io/img/directive_qualifier.svg)
+
 ```ebnf
 directive_qualifier  ::= '.input' | '.output' | '.printsize' | '.limitsize'
 ```
 
 ### Directive Value
+
+![Directive Value](https://souffle-lang.github.io/img/directive_value.svg)
+
 ```ebnf
 directive_value ::= STRING | IDENT | NUMBER | 'true' | 'false'
 ```
