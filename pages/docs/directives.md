@@ -281,4 +281,4 @@ that should be rewritten to
 .decl B(x:number, y:symbol) 
 .output B
 ```
-Current versions of Soufflé still support the legacy syntax, but a warning message will be issued.
+Soufflé still supports the legacy syntax with command line option `--legacy`, but a warning message will be issued.
