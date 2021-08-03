@@ -4,7 +4,6 @@ permalink: /directives
 sidebar: docs_sidebar
 folder: docs
 ---
-# Directives 
 Souffle has directives controlling the I/O behaviour of relations, and their execution behaviour.
 The I/O system for relations supports various data-sources for input and output using various formats.
 Soufflé supports terminal output, file I/O, and I/O utilising a SQLite as a database. 
