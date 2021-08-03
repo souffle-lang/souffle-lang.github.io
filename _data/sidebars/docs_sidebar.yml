@@ -83,7 +83,7 @@ entries:
       url: /rules
       output: web
 
-    - title: Constraints & Expressions
+    - title: Constraints & Arguments
       url: /constr_arg
       output: web
 
