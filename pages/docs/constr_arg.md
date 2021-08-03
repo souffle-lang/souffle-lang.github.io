@@ -1,5 +1,5 @@
 ---
-title: Constraints and Expressions
+title: Constraints and Arguments
 permalink: /constr_arg
 sidebar: docs_sidebar
 folder: docs
