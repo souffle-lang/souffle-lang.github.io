@@ -18,7 +18,7 @@ Identifiers follow the C++/C standards except that a question mark may appear an
 - The identifier can only be composed of letters (lower or upper case), numbers, or the question mark and underscore characters. That means the name cannot contain whitespace, or any symbols other than underscores or question marks.
 - The identifier must begin with a letter (lower or upper case), an underscore, or a question mark. It can not start with a number.
 
-## Relation Representation in Souffle
+## Representation of Relations
 Relations can be represented using different internal data structures in Soufflé, each exhibiting different performance characteristics. By default, the B-tree is used to store tuples of a relation. However, this default representation can be overridden by users, by specifying a relation qualifier for an alternative representation. Currently, the possible data structures are B-tree, Brie, and Eqrel (for equivalence relations).
 
 ### B-tree Relations 
