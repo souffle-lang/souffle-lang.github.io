@@ -104,9 +104,4 @@ LivesAt(person, building) :-
 ```
 expresses the rule that a person lives in a building if they are the owner, or a housemate of the owner. Thus the conditions `person=owner` and `Housemate(owner, person)` are joined by `;` to indicate that either must hold.
 
-# Identifier Naming Rules
-Soufflé Identifiers follow the C++ naming convention, except that a question mark may appear anywhere.
-- The identifier can only be composed of letters (lower or upper case), numbers, or the question mark and underscore characters. That means the name cannot contain whitespace, or any symbols other than underscores or question marks.
-- The identifier must begin with a letter (lower or upper case), an underscore, or a question mark. It can not start with a number.
-
 {% include links.html %}
