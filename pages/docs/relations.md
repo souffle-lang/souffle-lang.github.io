@@ -190,7 +190,7 @@ In the following, we define type declarations in Souffle more formally using [sy
 Souffle has pre-defined types such as `number`, `symbol`, `unsigned`, and `float`. Used-defined types have a name. If a type has been defined in a component, the type can be still accessed outside the component using a qualified name. 
 
 ![Type Name](https://souffle-lang.github.io/img/type_name.svg)
-```
+```ebnf
 type_name ::=  "number" | "symbol" |"unsigned" | "float"  | IDENT ("." IDENT )*
 ```
 
@@ -200,7 +200,7 @@ An attribute binds a name with a type.
 
 ![Attribute](https://souffle-lang.github.io/img/attribute.svg)
 
-```
+```ebnf
 attribute ::= IDENT ":" type_name 
 ```
 
@@ -211,7 +211,7 @@ The definition of attributes is followed by relation qualifiers.
 
 ![Relation Declaration](https://souffle-lang.github.io/img/relation_decl.svg)
 
-```
+```ebnf
 relation_decl ::= '.decl' IDENT ( ',' IDENT )* '(' attribute ( ',' attribute )* ')' ( 'override' | 'inline' | 'magic' | 'brie' | 'btree' | 'eqrel' )* choice_domain
 ```
 
@@ -222,7 +222,7 @@ can be either a single attribute or a subset of attributes.
 
 ![Choice Domain](https://souffle-lang.github.io/img/choice_domain.svg)
 
-```
+```ebnf
 choice_domain ::= ( 'choice-domain' ( IDENT | '(' IDENT ( ',' IDENT )* ')' ) ( ',' ( IDENT | '(' IDENT ( ',' IDENT )* ')' ) )* )?
 ```
 
