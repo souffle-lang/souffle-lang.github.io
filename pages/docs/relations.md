@@ -13,7 +13,7 @@ Relations can be represented using different internal data structures in Souffl√
 
 ### B-tree Relations 
 The B-tree data structure is used by default, however the *direct* flavour (see below) can be forced by adding the `btree` qualifier to a relation declaration:
-```
+```prolog
 .decl A(x:number, y:symbol) btree
 ```
 
@@ -27,7 +27,7 @@ More details on the Souffl√© B-tree can be found in [this paper](https://doi.org
 
 ### Brie Relations 
 The Brie data structure is a specialised data structure designed for *dense* data. It can be used by adding the `brie` qualifier to a relation declaration.
-```
+```prolog
 .decl A(x:number, y:symbol) brie
 ```
 
@@ -49,7 +49,7 @@ More details on the Brie can be found in [this paper](https://doi.org/10.1145/33
 
 ### Equivalence Relations
 An equivalence relation is a special kind of binary relation which exhibits three properties: *reflexivity*, *symmetry*, and *transitivity*. An equivalence relation could be expressed in Datalog as follows:
-```
+```prolog
 .decl equivalence(x:number, y:number)
 equivalence(a, b) :- rel1(a), rel2(b).      // every element of rel1 is equivalent to every element of rel2
 
@@ -71,7 +71,7 @@ More details on Eqrel can be found in [this paper](https://doi.org/10.1109/PACT.
 ### Nullaries
 Nullary relations are special relations. Their arity is zero, i.e., they don't have attributes. 
 They are defined as 
-```
+```prolog
 .decl A()
 ```
 These relations are either empty or contain the empty tuple `()`. Internatlly, they are implemented 
@@ -88,7 +88,7 @@ The relation qualifier `magic` enables the magic-set transformation for a relati
 ## Inlining Relations
 Souffl&eacute; offers the ability to manually select one or more program relations to be inlined, i.e., a substitution of the relations are performed. This may lead to performance gains by re-computing results rather than storing them. For example, 
 
-```
+```prolog
 .decl R(arg:number) inline
 ```
 
@@ -97,7 +97,7 @@ the `inline` keyword directs Souffl&eacute; to transform the program into an equ
 
 Consider the following Souffl&eacute; program,
 
-```
+```prolog
 .decl natural_number(x:number)
 natural_number(0).
 natural_number(x+1) :- natural_number(x), x < 10000.
@@ -110,7 +110,7 @@ query(x) :- natural_pairs(x,y), x < 5, y < x.
 ```
 which will be transformed into:
 
-```
+```prolog
 .decl natural_number(x:number)
 natural_number(0).
 natural_number(x+1) :- natural_number(x), x < 10000.
@@ -132,7 +132,7 @@ In general, inlining is most appropriate when used for large relations where it 
 ### Inlining Transformation
 Suppose the following relation was marked to be inlined:
 
-```
+```prolog
 .decl a(x:number, y:number) inline
 a(x,y) :- d(x,x), e(y).
 a(x,y) :- f(y,x).
@@ -140,20 +140,20 @@ a(x,y) :- f(y,x).
 
 and the relation appears in the following rule:
 
-```
+```prolog
 b(x) :- c(x,z), b(y), a(y,z).
 ```
 
 The first stage of inlining is to match the arguments of the body atom, `a(y,z)`, with the heads of each of its rules. Argument-matching is done through a process called unification, where the most general unifier is found. In this case, both rules have the head `a(x,y)`. It is important to note, however, that the variable `y` appearing in the body atom `a(y,z)` is distinct from the `y` appearing in the head atom `a(x,y)`. An &alpha;-reduction must hence be performed to avoid naming conflicts. In this case, we can rename the head atom of the rules to be `a(x0,y0)`, producing the following equivalent rules for `a`:
 
-```
+```prolog
 a(x0,y0) :- d(x0,x0), e(y0).
 a(x0,y0) :- f(y0,x0).
 ```
 
 Unification can now proceed. In this case, `a(y,z)` must be unified with `a(x0,y0)` for both rules, which can be done by substituting `x0` with `y`, and `y0` with `z` in both rules. As a result, we must substitute in the following rule bodies to replace `a(y,z)`.
 
-```
+```prolog
 d(y,y), e(z).
 f(z,y).
 ```
@@ -162,7 +162,7 @@ Note that unification still works in the presence of constants, in which case va
 
 There are now two unified bodies that can replace the original atom. Since both bodies must be considered, two new rules are created to replace the original rule for `b`, hence producing the following final program:
 
-```
+```prolog
 b(x) :- c(x,z), b(y), d(y,y), e(z).
 b(x) :- c(x,z), b(y), f(z,y).
 ```
