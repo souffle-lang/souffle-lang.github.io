@@ -5,8 +5,14 @@ sidebar: docs_sidebar
 folder: docs
 ---
 # Relations
-In Souffle, relations declarations define the domain of relations, their constraints, and their execution behaviour. Souffle uses different relation representations internally that can be chosen by the programmer. Inlining, magic-set transformations, and component behaviour is also controlled by
-the relation declarations.
+Soufflé requires the declaration of relations. A relation is a set of ordered tuples (x1, …, xk) where each element xi is a member of a data domain denoted by an attribute type. In the previous example, the declaration
+In Souffle, relations declarations define the domain of relations, their constraints, and their execution behaviour. Souffle uses different relation representations internally that can be chosen by the programmer. Inlining, magic-set transformations, and component behaviour is also controlled by the relation declarations.
+
+The relation declaration,
+```prolog
+.decl A(x:number, y:number).
+```
+defines the relation `A` that contains pairs of numbers. The first attribute is named `x` and the second attribute is named `y`. Attributes have a type which is specified by an identifier followed by a colon after the attribute name. In the above example, the type is a `number`. The type-checker of Soufflé will infer the type of variables using the attribute types of relations. 
 
 ## Relation Representation in Souffle
 Relations can be represented using different internal data structures in Soufflé, each exhibiting different performance characteristics. By default, the B-tree is used to store tuples of a relation. However, this default representation can be overridden by users, by specifying a relation qualifier for an alternative representation. Currently, the possible data structures are B-tree, Brie, and Eqrel (for equivalence relations).
