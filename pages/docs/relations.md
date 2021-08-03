@@ -129,7 +129,7 @@ when used in conjunction with the Magic Set transformation, which specialises ru
 
 In general, inlining is most appropriate when used for large relations where it is not beneficial to compute and cache all tuples beforehand.
 
-## Inlining Transformation
+### Inlining Transformation
 Suppose the following relation was marked to be inlined:
 
 ```
@@ -169,7 +169,7 @@ b(x) :- c(x,z), b(y), f(z,y).
 
 More complex techniques for inlining arise when dealing with negation, records, aggregators, and so on, but they are all centred on removing the relation whilst preserving program equivalence.
 
-## Inlining Limitations
+### Inlining Limitations
 Inlining works in all situations, provided the following conditions are met:
 * Relations marked as `input`, `output`, or `printsize` cannot be inlined, as they are semantically necessary.
 * There cannot be a cycle in the precedence graph where *every* node in the cycle is inlined.
