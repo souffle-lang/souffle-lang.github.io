@@ -245,7 +245,7 @@ Souffle has pre-defined types such as `number`, `symbol`, `unsigned`, and `float
 
 ![Type Name](https://souffle-lang.github.io/img/type_name.svg)
 ```ebnf
-type_name ::=  "number" | "symbol" |"unsigned" | "float"  | IDENT ("." IDENT )*
+type_name ::=  "number" | "symbol" | "unsigned" | "float"  | IDENT ("." IDENT )*
 ```
 
 ### Attribute Declaration
