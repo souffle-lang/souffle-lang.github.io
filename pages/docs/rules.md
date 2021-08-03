@@ -69,5 +69,56 @@ Rules may have qualifiers, which are used to change the execution behavior / sem
 Qualifiers are used to set a query plan for a rule. The qualifer `.plan` let's the programmer chose a query plan for a rule.  
 
 ## Syntax 
+In the following, we define type declarations in Souffle more formally using [syntax diagrams](https://en.wikipedia.org/wiki/Syntax_diagram) and [EBNF](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form). The syntax diagrams were produced using [Bottlecaps](https://www.bottlecaps.de/rr/ui).
 
+### Qualified Name
+
+![Qualifier Name](https://souffle-lang.github.io/img/qualified_name.svg)
+
+A qualified name is a sequence of identifiers separated by `.` to disambiguate relations that are instantiated by components.
+
+```ebnf
+qualified_name ::= IDENT ( '.' IDENT )*
+```
+
+### Rule
+
+![Rule](https://souffle-lang.github.io/img/rule.svg)
+
+```ebnf
+rule ::= atom ( ',' atom )* ':-' disjunction '.' query_plan?
+```
+
+### Disjunction
+
+![Disjunction](https://souffle-lang.github.io/img/disjunction.svg)
+
+```ebnf
+disjunction ::= conjunction ( ';' conjunction )*
+```
+
+### Conjunction
+
+![Conjunction](https://souffle-lang.github.io/img/conjunction.svg)
+
+```ebnf
+conjunction ::= '!'* ( atom | constraint | '(' disjunction ')' ) ( ',' '!'* ( atom | constraint | '(' disjunction ')' ) )*
+```
+
+### Atom
+
+![Atom](https://souffle-lang.github.io/img/atom.svg)
+
+```ebnf
+atom ::= qualified_name '(' ( argument ( ',' argument )* )? ')'
+```
+
+### Query Plan
+
+![Query Plan](https://souffle-lang.github.io/img/query_plan.svg)
+
+```ebnf
+query_plan ::= '.plan' NUMBER ':' '(' ( NUMBER ( ',' NUMBER )* )? ')' ( ',' NUMBER ':' '(' ( NUMBER ( ',' NUMBER )* )? ')' )*
+```
+         
 {% include links.html %}
