@@ -24,40 +24,40 @@ Relation ```B``` has two rules: ```B(x,y) :- A(x,y).``` and ```B(x,y) :- A(x,y),
 
 ## Multiple Heads
 Rules can have multiple heads:
-```
+```prolog
 A(x,y), C(x,y) :- B(x,y). 
 ```
 which is syntactic sugar for
-```
+```prolog
 A(x,y) :- B(x,y). 
 C(x,y) :- B(x,y). 
 ```
 
 ## Negation in Rules
 A rules of the form
-```
+```prolog
 CanRenovate(person, building) :- Owner(person, building), !Heritage(building).
 ```
 expresses the rule that an owner can renovate a building with the condition that the building is not classified as heritage. Thus the literal "Heritage(building)" is negated (via "!") in the body of the rule. Not all negations are semantically permissible. For example,
-```
+```prolog
 A(x) :- ! B(x).
 B(x) :- ! A(x).
 ```
 is a circular definition. One cannot determine if anything belongs to the relation "A" without determining if it belongs to relation "B". But to determine if it is a "B" one needs to determine if the item belongs to "A". Such circular definitions are forbidden. Technically, rules involving negation must be stratifiable.
 
 Negated literals do not bind variables. For example,
-```
+```prolog
 A(x,y) :- R(x), !S(y).
 ```
 is not valid as the set of values that "y" can take is not clear. This can be rewritten as,
-```
+```prolog
 A(x,y) :- R(x), Scope(y), !S(y).
 ```
 where the relation "Scope" defines the set of values that "y" can take.
 
 ## Disjunction
 A rule of the form
-```
+```prolog
 LivesAt(person, building) :-
     Owner(owner, building),
     ( person=owner ; Housemate(owner, person) ).
