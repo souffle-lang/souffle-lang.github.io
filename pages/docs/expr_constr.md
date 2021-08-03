@@ -1,6 +1,6 @@
 ---
-title: Constraints and Expressions
-permalink: /constr_expr
+title: Constraints and Arguments
+permalink: /constr_arg
 sidebar: docs_sidebar
 folder: docs
 ---
