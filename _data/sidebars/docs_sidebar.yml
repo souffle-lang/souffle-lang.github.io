@@ -91,12 +91,8 @@ entries:
       url: /aggregates
       output: web
 
-    - title: Choice
-      url: /choice
-      output: web
-
-    - title: IO Directives
-      url: /io
+    - title: Directives
+      url: /directives
       output: web
 
   - title: Advanced Topics
@@ -125,10 +121,6 @@ entries:
 
     - title: Magic-Set
       url: /magicset
-      output: web
-
-    - title: Inlining
-      url: /inlining
       output: web
 
     - title: C++ Interface
