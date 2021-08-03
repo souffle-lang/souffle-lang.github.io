@@ -4,22 +4,9 @@ permalink: /rules
 sidebar: docs_sidebar
 folder: docs
 ---
-
-Rules are Horn clauses that are disjunctions of literals with at most one positive literal
-that can be written in implication form as,
-
-**u** ⇐  **p** ∧ **q** ∧ ... ∧ **t**
-
-A rule can be read as: predicate **u** holds if the conditions
-**p** ∧ **q** ∧ ... ∧ **t** hold.
-We refer to predicate **u** as the head (aka. consequent), and
-the condition **p** ∧ **q** ∧ ... ∧ **t**  as body (aka. antecedent),
-repectively.
-
-A rule is a definite clause that has a predicate as a head, and one or more 
-literals in the body.
-The literals are predicates (i.e. logical functions with arguments that
-are either constants or variables), negated predicates, or constraints.
+A rule is a definite horn clause that has one or more predicates as a head, and one or more 
+literals in the body. The literals are predicates, negated 
+predicates, or constraints.
 All variables of a rule must be *grounded*, i.e., a variable must occur
 at least once as an argument of a positive predicate in the body of
 a rule.  Soufflé permits arithmetic and string functors assuming
@@ -35,8 +22,7 @@ B(x,z) :- A(x,y), B(y,z).
 ```
 Relation ```B``` has two rules: ```B(x,y) :- A(x,y).``` and ```B(x,y) :- A(x,y), B(y,z).``` The first rule says, there is a tuple in `B` if this tuple shows up in `A`. The second rule says there is a tuple `(x,z)` in `B`, if there is a tuple in `(x,y)` in `A` and a tuple `(y,z)` in `B`.
 
-Rules may have qualifiers, which are used to change the execution behavior / semantics. Qualifiers are used to set a query plan for a rule. The qualifer `.plan` let's the programmer chose a query plan for a rule. There are other qualifiers that are used to override rules of the a component (cf. [component model](components)). 
-
+## Multiple Heads
 Rules can have multiple heads:
 ```
 A(x,y), C(x,y) :- B(x,y). 
@@ -48,7 +34,6 @@ C(x,y) :- B(x,y).
 ```
 
 ## Negation in Rules
-
 A rules of the form
 ```
 CanRenovate(person, building) :- Owner(person, building), !Heritage(building).
@@ -71,7 +56,6 @@ A(x,y) :- R(x), Scope(y), !S(y).
 where the relation "Scope" defines the set of values that "y" can take.
 
 ## Disjunction
-
 A rule of the form
 ```
 LivesAt(person, building) :-
@@ -80,8 +64,10 @@ LivesAt(person, building) :-
 ```
 expresses the rule that a person lives in a building if they are the owner, or a housemate of the owner. Thus the conditions `person=owner` and `Housemate(owner, person)` are joined by `;` to indicate that either must hold.
 
+## Query Plan
+Rules may have qualifiers, which are used to change the execution behavior / semantics. 
+Qualifiers are used to set a query plan for a rule. The qualifer `.plan` let's the programmer chose a query plan for a rule.  
+
 ## Syntax 
-
-
 
 {% include links.html %}
