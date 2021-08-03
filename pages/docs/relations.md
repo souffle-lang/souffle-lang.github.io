@@ -14,6 +14,10 @@ The relation declaration,
 ```
 defines the relation `A` that contains pairs of numbers. The first attribute is named `x` and the second attribute is named `y`. Attributes have a type which is specified by an identifier followed by a colon after the attribute name. In the above example, the type is a `number`. The type-checker of Soufflé will infer the type of variables using the attribute types of relations. 
 
+Identifiers follow the C++/C standards except that a question mark may appear anywhere:
+- The identifier can only be composed of letters (lower or upper case), numbers, or the question mark and underscore characters. That means the name cannot contain whitespace, or any symbols other than underscores or question marks.
+- The identifier must begin with a letter (lower or upper case), an underscore, or a question mark. It can not start with a number.
+
 ## Relation Representation in Souffle
 Relations can be represented using different internal data structures in Soufflé, each exhibiting different performance characteristics. By default, the B-tree is used to store tuples of a relation. However, this default representation can be overridden by users, by specifying a relation qualifier for an alternative representation. Currently, the possible data structures are B-tree, Brie, and Eqrel (for equivalence relations).
 
