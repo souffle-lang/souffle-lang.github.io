@@ -84,4 +84,70 @@ Semantically, they can be seen as a proposition rather than a relation.
 ## Auto Selection
 In Soufflé, the default data structure is the B-tree, with the *direct* version for relations with arity ≤ 6, or the *indirect* version for relations with arity > 6.
 
+## Syntax 
+
+In the following, we define type declarations in Souffle more formally using [syntax diagrams](https://en.wikipedia.org/wiki/Syntax_diagram) and [EBNF](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form). The syntax diagrams were produced using [Bottlecaps](https://www.bottlecaps.de/rr/ui).
+
+### Type Name 
+
+Souffle has pre-defined types such as `number`, `symbol`, `unsigned`, and `float`. Used-defined types have a name. If a type has been defined in a component, the type can be still accessed outside the component using a qualified name. 
+
+![Type Name](https://souffle-lang.github.io/img/type_name.svg)
+```
+type_name ::=  "number" | "symbol" |"unsigned" | "float"  | IDENT ("." IDENT )*
+```
+
+### Attribute Declaration
+
+An attribute binds a name with a type. 
+
+![Attribute](https://souffle-lang.github.io/img/attribute.svg)
+
+```
+attribute ::= IDENT ":" type_name 
+```
+
+### Relation Declaration
+
+A relation declaration declares one or more relations. Each relation has a fixed number of attributes.
+The definition of attributes is followed by relation qualifiers. 
+
+![Relation Declaration](https://souffle-lang.github.io/img/relation_decl.svg)
+
+```
+relation_decl ::= '.decl' IDENT ( ',' IDENT )* '(' attribute ( ',' attribute )* ')' ( 'override' | 'inline' | 'magic' | 'brie' | 'btree' | 'eqrel' )* choice_domain
+```
+
+### Choice-Domain
+
+A choice-domain imposes a functional dependency constraint. The functional dependency constraint is expressed by its domain only. A domain 
+can be either a single attribute or a subset of attributes. 
+
+![Choice Domain](https://souffle-lang.github.io/img/choice_domain.svg)
+
+```
+choice_domain ::= ( 'choice-domain' ( IDENT | '(' IDENT ( ',' IDENT )* ')' ) ( ',' ( IDENT | '(' IDENT ( ',' IDENT )* ')' ) )* )?
+```
+
+
+### Legacy Syntax
+
+The syntax of Souffle changed over time. Older code bases can be still used with 
+modern versions of Souffle.  In older versions of Soufflé we used
+```prolog
+.decl A(x:number) input 
+.decl B(x:number) output
+B(x) :- A(x). 
+```
+for loading and storing facts. However, we have now I/O directives which permit to change 
+the I/O parameters.
+```prolog
+.decl A(x:number)
+.input A
+.decl B(x:number) 
+.output B
+B(x) :- A(x). 
+```
+You can enable the old legacy syntax using the command-line flag `--legacy`, but you will receive a warning that this legacy syntax is deprecated.
+
 {% include links.html %}
