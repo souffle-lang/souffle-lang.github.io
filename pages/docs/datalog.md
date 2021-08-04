@@ -88,11 +88,11 @@ In the above example, the type is a number.
 The type-checker of Soufflé will infer the type of variables in rules where name bindings in clauses are correct at compile time.
 The details of the type system are covered below.
 
-# Types
+## Types
 
 Souffle utilises a typed Datalog dialect to conduct static checks enabling the early detection of errors in Datalog query specifications. Each attribute of involved relations has to be typed. Based on those, Souffle attempts to deduce a type for all terms within all the Horn clauses within a given Datalog program. In case no type can be deduced for some terms, a typing error is reported -- indicating a likely inconsistency in the query specification.
 
-## Type Definitions
+### Type Definitions
 
 There are four primitive types in Souffle: (1) `symbol`, (2) `number`, (3) `unsigned`, and (4) `float`. Those types have the following properties:
 
@@ -130,7 +130,7 @@ The following sub-sections will provide more in-depth details on the semantics o
 .type List = [next:List, value:number]
 ```
 
-# Relations
+## Relations
 
 Relations are declared using the directive .decl followed by a parenthesis with its attribute names and types. For example,
 ```
@@ -139,7 +139,7 @@ Relations are declared using the directive .decl followed by a parenthesis with 
 
 defines the relation A with two columns of type number.
 
-# Clauses
+## Clauses
 
 Clauses are conditional logic statements. A clause starts with a head followed by a body. For example,
 ```
@@ -160,7 +160,7 @@ A(x,y) :- B(x,y).
 C(x,y) :- B(x,y). 
 ```
 
-# Negation
+## Negation
 
 A clause of the form
 ```
@@ -185,7 +185,7 @@ A(x,y) :- R(x), Scope(y), !S(y).
 ```
 where the relation "Scope" defines the set of values that "y" can take.
 
-# Disjunction
+## Disjunction
 
 A clause of the form
 ```
@@ -195,18 +195,18 @@ LivesAt(person, building) :-
 ```
 expresses the rule that a person lives in a building if they are the owner, or a housemate of the owner. Thus the conditions `person=owner` and `Housemate(owner, person)` are joined by `;` to indicate that either must hold.
 
-# Comments and Pre-Processing
+
+## Syntax 
+In the following, we define a program more formally using [syntax diagrams](https://en.wikipedia.org/wiki/Syntax_diagram) and [EBNF](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form). The syntax diagrams were produced using [Bottlecaps](https://www.bottlecaps.de/rr/ui).
+
 Soufflé utilises the same comment syntax as C/C++. Furthermore, all souffle programs are passed through the C pre-processor. As a consequence, e.g. `#include` pragmas may be utilized to organize Datalog input queries into several files and reuse common constructs within several programs. Also, constants may be defined utilizing the `#define` pragma.
 
-# Identifier Naming Rules
 Soufflé Identifiers follow the C++ naming convention, except that a question mark may appear anywhere.
 - The identifier can only be composed of letters (lower or upper case), numbers, or the question mark and underscore characters. That means the name cannot contain whitespace, or any symbols other than underscores or question marks.
 - The identifier must begin with a letter (lower or upper case), an underscore, or a question mark. It can not start with a number.
 
-# Syntax 
-In the following, we define facts in Souffle more formally using [syntax diagrams](https://en.wikipedia.org/wiki/Syntax_diagram) and [EBNF](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form). The syntax diagrams were produced using [Bottlecaps](https://www.bottlecaps.de/rr/ui).
 
-# Program
+### Program
 
 A program consists of type declarations, relation declarations, facts, rules, component declarations and instantiations, user-defined functor declarationas, and pragmas.
 
