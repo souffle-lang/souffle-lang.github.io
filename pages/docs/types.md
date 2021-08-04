@@ -415,3 +415,5 @@ Internally, this is represented as follows:
 
 ## ADT 
 Abstract Data Type use the record table to convert between their ordinal values and their field values. However, the encoding is more complex since the record table stores records of fixed-length only. Each ADT branch has a unique number in the ADT. The unique number is used in an outer record that refers to the inner record, i.e., `< branch-id, <a1, ...> >`. Using this encoding of ADTs permits the use of fixed-length records. 
+
+{% include links.html %}

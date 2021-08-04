@@ -188,3 +188,36 @@ souffle::RamDomain _myappend(
 }
 ``` 
 
+## Syntax 
+In the following, we define user-defined functor declarations  more formally using [syntax diagrams](https://en.wikipedia.org/wiki/Syntax_diagram) and [EBNF](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form). The syntax diagrams were produced using [Bottlecaps](https://www.bottlecaps.de/rr/ui).
+
+### User-Defined Functors
+
+![User-Defined Functor](https://souffle-lang.github.io/img/functor_decl.svg)
+
+```ebnf
+functor_decl
+         ::= '.functor' IDENT '(' ( attribute ( ',' attribute )* )? ')' ':' type_name 'stateful'?
+
+```
+
+### Attribute Declaration
+
+An attribute binds a name with a type. 
+
+![Attribute](https://souffle-lang.github.io/img/attribute.svg)
+
+```ebnf
+attribute ::= IDENT ":" type_name 
+```
+
+### Type Name 
+
+Souffle has pre-defined types such as `number`, `symbol`, `unsigned`, and `float`. Used-defined types have a name. If a type has been defined in a component, the type can be still accessed outside the component using a qualified name. 
+
+![Type Name](https://souffle-lang.github.io/img/type_name.svg)
+```ebnf
+type_name ::=  "number" | "symbol" |"unsigned" | "float"  | IDENT ("." IDENT )*
+```
+
+{% include links.html %}
