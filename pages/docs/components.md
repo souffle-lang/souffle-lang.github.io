@@ -177,4 +177,36 @@ As another example, we can use override semantics to implement a more precise ve
 ```
 In this example, PrecisePointsto inherits all the relations from AbstractPointsto, but only implements the HeapAllocationMerge relation differently. This feature avoids code duplications when we need several implementations of a generic analysis with small variations.
 
+
+## Syntax 
+In the following, we define a program more formally using [syntax diagrams](https://en.wikipedia.org/wiki/Syntax_diagram) and [EBNF](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form). The syntax diagrams were produced using [Bottlecaps](https://www.bottlecaps.de/rr/ui).
+
+### Component Declaration
+
+![Component Declaration](https://souffle-lang.github.io/img/component_decl.svg)
+
+```ebnf
+component_decl ::= 
+  '.comp' component_type ( ( ':' | ',' ) component_type )* 
+    '{' 
+        ( type_decl | relation_decl | rule | fact | directive | '.override' IDENT | component_init | component_decl )* 
+    '}'
+```
+
+### Component Initialisation
+
+![Component Initialisation](https://souffle-lang.github.io/img/component_init.svg)
+
+```ebnf
+component_init ::= '.init' IDENT '=' component_type
+```
+
+### Component Type
+
+![Component Type](https://souffle-lang.github.io/img/component_type.svg)
+
+```ebnf
+component_type ::= IDENT ( '<' IDENT ( ',' IDENT )* '>' )?
+```
+
 {% include links.html %}
