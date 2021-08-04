@@ -18,7 +18,9 @@ will enable the `--legacy` flag in the source without specifying when invoking s
 There are also some configurations that cannot be set by command-line flags including "`RamSIPS` choosing a static heuristic for query plans. 
 
 ## Syntax 
+In the following, we define constraints and argument values in Souffle more formally using [syntax diagrams](https://en.wikipedia.org/wiki/Syntax_diagram) and [EBNF](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form). The syntax diagrams were produced using [Bottlecaps](https://www.bottlecaps.de/rr/ui).
 
+### Pragma
 
          
 {% include links.html %}
