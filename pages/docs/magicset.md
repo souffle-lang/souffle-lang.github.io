@@ -38,6 +38,8 @@ Magic set can also be enabled within the program using pragma directives:
 
 The complete magic set transformation process can be observed by generating the debug report when the `magic-transform` option is enabled.
 
+The option `magic-transform-exclude` can be used in the same way to disable magic set transformation changes on the given relations. Note that this option also implies `inline-exclude` for the specified relations.
+
 ## The Algorithm
 The algorithm used was based on the work presented in [this paper](http://www.sciencedirect.com/science/article/pii/074310669190030S). The paper details an algorithm for positive datalog programs, and a second for normal programs (containing negations). Only the algorithm for positive datalog has been implemented in the Souffl&eacute; compiler at this point. Relations with negations in their body or the body of a dependency will not be transformed.
 

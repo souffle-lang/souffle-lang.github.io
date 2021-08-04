@@ -88,7 +88,7 @@ as a boolean variable.  Semantically, they can be seen as a proposition rather t
 In Soufflé, the default data structure is the B-tree, with the *direct* version for relations with arity ≤ 6, or the *indirect* version for relations with arity > 6.
 
 ## Magic-Set Transformation
-The relation qualifier `magic` enables the magic-set transformation for a relation. A magic set transformation specialies the evaluation for a Datalog program for a given set of output relations. The magic-set transformation does not always lead to better performance. Souffle provides the relation qualifier `magic` to control the magic-set transformation. More information can be found [here](magicset).
+The relation qualifier `magic` enables the magic-set transformation for a relation. A magic set transformation specializes the evaluation for a Datalog program for a given set of output relations. The magic-set transformation does not always lead to better performance. Souffle provides the relation qualifier `magic` to enable magic-set transformation and the relation qualifier `no_magic` to disable magic-set transformation (note that `no_magic` also implies `no_inline`). More information on the magic-set transformation can be found [here](magicset).
 
 ## Inlining Relations
 Souffl&eacute; offers the ability to manually select one or more program relations to be inlined, i.e., a substitution of the relations are performed. This may lead to performance gains by re-computing results rather than storing them. For example, 
@@ -182,6 +182,11 @@ Inlining works in all situations, provided the following conditions are met:
     * The restriction is theoretically necessary, as otherwise no ordering for the inlining process can be imposed such that all relations in the cycle are removed.
 * The counter argument, `$`, cannot be used as an argument or in the rule body of an inlined relation.
 * At the moment, relations appearing in aggregators cannot be inlined, though this is only a restriction in practice due to the way certain functors are handled.
+
+### Disable Inlining
+The relation qualifier `no_inline` directs Souffl&eacute; to _not_ inline the marked relation. Note that `no_inline` is implied by the `no_magic` relation qualifier.
+
+The option `inline-exclude` can be used to prevent the given relations from being inlined and overrides any `inline` relation qualifiers. Note that `inline-exclude` is implied by the `magic-transform-exclude` option.
 
 ## Override 
 The relation qualifier `override` controls whether rules in a relation that is defined in a component, can be overwritten in a sub-component. 
