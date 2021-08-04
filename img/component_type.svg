@@ -1,0 +1,78 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" width="699" height="449">
+         <defs>
+            <style type="text/css">
+    @namespace "http://www.w3.org/2000/svg";
+    .line                 {fill: none; stroke: #332900; stroke-width: 1;}
+    .bold-line            {stroke: #141000; shape-rendering: crispEdges; stroke-width: 2;}
+    .thin-line            {stroke: #1F1800; shape-rendering: crispEdges}
+    .filled               {fill: #332900; stroke: none;}
+    text.terminal         {font-family: Verdana, Sans-serif;
+                            font-size: 12px;
+                            fill: #141000;
+                            font-weight: bold;
+                          }
+    text.nonterminal      {font-family: Verdana, Sans-serif;
+                            font-size: 12px;
+                            fill: #1A1400;
+                            font-weight: normal;
+                          }
+    text.regexp           {font-family: Verdana, Sans-serif;
+                            font-size: 12px;
+                            fill: #1F1800;
+                            font-weight: normal;
+                          }
+    rect, circle, polygon {fill: #332900; stroke: #332900;}
+    rect.terminal         {fill: #FFDB4D; stroke: #332900; stroke-width: 1;}
+    rect.nonterminal      {fill: #FFEC9E; stroke: #332900; stroke-width: 1;}
+    rect.text             {fill: none; stroke: none;}
+    polygon.regexp        {fill: #FFF4C7; stroke: #332900; stroke-width: 1;}
+  </style>
+         </defs>
+         <polygon points="9 105 1 101 1 109"/>
+         <polygon points="17 105 9 101 9 109"/>
+         <rect x="31" y="91" width="60" height="32" rx="10"/>
+         <rect x="29" y="89" width="60" height="32" class="terminal" rx="10"/>
+         <text class="terminal" x="39" y="109">.comp</text><a xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#component_type" xlink:title="component_type">
+            <rect x="131" y="91" width="126" height="32"/>
+            <rect x="129" y="89" width="126" height="32" class="nonterminal"/>
+            <text class="nonterminal" x="139" y="109">component_type</text></a><rect x="131" y="47" width="24" height="32" rx="10"/>
+         <rect x="129" y="45" width="24" height="32" class="terminal" rx="10"/>
+         <text class="terminal" x="139" y="65">:</text>
+         <rect x="131" y="3" width="24" height="32" rx="10"/>
+         <rect x="129" y="1" width="24" height="32" class="terminal" rx="10"/>
+         <text class="terminal" x="139" y="21">,</text>
+         <rect x="297" y="91" width="28" height="32" rx="10"/>
+         <rect x="295" y="89" width="28" height="32" class="terminal" rx="10"/>
+         <text class="terminal" x="305" y="109">{</text><a xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#type_decl" xlink:title="type_decl">
+            <rect x="405" y="91" width="82" height="32"/>
+            <rect x="403" y="89" width="82" height="32" class="nonterminal"/>
+            <text class="nonterminal" x="413" y="109">type_decl</text></a><a xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#relation_decl" xlink:title="relation_decl">
+            <rect x="405" y="135" width="102" height="32"/>
+            <rect x="403" y="133" width="102" height="32" class="nonterminal"/>
+            <text class="nonterminal" x="413" y="153">relation_decl</text></a><a xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#rule" xlink:title="rule">
+            <rect x="405" y="179" width="44" height="32"/>
+            <rect x="403" y="177" width="44" height="32" class="nonterminal"/>
+            <text class="nonterminal" x="413" y="197">rule</text></a><a xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#fact" xlink:title="fact">
+            <rect x="405" y="223" width="42" height="32"/>
+            <rect x="403" y="221" width="42" height="32" class="nonterminal"/>
+            <text class="nonterminal" x="413" y="241">fact</text></a><a xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#directive" xlink:title="directive">
+            <rect x="405" y="267" width="74" height="32"/>
+            <rect x="403" y="265" width="74" height="32" class="nonterminal"/>
+            <text class="nonterminal" x="413" y="285">directive</text></a><rect x="405" y="311" width="80" height="32" rx="10"/>
+         <rect x="403" y="309" width="80" height="32" class="terminal" rx="10"/>
+         <text class="terminal" x="413" y="329">.override</text><a xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#IDENT" xlink:title="IDENT">
+            <rect x="505" y="311" width="58" height="32"/>
+            <rect x="503" y="309" width="58" height="32" class="nonterminal"/>
+            <text class="nonterminal" x="513" y="329">IDENT</text></a><a xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#component_init" xlink:title="component_init">
+            <rect x="405" y="355" width="118" height="32"/>
+            <rect x="403" y="353" width="118" height="32" class="nonterminal"/>
+            <text class="nonterminal" x="413" y="373">component_init</text></a><a xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#component_decl" xlink:title="component_decl">
+            <rect x="405" y="399" width="124" height="32"/>
+            <rect x="403" y="397" width="124" height="32" class="nonterminal"/>
+            <text class="nonterminal" x="413" y="417">component_decl</text></a><rect x="643" y="91" width="28" height="32" rx="10"/>
+         <rect x="641" y="89" width="28" height="32" class="terminal" rx="10"/>
+         <text class="terminal" x="651" y="109">}</text>
+         <svg:path xmlns:svg="http://www.w3.org/2000/svg" class="line" d="m17 105 h2 m0 0 h10 m60 0 h10 m20 0 h10 m126 0 h10 m-166 0 l20 0 m-1 0 q-9 0 -9 -10 l0 -24 q0 -10 10 -10 m146 44 l20 0 m-20 0 q10 0 10 -10 l0 -24 q0 -10 -10 -10 m-146 0 h10 m24 0 h10 m0 0 h102 m-156 10 l0 -44 q0 -10 10 -10 m156 54 l0 -44 q0 -10 -10 -10 m-146 0 h10 m24 0 h10 m0 0 h102 m20 88 h10 m28 0 h10 m60 0 h10 m82 0 h10 m0 0 h76 m-198 0 h20 m178 0 h20 m-218 0 q10 0 10 10 m198 0 q0 -10 10 -10 m-208 10 v24 m198 0 v-24 m-198 24 q0 10 10 10 m178 0 q10 0 10 -10 m-188 10 h10 m102 0 h10 m0 0 h56 m-188 -10 v20 m198 0 v-20 m-198 20 v24 m198 0 v-24 m-198 24 q0 10 10 10 m178 0 q10 0 10 -10 m-188 10 h10 m44 0 h10 m0 0 h114 m-188 -10 v20 m198 0 v-20 m-198 20 v24 m198 0 v-24 m-198 24 q0 10 10 10 m178 0 q10 0 10 -10 m-188 10 h10 m42 0 h10 m0 0 h116 m-188 -10 v20 m198 0 v-20 m-198 20 v24 m198 0 v-24 m-198 24 q0 10 10 10 m178 0 q10 0 10 -10 m-188 10 h10 m74 0 h10 m0 0 h84 m-188 -10 v20 m198 0 v-20 m-198 20 v24 m198 0 v-24 m-198 24 q0 10 10 10 m178 0 q10 0 10 -10 m-188 10 h10 m80 0 h10 m0 0 h10 m58 0 h10 m-188 -10 v20 m198 0 v-20 m-198 20 v24 m198 0 v-24 m-198 24 q0 10 10 10 m178 0 q10 0 10 -10 m-188 10 h10 m118 0 h10 m0 0 h40 m-188 -10 v20 m198 0 v-20 m-198 20 v24 m198 0 v-24 m-198 24 q0 10 10 10 m178 0 q10 0 10 -10 m-188 10 h10 m124 0 h10 m0 0 h34 m-218 -308 l20 0 m-1 0 q-9 0 -9 -10 l0 -12 q0 -10 10 -10 m218 32 l20 0 m-20 0 q10 0 10 -10 l0 -12 q0 -10 -10 -10 m-218 0 h10 m0 0 h208 m-258 32 h20 m258 0 h20 m-298 0 q10 0 10 10 m278 0 q0 -10 10 -10 m-288 10 v322 m278 0 v-322 m-278 322 q0 10 10 10 m258 0 q10 0 10 -10 m-268 10 h10 m0 0 h248 m20 -342 h10 m28 0 h10 m3 0 h-3"/>
+         <polygon points="689 105 697 101 697 109"/>
+         <polygon points="689 105 681 101 681 109"/></svg>
