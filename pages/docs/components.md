@@ -183,6 +183,8 @@ In the following, we define the component model more formally using [syntax diag
 
 ### Component Declaration
 
+A component declaration may consist of [type declarations](types), [relation declarations](relations), [rules](rules), [facts](facts), [directives](directives), override directives, [component declarations and initialisations](components). 
+
 ![Component Declaration](https://souffle-lang.github.io/img/component_decl.svg)
 
 ```ebnf
