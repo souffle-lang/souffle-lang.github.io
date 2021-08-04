@@ -213,7 +213,16 @@ A program consists of type declarations, relation declarations, facts, rules, co
 ![Program](https://souffle-lang.github.io/img/program.svg)
 
 ```ebnf
-program  ::= ( pragma | functor_decl | component_decl | component_init | directive | rule | fact | relation_decl | type_decl )*
+program  ::= 
+ ( pragma | 
+   functor_decl | 
+   component_decl | 
+   component_init | 
+   directive | 
+   rule | 
+   fact | 
+   relation_decl | 
+   type_decl )*
 ```
 
 {% include links.html %}
