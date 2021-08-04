@@ -1,6 +1,6 @@
 ---
-title: Datalog
-permalink: /datalog
+title: Program
+permalink: /program
 sidebar: docs_sidebar
 folder: docs
 ---
@@ -208,7 +208,7 @@ Soufflé Identifiers follow the C++ naming convention, except that a question ma
 
 ### Program
 
-A program consists of type declarations, relation declarations, facts, rules, component declarations and instantiations, user-defined functor declarationas, and pragmas.
+A program consists of [type declarations](types), [relation declarations](relations), [facts](facts), [rules](rules), [component declarations and instantiations](components), [user-defined functor declarations](functors), and [pragmas](pragmas).
 
 ![Program](https://souffle-lang.github.io/img/program.svg)
 
