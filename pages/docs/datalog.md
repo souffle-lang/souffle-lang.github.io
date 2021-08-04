@@ -204,8 +204,16 @@ Soufflé Identifiers follow the C++ naming convention, except that a question ma
 - The identifier must begin with a letter (lower or upper case), an underscore, or a question mark. It can not start with a number.
 
 # Syntax 
+In the following, we define facts in Souffle more formally using [syntax diagrams](https://en.wikipedia.org/wiki/Syntax_diagram) and [EBNF](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form). The syntax diagrams were produced using [Bottlecaps](https://www.bottlecaps.de/rr/ui).
 
-The whole syntax of Soufflé can be found as a [railroad grammar](http://souffle-lang.github.io/syntax.xhtml).
+# Program
 
+A program consists of type declarations, relation declarations, facts, rules, component declarations and instantiations, user-defined functor declarationas, and pragmas.
+
+![Program](https://souffle-lang.github.io/img/program.svg)
+
+```ebnf
+program  ::= ( pragma | functor_decl | component_decl | component_init | directive | rule | fact | relation_decl | type_decl )*
+```
 
 {% include links.html %}
