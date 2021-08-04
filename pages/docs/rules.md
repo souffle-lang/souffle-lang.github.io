@@ -64,6 +64,12 @@ LivesAt(person, building) :-
 ```
 expresses the rule that a person lives in a building if they are the owner, or a housemate of the owner. Thus the conditions `person=owner` and `Housemate(owner, person)` are joined by `;` to indicate that either must hold.
 
+
+### Type System
+
+The variables deduce their types from their bindings. A variable receives values from positive predicates in the body of a rule.
+TBD: Explain the information flow in a rule (what is a a source / sink) and type checking.  
+
 ### Query Plan
 Rules may have qualifiers, which are used to change the execution behavior / semantics. 
 Qualifiers are used to set a query plan for a rule. The qualifer `.plan` let's the programmer chose a query plan for a rule.  
@@ -72,6 +78,7 @@ Qualifiers are used to set a query plan for a rule. The qualifer `.plan` let's t
 In the following, we define rule declarations in Souffle more formally using [syntax diagrams](https://en.wikipedia.org/wiki/Syntax_diagram) and [EBNF](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form). The syntax diagrams were produced using [Bottlecaps](https://www.bottlecaps.de/rr/ui).
 
 ### Rule
+A rule has one or more heads followed by symbol `:-` and a disjunctive term. A query plan is optional for a rule.
 
 ![Rule](https://souffle-lang.github.io/img/rule.svg)
 
@@ -80,16 +87,16 @@ rule ::= atom ( ',' atom )* ':-' disjunction '.' query_plan?
 ```
 
 ### Qualified Name
+A qualified name is a sequence of identifiers separated by `.` to disambiguate relations that are instantiated by components.
 
 ![Qualifier Name](https://souffle-lang.github.io/img/qualified_name.svg)
-
-A qualified name is a sequence of identifiers separated by `.` to disambiguate relations that are instantiated by components.
 
 ```ebnf
 qualified_name ::= IDENT ( '.' IDENT )*
 ```
 
 ### Atom
+An atom consists of a relation name followed by comma-separated arguments in parenthesis.
 
 ![Atom](https://souffle-lang.github.io/img/atom.svg)
 
@@ -98,7 +105,7 @@ atom ::= qualified_name '(' ( argument ( ',' argument )* )? ')'
 ```
 
 ### Disjunction
-
+A disjunction is a list of conjunction separated by ';'.
 ![Disjunction](https://souffle-lang.github.io/img/disjunction.svg)
 
 ```ebnf
@@ -106,6 +113,7 @@ disjunction ::= conjunction ( ';' conjunction )*
 ```
 
 ### Conjunction
+A conjunctive term is a list of (negated) atoms / constraints / disjunctions separated by ','. 
 
 ![Conjunction](https://souffle-lang.github.io/img/conjunction.svg)
 
@@ -114,6 +122,7 @@ conjunction ::= '!'* ( atom | constraint | '(' disjunction ')' ) ( ',' '!'* ( at
 ```
 
 ### Query Plan
+A query plan gives for each version of a rule a permutation. The permutation dictates the execution order in the loop nest.
 
 ![Query Plan](https://souffle-lang.github.io/img/query_plan.svg)
 
