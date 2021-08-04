@@ -182,8 +182,7 @@ In this example, PrecisePointsto inherits all the relations from AbstractPointst
 In the following, we define the component model more formally using [syntax diagrams](https://en.wikipedia.org/wiki/Syntax_diagram) and [EBNF](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form). The syntax diagrams were produced using [Bottlecaps](https://www.bottlecaps.de/rr/ui).
 
 ### Component Declaration
-
-A component declaration may consist of [type declarations](types), [relation declarations](relations), [rules](rules), [facts](facts), [directives](directives), override directives, [component declarations and initialisations](components). 
+A component declaration may consist of [type declarations](types), [relation declarations](relations), [rules](rules), [facts](facts), [directives](directives), override directives, [component declarations and initialisations](components).
 
 ![Component Declaration](https://souffle-lang.github.io/img/component_decl.svg)
 
@@ -196,6 +195,8 @@ component_decl ::=
 ```
 
 ### Component Initialisation
+
+A 
 
 ![Component Initialisation](https://souffle-lang.github.io/img/component_init.svg)
 
