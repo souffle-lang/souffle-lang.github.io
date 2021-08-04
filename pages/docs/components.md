@@ -195,8 +195,7 @@ component_decl ::=
 ```
 
 ### Component Initialisation
-
-A 
+A component initialisation has a name and the component declaration name with its parameters.  
 
 ![Component Initialisation](https://souffle-lang.github.io/img/component_init.svg)
 
