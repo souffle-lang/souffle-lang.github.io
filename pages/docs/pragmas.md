@@ -21,6 +21,13 @@ There are also some configurations that cannot be set by command-line flags incl
 In the following, we define constraints and argument values in Souffle more formally using [syntax diagrams](https://en.wikipedia.org/wiki/Syntax_diagram) and [EBNF](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form). The syntax diagrams were produced using [Bottlecaps](https://www.bottlecaps.de/rr/ui).
 
 ### Pragma
+A pragma has is followed by a parameter string. An additional string for the parameter value is optional. 
+
+![Pragma](https://souffle-lang.github.io/img/pragma.svg)
+
+```ebnf
+pragma   ::= '.pragma' STRING STRING?
+```
 
          
 {% include links.html %}
