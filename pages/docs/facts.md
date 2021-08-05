@@ -19,7 +19,7 @@ the relation `A` has two facts: `A(1,2).` and `A(2,3)`.  Note that facts can als
 loaded with the [input directive](directives).
 
 ## Syntax 
-In the following, we define facts in Souffle more formally using [syntax diagrams](https://en.wikipedia.org/wiki/Syntax_diagram) and [EBNF](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form). The syntax diagrams were produced using [Bottlecaps](https://www.bottlecaps.de/rr/ui).
+In the following, we define facts more formally using [syntax diagrams](https://en.wikipedia.org/wiki/Syntax_diagram) and [EBNF](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form). The syntax diagrams were produced with [Bottlecaps](https://www.bottlecaps.de/rr/ui).
 
 
 ![Qualifier Name](https://souffle-lang.github.io/img/qualified_name.svg)
