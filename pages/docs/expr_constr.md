@@ -214,7 +214,7 @@ constraint ::= argument ( '<' | '>' | '<=' | '>=' | '=' | '!=' ) argument
 
 ### Argument Value
 
-Arguments define values for predicates. They can be constants, (unnamed) variables, auto-increments, record terminator (`nil`), record constructors, type conversions, user-defined functor invocations, aggregators, unary and binary operations on other arguments.  
+Arguments define values for predicates. They can be constants, (unnamed) variables, auto-increments, record terminator (`nil`), record constructors, ADT constructors, type conversions, user-defined functor invocations, aggregators, unary and binary operations on other arguments.  
 
 ![Argument](https://souffle-lang.github.io/img/argument.svg)
 
