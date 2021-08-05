@@ -205,6 +205,8 @@ component_init ::= '.init' IDENT '=' component_type
 
 ### Component Type
 
+A component type is a signature of a component either used for initialisation, super-component references, or declaration of a component.
+
 ![Component Type](https://souffle-lang.github.io/img/component_type.svg)
 
 ```ebnf
