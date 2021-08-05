@@ -87,6 +87,10 @@ as a boolean variable.  Semantically, they can be seen as a proposition rather t
 ### Auto Selection
 In Soufflé, the default data structure is the B-tree, with the *direct* version for relations with arity ≤ 6, or the *indirect* version for relations with arity > 6.
 
+## Indexing 
+
+In Souffle, relations are cluster of indexes. The indexes are automatically chosen using a combinatorial optimisation problem so that all operations on a relation can be covered by an index using a minimal number of indexes. We refer to these operations as **primitive searches**, which may evaluate billions of times in large-scale Datalog applications. More details on our auto-indexing technique can be found in [this paper](https://doi.org/10.14778/3282495.3282500). Souffe's auto-indexing technique alleviates the burden of selecting indexes for Datalog programs by the end-user.
+
 ## Magic-Set Transformation
 The relation qualifier `magic` enables the magic-set transformation for a relation. A magic set transformation specialies the evaluation for a Datalog program for a given set of output relations. The magic-set transformation does not always lead to better performance. Souffle provides the relation qualifier `magic` to control the magic-set transformation. More information can be found [here](magicset).
 

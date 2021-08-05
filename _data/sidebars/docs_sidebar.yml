@@ -143,13 +143,9 @@ entries:
       url: /translate
       output: web
 
-  - title: Misc.
+  - title: Publications 
     output: web, pdf
     folderitems:
-
-    - title: Other Systems
-      url: /others
-      output: web
 
     - title: Contributors
       url: /contributors
