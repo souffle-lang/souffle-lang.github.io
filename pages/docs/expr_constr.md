@@ -5,6 +5,8 @@ sidebar: docs_sidebar
 folder: docs
 ---
 
+Constraints are predicates in the body of the rule that produces true and false values. Constraints can be equalities, inequalities, and string checks such as containment and string matching. Arguments define the values of atoms, functors, and constraints.  
+
 ## Strings
 
 * **cat(*string*, *string*)** is used to concatenate two strings together. It can be nested to concatenate more than two strings.
