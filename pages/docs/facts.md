@@ -32,7 +32,7 @@ qualified_name ::= IDENT ( '.' IDENT )*
 
 ### Atom
 
-An atom is a predicate name followed by its arguments. The arguments must be constants and for nullary predicates there are no arguments. 
+An atom is a relation name followed by its arguments. The arguments must be constants. Nullary relations have no arguments. 
 
 ![Atom](https://souffle-lang.github.io/img/atom.svg)
 
