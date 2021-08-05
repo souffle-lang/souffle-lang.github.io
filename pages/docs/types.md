@@ -31,11 +31,11 @@ which can change from a run to another one.
 ### Number Type
 The number type consists of the universe of all signed interger numbers.
 The accepted range of numbers is given by the two's complement
-scheme of the word size.
+scheme of the word size. The default range is fixed to the `int32_t` type covering the range [ -2^31 .. 2^31 -1 ]. However, the wordsize can be altered by a configuration flag in the configure script to `int64_t`.
 
 ### Unsigned Type
 The unsigned type consists of the universe of all non-negative integer numbers.
-The range is given by the word size.
+The range is given by the word size. The default range is fixed to the `uint32_t` type covering the range [ 0 .. 2^32 ]. However, the wordsize can be altered by a configuration flag in the configure script to `uint64_t`.
 
 ### Float Type
 The float type consists of the universe of floating point numbers in the [IEEE 754
