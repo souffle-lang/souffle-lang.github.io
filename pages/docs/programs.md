@@ -197,7 +197,7 @@ expresses the rule that a person lives in a building if they are the owner, or a
 
 
 ## Syntax 
-In the following, we define a program more formally using [syntax diagrams](https://en.wikipedia.org/wiki/Syntax_diagram) and [EBNF](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form). The syntax diagrams were produced using [Bottlecaps](https://www.bottlecaps.de/rr/ui).
+In the following, we define a program more formally using [syntax diagrams](https://en.wikipedia.org/wiki/Syntax_diagram) and [EBNF](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form). The syntax diagrams were produced with [Bottlecaps](https://www.bottlecaps.de/rr/ui).
 
 Soufflé utilises the same comment syntax as C/C++. Furthermore, all souffle programs are passed through the C pre-processor. As a consequence, e.g. `#include` pragmas may be utilized to organize Datalog input queries into several files and reuse common constructs within several programs. Also, constants may be defined utilizing the `#define` pragma.
 
