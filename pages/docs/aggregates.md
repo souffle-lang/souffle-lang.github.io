@@ -10,17 +10,14 @@ toc: false
 
 Aggregate functions `min`, `max`, `sum`, and `count` are available in souffle. Here are syntactically correct uses of each of these:
 
-`B(y) :- y = max z : A("A", z)`.
-
-`B(z) :- z = min x+y : { A(x), A(y), C(y) }.`
-
-`B(s, c) :- W(s), c = count : { C(s, _) }.`
-
-`B(s, count : { C(s, _) }) :- W(s).`
-
-`B(n, m) :- A(n, m), B(m, s), 2 * s = 2 * sum s : { A(n, s) } + 2. `
-
-`C(n) :- D(n), B(n, max p : { A(n, p) }).`
+```
+B(y) :- y = max z : A("A", z).
+B(z) :- z = min x+y : { A(x), A(y), C(y) }.
+B(s, c) :- W(s), c = count : { C(s, _) }.
+B(s, count : { C(s, _) }) :- W(s).
+B(n, m) :- A(n, m), B(m, s), 2 * s = 2 * sum s : { A(n, s) } + 2.
+C(n) :- D(n), B(n, max p : { A(n, p) }).
+```
 
 These can be helpful for computing statistics. As an example, if `Prime` contained the first 60 prime integers, you could find the sum of all primes in this table with the rule
 
