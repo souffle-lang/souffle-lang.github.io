@@ -58,21 +58,45 @@ The compiler of souffle is enabled using the flag ```-c```, the flag ```-o <exec
 The difference between the flag ```-c``` and ```-o``` is whether the program is compiled and immediately executed with the former option or whether an executable is generated with the latter option. If compiled with option ```-o <exec>```, the executable is a standalone program whose options can be queried with flag ```-h```. The following message would be produced,
 
 ```
-====================================================================
- Datalog Program: <source file>
- Usage: <exec> [OPTION]
-
- Options:
-    -D <DIR>, --output=<DIR>     -- directory for output relations
-                                    (default: <fact-dir>) 
-    -F <DIR>, --facts=<DIR>      -- directory for fact files
-                                    (default: <output-dir>) 
-    -h                           -- Prints this help page.
---------------------------------------------------------------------
- Copyright (c) 2013-15, Oracle and/or its affiliates.
- All rights reserved.
-===================================================================
-```
+============================================================================
+souffle -- A datalog engine.
+Usage: souffle [OPTION] FILE.
+----------------------------------------------------------------------------
+Options:
+  -F, --fact-dir=<DIR>                                                                                                  Specify directory for fact files.
+  -I, --include-dir=<DIR>                                                                                               Specify directory for include files.
+  -D, --output-dir=<DIR>                                                                                                Specify directory for output files. If <DIR> is `-` then stdout is used.
+  -j, --jobs=<N>                                                                                                        Run interpreter/compiler in parallel using N threads, N=auto for system default.
+  -c, --compile                                                                                                         Generate C++ source code, compile to a binary executable, then run this executable.
+  -g, --generate=<FILE>                                                                                                 Generate C++ source code for the given Datalog program and write it to <FILE>. If <FILE> is `-` then stdout is used.
+  -s, --swig=<LANG>                                                                                                     Generate SWIG interface for given language. The values <LANG> accepts is java and python. 
+  -L, --library-dir=<DIR>                                                                                               Specify directory for library files.
+  -l, --libraries=<FILE>                                                                                                Specify libraries.
+  -w, --no-warn                                                                                                         Disable warnings.
+  -m, --magic-transform=<RELATIONS>                                                                                     Enable magic set transformation changes on the given relations, use '*' for all.
+  -M, --macro=<MACROS>                                                                                                  Set macro definitions for the pre-processor
+  -z, --disable-transformers=<TRANSFORMERS>                                                                             Disable the given AST transformers.
+  -o, --dl-program=<FILE>                                                                                               Generate C++ source code, written to <FILE>, and compile this to a binary executable (without executing it).
+      --live-profile                                                                                                    Enable live profiling.
+  -p, --profile=<FILE>                                                                                                  Enable profiling, and write profile data to <FILE>.
+  -u, --profile-use=<FILE>                                                                                              Use profile log-file <FILE> for profile-guided optimization.
+      --profile-frequency                                                                                               Enable the frequency counter in the profiler.
+  -r, --debug-report=<FILE>                                                                                             Write HTML debug report to <FILE>.
+  -P, --pragma=<OPTIONS>                                                                                                Set pragma options.
+  -t, --provenance=<[ none | explain | explore ]>                                                                       Enable provenance instrumentation and interaction.
+  -v, --verbose                                                                                                         Verbose output.
+      --version                                                                                                         Version.
+      --show=<[ parse-errors | precedence-graph | scc-graph | transformed-datalog | transformed-ram | type-analysis ]>  Print selected program information.
+      --parse-errors                                                                                                    Show parsing errors, if any, then exit.
+  -h, --help                                                                                                            Display this help message.
+      --legacy                                                                                                          Enable legacy support.
+----------------------------------------------------------------------------
+Version: XXXX
+----------------------------------------------------------------------------
+Copyright (c) 2016-21 The Souffle Developers.
+Copyright (c) 2013-16 Oracle and/or its affiliates.
+All rights reserved.
+============================================================================```
 
 The defaults are taken from the compiler invocation, which may be overwritten with user defined parameters of the standalone executable. Note that if the profiling option is enabled, the standalone executable has the additional option ```-p``` (see below). 
 
@@ -81,16 +105,16 @@ As a side-effect of execution, a profile log can be generated. The profile log c
 
 Soufflé has various command line options to control the execution mode and parameterise the Soufflé input program.
 
-# Warning Options
+## Warning Options
 
 Warnings produced by Soufflé can be disabled with the option ```-w```.
 
-# Parallel Execution
+## Parallel Execution
 
 All execution modes of Soufflé provide parallel evaluation. The parallel evaluation is enabled with the option ```-j <num>```. 
 
-# Verbose message output
+## Verbose message output
 More verbose output can be produced by using the verbose flag ```-v```. 
 
-# Debugging 
+## Debugging 
 A debug report in HTML format is generated using the flag ```--debug-report=<report.html>```. Note that for the debug report, it is essential that graphviz is installed to render the dependency graphs. 
