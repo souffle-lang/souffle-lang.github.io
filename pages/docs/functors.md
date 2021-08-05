@@ -6,11 +6,11 @@ folder: docs
 ---
 
 Soufflé is extensible with user-defined functors. Functors are 
-introduced via functor declarations and can be used subsequently.
-Functors are strongly typed and have a type signature. User-defined
-functors are implemented in the form of a shared library, that will 
+introduced via functor declarations. Functors are strongly typed 
+and have a type signature. User-defined functors are implemented 
+in C/C++ and are stored in a shared library, that will 
 be loaded at evaluation-time. User-defined functors can be 
-used in the interpreter and for the compiled Soufflé program. 
+used in the interpreter and synthesiser. 
 
 ## Functor Declaration 
 A functor declaration contains
@@ -18,35 +18,36 @@ the name of the functor, the argument types, and the return type
 of the functor. A functor declaration has the following
 format:
 
-`.functor <name>(<type>`<sub>1</sub>`,...,<type>`<sub>k</sub>`):<type>`
+```
+.functor <name>(<name1>:<type1>,...,<name-k>:<type-k>):<type>
+```
   
-where the types  `<type>`<sub>1</sub>,...,`<type>`<sub>k</sub> define the types 
-of the functor arguments, and `<type>` defines the return type. Currently,
-the type arguments and result type can only assume the primitive types of Soufflé:
+where the types  `<name-1><type-1>,...,<name-k><type-k>` define 
+the argument types of the functor, and `<type>` defines the return 
+type. For functors that are not stateful, the type arguments and 
+result type can only be primitive types (and their subtypes):
 * Symbol type: `symbol`
 * Number type: `number`
 * Float type: `float`
 
 For example, 
 ```
-.functor f(number):number
+.functor f(a:anumber):number
 ```
-introduces the functor `f` that has a single number argument and 
+introduces the user-defined functor `f` that has a single number argument and 
 returns a number as a result.
 
-## User-Defined Functor 
+## Invocation of User-Defined Functor 
 
-After declaring the functor, the functor can be used in rules and facts. 
-User-defined functors have the prefix-notation, i.e., 
+The user-defined functors have the prefix-notation, i.e., 
 ```
-  <name>(<arg1>,...,<argk>)
+  @<name>(<arg1>,...,<argk>)
 ```
 
 For example,
-
 ```
 // introduce new functor f: number -> number
-.functor f(number):number
+.functor f(x:number):number
 
 
 .decl A(x:number) 
@@ -54,20 +55,21 @@ For example,
 A(1). 
 A(@f(i)) :- A(i), @f(i) < 100.
 ```
-declares a user-defined functor with name `f` that has a number as an argument and produces a number as a result. 
+declares a user-defined functor with name `f`. The functor has a number as an argument and produces a number as a result. 
 
-## Implementation of User-Defined functors.
+## Implementation of User-Defined Functors
 
-User-defined functors can be implemented in any programming language of choice supporting callable external functions. 
-There are strong requirements for the implementation of functors. If they are violated, the execution of Datalog program cannot be guaranteed. 
+User-defined functors can be implemented in C++ (other languages could be used if they support an external C/C++ interface). 
+There are strong execution requirements when user-defined functors are implemented. If these requirements are violated, 
+the execution of Souffle program cannot be guaranteed. 
 
 The properties of the functor implementation are the following:
 
  * The implementation of a functor must return the same return value for the same input arguments. The functor implementation may have state but must follow strict pure functional semantics. For example, a functor cannot produce random numbers, however, f(x) = x + 1 would be a valid functor. 
 
- * The implementation of a functor must be reentrant. Souffle is highly parallel and several threads may execute the implementation of a user-defined functor in parallel. Pthread synchronisation techniques may be required.
+ * The implementation of a functor must be reentrant. Souffle is highly parallel and several threads may execute the implementation of a user-defined functor in parallel. Pthread synchronisation techniques may be required for the implementation.
 
- * By default a single shared-library `libfunctors.so` in the current folder contains all user-defined functors. Custom libraries may be used by starting souffle with `-l<libraryname>` and `-L<library path>`, e.g. `souffle -lfunctors -lmorefunctors a.dl`. Note that these options precede the Datalog file. The environment variable `LD_LIBRARY_PATH` can also be used to specify library paths. Note that if you use souffle to compile a standalone executable, the path for dynamic dlls may still be required at execution time, so `LD_LIBRARY_PATH` must be specified for the executable to run.
+ * By default a single shared-library `libfunctors.so` in the current folder contains all user-defined functors. Custom libraries may be used by starting souffle with `-l<libraryname>` and `-L<library path>`, e.g. `souffle -lfunctors -lmorefunctors a.dl`. Note that these options must precede the Datalog file in the command line. The environment variable `LD_LIBRARY_PATH` can also be used to specify library paths for the shared functor library. If you use Souffle to compile a standalone executable, the path for dynamic dlls may still be required at execution time, so `LD_LIBRARY_PATH` must be specified for the executable to run.
  
  * The name of the user-defined functor must be a C-linkable name (not a C++ linkable name). For example, if the user-defined functor `f` is declared, the shared-library must have a function `f` in the shared library with a C style argument passing mechanism.
 
@@ -90,11 +92,11 @@ const char *g() {
 
 for the functor declarations 
 ```
-.functor f(number):number
+.functor f(x:number):number
 .functor g():symbol
 ```
 
-Note that number types are implemented as ```int32_t``` and symbol types are implemented as ```const char *```. The float types are by default implemented as C `float` (or as C `double` if configured with `--enable-64bit-domain`). In Linux, a shared library can be generated with the following instructions:
+Number types are implemented as ```int32_t``` and symbol types are implemented as ```const char *```. The float types are by default implemented as C `float` (or as C `double` if configured with `--enable-64bit-domain`). In Linux, a shared library can be generated with the following instructions:
 ```
 g++ functors.cpp -c -fPIC -o functors.o 
 g++ -shared -o libfunctors.so functors.o 
@@ -102,7 +104,7 @@ export LD_LIBRARY_PATH=${LD_LIBRARY_PATH:+$LD_LIBRARY_PATH:}`pwd`
 ```
 Assuming that the source code of the user-defined functors is stored in the source file ```functors.cpp```. The export command ensures that either the Soufflé interpreter or the generated executable can find the shared library.
 
-If you are on the MAC OS X system, you need to create a dynamic library as well so that it works with the interpreter and synthesiser. For the creation you need following instructions: 
+If you are on the MAC OS X system, you need to create an additional dynamic library. For the creation of the dynamic library, use following instructions: 
 
 ```
 g++ functors.cpp -c -fPIC -o functors.o 
@@ -112,17 +114,14 @@ export DYLD_LIBRARY_PATH=${DYLD_LIBRARY_PATH:+$DYLD_LIBRARY_PATH:}`pwd`
 ```
 
 ## Stateful User-Defined Functors 
-A call to a stateful user-defined functor pass 
-on the symbol and the record table so that the 
-user-defined functors can access and manipulate 
-records and symbols directly.
- 
+Souffle exposes the symbol and record table to a stateful user-defined functor.
+A stateful functor can access and manipulate these tables for [symbols and records](types).
+
 For example, the following line
 ``` 
-.functor mycat(symbol, symbol):symbol stateful
+.functor mycat(a:symbol, b:symbol):symbol stateful
 ```
-declares a stateful user-defined functor in 
-the Souffle program. The C++ implementation 
+declares the stateful user-defined `mycat` functor in the Souffle program. The C++ implementation 
 is shown below:
 
 ```
@@ -131,36 +130,32 @@ extern "C" {
         souffle::RamDomain arg1, souffle::RamDomain arg2) {
     assert(symbolTable && "NULL symbol table");
     assert(recordTable && "NULL record table");
-    const std::string& sarg1 = symbolTable->resolve(arg1);
-    const std::string& sarg2 = symbolTable->resolve(arg2);
+    const std::string& sarg1 = symbolTable->decode(arg1);
+    const std::string& sarg2 = symbolTable->decode(arg2);
     std::string result = sarg1 + sarg2;
-    return symbolTable->lookup(result);
+    return symbolTable->encode(result);
  }
 }
 ```
-The first two parameters are pointers to Souffle's symbol and record table that can be accessed and manipulated in the C++ implementation of the functor. 
+The first two parameters are pointers to Souffle's symbol and record table. 
 Although the two arguments of the functor are symbols, only the ordinal numbers 
 are passed on when the functor is called. To implement a concatenation, 
-the ordinal values of the symbols need to be converted to strings using 
-the `resolve()` method. The return value must be an ordinal number as well, 
+the ordinal numbers must be converted to strings first using 
+the `decode()` method. The return value must be an ordinal number as well, 
 hence the result of the concatenation is converted to an ordinal number
-using the `lookup` method. 
+using the `encode` method. 
 
 ### Records
-A stateful user-defined functor can be defined for records and ADTs 
-as well. However, records need to be converted to their ordinal 
-numbers when passed on as parameters and similar conversion 
-must be done for the return value. We suggest using a macro
-for the conversion as shown below:
+Stateful functors require a similar conversion between records and their ordinal numbers.
+
 
 ```
-.functor _myappend(number):number stateful
-#define myappend(a) as(@_myappend(as(a,number)),List)
+.functor myappend(x:List):List stateful
  
 .type List = [x:number, y:List]
 .decl L(x:List)
 L([1,nil]).
-L(myappend(l)) :- L(l), l = [x, _l1], x < 10.
+L(@myappend(l)) :- L(l), l = [x, _l1], x < 10.
 .output L
 ``` 
 
@@ -189,7 +184,7 @@ souffle::RamDomain _myappend(
 ``` 
 
 ## Syntax 
-In the following, we define user-defined functor declarations  more formally using [syntax diagrams](https://en.wikipedia.org/wiki/Syntax_diagram) and [EBNF](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form). The syntax diagrams were produced using [Bottlecaps](https://www.bottlecaps.de/rr/ui).
+In the following, we define user-defined functor declarations more formally using [syntax diagrams](https://en.wikipedia.org/wiki/Syntax_diagram) and [EBNF](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form). The syntax diagrams were produced with [Bottlecaps](https://www.bottlecaps.de/rr/ui).
 
 ### User-Defined Functors
 
