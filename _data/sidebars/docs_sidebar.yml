@@ -83,8 +83,12 @@ entries:
       url: /rules
       output: web
 
-    - title: Constraints & Arguments
-      url: /constr_arg
+    - title: Constraints
+      url: /constraints
+      output: web
+
+    - title: Arguments
+      url: /arguments
       output: web
 
     - title: Aggregates
