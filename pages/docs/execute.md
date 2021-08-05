@@ -96,7 +96,8 @@ Version: XXXX
 Copyright (c) 2016-21 The Souffle Developers.
 Copyright (c) 2013-16 Oracle and/or its affiliates.
 All rights reserved.
-============================================================================```
+============================================================================
+```
 
 The defaults are taken from the compiler invocation, which may be overwritten with user defined parameters of the standalone executable. Note that if the profiling option is enabled, the standalone executable has the additional option ```-p``` (see below). 
 
