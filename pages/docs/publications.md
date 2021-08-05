@@ -6,6 +6,8 @@ folder: docs
 toc: false
 ---
 ## Publications
+ * Xiaowen Hu, David Zhao, Herbert Jordan, Bernhard Scholz:
+An efficient interpreter for Datalog by de-specializing relations. PLDI 2021: 681-695; ([link](https://dl.acm.org/doi/10.1145/3453483.3454070)).
  * David Zhao, Pavle Subotić, and Bernhard Scholz:
 Debugging Large-scale Datalog: A Scalable Provenance Evaluation Strategy. ACM Trans. Program. Lang. Syst. 42, 2, Article 7 (April 2020); ([link](/pdf/toplas20.pdf)).
  * Herbert Jordan, Pavle Subotić, David Zhao, Bernhard Scholz:
@@ -19,7 +21,7 @@ Brie: A Specialized Trie for Concurrent Datalog. PMAM@PPoPP 2019: 31-40; ([link]
  * Pavle Subotić, Herbert Jordan, Lijun Chang, Alan Fekete, Bernhard Scholz: Automatic Index Selection for Large-Scale Datalog Computation. PVLDB 12(2): 141-153 (2018); ([link](http://www.vldb.org/pvldb/vol12/p141-subotic.pdf)).
  * Herbert Jordan, Bernhard Scholz, Pavle Subotić: Souffle: On Synthesis of Program Analyzers. CAV 2016; ([link](/pdf/cav16.pdf)).
  * Bernhard Scholz, Herbert Jordan, Pavle Subotić, Till Westmann: On fast large-scale program analysis in Datalog. CC 2016: 196-206; ([link](/pdf/cc.pdf)).
- * Bernhard Scholz, Kostyantyn Vorobyov, Padmanabhan Krishnan, Till Westmann: A Datalog Source-to-Source Translator for Static Program Analysis: An Experience Report. ASWEC 2015: 28-37; ([link](https://ieeexplore.ieee.org/document/7365791/))
+ * Bernhard Scholz, Kostyantyn Vorobyov, Padmanabhan Krishnan, Till Westmann: A Datalog Source-to-Source Translator for Static Program Analysis: An Experience Report. ASWEC 2015: 28-37; ([link](https://ieeexplore.ieee.org/document/7365791/)).
 
 ## Talks
  * Bernhard Scholz: Tool Talk: Soufflé, PLDI 2020 - SOAP, London, UK` https://www.youtube.com/watch?v=Qp3zfM-JSx8
