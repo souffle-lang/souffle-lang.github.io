@@ -21,7 +21,16 @@ The contributors with their code contributions are listed below:
  * **Patrick Nappa**: Equivalence relations
  * **Abdul Karim Zreika**: optimizations, magic set transformation, inlining, new ast-to-ram translator
  * **Martin McGrane**: dev ops, refactoring, new I/O system for relations, numerous bug fixes
- * **David Zhao**: provenance/debugging for Datalog
+ * **David Zhao**: provenance/debugging for Datalog, refactoring of relation synthesis
  * **Samuel Isaac Arch**: index selection for inequalities
+ * **Tytus Metrycki**: New type system
+ * **Xiaowen Hu**: New high-performance interpreter
+ * **Rachel Dowavic**: Aggregators, scripting
+ * **Tomas Puverle**: Refactoring, initial CMake port
+ * **Patrick Hao**: GitHub action packaging and codecov
+ * **Daniel Collins**: Refactoring of RAM, documentation template for souffle-lang.github.io
+ * **Yun Li**: Extended provenance tool
+ * **Brody Franks**: Refactoring of RAM
+ * **Oliver Scarlet**: Type system fixes
 
 {% include links.html %}
