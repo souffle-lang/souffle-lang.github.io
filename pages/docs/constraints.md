@@ -5,6 +5,8 @@ sidebar: docs_sidebar
 folder: docs
 ---
 
+Constraints are predicates in the body of the rule that produces true and false values. Constraints can be equalities, inequalities, and string checks such as containment and string matching. Arguments define the values of atoms, functors, and constraints.  
+
 ## Strings
 
 * **cat(*string*, *string*)** is used to concatenate two strings together. It can be nested to concatenate more than two strings.
@@ -196,9 +198,11 @@ C(i,j) :- B(c,i), B(c,j), i!=j.
 The above example does not output anything.
 
 ## Syntax 
-In the following, we define constraints and argument values in Souffle more formally using [syntax diagrams](https://en.wikipedia.org/wiki/Syntax_diagram) and [EBNF](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form). The syntax diagrams were produced using [Bottlecaps](https://www.bottlecaps.de/rr/ui).
+In the following, we define constraints and argument values in Souffle more formally using [syntax diagrams](https://en.wikipedia.org/wiki/Syntax_diagram) and [EBNF](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form). The syntax diagrams were produced with [Bottlecaps](https://www.bottlecaps.de/rr/ui).
 
 ### Constraint
+
+A constraint is a predicate in the body of a rule. It either produces a true or a false value. Constraints can be inequalities and equalities for primitive types, and there are string constraints for matching and containment ship. 
 
 ![constraint](https://souffle-lang.github.io/img/constraint.svg)
 
@@ -210,15 +214,9 @@ constraint ::= argument ( '<' | '>' | '<=' | '>=' | '=' | '!=' ) argument
 ```
 
 
-### Argument List
-
-![Argument List](https://souffle-lang.github.io/img/argument_list.svg)
-
-```ebnf
-argument_list ::= ( argument ( ',' argument )* )?
-```
-
 ### Argument Value
+
+Arguments define values for predicates. They can be constants, (unnamed) variables, auto-increments, record terminator (`nil`), record constructors, ADT constructors, type conversions, user-defined functor invocations, aggregators, unary and binary operations on other arguments.  
 
 ![Argument](https://souffle-lang.github.io/img/argument.svg)
 
@@ -237,12 +235,44 @@ argument ::=
     | aggregator
     | ( '-' | 'bnot' | 'lnot' | argument ( '+' | '-' | '*' | '/' | '%' | '^' | 'land' | 'lor' | 'lxor' | 'band' | 'bor' | 'bxor' | 'bshl' | 'bshr' | 'bshru' ) ) argument     
 ```
+
+### Argument List
+
+![Argument List](https://souffle-lang.github.io/img/argument_list.svg)
+
+```ebnf
+argument_list ::= ( argument ( ',' argument )* )?
+```
+
+### Unary Operation
+
+Unary operations are arithmetic negation, binary compliment, and logical not. 
+
+![Unary Operation](https://souffle-lang.github.io/img/unary_operation.svg)
+
+```ebnf
+unary_operation ::= '-' | 'bnot' | 'lnot'
+```
+
+### Binary Operation
+
+There are binary operations for arithmetic,  logical, and binary expressions. 
+
+![Binary Operation](https://souffle-lang.github.io/img/binary_operation.svg)
+
+```ebnf
+binary_operation ::= 
+     '+' | '-' | '*' | '/' | '%' | '^' | 'land' | 'lor' | 'lxor' | 'band' | 'bor' | 'bxor' | 'bshl' | 'bshr' | 'bshru' 
+```
+
 ### Intrinsic Functor
+
+There are intrisnic functors for strings, type conversions, and generative functors.
 
 ![Intrinsic Functor](https://souffle-lang.github.io/img/intrinsic_functor.svg)
 
 ```ebnf
-intrinsic_functor ::= 'cat' | 'ord' | 'range' | 'strlen' | 'substr' | 'to_float' | 'to_number' | 'to_string' | 'to_unsigned'
+intrinsic_functor ::= 'ord' | 'to_float' | 'to_number' | 'to_string' | 'to_unsigned' | 'cat' | 'strlen' | 'substr' 
 ```           
 
 {% include links.html %}
