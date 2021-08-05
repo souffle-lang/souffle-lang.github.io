@@ -188,6 +188,8 @@ In the following, we define user-defined functor declarations more formally usin
 
 ### User-Defined Functors
 
+A user-defined declaration starts with the keyword `.functor` followed by the name of the user-defined functor, its argument types, and its return type.
+
 ![User-Defined Functor](https://souffle-lang.github.io/img/functor_decl.svg)
 
 ```ebnf
