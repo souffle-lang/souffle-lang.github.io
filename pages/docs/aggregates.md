@@ -140,7 +140,8 @@ In the following, we define rule declarations in Souffle more formally using [sy
 ![Aggregator](https://souffle-lang.github.io/img/aggregator.svg)
 
 ```ebnf
-aggregator  ::= ( ( 'max' | 'mean' | 'min' | 'sum' ) argument | 'count' ) ':' ( '{' disjunction '}' | atom ) 
+aggregator  ::= (( ( 'max' | 'mean' | 'min' | 'sum' ) argument | 'count' ) ':' ( '{' disjunction '}' | atom )) | 
+                'range' '(' argument ',' argument (',' argument)? ')'
 ```
 
 {% include links.html %}
