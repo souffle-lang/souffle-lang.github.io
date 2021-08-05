@@ -242,12 +242,35 @@ argument ::=
 argument_list ::= ( argument ( ',' argument )* )?
 ```
 
+### Unary Operation
+
+Unary operations are arithmetic negation, binary compliment, and logical not. 
+
+![Unary Operation](https://souffle-lang.github.io/img/unary_operation.svg)
+
+```ebnf
+unary_operation ::= '-' | 'bnot' | 'lnot'
+```
+
+### Binary Operation
+
+There are binary operations for arithmetic,  logical, and binary expressions. 
+
+![Binary Operation](https://souffle-lang.github.io/img/binary_operation.svg)
+
+```ebnf
+binary_operation ::= 
+     '+' | '-' | '*' | '/' | '%' | '^' | 'land' | 'lor' | 'lxor' | 'band' | 'bor' | 'bxor' | 'bshl' | 'bshr' | 'bshru' 
+```
+
 ### Intrinsic Functor
+
+There are intrisnic functors for strings, type conversions, and generative functors.
 
 ![Intrinsic Functor](https://souffle-lang.github.io/img/intrinsic_functor.svg)
 
 ```ebnf
-intrinsic_functor ::= 'cat' | 'ord' | 'range' | 'strlen' | 'substr' | 'to_float' | 'to_number' | 'to_string' | 'to_unsigned'
+intrinsic_functor ::= 'ord' | 'to_float' | 'to_number' | 'to_string' | 'to_unsigned' | 'cat' | 'strlen' | 'substr' 
 ```           
 
 {% include links.html %}
