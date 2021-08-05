@@ -198,7 +198,7 @@ The above example does not output anything.
 ## Syntax 
 In the following, we define constraints and argument values in Souffle more formally using [syntax diagrams](https://en.wikipedia.org/wiki/Syntax_diagram) and [EBNF](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form). The syntax diagrams were produced using [Bottlecaps](https://www.bottlecaps.de/rr/ui).
 
-### Constraint
+### Constraints
 
 ![constraint](https://souffle-lang.github.io/img/constraint.svg)
 
@@ -218,7 +218,7 @@ constraint ::= argument ( '<' | '>' | '<=' | '>=' | '=' | '!=' ) argument
 argument_list ::= ( argument ( ',' argument )* )?
 ```
 
-### Argument Value
+### Argument Values
 
 ![Argument](https://souffle-lang.github.io/img/argument.svg)
 
@@ -235,9 +235,27 @@ argument ::=
     | '[' argument_list ']'
     | ( '(' argument | 'as' '(' argument ',' type_name | ( '@' IDENT | intrinsic_functor ) '(' argument_list ) ')'
     | aggregator
-    | ( '-' | 'bnot' | 'lnot' | argument ( '+' | '-' | '*' | '/' | '%' | '^' | 'land' | 'lor' | 'lxor' | 'band' | 'bor' | 'bxor' | 'bshl' | 'bshr' | 'bshru' ) ) argument     
+    | ( unary_operation | argument binary_operation ) argument     
 ```
-### Intrinsic Functor
+
+
+### Unary Operations
+
+![Unary Operation](https://souffle-lang.github.io/img/unary_operation.svg)
+
+```ebnf
+unary_operation ::= '-' | 'bnot' | 'lnot'
+```
+
+### Binary Operations
+
+![Binary Operation](https://souffle-lang.github.io/img/binary_operation.svg)
+
+```ebnf
+binary_operation ::=  '+' | '-' | '*' | '/' | '%' | '^' | 'land' | 'lor' | 'lxor' | 'band' | 'bor' | 'bxor' | 'bshl' | 'bshr' | 'bshru' 
+```
+
+### Intrinsic Functors
 
 ![Intrinsic Functor](https://souffle-lang.github.io/img/intrinsic_functor.svg)
 
