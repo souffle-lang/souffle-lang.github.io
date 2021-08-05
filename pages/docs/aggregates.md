@@ -132,5 +132,20 @@ A(x) :- x = range(1,5,1).
 ```
 produces the values one to four in relation A. 
 
+## Syntax 
+In the following, we define rule declarations in Souffle more formally using [syntax diagrams](https://en.wikipedia.org/wiki/Syntax_diagram) and [EBNF](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form). The syntax diagrams were produced with [Bottlecaps](https://www.bottlecaps.de/rr/ui).
+
+### Aggregator
+
+![Aggregator](https://souffle-lang.github.io/img/aggregator.svg)
+
+```ebnf
+ggregator  ::=  (COUNT
+           | MAX
+           | MEAN
+           | MIN
+           | SUM
+) argument? COLON (LBRACE disjunction RBRACE | atom) 
+```
 
 {% include links.html %}
