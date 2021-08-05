@@ -9,7 +9,7 @@ toc: false
  * David Zhao, Pavle Subotić, and Bernhard Scholz:
 Debugging Large-scale Datalog: A Scalable Provenance Evaluation Strategy. ACM Trans. Program. Lang. Syst. 42, 2, Article 7 (April 2020); ([link](/pdf/toplas20.pdf)).
  * Herbert Jordan, Pavle Subotić, David Zhao, Bernhard Scholz:
-Specializing Parallel Data Structures for Datalog. Concurrency Computat Pract Exper. 2020
+Specializing Parallel Data Structures for Datalog. Concurrency Computat Pract Exper. 2020; ([link](https://onlinelibrary.wiley.com/doi/abs/10.1002/cpe.5643)).
  * Patrick Nappa, David Zhao, Pavle Subotić, and Bernhard Scholz:
 Fast Parallel Equivalence Relations in a Datalog Compiler. PACT 2019: 82-96; ([link](/pdf/pact2019eqrel.pdf)).
  * Herbert Jordan, Pavle Subotić, David Zhao, Bernhard Scholz:
