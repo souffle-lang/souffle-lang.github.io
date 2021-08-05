@@ -24,8 +24,8 @@ format:
   
 where the types  `<name-1><type-1>,...,<name-k><type-k>` define 
 the argument types of the functor, and `<type>` defines the return 
-type. Currently, the type arguments and result type can only 
-assume the primitive types of Soufflé:
+type. For functors that are not stateful, the type arguments and 
+result type can only be primitive types (and their subtypes):
 * Symbol type: `symbol`
 * Number type: `number`
 * Float type: `float`
