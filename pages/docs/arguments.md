@@ -5,8 +5,16 @@ sidebar: docs_sidebar
 folder: docs
 ---
 
-Arguments define the values of atoms, functors, and constraints.  
+Arguments define the values of atoms, functors, and constraints. They can be constants, variables, record constructors, ADT constructors, type conversions,aggregators, and invocations to binary/unary operations, and user-defined operations.
 
+
+### Constants
+TBD.
+
+### Variables 
+TBD.
+
+### Intrinsic Functors and Operations
 
 Intrinsic functor **cat(*string*, *string*)** is used to concatenate two strings together. It can be nested to concatenate more than two strings.
 ```prolog
@@ -137,6 +145,13 @@ B($,i) :- A(i).
 C(i,j) :- B(c,i), B(c,j), i!=j.
 ```
 The above example does not output anything.
+
+
+### User-Defined Functors
+
+TBD.
+
+
 
 ## Syntax 
 In the following, we define constraints and argument values in Souffle more formally using [syntax diagrams](https://en.wikipedia.org/wiki/Syntax_diagram) and [EBNF](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form). The syntax diagrams were produced with [Bottlecaps](https://www.bottlecaps.de/rr/ui).
