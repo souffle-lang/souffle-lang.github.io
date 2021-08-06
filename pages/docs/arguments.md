@@ -183,7 +183,7 @@ variable ::= IDENT | '_'
 
 ### Argument List
 
-An argument list is a list of arguments separated by ','.
+An argument list is a list of arguments separated by comma.
 
 ![Argument List](https://souffle-lang.github.io/img/argument_list.svg)
 
