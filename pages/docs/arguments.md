@@ -243,7 +243,7 @@ There are intrisnic functors for strings, type conversions, and generative funct
 ![Intrinsic Functor](https://souffle-lang.github.io/img/intrinsic_functor.svg)
 
 ```ebnf
-intrinsic_functor ::= 'ord' | 'to_float' | 'to_number' | 'to_string' | 'to_unsigned' | 'cat' | 'strlen' | 'substr' 
+intrinsic_functor ::= 'ord' | 'to_float' | 'to_number' | 'to_string' | 'to_unsigned' | 'cat' | 'strlen' | 'substr' | 'autoinc'
 ```           
 
 {% include links.html %}
