@@ -279,7 +279,7 @@ The definition of attributes is followed by relation qualifiers.
 ![Relation Declaration](https://souffle-lang.github.io/img/relation_decl.svg)
 
 ```ebnf
-relation_decl ::= '.decl' IDENT ( ',' IDENT )* '(' attribute ( ',' attribute )* ')' ( 'override' | 'inline' | 'magic' | 'brie' | 'btree' | 'eqrel' )* choice_domain
+relation_decl ::= '.decl' IDENT ( ',' IDENT )* '(' attribute ( ',' attribute )* ')' ( 'override' | 'inline' | 'no_inline' | 'magic' | 'no_magic' | 'brie' | 'btree' | 'eqrel' )* choice_domain
 ```
 
 ### Choice-Domain
