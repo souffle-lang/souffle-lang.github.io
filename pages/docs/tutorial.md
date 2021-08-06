@@ -341,7 +341,7 @@ The following arithmetic functors are allowed in Soufflé:
 - Multiplication: ``x * y``
 - Modulo: ``a % b``
 - Power:  ``a ^ b``
-- Counter: ``$``
+- Counter: ``autoinc()``
 - Bit operations: ``x band y``, ``x bor y``, ``x bxor y``, and ``bnot x``
 - Logical operations: ``x land y``, ``x lor y``, and ``lnot x``
 
@@ -375,8 +375,8 @@ An example is as follows:
 A(0 lor 1).
 ```
 
-#### The functor $
-The functor ``$`` issues a new number every time it is evaluated.
+#### The functor `autoinc()`
+The functor ``autoinc()`` issues a new number every time it is evaluated.
 However, it is not permitted in recursive relations. It can be used to create unique numbers (acting as identifiers) for symbols, such as in the following example:
 ```prolog
 .decl A(x: symbol)
@@ -384,7 +384,7 @@ A(“a”). A(“b”). A(“c”). A(“d”).
 
 .decl B(x: symbol, y: number)
 .output B
-B(x, $) :- A(x).
+B(x, autoinc()) :- A(x).
 ```
 
 <ul id="exerciseThreeTabs" class="nav nav-tabs">
@@ -578,7 +578,7 @@ To achieve these aims, profiling a given program is paramount. An overview of So
 
 To compile and immediately execute a Soufflé program, the option ``-c`` can be used, e.g. ``souffle -c test.dl`` executes the binary produced from the ``.cpp`` file produced by ``test.dl``. To just generate the executable, the option ``-o`` can be used.
 
-To achieve high performance, the programmer can manually re-order the atoms in the body of a rule. The auto-scheduler can be disabled for a rule by the strict qualifier, with syntax ``<rule>. .strict``. One can also provide their own query schedule, which for a given rule has syntax ``<rule>. .plan{ <#version> : (idx_1, ..., idx_k) }``.
+To achieve high performance, the programmer can manually re-order the atoms in the body of a rule. A query plan can also be provided with the following syntax ``<rule>. .plan{ <#version> : (idx_1, ..., idx_k) }``.
 
 An exercise for the reader is to execute the following code, varying the choice of the last three lines each time, and benchmarking using the profiler:
 ```prolog
