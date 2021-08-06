@@ -143,7 +143,7 @@ In the following, we define constraints and argument values in Souffle more form
 
 ### Argument Value
 
-Arguments define values for predicates. They can be constants, (unnamed) variables, auto-increments, record terminator (`nil`), record constructors, ADT constructors, type conversions, user-defined functor invocations, aggregators, unary and binary operations on other arguments.  
+Arguments define values for predicates. They can be constants, (unnamed) variables,  record terminator (`nil`), record constructors, ADT constructors, type conversions, aggregators, user-defined functor invocations,  unary and binary operations on other arguments.  
 
 ![Argument](https://souffle-lang.github.io/img/argument.svg)
 
@@ -153,22 +153,35 @@ argument ::=
     | FLOAT
     | UNSIGNED
     | NUMBER
-    | '_'
-    | '$' ( IDENT ( '(' argument_list ')' )? )?
     | IDENT
+    | '_'
     | 'nil'
     | '[' argument_list ']'
-    | ( '(' argument | 'as' '(' argument ',' type_name | ( '@' IDENT | intrinsic_functor ) '(' argument_list ) ')'
+    | '$' IDENT ( '(' argument_list ')' )? 
+    | '(' argument ')' 
+    | 'as' '(' argument ',' type_name ')'
+    | ( userdef_functor | intrinsic_functor ) '(' argument_list ) ')'
     | aggregator
-    | ( '-' | 'bnot' | 'lnot' | argument ( '+' | '-' | '*' | '/' | '%' | '^' | 'land' | 'lor' | 'lxor' | 'band' | 'bor' | 'bxor' | 'bshl' | 'bshr' | 'bshru' ) ) argument     
+    | ( unary_operation | argument binary_operation ) argument 
 ```
 
 ### Argument List
+
+An argument list is a list of arguments separated by ','.
 
 ![Argument List](https://souffle-lang.github.io/img/argument_list.svg)
 
 ```ebnf
 argument_list ::= ( argument ( ',' argument )* )?
+```
+### User-Defined Functor 
+
+A user-defined functor invocation has a '@' followed by the identifier of the user-defined functor.
+
+![User-Defined Functor Identifier](https://souffle-lang.github.io/img/userdef_functor_ident.svg)
+
+```ebnf
+userdef_functor_ident ::= '@' IDENT
 ```
 
 ### Unary Operation
