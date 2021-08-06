@@ -143,7 +143,7 @@ In the following, we define constraints and argument values in Souffle more form
 
 ### Argument Value
 
-Arguments define values for predicates. They can be constants, (unnamed) variables,  record terminator (`nil`), record constructors, ADT constructors, type conversions, aggregators, user-defined functor invocations,  unary and binary operations on other arguments.  
+Arguments define values for predicates. They can be constants, (unnamed) variables,  record terminator (`nil`), record constructors, ADT constructors, type conversions, aggregators, user-defined functor invocations, unary and binary operations on other arguments, and arguments in paraenthesis for changing the operation bindings.  
 
 ![Argument](https://souffle-lang.github.io/img/argument.svg)
 
@@ -178,10 +178,10 @@ argument_list ::= ( argument ( ',' argument )* )?
 
 A user-defined functor invocation has a '@' followed by the identifier of the user-defined functor.
 
-![User-Defined Functor Identifier](https://souffle-lang.github.io/img/userdef_functor_ident.svg)
+![User-Defined Functor Identifier](https://souffle-lang.github.io/img/userdef_functor.svg)
 
 ```ebnf
-userdef_functor_ident ::= '@' IDENT
+userdef_functor ::= '@' IDENT
 ```
 
 ### Unary Operation
