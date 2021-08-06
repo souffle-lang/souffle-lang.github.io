@@ -149,20 +149,36 @@ Arguments define values for predicates. They can be constants, (unnamed) variabl
 
 ```ebnf
 argument ::= 
-      STRING
-    | FLOAT
-    | UNSIGNED
-    | NUMBER
-    | IDENT
-    | '_'
+      constant
+    | variable
     | 'nil'
     | '[' argument_list ']'
     | '$' IDENT ( '(' argument_list ')' )? 
     | '(' argument ')' 
     | 'as' '(' argument ',' type_name ')'
-    | ( userdef_functor | intrinsic_functor ) '(' argument_list ) ')'
+    | ( userdef_functor | intrinsic_functor ) '(' argument_list ')'
     | aggregator
     | ( unary_operation | argument binary_operation ) argument 
+```
+
+### Constant
+
+A constant is either a string, number, unsigned or float constant. Numbers have different representation including binary, hexadecimal, and decimal representations. 
+
+![Constant](https://souffle-lang.github.io/img/constant.svg)
+
+```ebnf
+constant ::= STRING | NUMBER | UNSIGNED | FLOAT 
+```
+
+### Variable
+
+A variable is either a named variable or an unnamed variable. A named variable has an identifier. An unnamed variable has the underscore symbol. There are also unnamed named variables which are identifiers, which begin with the underscore symbol.
+
+![Variable](https://souffle-lang.github.io/img/variable.svg)
+
+```ebnf
+variable ::= IDENT | '_'
 ```
 
 ### Argument List
