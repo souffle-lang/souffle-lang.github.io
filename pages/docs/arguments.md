@@ -246,4 +246,19 @@ There are intrisnic functors for strings, type conversions, and generative funct
 intrinsic_functor ::= 'ord' | 'to_float' | 'to_number' | 'to_string' | 'to_unsigned' | 'cat' | 'strlen' | 'substr' | 'autoinc'
 ```           
 
+### Legacy Syntax
+
+The syntax of Souffle changed over time. Older code bases can be still used with 
+modern versions of Souffle.  In older versions of Soufflé we used the dollar symbol
+```prolog
+.decl A(x:number)
+A($):-true.
+```
+for auto increment, which is equivalent to 
+```
+.decl A(x:number)
+A(autoinc()):-true.
+```
+You can enable the old legacy syntax using the command-line flag `--legacy`, but you will receive a warning that the dollar symbol is deprecated.
+
 {% include links.html %}
