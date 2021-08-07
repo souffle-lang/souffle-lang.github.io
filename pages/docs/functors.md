@@ -10,7 +10,10 @@ introduced via functor declarations. Functors are strongly typed
 and have a type signature. User-defined functors are implemented 
 in C/C++ and are stored in a shared library, that will 
 be loaded at evaluation-time. User-defined functors can be 
-used in the interpreter and synthesiser. 
+used in the interpreter and synthesiser.
+
+There is a naive interface that uses C strings and primitive types and a stateful interface. 
+The stateful interface exposes the state of the [record and symbol table](implementation). 
 
 ## Functor Declaration 
 A functor declaration contains
