@@ -87,7 +87,7 @@ Souffle can be extended with user-defined functors, which are implemented in C/C
 
 ## [Pragma](pragmas)
 
-Pragmas configure source-code in Souffle.
+Pragmas configure Souffle. For example, command-line options can be set in the source code. 
 
 ## Syntax 
 In the following, we define a program more formally using [syntax diagrams](https://en.wikipedia.org/wiki/Syntax_diagram) and [EBNF](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form). The syntax diagrams were produced with [Bottlecaps](https://www.bottlecaps.de/rr/ui).
