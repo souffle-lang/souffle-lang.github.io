@@ -40,7 +40,7 @@ Several queries may show up in the program. For example, by adding the directive
 the relation ```A``` is queried at the end of execution as well. The locations of the facts, 
 rules, and queries (i.e., output directives) in the source code are irrelevant.
 
-## Relations
+## [Relations](relations)
 
 Soufflé requires the declaration of relations. A relation is a set
 of ordered tuples (x<sub>1</sub>, ..., x<sub>k</sub>) where each
@@ -60,13 +60,13 @@ In the above example, the type is a number.
 The type-checker of Soufflé will infer the type of variables in rules where name bindings in clauses are correct at compile time.
 The details of the type system are covered below.
 
-## Types
+## [Types](types)
 
 Souffle utilises a typed Datalog dialect to conduct static checks enabling the early detection of errors in Datalog query specifications. Each attribute of involved relations has to be typed. Based on those, Souffle attempts to deduce a type for all terms within all the Horn clauses within a given Datalog program. In case no type can be deduced for some terms, a typing error is reported -- indicating a likely inconsistency in the query specification.
 
 There are four primitive types in Souffle, i.e., `symbol`, `number`, `unsigned`, and `float`. 
 
-## Rules
+## [Rules](rules)
 
 Rules are conditional logic statements. A rule starts with a head followed by a body. For example,
 ```
@@ -76,9 +76,18 @@ holds for a pair (x,y) if it is in B.
 
 Souffle may need [performance tuning](tuning) for tuples. 
 
-## Components 
+## [Components](components) 
 
 For larger projects, it is useful to arrange logic codes in [components](components).
+
+
+## [User-Defined Functors](functors)
+
+Souffle can be extended with user-defined functors, which are implemented in C/C++. There are two flavours of the user-defined functors, i.e., naive and stateful functors. Stateful functors expose [record and symbol tables](implementation). 
+
+## [Pragma](pragmas)
+
+Pragmas configure source-code in Souffle.
 
 ## Syntax 
 In the following, we define a program more formally using [syntax diagrams](https://en.wikipedia.org/wiki/Syntax_diagram) and [EBNF](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form). The syntax diagrams were produced with [Bottlecaps](https://www.bottlecaps.de/rr/ui).
