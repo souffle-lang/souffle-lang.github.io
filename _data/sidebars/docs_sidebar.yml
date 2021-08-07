@@ -143,6 +143,10 @@ entries:
       url: /translate
       output: web
 
+    - title: Symbol&Record Tables
+      url: /implementation
+      output: web
+
   - title: Publications 
     output: web, pdf
     folderitems:
