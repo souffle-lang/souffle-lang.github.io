@@ -32,7 +32,7 @@ result type can only be primitive types (and their subtypes):
 
 For example, 
 ```
-.functor f(a:anumber):number
+.functor f(a:number):number
 ```
 introduces the user-defined functor `f` that has a single number argument and 
 returns a number as a result.
