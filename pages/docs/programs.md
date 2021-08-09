@@ -25,7 +25,7 @@ A(2,3).
 B(x,y) :- A(x,y).            // rules of relation B
 B(x,z) :- A(x,y), B(y,z).
 
-.output B
+.output B                    // Output relation B 
 ```
 Note that Souffle requires to declare relations before its use. This ensures that the proper use 
 of attributes in larger codebases can be checked at compiletime. 
