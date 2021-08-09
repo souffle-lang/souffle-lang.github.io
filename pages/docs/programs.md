@@ -9,8 +9,7 @@ folder: docs
 introduced as a query language for deductive databases in the late 70s. Datalog uses first-order 
 predicate logic to express computations in the form of Horn clauses.
 Datalog adapts the syntax style of [Prolog](https://en.wikipedia.org/wiki/Prolog).
-A full exposition is beyond the scope of this manual -- more details are available in the book [Foundations of Databases by Abiteboul](https://wiki.epfl.ch/provenance2011/documents/foundations%20of%20databases-abiteboul-1995.pdf),
-Hull and Vianu, or [tutorial material](http://blogs.evergreen.edu/sosw/files/2014/04/Green-Vol5-DBS-017.pdf).
+A full exposition is beyond the scope of this manual -- more details are available in the book [Foundations of Databases by Abiteboul, Hull and Vianu](https://wiki.epfl.ch/provenance2011/documents/foundations%20of%20databases-abiteboul-1995.pdf), or [tutorial material](http://blogs.evergreen.edu/sosw/files/2014/04/Green-Vol5-DBS-017.pdf).
 
 ## Language
 
