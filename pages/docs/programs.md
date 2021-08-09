@@ -15,7 +15,7 @@ Hull and Vianu, or [tutorial material](http://blogs.evergreen.edu/sosw/files/201
 ## Language
 
 The main language elements in Souffle are relation declarations, facts, rules, and directives. For example,
-the following program has two relations `A` and `B`. 
+the following program,
 ```prolog
 .decl A(x:number, y:number)  // declaration of relation A
 A(1,2).                      // facts of relation A
@@ -27,16 +27,16 @@ B(x,z) :- A(x,y), B(y,z).
 
 .output B                    // Output relation B 
 ```
-Note that Souffle requires to declare relations before its use. This ensures that the proper use 
-of attributes in larger codebases can be checked at compiletime. 
-Relation ```A``` has two facts: ```A(1,2).``` and ```A(2,3)```.
+has two relations `A` and `B`.  Relations must be declare 
+so that the use of attributes can be checked at compiletime. 
+In the example, relation ```A``` has two facts: ```A(1,2).``` and ```A(2,3)```.
 A fact is a rule that holds unconditionally, i.e., a fact is a Horn Clause  ```A(1,2) ⇐ true```.
 Relation ```B``` has two rules, i.e., ```B(x,y) :- A(x,y).``` and ```B(x,y) :- A(x,y), B(y,z).```
-representing the Horn clause ```B(x,y) ⇐ A(x,y)```.
+representing the Horn clause ```B(x,y) ⇐ A(x,y)``` and ```B(x,y) ⇐ A(x,y), B(y,z)```.
 
 The directive ```.output B``` queries the relation ```B``` at the end of the execution and writes 
-the result either into a file or prints it on the screen. The programmer can choose the order of 
-the relation declarations,  facts, rules, and directives in the source-code.
+its result either into a file or prints it on the screen. The programmer can choose the order of 
+the relation declarations,  facts, rules, and directives in the source-code arbitrarly. 
 
 ## [Relations](relations)
 
@@ -51,16 +51,16 @@ by a type. In the previous example, the declaration
 
 defines the relation ```A``` that contains pairs of numbers only.
 The first attribute is named ``x`` and the second attribute is
-named ``y``. Attributes have a type which is specified by an
-identifier followed by a colon after the attribute name.
-In the above example, the type is a number.
+named ``y``. Attributes have a type. In the above example, 
+the type of attribute ``x`` and ``y`` is a number.
 
-The type-checker of Soufflé will infer the type of variables in rules where name bindings in clauses are correct at compile time.
-The details of the type system are covered below.
+The type-checker of Soufflé will infer the type of variables in 
+rules and check their correct use. 
 
 ## [Types](types)
 
-Souffle utilises a typed Datalog dialect to conduct static checks enabling the early detection of errors in Datalog query specifications. Each attribute of involved relations has to be typed. Based on those, Souffle attempts to deduce a type for all terms within all the Horn clauses within a given Datalog program. In case no type can be deduced for some terms, a typing error is reported -- indicating a likely inconsistency in the query specification.
+Souffle utilises a typed Datalog dialect to conduct static checks enabling the early detection of errors in Datalog query specifications. 
+Each attribute of involved relations has to be typed. Based on those, Souffle attempts to deduce a type for all terms within all the Horn clauses within a given Datalog program. In case no type can be deduced for some terms, a typing error is reported -- indicating a likely inconsistency in the query specification.
 
 There are four primitive types in Souffle, i.e., `symbol`, `number`, `unsigned`, and `float`. 
 
@@ -76,12 +76,15 @@ Souffle may need [performance tuning](tuning) for tuples.
 
 ## [Components](components) 
 
-For larger projects, it is useful to arrange logic codes in [components](components). Components can be perceived as high-level macros that can be declared and instantiated. Each component has its own name space. Components can have one or more super-components from which they can inherit.  
-
+Souffle has [components](components) to modularise large logic programs. A component may contain other components, relation and type declarations, 
+facts, rules, and directives. A programmer can declare and instantiate components. Each component has its own name space to access its elements.
+Components can have one or more super-components from which they can inherit.
 
 ## [User-Defined Functors](functors)
 
-Souffle can be extended with user-defined functors, which are implemented in C/C++. There are two flavours of the user-defined functors, i.e., naive and stateful functors. Stateful functors expose [record and symbol tables](implementation). 
+Programmers can declare user-defined functors for extending Souffle. User-defined functors are implemented in C/C++. 
+There are two flavours of the user-defined functors, i.e., naive and stateful functors. 
+Stateful functors expose [record and symbol tables](implementation). 
 
 ## [Pragma](pragmas)
 
