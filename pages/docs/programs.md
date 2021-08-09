@@ -17,7 +17,7 @@ in form of Horn clauses.
 
 ## Language
 
-The main elements in Souffle are relations, facts, rules, and directives. For example,
+The main elements in Souffle are relation declarations, facts, rules, and directives. For example,
 the following program has two relations `A` and `B`. 
 ```prolog
 .decl A(x:number, y:number)  // declaration of relation A
@@ -32,13 +32,12 @@ B(x,z) :- A(x,y), B(y,z).
 ```
 Relation ```A``` has two facts: ```A(1,2).``` and ```A(2,3)```.
 A fact is a rule that holds unconditionally, i.e., a fact is a Horn Clause  ```A(1,2) ⇐ true```.
-Relation ```B``` has two rules, i.e., ```B(x,y) :- A(x,y).``` and ```B(x,y) :- A(x,y), B(y,z).```.  
+Relation ```B``` has two rules, i.e., ```B(x,y) :- A(x,y).``` and ```B(x,y) :- A(x,y), B(y,z).```
+representing the Horn clause ```B(x,y) ⇐ A(x,y)```.
 
 The directive ```.output B``` queries the relation ```B``` at the end of the execution and writes 
-the result either into a file or prints it on the screen.
-Several queries may show up in the program. For example, by adding the directive ```.output A``` 
-the relation ```A``` is queried at the end of execution as well. The locations of the facts, 
-rules, and queries (i.e., output directives) in the source code are irrelevant.
+the result either into a file or prints it on the screen. The programmer can choose the order of 
+the relation declarations,  facts, rules, and directives in the source-code.
 
 ## [Relations](relations)
 
