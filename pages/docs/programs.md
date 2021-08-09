@@ -78,7 +78,7 @@ Souffle may need [performance tuning](tuning) for tuples.
 
 ## [Components](components) 
 
-For larger projects, it is useful to arrange logic codes in [components](components).
+For larger projects, it is useful to arrange logic codes in [components](components). Components can be perceived as high-level macros that can be declared and instantiated. Each component has its own name space. Components can have one or more super-components from which they can inherit.  
 
 
 ## [User-Defined Functors](functors)
