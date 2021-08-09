@@ -5,19 +5,16 @@ sidebar: docs_sidebar
 folder: docs
 ---
 
-Datalog is a declarative programming language that was
-introduced as a query language for deductive databases in the late 70s.
-Areas including web semantics,
-program analysis, and security analysis use Datalog as a domain specific
-language. Datalog adapts the syntax style of [Prolog](https://en.wikipedia.org/wiki/Prolog).
-A full exposition is beyond the scope of this manual -- more details are available in the book Foundations of Databases by Abiteboul,
+[Datalog](https://en.wikipedia.org/wiki/Datalog) is a declarative programming language that was
+introduced as a query language for deductive databases in the late 70s. Datalog uses first-order 
+predicate logic to express computations in the form of Horn clauses.
+Datalog adapts the syntax style of [Prolog](https://en.wikipedia.org/wiki/Prolog).
+A full exposition is beyond the scope of this manual -- more details are available in the book [Foundations of Databases by Abiteboul](https://wiki.epfl.ch/provenance2011/documents/foundations%20of%20databases-abiteboul-1995.pdf),
 Hull and Vianu, or [tutorial material](http://blogs.evergreen.edu/sosw/files/2014/04/Green-Vol5-DBS-017.pdf).
-Datalog uses first-order predicate logic to express computations
-in form of Horn clauses.
 
 ## Language
 
-The main elements in Souffle are relation declarations, facts, rules, and directives. For example,
+The main language elements in Souffle are relation declarations, facts, rules, and directives. For example,
 the following program has two relations `A` and `B`. 
 ```prolog
 .decl A(x:number, y:number)  // declaration of relation A
@@ -30,6 +27,8 @@ B(x,z) :- A(x,y), B(y,z).
 
 .output B
 ```
+Note that Souffle requires to declare relations before its use. This ensures that the proper use 
+of attributes in larger codebases can be checked at compiletime. 
 Relation ```A``` has two facts: ```A(1,2).``` and ```A(2,3)```.
 A fact is a rule that holds unconditionally, i.e., a fact is a Horn Clause  ```A(1,2) ⇐ true```.
 Relation ```B``` has two rules, i.e., ```B(x,y) :- A(x,y).``` and ```B(x,y) :- A(x,y), B(y,z).```
