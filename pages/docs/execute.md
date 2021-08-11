@@ -69,11 +69,13 @@ Options:
   -j, --jobs=<N>                                                                                                        Run interpreter/compiler in parallel using N threads, N=auto for system default.
   -c, --compile                                                                                                         Generate C++ source code, compile to a binary executable, then run this executable.
   -g, --generate=<FILE>                                                                                                 Generate C++ source code for the given Datalog program and write it to <FILE>. If <FILE> is `-` then stdout is used.
+      --inline-exclude=<RELATIONS>                                                                                          Prevent the given relations from being inlined. Overrides any `inline` qualifiers.
   -s, --swig=<LANG>                                                                                                     Generate SWIG interface for given language. The values <LANG> accepts is java and python. 
   -L, --library-dir=<DIR>                                                                                               Specify directory for library files.
   -l, --libraries=<FILE>                                                                                                Specify libraries.
   -w, --no-warn                                                                                                         Disable warnings.
   -m, --magic-transform=<RELATIONS>                                                                                     Enable magic set transformation changes on the given relations, use '*' for all.
+      --magic-transform-exclude=<RELATIONS>                                                                             Disable magic set transformation changes on the given relations. Overrides `magic-transform`. Implies `inline-exclude` for the given relations.
   -M, --macro=<MACROS>                                                                                                  Set macro definitions for the pre-processor
   -z, --disable-transformers=<TRANSFORMERS>                                                                             Disable the given AST transformers.
   -o, --dl-program=<FILE>                                                                                               Generate C++ source code, written to <FILE>, and compile this to a binary executable (without executing it).
