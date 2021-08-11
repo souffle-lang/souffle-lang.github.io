@@ -92,7 +92,7 @@ In Soufflé, the default data structure is the B-tree, with the *direct* version
 In Souffle, relations are cluster of indexes. The indexes are automatically chosen using a combinatorial optimisation problem so that all operations on a relation can be covered by an index using a minimal number of indexes. We refer to these operations as **primitive searches**, which may evaluate billions of times in large-scale Datalog applications. More details on our auto-indexing technique can be found in [this paper](https://doi.org/10.14778/3282495.3282500). Souffe's auto-indexing technique alleviates the burden of selecting indexes for Datalog programs by the end-user.
 
 ## Magic-Set Transformation
-The relation qualifier `magic` enables the magic-set transformation for a relation. A magic set transformation specialies the evaluation for a Datalog program for a given set of output relations. The magic-set transformation does not always lead to better performance. Souffle provides the relation qualifier `magic` to control the magic-set transformation. More information can be found [here](magicset).
+The relation qualifier `magic` enables the magic-set transformation for a relation. A magic set transformation specializes the evaluation for a Datalog program for a given set of output relations. The magic-set transformation does not always lead to better performance. Souffle provides the relation qualifier `magic` to enable magic-set transformation and the relation qualifier `no_magic` to disable magic-set transformation (note that `no_magic` also implies `no_inline`). More information on the magic-set transformation can be found [here](magicset).
 
 ## Inlining Relations
 Souffl&eacute; offers the ability to manually select one or more program relations to be inlined, i.e., a substitution of the relations are performed. This may lead to performance gains by re-computing results rather than storing them. For example, 
@@ -187,6 +187,11 @@ Inlining works in all situations, provided the following conditions are met:
 * The counter argument, `$`, cannot be used as an argument or in the rule body of an inlined relation.
 * At the moment, relations appearing in aggregators cannot be inlined, though this is only a restriction in practice due to the way certain functors are handled.
 
+### Disable Inlining
+The relation qualifier `no_inline` directs Souffl&eacute; to _not_ inline the marked relation. Note that `no_inline` is implied by the `no_magic` relation qualifier.
+
+The option `inline-exclude` can be used to prevent the given relations from being inlined and overrides any `inline` relation qualifiers. Note that `inline-exclude` is implied by the `magic-transform-exclude` option.
+
 ## Override 
 The relation qualifier `override` controls whether rules in a relation that is defined in a component, can be overwritten in a sub-component. 
 The component model of Souffle is described [here](components).
@@ -278,7 +283,7 @@ The definition of attributes is followed by relation qualifiers.
 ![Relation Declaration](https://souffle-lang.github.io/img/relation_decl.svg)
 
 ```ebnf
-relation_decl ::= '.decl' IDENT ( ',' IDENT )* '(' attribute ( ',' attribute )* ')' ( 'override' | 'inline' | 'magic' | 'brie' | 'btree' | 'eqrel' )* choice_domain
+relation_decl ::= '.decl' IDENT ( ',' IDENT )* '(' attribute ( ',' attribute )* ')' ( 'override' | 'inline' | 'no_inline' | 'magic' | 'no_magic' | 'brie' | 'btree' | 'eqrel' )* choice_domain
 ```
 
 ### Choice-Domain
