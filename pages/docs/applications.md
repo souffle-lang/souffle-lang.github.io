@@ -33,6 +33,9 @@ GrammaTech's DDisasm is a disassembler for multiple platforms. The source code c
 Vandal is a static program analysis framework for Ethereum smart contract bytecode, developed at The University of
 Sydney. The source code can be found [here](https://github.com/usyd-blockchain/vandal). 
 
+## Prosynth
+A synthesis framework that learns Datalog rules from data (appeared POPL'20).
+
 ## Haskell Interface 
 There is a Haskell/Souffle interface written by Luc Tielen. You can find the source code [here](https://github.com/luc-tielen/souffle-haskell). 
 
@@ -45,7 +48,6 @@ Souffle was initially used to find security vulnerabilities in the Java JDK libr
 
 ## VPN 
 Amazon used Souffle to verify VPN connections in the AWS cloud. 
-
 
 
 {% include links.html %}
