@@ -50,6 +50,9 @@ Souffle was initially used to find security vulnerabilities in the Java JDK libr
 Amazon used Souffle to verify VPN connections in the AWS cloud. 
 
 ## Frank's DDLOG Benchmarks
-Frank McSherry has developed three benchmarks for DDLOG. They can be found [here](https://github.com/frankmcsherry/dynamic-datalog). 
+Frank McSherry has developed three benchmarks for DDLOG. They can be found [here](https://github.com/frankmcsherry/dynamic-datalog/). 
+
+## Souffle's Benchmark Suite
+The souffle team has its own benchmark, which can be found [here](https://github.com/souffle-lang/benchmarks/)
 
 {% include links.html %}
