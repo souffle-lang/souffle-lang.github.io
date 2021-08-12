@@ -246,4 +246,28 @@ There are intrisnic functors for strings, type conversions, and generative funct
 intrinsic_functor ::= 'ord' | 'to_float' | 'to_number' | 'to_string' | 'to_unsigned' | 'cat' | 'strlen' | 'substr' | 'autoinc'
 ```           
 
+### Type Name 
+
+A type name is needed for type conversions. Souffle has pre-defined types such as `number`, `symbol`, `unsigned`, and `float`. Used-defined types have a name. If a type has been defined in a component, the type can be still accessed outside the component using a qualified name. 
+
+![Type Name](https://souffle-lang.github.io/img/type_name.svg)
+```ebnf
+type_name ::=  "number" | "symbol" |"unsigned" | "float"  | IDENT ("." IDENT )*
+```
+
+### Legacy Syntax
+
+The syntax of Souffle changed over time. Older code bases can be still used with 
+modern versions of Souffle.  In older versions of Soufflé we used the dollar symbol
+```prolog
+.decl A(x:number)
+A($):-true.
+```
+for auto increment, which is equivalent to 
+```
+.decl A(x:number)
+A(autoinc()):-true.
+```
+You can enable the old legacy syntax using the command-line flag `--legacy`, but you will receive a warning that the dollar symbol is deprecated.
+
 {% include links.html %}

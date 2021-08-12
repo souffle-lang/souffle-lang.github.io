@@ -22,16 +22,14 @@ B(x,z) :- A(x,y), B(y,z).
 ```
 Relation ```B``` has two rules: ```B(x,y) :- A(x,y).``` and ```B(x,y) :- A(x,y), B(y,z).``` The first rule says, there is a tuple in `B` if this tuple shows up in `A`. The second rule says there is a tuple `(x,z)` in `B`, if there is a tuple in `(x,y)` in `A` and a tuple `(y,z)` in `B`.
 
-### Multiple Heads
-Rules can have multiple heads:
-```prolog
-A(x,y), C(x,y) :- B(x,y). 
-```
-which is syntactic sugar for
-```prolog
-A(x,y) :- B(x,y). 
-C(x,y) :- B(x,y). 
-```
+
+### Binding of Variables
+TBD.
+
+### Type System
+
+The variables deduce their types from their bindings. A variable receives values from positive predicates in the body of a rule.
+TBD: Explain the information flow in a rule (what is a a source / sink) and type checking.  
 
 ### Negation in Rules
 A rules of the form
@@ -55,6 +53,17 @@ A(x,y) :- R(x), Scope(y), !S(y).
 ```
 where the relation "Scope" defines the set of values that "y" can take.
 
+### Multiple Heads
+Rules can have multiple heads:
+```prolog
+A(x,y), C(x,y) :- B(x,y). 
+```
+which is syntactic sugar for
+```prolog
+A(x,y) :- B(x,y). 
+C(x,y) :- B(x,y). 
+```
+
 ### Disjunction
 A rule of the form
 ```prolog
@@ -63,12 +72,6 @@ LivesAt(person, building) :-
     ( person=owner ; Housemate(owner, person) ).
 ```
 expresses the rule that a person lives in a building if they are the owner, or a housemate of the owner. Thus the conditions `person=owner` and `Housemate(owner, person)` are joined by `;` to indicate that either must hold.
-
-
-### Type System
-
-The variables deduce their types from their bindings. A variable receives values from positive predicates in the body of a rule.
-TBD: Explain the information flow in a rule (what is a a source / sink) and type checking.  
 
 ### Query Plan
 Rules may have qualifiers, which are used to change the execution behavior / semantics. 
