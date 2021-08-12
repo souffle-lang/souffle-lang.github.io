@@ -12,9 +12,20 @@ expressed. Initially, Soufflé has been designed for crafting static analysis in
 Recently, there are many other applications written in the Soufflé language, including applications in network analysis and data analytics. 
 
 Soufflé provides the ability to rapid prototype and make deep design space explorations possible.
-A wide range of applications have been implemented in the Soufflé language, e.g., static program analysis for Java [DOOP](https://bitbucket.org/yanniss/doop), parallelizing compiler framework [Insieme](http://www.insieme-compiler.org), binary disassembler [DDISASM](https://github.com/GrammaTech/ddisasm), [security analysis for cloud computing](https://link.springer.com/chapter/10.1007%2F978-3-030-25543-5_14), and security analysis for smart contracts [Gigahorse](https://github.com/nevillegrech/gigahorse-toolchain), [Securify](https://github.com/eth-sri/securify), [Secuify V2.0](https://github.com/eth-sri/securify2), [VANDAL](https://github.com/usyd-blockchain/vandal), .
+A wide range of [applications](/applications) have been implemented in the Soufflé language, e.g., static program
+analysis for Java [DOOP](https://bitbucket.org/yanniss/doop), parallelizing compiler framework
+[Insieme](http://www.insieme-compiler.org), binary disassembler [DDISASM](https://github.com/GrammaTech/ddisasm),
+[security analysis for cloud computing](https://link.springer.com/chapter/10.1007%2F978-3-030-25543-5_14), and security
+analysis for smart contracts [Gigahorse](https://github.com/nevillegrech/gigahorse-toolchain),
+[Securify](https://github.com/eth-sri/securify), [Secuify V2.0](https://github.com/eth-sri/securify2),
+[VANDAL](https://github.com/usyd-blockchain/vandal). More applications are listed [here](/applications).
 
-Soufflé language project is led by [Bernhard Scholz](http://b-scholz.github.io), and commenced at [Oracle Labs in Brisbane](https://github.com/oracle/souffle/wiki/Contributors). Soufflé was open-sourced in March 2016. It is actively supported by universities and industrial research labs. The main contributors to this project have been [The University of Sydney](http://sydney.edu.au), the [University of Innsbruck](https://www.uibk.ac.at/index.html.en), the [University College London](https://www.ucl.ac.uk), the [University of Athens](http://www.di.uoa.gr/), [Oracle Labs, Brisbane](http://https://labs.oracle.com/). 
+Soufflé language project is led by [Bernhard Scholz](http://b-scholz.github.io), and commenced at [Oracle Labs in
+Brisbane](https://github.com/oracle/souffle/wiki/Contributors). Soufflé was open-sourced in March 2016. It is actively
+supported by universities and industrial research labs. The main contributors to this project have been [The University
+of Sydney](http://sydney.edu.au), the [University of Innsbruck](https://www.uibk.ac.at/index.html.en), the [University
+College London](https://www.ucl.ac.uk), the [University of Athens](http://www.di.uoa.gr/), [Oracle Labs,
+Brisbane](http://https://labs.oracle.com/).
 
 One of the major challenges in logic programming is scalability. 
 Soufflé applies advanced compilation techniques for logic programs. We use a range of techniques to achieve high-performance: Futamura Projections, staged-compilation with a new abstract machine, partial evaluation, and parallelization with highly-parallel data-structures. 

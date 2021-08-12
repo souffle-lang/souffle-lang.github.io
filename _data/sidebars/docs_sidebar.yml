@@ -59,6 +59,10 @@ entries:
       url: /development
       output: web, pdf
 
+    - title: Applications
+      url: /applications
+      output: web, pdf
+
   - title: Language
     output: web, pdf
     folderitems:
