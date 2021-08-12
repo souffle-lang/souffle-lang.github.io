@@ -44,6 +44,7 @@ GRIN is a Haskell backend that uses Souffle. The source code can be found
 Souffle was initially used to find security vulnerabilities in the Java JDK library. This project was conducted by Oracle Labs, Brisbane. 
 
 ## VPN 
+Amazon used Souffle to verify VPN connections in the AWS cloud. 
 
 
 
