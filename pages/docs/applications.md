@@ -40,5 +40,11 @@ There is a Haskell/Souffle interface written by Luc Tielen. You can find the sou
 GRIN is a Haskell backend that uses Souffle. The source code can be found
 [here](https://github.com/grin-compiler/ghc-grin). 
 
+## Java JDK Security Analysis
+Souffle was initially used to find security vulnerabilities in the Java JDK library. This project was conducted by Oracle Labs, Brisbane. 
+
+## VPN 
+
+
 
 {% include links.html %}
