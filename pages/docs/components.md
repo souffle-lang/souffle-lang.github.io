@@ -21,7 +21,7 @@ For example,
 }
 ```
 declares a new component with the name `MyComponent`. The component elements are a type `myType`, 
-a relation `TheAnswer` and a fact. 
+a relation `TheAnswer`, and a fact. 
 
 We instantiate a component using the `.init` keyword followed by a unique name of the instance, 
 the `=` symbol, and the name of the component declaration. 
@@ -29,20 +29,23 @@ the `=` symbol, and the name of the component declaration.
 In this example,
 ```
 .init myInstance1 = MyComponent
+
 .decl Test(x:number)
 Test(x) :- myInstance1.TheAnswer(x).
 .output Test
 ```
-we instantiate the component `MyComponent` with the name `myInstance1` and the name `myInstance2`. 
+we instantiate the component `MyComponent` with the name `myInstance1`. 
 Internally, Souffle flattens the component instantiation
-creating for each component its own namespace. The names of the component elements
-are extended using the instantiation name as a prefix. 
+creating for each component instantiation its own namespace. 
+The qualified names of component elements
+are preprended using the name of the instantiation.
 
 For the above example, Souffle internally expands the component instantiation as follows:
 ```
 .type myInstance1.myType = number
 .decl myInstance1.TheAnswer(x:myType)    // relation of myInstance1
 myInstance1.TheAnswer(42).               // fact of myInstance1
+
 .decl Test(x:number)
 Test(x) :- myInstance1.TheAnswer(x).
 .output Test
@@ -59,7 +62,7 @@ Test(x) :- myInstance1.TheAnswer(x).
 Test(x) :- myInstance2.TheAnswer(x). 
 .output Test
 ```
-producing internally the following logic program: 
+producing internally the following logic program,
 ```
 .type myInstance1.myType = number
 .decl myInstance1.TheAnswer(x:myType)    // relation of myInstance1
@@ -74,25 +77,42 @@ Test(x) :- myInstance1.TheAnswer(x).
 Test(x) :- myInstance2.TheAnswer(x).
 .output Test
 ```
-Note that the two relations `TheAnswer` of both component instantiations are disambiguated by the prefix `myInstance1` and `myInstance2` to avoid name clashes in the program.
+Note that the two relations `TheAnswer` of both component instantiations are disambiguated by the prefix `myInstance1` and `myInstance2` to avoid a name clash.
 
 ## Type Parametrization
 
 Components can be parametrized by unqualified type names. 
 
+In the example,
 ```
 .comp ParamComponent<myType> {
     .decl TheAnswer(x:myType)    // component relation
     TheAnswer(42).               // component fact
+    .output TheAnswer            // component output directive
 }
-.init floatInstance = ParamComponent<number>
+.init numberInstance = ParamComponent<number>
 .init unsignedInstance = ParamComponent<unsigned>
 .init floatInstance = ParamComponent<float>
 ```
+three different instances are generated whose relation's attribute
+are either of type `number`, `unsigned`, and `float`. Internally, 
+Souffle produces the program showing the differetn attribute types 
+of relation `TheAnswer`.
+```
+.decl numberInstance.TheAnswer(x:number)     // relation of numberInstance
+numberInstance.TheAnswer(42).                // fact of numberInstance
+.output numberInstance.TheAnswer             // output directive of numberInstance
 
+.decl unsignedInstance.TheAnswer(x:unsigned) // relation of unsignedInstance
+unsignedInstance.TheAnswer(42).              // fact of unsignedInstance
+.output unsignedInstance.TheAnswer           // output directive of unsignedInstance
+
+.decl floatInstance.TheAnswer(x:float)       // relation of floatInstance
+floatInstance.TheAnswer(42).                 // fact of floatInstance
+.output floatInstance.TheAnswer              // output directive of floatInstance
+```
 
 If the parameter is meant to be another component, it can be instantiated:
-
 ```
 .comp Reachability<TGraph> {
     .init graph = TGraph
@@ -108,13 +128,13 @@ When initializing parametrized component, we must provide actual parameters:
 .init reach = Reachability<MyGraph>
 ```
 
-Note that the following is not possible:
+and the following component instantiation is prohibited
 
 ```
-.init reach = Reachability<Graph<number>>
+.init reach = Reachability<Graph<number>>   // wrong parameter
 ```
-
-This limitation can be overcome with inheritance:
+because the component parameter is not a type name. However, 
+by introducing a new component, this can be achieved,
 
 ```
 .comp NumberGraph : Graph<number> {}
