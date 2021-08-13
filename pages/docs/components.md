@@ -53,6 +53,7 @@ In this example, we have two component instantiation of `MyComponent`:
 myCompInstance2.TheAnswer(33).
 
 .decl Test(x:number)
+Test(x) :- myCompInstance1.TheAnswer(x). // output: 42, 33
 Test(x) :- myCompInstance2.TheAnswer(x). // output: 42, 33
 ```
 producing internally the following logic program: 
@@ -63,27 +64,11 @@ myCompInstance1.TheAnswer(42).               // MyComponent fact for instance my
 .type myCompInstance2.myType = number
 .decl myCompInstance2.TheAnswer(x:myType)    // MyComponent relation for instance myCompInstance1
 myCompInstance2.TheAnswer(42).               // MyComponent fact for instance myCompInstance1
+myCompInstance2.TheAnswer(33).
 .decl Test(x:number)
 Test(x) :- myCompInstance1.TheAnswer(x).
 Test(x) :- myCompInstance2.TheAnswer(x).
 ```
-
-In the following example, the component defines two relations and rules,
-```
-.comp Reachability {
-    .decl edge(u:number,v:number)
-    .decl reach(u:number,v:number)
-    reach(u,v) :- edge(u,v).
-    reach(u,v) :- reach(u,x), edge(x,v).
-}
-
-.init r = Reachability
-r.edge(1, 2).
-r.edge(2, 3).
-r.edge(2, 4).
-```
-where the input is provided outside the component. 
-
 
 ## Type Parametrization
 
