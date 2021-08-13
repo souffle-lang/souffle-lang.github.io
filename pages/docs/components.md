@@ -65,9 +65,10 @@ myCompInstance1.TheAnswer(42).               // MyComponent fact for instance my
 myCompInstance2.TheAnswer(42).               // MyComponent fact for instance myCompInstance1
 .decl Test(x:number)
 Test(x) :- myCompInstance1.TheAnswer(x).
+Test(x) :- myCompInstance2.TheAnswer(x).
 ```
 
-In the following example, the component defines two relations and rules, where the input is provided outside the component:
+In the following example, the component defines two relations and rules,
 ```
 .comp Reachability {
     .decl edge(u:number,v:number)
@@ -81,27 +82,12 @@ r.edge(1, 2).
 r.edge(2, 3).
 r.edge(2, 4).
 ```
-
-## Inheritance
-One component can inherit from another. Inheritance in this case is purely
-injection of rules from the base component into its subcomponent. The syntax is as follows:
-
-```
-.comp Base {
-    .decl TheAnswer(x:number)
-    TheAnswer(42).
-}
-
-.comp Child : Base {
-    .decl WhatIsTheAnswer(n:number)
-    WhatIsTheAnswer(n) :- TheAnswer(n).
-}
-```
+where the input is provided outside the component. 
 
 
 ## Type Parametrization
-Components can be parametrized with types (including records) or other components in similar fashion
-as generics in Java or templates in C++.
+
+Components can be parametrized with types or other components.
 
 ```
 .comp Graph<TNode> {
@@ -143,6 +129,23 @@ This limitation can be overcome with inheritance:
 Note that instantiation of `TGraph` inside `Reachability`
 will create new copies of `TGraph` relations (specifically relations
 of whatever is used as actual parameter for `TGraph`).
+
+## Inheritance
+One component can inherit from another. Inheritance in this case is purely
+injection of rules from the base component into its subcomponent. The syntax is as follows:
+
+```
+.comp Base {
+    .decl TheAnswer(x:number)
+    TheAnswer(42).
+}
+
+.comp Child : Base {
+    .decl WhatIsTheAnswer(n:number)
+    WhatIsTheAnswer(n) :- TheAnswer(n).
+}
+```
+
 
 ## Type Parametrization and Inheritance
 Type parameters can passed around when inheriting. Example:
