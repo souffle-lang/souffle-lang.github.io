@@ -4,31 +4,47 @@ permalink: /components
 sidebar: docs_sidebar
 folder: docs
 ---
-A component is a set of related relations. Component can be seen as a template.
-Once we instantiate a component, under the hood Souffle copies all the relations from
-its body and gives them unique names. However, in the source code, we can still refer to these
-new rules using the name of the component instance.
 
-New component can be declared using the `.comp` keyword, the following block between `{` and `}`
-is the component body. In component body, we can declare rules and nested components.
+A component is a modular part in a program that may encapsulate component elements 
+including relation declarations, type declarations, rules, facts, directives, and other components. 
+A component has component declarations and a component instantiations.
 
+A component declaration starts with the keyword `.comp` followed by the name of the component an a block between `{` and `}`
+containing the component elements of the component. 
+
+For example, 
 ```
 .comp MyComponent {
-    .decl TheAnswer(x:number)
-    TheAnswer(42).
+    .type myType = number
+    .decl TheAnswer(x:myType)    // component relation
+    TheAnswer(42).               // component fact
 }
 ```
+declares a new component with the name `MyComponent`. The component elements are a type `myType`, 
+a relation `TheAnswer` and a fact. 
 
-A component can be instantiated by using the `.init` keyword followed by unique
-name of the instance, equals sign and name of the component type.
+We instantiate a component using the `.init` keyword followed by a unique name of the instance, 
+the `=` symbol and the name of the component declaration. 
 
+In this example,
 ```
 .init myCompInstance1 = MyComponent
 .decl Test(x:number)
 Test(x) :- myCompInstance1.TheAnswer(x).
 ```
+we instantiate the component `MyComponent` with the name `myCompInstance1`. 
+Internally, Souffle flattens the component instantiation
+creating for each component its own namespace. The names of the component elements
+are extended using the instantiation name as a prefix. 
 
-Another instantiation of the same component will duplicate all the tables!
+For the above example, Souffle internally expands the component instantiation as follows:
+```
+.type myCompInstance1.myType = number
+.decl myCompInstance1.TheAnswer(x:myType)    // MyComponent relation for instance myCompInstance1
+myCompInstance1.TheAnswer(42).               // MyComponent fact for instance myCompInstance1
+.decl Test(x:number)
+Test(x) :- myCompInstance1.TheAnswer(x).
+```
 
 ## Input rules
 All the relations inside a component can be extended with new rules.
