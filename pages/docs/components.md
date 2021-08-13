@@ -24,7 +24,7 @@ declares a new component with the name `MyComponent`. The component elements are
 a relation `TheAnswer` and a fact. 
 
 We instantiate a component using the `.init` keyword followed by a unique name of the instance, 
-the `=` symbol and the name of the component declaration. 
+the `=` symbol, and the name of the component declaration. 
 
 In this example,
 ```
@@ -32,7 +32,7 @@ In this example,
 .decl Test(x:number)
 Test(x) :- myCompInstance1.TheAnswer(x).
 ```
-we instantiate the component `MyComponent` with the name `myCompInstance1`. 
+we instantiate the component `MyComponent` with the name `myCompInstance1` and the name `myCompInstance2`. 
 Internally, Souffle flattens the component instantiation
 creating for each component its own namespace. The names of the component elements
 are extended using the instantiation name as a prefix. 
@@ -46,21 +46,28 @@ myCompInstance1.TheAnswer(42).               // MyComponent fact for instance my
 Test(x) :- myCompInstance1.TheAnswer(x).
 ```
 
-## Input rules
-All the relations inside a component can be extended with new rules.
-
+In this example, we have two component instantiation of `MyComponent`:
 ```
-.init myComp = MyComponent
-myComp.TheAnswer(33).
+.init myCompInstance1 = MyComponent
+.init myCompInstance2 = MyComponent
+myCompInstance2.TheAnswer(33).
 
 .decl Test(x:number)
-Test(x) :- myComp.TheAnswer(x). // output: 42, 33
+Test(x) :- myCompInstance2.TheAnswer(x). // output: 42, 33
+```
+producing internally the following logic program: 
+```
+.type myCompInstance1.myType = number
+.decl myCompInstance1.TheAnswer(x:myType)    // MyComponent relation for instance myCompInstance1
+myCompInstance1.TheAnswer(42).               // MyComponent fact for instance myCompInstance1
+.type myCompInstance2.myType = number
+.decl myCompInstance2.TheAnswer(x:myType)    // MyComponent relation for instance myCompInstance1
+myCompInstance2.TheAnswer(42).               // MyComponent fact for instance myCompInstance1
+.decl Test(x:number)
+Test(x) :- myCompInstance1.TheAnswer(x).
 ```
 
-One usage is to declare a relation inside a component, but leave it empty.
-Consumers of the component should provide the rules for the relation.
-This is one way of "passing parameters" into the component.
-
+In the following example, the component defines two relations and rules, where the input is provided outside the component:
 ```
 .comp Reachability {
     .decl edge(u:number,v:number)
