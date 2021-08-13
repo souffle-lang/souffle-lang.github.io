@@ -9,7 +9,7 @@ A component is a modular part in a program that may encapsulate component elemen
 including relation declarations, type declarations, rules, facts, directives, and other components. 
 A component has component declarations and a component instantiations.
 
-A component declaration starts with the keyword `.comp` followed by the name of the component an a block between `{` and `}`
+A component declaration starts with the keyword `.comp` followed by the name of the component and a block between `{` and `}`
 containing the component elements of the component. 
 
 For example, 
