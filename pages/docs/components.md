@@ -31,6 +31,7 @@ In this example,
 .init myCompInstance1 = MyComponent
 .decl Test(x:number)
 Test(x) :- myCompInstance1.TheAnswer(x).
+.output Test
 ```
 we instantiate the component `MyComponent` with the name `myCompInstance1` and the name `myCompInstance2`. 
 Internally, Souffle flattens the component instantiation
@@ -44,6 +45,7 @@ For the above example, Souffle internally expands the component instantiation as
 myCompInstance1.TheAnswer(42).               // MyComponent fact for instance myCompInstance1
 .decl Test(x:number)
 Test(x) :- myCompInstance1.TheAnswer(x).
+.output Test
 ```
 
 In this example, we have two component instantiation of `MyComponent`:
@@ -53,8 +55,9 @@ In this example, we have two component instantiation of `MyComponent`:
 myCompInstance2.TheAnswer(33).
 
 .decl Test(x:number)
-Test(x) :- myCompInstance1.TheAnswer(x). // output: 42, 33
-Test(x) :- myCompInstance2.TheAnswer(x). // output: 42, 33
+Test(x) :- myCompInstance1.TheAnswer(x). 
+Test(x) :- myCompInstance2.TheAnswer(x). 
+.output Test
 ```
 producing internally the following logic program: 
 ```
@@ -68,6 +71,7 @@ myCompInstance2.TheAnswer(33).
 .decl Test(x:number)
 Test(x) :- myCompInstance1.TheAnswer(x).
 Test(x) :- myCompInstance2.TheAnswer(x).
+.output Test
 ```
 
 ## Type Parametrization
