@@ -73,6 +73,7 @@ Test(x) :- myCompInstance1.TheAnswer(x).
 Test(x) :- myCompInstance2.TheAnswer(x).
 .output Test
 ```
+Note that the two relations `TheAnswer` are disambiguated by the prefix `myCompInstance1` and `myCompInstance2`.
 
 ## Type Parametrization
 
