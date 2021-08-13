@@ -28,63 +28,68 @@ the `=` symbol, and the name of the component declaration.
 
 In this example,
 ```
-.init myCompInstance1 = MyComponent
+.init myInstance1 = MyComponent
 .decl Test(x:number)
-Test(x) :- myCompInstance1.TheAnswer(x).
+Test(x) :- myInstance1.TheAnswer(x).
 .output Test
 ```
-we instantiate the component `MyComponent` with the name `myCompInstance1` and the name `myCompInstance2`. 
+we instantiate the component `MyComponent` with the name `myInstance1` and the name `myInstance2`. 
 Internally, Souffle flattens the component instantiation
 creating for each component its own namespace. The names of the component elements
 are extended using the instantiation name as a prefix. 
 
 For the above example, Souffle internally expands the component instantiation as follows:
 ```
-.type myCompInstance1.myType = number
-.decl myCompInstance1.TheAnswer(x:myType)    // MyComponent relation for instance myCompInstance1
-myCompInstance1.TheAnswer(42).               // MyComponent fact for instance myCompInstance1
+.type myInstance1.myType = number
+.decl myInstance1.TheAnswer(x:myType)    // relation of myInstance1
+myInstance1.TheAnswer(42).               // fact of myInstance1
 .decl Test(x:number)
-Test(x) :- myCompInstance1.TheAnswer(x).
+Test(x) :- myInstance1.TheAnswer(x).
 .output Test
 ```
 
 In this example, we have two component instantiation of `MyComponent`:
 ```
-.init myCompInstance1 = MyComponent
-.init myCompInstance2 = MyComponent
-myCompInstance2.TheAnswer(33).
+.init myInstance1 = MyComponent
+.init myInstance2 = MyComponent
+myInstance2.TheAnswer(33).
 
 .decl Test(x:number)
-Test(x) :- myCompInstance1.TheAnswer(x). 
-Test(x) :- myCompInstance2.TheAnswer(x). 
+Test(x) :- myInstance1.TheAnswer(x). 
+Test(x) :- myInstance2.TheAnswer(x). 
 .output Test
 ```
 producing internally the following logic program: 
 ```
-.type myCompInstance1.myType = number
-.decl myCompInstance1.TheAnswer(x:myType)    // MyComponent relation for instance myCompInstance1
-myCompInstance1.TheAnswer(42).               // MyComponent fact for instance myCompInstance1
-.type myCompInstance2.myType = number
-.decl myCompInstance2.TheAnswer(x:myType)    // MyComponent relation for instance myCompInstance1
-myCompInstance2.TheAnswer(42).               // MyComponent fact for instance myCompInstance1
-myCompInstance2.TheAnswer(33).
+.type myInstance1.myType = number
+.decl myInstance1.TheAnswer(x:myType)    // relation of myInstance1
+myInstance1.TheAnswer(42).               // fact of myInstance1
+.type myInstance2.myType = number
+.decl myInstance2.TheAnswer(x:myType)    // relation of myInstance1
+myInstance2.TheAnswer(42).               // fact of myInstance1
+myInstance2.TheAnswer(33).
+
 .decl Test(x:number)
-Test(x) :- myCompInstance1.TheAnswer(x).
-Test(x) :- myCompInstance2.TheAnswer(x).
+Test(x) :- myInstance1.TheAnswer(x).
+Test(x) :- myInstance2.TheAnswer(x).
 .output Test
 ```
-Note that the two relations `TheAnswer` are disambiguated by the prefix `myCompInstance1` and `myCompInstance2`.
+Note that the two relations `TheAnswer` of both component instantiations are disambiguated by the prefix `myInstance1` and `myInstance2` to avoid name clashes in the program.
 
 ## Type Parametrization
 
-Components can be parametrized with types or other components.
+Components can be parametrized by unqualified type names. 
 
 ```
-.comp Graph<TNode> {
-    .decl edge(u:TNode, v:TNode)
-    // ...
+.comp ParamComponent<myType> {
+    .decl TheAnswer(x:myType)    // component relation
+    TheAnswer(42).               // component fact
 }
+.init floatInstance = ParamComponent<number>
+.init unsignedInstance = ParamComponent<unsigned>
+.init floatInstance = ParamComponent<float>
 ```
+
 
 If the parameter is meant to be another component, it can be instantiated:
 
