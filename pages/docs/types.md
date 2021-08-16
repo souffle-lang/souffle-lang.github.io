@@ -294,7 +294,7 @@ the following type definition is illegal:
 Since the branch identifier `Number` and `Symbol` are reused in the ADT `B`. 
 
 ## Type Conversion
-Soufflé permits type conversion in expressions/terms. The type of expression/term `<expr>` is converted to a new type `<new-type>` using the type cast `as(<expr>, <new-type>)` expression. The correctness of the cast is left to the user. 
+Soufflé permits type conversion of an argument using a functor notation. The type of argument `<expr>` is converted to a new type `<new-type>` using the type cast `as(<expr>, <new-type>)`. The correctness of the cast is left to the user. 
 
 For example, 
 ```prolog
