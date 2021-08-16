@@ -306,7 +306,7 @@ For example,
 
 .decl B(a: Variable)
 
-B(as(a, VariableOrStackIndex)) :- A(a).
+A(as(a, Variable)) :- B(a).
 ```
 
 Converts the expression `as(a, Variable)` to an expression of type `Variable` although `a` is of type `VariableOrStackIndex`. 
