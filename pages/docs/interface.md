@@ -5,20 +5,21 @@ sidebar: docs_sidebar
 folder: docs
 ---
 ## Why do we need C++ interface?
-Applications may want to integrate Soufflé programs as a library rather than as a stand-alone tool. 
-For this purpose, we have developed a C++ interface to call Soufflé programs. 
 
-With the option `-g <name>.cpp` a C++ class is generated for a Soufflé program that can be directly embedded in another C++ application. 
-The generated class may have several instances.
-An instance provides interfaces to populate input relations, 
-to run the program, 
-and to retrieve data from the output relations. 
-Note that the generated class is required to be compiled with the flag `__EMBEDDED_SOUFFLE__` to disable the default `main()` function of a Soufflé program. 
+Applications may want to integrate Soufflé programs as subroutines rather than running them stand-alone. 
+For this purpose, there is a C++ interface that can be used to instantiate, manipulate and run Soufflé programs. 
+
+By calling `souffle -g <name>.cpp program.dl` a C++ file called `<name>.cpp` is generated for the Soufflé program. This C++ file
+can be directly embedded in a C++ application. When linked into a C++ application the Soufflé C++ interface can be used to
+create any number of program instances of the Soufflé program. An instance provides interfaces to populate input relations,
+to run the program, and to retrieve data from the output relations.
+
+The generated C++ file includes a `main()` function by default. The C++ application must be compiled with the
+flag `__EMBEDDED_SOUFFLE__` if you want to avoid emitting this function. 
 
 ## Detailed Usage
-A C++ class generated from a Soufflé program can be instantiated and executed as described in this section.
 
-### 0. Including the Soufflé interface
+### 1. Including the Soufflé interface
 
 #### `souffle/SouffleInterface.h`
 The C++ interface is included by including `souffle/SouffleInterface.h` as shown in the example. For any information not covered by this documentation, please refer to [the comments in this header file](https://github.com/souffle-lang/souffle/blob/master/src/include/souffle/SouffleInterface.h).
@@ -26,10 +27,10 @@ The C++ interface is included by including `souffle/SouffleInterface.h` as shown
 *Example*
 
 ```c++
-#include<souffle/SouffleInterface.h>
+#include <souffle/SouffleInterface.h>
 ```
 
-### 1. Loading a program
+### 2. Loading a program
 
 #### `souffle::SouffleProgram* souffle::ProgramFactory::newInstance(std::string)`
 
@@ -50,7 +51,7 @@ if (souffle::SouffleProgram *prog = souffle::ProgramFactory::newInstance("<name>
 
 ```
 
-### 2. Populating input relations
+### 3. Populating input relations
 
 #### `void souffle::SouffleProgram::loadAll(std::string)`
 
@@ -80,7 +81,7 @@ if (souffle::Relation *rel = prog->getRelation("<in-rel>")) {
 }
 ```
 
-### 3. Running the program
+### 4. Running the program
 
 #### `void souffle::SouffleProgram::run()`
 
@@ -92,7 +93,7 @@ Executes the program, without any loads or stores.
 prog->run();
 ```
 
-### 4. Reading output relations
+### 5. Reading output relations
 
 #### `void souffle::SouffleProgram::printAll()`
 
@@ -167,41 +168,47 @@ rel->size();
 ## Complete Example
 
 ```c++
-if (souffle::SouffleProgram *prog = souffle::ProgramFactory::newInstance("<name>")) {
-    prog->loadAll("<dir>");
+#include <souffle/SouffleInterface.h>
 
-    if (souffle::Relation *rel = prog->getRelation("<in-rel>")) {
-        souffle::tuple myTuple(rel);
-        myTuple << "Hello" << souffle::RamSigned(10);
-        rel->insert(myTuple);
-    } else {
-        std::cerr << "Failed to get input relation\n";
-        exit(1);
-    }
+int main() {
+    if (souffle::SouffleProgram *prog = souffle::ProgramFactory::newInstance("<name>")) {
+        prog->loadAll("<dir>");
 
-    prog->run();
-
-    if (souffle::Relation *rel = prog->getRelation("<out-rel>")) {
-        souffle::RamSigned myInt;
-        std::string mySymbol;
-        for (auto &output : *rel) {
-          output >> mySymbol >> myInt;
+        if (souffle::Relation *rel = prog->getRelation("<in-rel>")) {
+            souffle::tuple myTuple(rel);
+            myTuple << "Hello" << souffle::RamSigned(10);
+            rel->insert(myTuple);
+        } else {
+            std::cerr << "Failed to get input relation\n";
+            return 1;
         }
 
-        souffle::tuple myTuple(rel);
-        myTuple << "A" << souffle::RamSigned(123);
-        if (rel->contains(myTuple)) {
+        prog->run();
+
+        if (souffle::Relation *rel = prog->getRelation("<out-rel>")) {
+            souffle::RamSigned myInt;
+            std::string mySymbol;
+            for (auto &output : *rel) {
+                output >> mySymbol >> myInt;
+            }
+
+            souffle::tuple myTuple(rel);
+            myTuple << "A" << souffle::RamSigned(123);
+            if (rel->contains(myTuple)) {
+            }
+        } else {
+            std::cerr << "Failed to get output relation\n";
+            return 1;
         }
+
+        prog->printAll();
+
+        delete prog;
     } else {
-        std::cerr << "Failed to get output relation\n";
-        exit(1);
+        std::cerr << "Failed to create instance\n";
+        return 1;
     }
-
-    prog->printAll();
-
-    delete prog;
-} else {
-    std::cerr << "Failed to create instance\n";
-    exit(1);
+    return 0;
 }
+
 ```
