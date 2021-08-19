@@ -19,6 +19,19 @@ To build and install Soufflé, the following software must be installed:
 
 Clang++ (with OpenMP support) can be used as an alternative for C++.
 
+### Ubuntu/Debian Package
+To get Souffle from a package manager, first install our repository held on [PackageCloud](https://packagecloud.io/souffle-lang/souffle).
+
+```
+curl -s https://packagecloud.io/install/repositories/souffle-lang/souffle/script.deb.sh | sudo bash
+```
+
+After that, simply run
+```
+apt-get install souffle
+```
+
+
 ### Ubuntu/Debian Build
 
 On a Ubuntu/Debian system the following command installs the necessary dependencies to compile and build Soufflé:
