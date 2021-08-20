@@ -176,33 +176,36 @@ the fact `R(2).` would be issued for relation `R`.
 
 ## Inheritance
 
-One component can inherit from another using inheritance. 
-The component elements of the super-component are passed on
-to the sub-component. Using inheritance avoids code duplication.
-
+One component can inherit from multiple super components using inheritance. 
+The component elements of the super-components are passed on to the 
+sub-component. Using inheritance is useful for larger
+programs and libraries and avoids code duplication. 
 
 In the following example, 
 ```
-.comp Base {
+.comp Base1 {
     .type myNumber = number
     .decl TheAnswer(x:myNumber)
     TheAnswer(42).
 }
-
-.comp Sub  : Base {
+.comp Base2 { 
+    TheAnswer(41). 
+}
+.comp Sub  : Base1, Base2 { // inherit from Base1 and Base2
     .decl WhatIsTheAnswer(n:myNumber)
     WhatIsTheAnswer(n) :- TheAnswer(n).
     .output WhatIsTheAnswer
 }
 .init mySub = Sub
 ```
-the component `Base` passes on all component elements to the component `Sub`. 
+the components `Base1` and `Base2` pass on all component elements to the component `Sub`. 
 Souffle produces internally the following code for the component instantiation `mySub`:
 ```
 .type mySub.myNumber = number
 .decl mySub.TheAnswer(x:mySub.myNumber) 
 .decl mySub.WhatIsTheAnswer(n:mySub.myNumber) 
 mySub.TheAnswer(42).
+mySub.TheAnswer(41).
 mySub.WhatIsTheAnswer(n) :- mySub.TheAnswer(n).
 .output mySub.WhatIsTheAnswer
 ```
@@ -212,9 +215,7 @@ mySub.WhatIsTheAnswer(n) :- mySub.TheAnswer(n).
 If a relation, declared in a super component is declared as `overridable`, 
 a sub component may override its associated rules and facts 
 from its super component, i.e., the facts and rules of the super component 
-are discarded if the sub component uses the directive `override`. 
-The default is inheritance only for specific relations, the override is enabled by 
-the directive `override`. 
+are discarded if the sub component uses the directive `override` for this relation. 
 
 For this example, 
 ```
@@ -245,7 +246,7 @@ mySub.R((x+1)) :-
 .output mySub.R
 ```
 
-In the following we show a use case for override in 
+In the following, we show a use case for override in 
 a more practical setup. For example, a more precise 
 version of an existing analysis can be implemented 
 by using the  override semantics as follows,
@@ -274,21 +275,26 @@ we need several implementations of a generic analysis with small
 variations and want to overwrite behaviour of the super component.
 
 ## Type Parametrization and Inheritance
-Type parameters can passed around when inheriting. Example:
 
+Type parameters of super-components can be explicitly specified 
+in sub-component declarations. For example, 
 ```
 .comp A<T> { .... }
 .comp B<K> : A<K> { ... }
 ```
+defines a sub-component `B` with parameter `K` that is used to instantiate 
+the super component with parameter `K` for inheriting for `B`.
 
-Although it is not recommended, the type parameter can be used as the base class:
-
+The type parameter can also be used as the base class
 ```
 .comp A<T> : T { ... }
 ```
+building a selective inheritance based on the type parameter `T`.
+The instantiation of `A<T>` defines which super component `A` 
+is inheriting from.
 
 With inheritance, complex component instantiatons are
-implementable. For example, in the example below
+implementable. In the example below
 ```
 .init reach = Reachability<Graph<number>>   // syntax error
 ```
@@ -300,10 +306,6 @@ instantiation can be rewritten as followes
 .comp NumberGraph : Graph<number> { } // NumberGraph inherits  
 .init reach = Reachability<NumberGraph>
 ```
-
-
-
-
 
 ## Syntax 
 In the following, we define the component model more formally using [syntax diagrams](https://en.wikipedia.org/wiki/Syntax_diagram) and [EBNF](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form). The syntax diagrams were produced with [Bottlecaps](https://www.bottlecaps.de/rr/ui).
