@@ -111,22 +111,17 @@ Souffle expands the code above as follows:
 .decl Out(x:number) 
 .decl myA.R(x:number) 
 myA.R(1).
-
-myA.R((x+1)) :- 
-   myA.R(x),
-   x < 10.
-
+myA.R((x+1)) :- myA.R(x), x < 10.
 Out(x) :- 
    myA.R(x).
 .output Out
 ```
-
+Prefices are prepended to relations in rules and facts 
+if they are instantiated in the local scope. 
 
 ## Type Parametrization
 
-Components can be parametrized by unqualified type names. 
-
-In the example,
+Components can be parametrized by unqualified type names.  In the example,
 ```
 .comp ParamComponent<myType> {
     .decl TheAnswer(x:myType)    // component relation
@@ -134,113 +129,126 @@ In the example,
     .output TheAnswer            // component output directive
 }
 .init numberInstance = ParamComponent<number>
-.init unsignedInstance = ParamComponent<unsigned>
 .init floatInstance = ParamComponent<float>
 ```
-three different instances are generated whose relation's attribute
-are either of type `number`, `unsigned`, and `float`. Internally, 
-Souffle produces the program showing the differetn attribute types 
-of relation `TheAnswer`.
+two different instances are generated whose relation's attribute
+are either of type `number` or `float`. Internally, 
+Souffle produces the program showing the different attribute types 
+of the instantiated relations `TheAnswer`.
 ```
 .decl numberInstance.TheAnswer(x:number)     // relation of numberInstance
 numberInstance.TheAnswer(42).                // fact of numberInstance
 .output numberInstance.TheAnswer             // output directive of numberInstance
-
-.decl unsignedInstance.TheAnswer(x:unsigned) // relation of unsignedInstance
-unsignedInstance.TheAnswer(42).              // fact of unsignedInstance
-.output unsignedInstance.TheAnswer           // output directive of unsignedInstance
 
 .decl floatInstance.TheAnswer(x:float)       // relation of floatInstance
 floatInstance.TheAnswer(42).                 // fact of floatInstance
 .output floatInstance.TheAnswer              // output directive of floatInstance
 ```
 
-If the parameter is meant to be another component, it can be instantiated:
-```
-.comp Reachability<TGraph> {
-    .init graph = TGraph
-    // ...
-    reach(u, v) :- graph.edge(u, v).
-}
-```
 
-When initializing parametrized component, we must provide actual parameters:
+Parameters can also be used to parameter a component name in a component instantiation. 
+This mechanism is useful to model different behaviours in component since the component 
+instantiation is controlled by the user of the component.  For example,
+```
+.decl R(x:number)
+.comp Case<Selector> {
+   .comp One { 
+     R(1). 
+   } 
+   .comp Two { 
+     R(2).
+   } 
+   .init selection = Selector // instantiation depending on type parameter "Selector" 
+} 
+.init myCase = Case<One> 
+.output R
+```
+produces internally the following program 
+```
+.decl R(x:number) 
+R(1). 
+.output R
+```
+since `One` was passed on in the component instantiation of `myCase`. 
 
-```
-.init g = Graph<number>
-.init reach = Reachability<MyGraph>
-```
-
-and the following component instantiation is prohibited
-
-```
-.init reach = Reachability<Graph<number>>   // wrong parameter
-```
-because the component parameter is not a type name. However, 
-by introducing a new component, this can be achieved,
-
-```
-.comp NumberGraph : Graph<number> {}
-.init reach = Reachability<NumberGraph>
-```
-
-Note that instantiation of `TGraph` inside `Reachability`
-will create new copies of `TGraph` relations (specifically relations
-of whatever is used as actual parameter for `TGraph`).
+By changing the instantiation from `.init myCase = Case<One>` to `.init myCase = Case<Two>`,
+the fact `R(2).` would be issued for relation `R`.
 
 ## Inheritance
-One component can inherit from another. Inheritance in this case is purely
-injection of rules from the base component into its subcomponent. The syntax is as follows:
 
+One component can inherit from another using inheritance. 
+The component elements of the super-component are passed on
+to the sub-component. Using inheritance avoids code duplication.
+
+
+In the following example, 
 ```
 .comp Base {
-    .decl TheAnswer(x:number)
+    .type myNumber = number
+    .decl TheAnswer(x:myNumber)
     TheAnswer(42).
 }
 
-.comp Child : Base {
-    .decl WhatIsTheAnswer(n:number)
+.comp Sub  : Base {
+    .decl WhatIsTheAnswer(n:myNumber)
     WhatIsTheAnswer(n) :- TheAnswer(n).
+    .output WhatIsTheAnswer
 }
+.init mySub = Sub
 ```
-
-
-## Type Parametrization and Inheritance
-Type parameters can passed around when inheriting. Example:
-
+the component `Base` passes on all component elements to the component `Sub`. 
+Souffle produces internally the following code for the component instantiation `mySub`:
 ```
-.comp A<T> { .... }
-.comp B<K> : A<K> { ... }
-```
-
-Although it is not recommended, the type parameter can be used as the base class:
-
-```
-.comp A<T> : T { ... }
+.type mySub.myNumber = number
+.decl mySub.TheAnswer(x:mySub.myNumber) 
+.decl mySub.WhatIsTheAnswer(n:mySub.myNumber) 
+mySub.TheAnswer(42).
+mySub.WhatIsTheAnswer(n) :- mySub.TheAnswer(n).
+.output mySub.WhatIsTheAnswer
 ```
 
 ## Overridable Relations
-If a relation, declared in a super component is overridable, it would be possible to override its associated rules in the sub-component while inheriting the rest of the relations from the super-component.
-A relation in a sub-component with the same signature as a relation in the super component can override the super component's relation if it has `overridable` keyword.
 
+If a relation, declared in a super component is declared as `overridable`, 
+a sub component may override its associated rules and facts 
+from its super component, i.e., the facts and rules of the super component 
+are discarded if the sub component uses the directive `override`. 
+The default is inheritance only for specific relations, the override is enabled by 
+the directive `override`. 
+
+For this example, 
 ```
-.comp A {
-    .decl Rel(x:number) overridable
-    Rel(1).
+.comp Base {
+    .decl R(x:number) overridable
+    R(1).
+    R(x+1) :- R(x), x < 5. 
+    .output R
 }
-```
-Since relation `Rel(x:number)` in the component `A` has `overridable` keyword, any sub-component of `A` can override this relation using `.override` keyword.
-
-```
-.comp B : A {
-    .override Rel
-    Rel(2).
+.comp Sub : Base {
+    .override R
+    R(2).
+    R(x+1) :- R(x), x < 4. 
 }
+.init mySub = Sub
 ```
-The override semantic replaces the clauses of all super-components by clauses of the sub-component. We omit the actual relation declaration in the sub-component because changing the signature of the relation would cause serious havoc with the use of the relation outside the scope of the sub-component.
+the sub-components discards fact `R(1).` and rule `R(x+1) :- R(x), x < 5.` 
+since the relation `R` has been declared with the relation qualifier `overrideable`
+and the sub-component has the `.override R` directive, which let Souffle drop the 
+facts and rules of its super component. Souffle will produce internally the following
+code for the sub-component instantiation `mySub`:
+```
+.decl mySub.R(x:number)overridable 
+mySub.R(2).
+mySub.R((x+1)) :- 
+   mySub.R(x),
+   x < 4.
+.output mySub.R
+```
 
-As another example, we can use override semantics to implement a more precise version of an existing analysis by overriding some relations:
-
+In the following we show a use case for override in 
+a more practical setup. For example, a more precise 
+version of an existing analysis can be implemented 
+by using the  override semantics as follows,
 ```
 .comp AbstractPointsto{
     .decl HeapAllocationMerge(heap,mergeHeap) overridable
@@ -259,7 +267,42 @@ As another example, we can use override semantics to implement a more precise ve
 
 .init precise_pointsto = PrecisePointsto
 ```
-In this example, PrecisePointsto inherits all the relations from AbstractPointsto, but only implements the HeapAllocationMerge relation differently. This feature avoids code duplications when we need several implementations of a generic analysis with small variations.
+In this example, PrecisePointsto inherits all the relations
+from AbstractPointsto, but only implements the HeapAllocationMerge 
+relation differently. This feature avoids code duplications when 
+we need several implementations of a generic analysis with small 
+variations and want to overwrite behaviour of the super component.
+
+## Type Parametrization and Inheritance
+Type parameters can passed around when inheriting. Example:
+
+```
+.comp A<T> { .... }
+.comp B<K> : A<K> { ... }
+```
+
+Although it is not recommended, the type parameter can be used as the base class:
+
+```
+.comp A<T> : T { ... }
+```
+
+With inheritance, complex component instantiatons are
+implementable. For example, in the example below
+```
+.init reach = Reachability<Graph<number>>   // syntax error
+```
+we would like to us a complex component parameter `Graph<number>`,
+but leads to syntax parameter because the parameter is not a 
+simple identifier. By introducing a new component, the above
+instantiation can be rewritten as followes
+```
+.comp NumberGraph : Graph<number> { } // NumberGraph inherits  
+.init reach = Reachability<NumberGraph>
+```
+
+
+
 
 
 ## Syntax 
