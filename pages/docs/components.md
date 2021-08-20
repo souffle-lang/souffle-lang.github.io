@@ -11,7 +11,7 @@ other components. A component has component declarations and a component
 instantiations.
 
 A component declaration starts with the keyword `.comp` followed by the name of the
-component and a block between curly braces (i.e. `{ ... }`) containing the 
+component and a block between curly brackets (i.e. `{ ... }`) containing the 
 component elements. 
 
 For example, 
