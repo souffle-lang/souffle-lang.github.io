@@ -6,11 +6,13 @@ folder: docs
 ---
 
 A component is a modular part in a program that may encapsulate component elements 
-including relation declarations, type declarations, rules, facts, directives, and other components. 
-A component has component declarations and a component instantiations.
+including relation declarations, type declarations, rules, facts, directives, and
+other components. A component has component declarations and a component
+instantiations.
 
-A component declaration starts with the keyword `.comp` followed by the name of the component and a block between `{` and `}`
-containing the component elements of the component. 
+A component declaration starts with the keyword `.comp` followed by the name of the
+component and a block between curly braces (i.e. `{ ... }`) containing the 
+component elements. 
 
 For example, 
 ```
@@ -50,8 +52,12 @@ myInstance1.TheAnswer(42).               // fact of myInstance1
 Test(x) :- myInstance1.TheAnswer(x).
 .output Test
 ```
+You can display the expansion using the specifying the command-line 
+option `--show=transformed-datalog`. 
 
-In this example, we have two component instantiation of `MyComponent`:
+In the following example, we have two component instantiation of 
+`MyComponent`:
+
 ```
 .init myInstance1 = MyComponent
 .init myInstance2 = MyComponent
@@ -77,7 +83,44 @@ Test(x) :- myInstance1.TheAnswer(x).
 Test(x) :- myInstance2.TheAnswer(x).
 .output Test
 ```
-Note that the two relations `TheAnswer` of both component instantiations are disambiguated by the prefix `myInstance1` and `myInstance2` to avoid a name clash.
+Note that the two relations `TheAnswer` of both component instantiations are 
+disambiguated by the prefix `myInstance1` and `myInstance2` to avoid a name clash.
+
+If rules/facts are defined in a component for which there are no relation 
+declarations, no prefices are added and the resolution is deferred to the actual 
+component instatiation (which may contain in another component and so forth). 
+
+For example, in the following example we have facts and rules defined whose 
+relations reside outside of the component in which they are defined.
+```
+.decl Out(x:number) 
+.comp A { 
+   .decl R(x:number) 
+   .comp Count { 
+       R(1).                  // fact accessing R outside of Count
+       R(x+1):- R(x), x<10.   // rule accessing R outside of Count
+   } 
+   .init myCount = Count      // instantiate Count
+   Out(x) :- R(x).            // rule accessing Out outside of A 
+}
+.init myA = A
+.output Out
+```
+Souffle expands the code above as follows:
+```
+.decl Out(x:number) 
+.decl myA.R(x:number) 
+myA.R(1).
+
+myA.R((x+1)) :- 
+   myA.R(x),
+   x < 10.
+
+Out(x) :- 
+   myA.R(x).
+.output Out
+```
+
 
 ## Type Parametrization
 
