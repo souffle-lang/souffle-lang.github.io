@@ -5,9 +5,9 @@ sidebar: docs_sidebar
 folder: docs
 ---
 
-A component is a modular part in a program that may encapsulate component elements 
+A component is a modular part of a program that may encapsulate component elements, 
 including relation declarations, type declarations, rules, facts, directives, and
-other components. A component has component declarations and a component
+other components. A component has component declarations and component
 instantiations.
 
 A component declaration starts with the keyword `.comp` followed by the name of the
@@ -40,7 +40,7 @@ we instantiate the component `MyComponent` with the name `myInstance1`.
 Internally, Souffle flattens the component instantiation
 creating for each component instantiation its own namespace. 
 The qualified names of component elements
-are preprended using the name of the instantiation.
+are prepended using the name of the instantiation.
 
 For the above example, Souffle internally expands the component instantiation as follows:
 ```
@@ -86,9 +86,9 @@ Test(x) :- myInstance2.TheAnswer(x).
 Note that the two relations `TheAnswer` of both component instantiations are 
 disambiguated by the prefix `myInstance1` and `myInstance2` to avoid a name clash.
 
-If rules/facts are defined in a component for which there are no relation 
-declarations, no prefices are added and the resolution is deferred to the actual 
-component instatiation (which may contain in another component and so forth). 
+Suppose rules/facts are defined in a component for which there are no relation 
+declarations. In that case, no prefix is prepended, and the resolution is 
+deferred to the actual component instantiation. 
 
 For example, in the following example we have facts and rules defined whose 
 relations reside outside of the component in which they are defined.
@@ -119,7 +119,7 @@ Out(x) :-
 Prefices are prepended to relations in rules and facts 
 if they are instantiated in the local scope. 
 
-## Type Parametrization
+## Type Parameterisation
 
 Components can be parametrized by unqualified type names.  In the example,
 ```
@@ -178,7 +178,7 @@ the fact `R(2).` would be issued for relation `R`.
 
 One component can inherit from multiple super components using inheritance. 
 The component elements of the super-components are passed on to the 
-sub-component. Using inheritance is useful for larger
+sub-component. Using inheritance is helpful for larger
 programs and libraries and avoids code duplication. 
 
 In the following example, 
@@ -212,10 +212,11 @@ mySub.WhatIsTheAnswer(n) :- mySub.TheAnswer(n).
 
 ## Overridable Relations
 
-If a relation, declared in a super component is declared as `overridable`, 
-a sub component may override its associated rules and facts 
-from its super component, i.e., the facts and rules of the super component 
-are discarded if the sub component uses the directive `override` for this relation. 
+If a relation is declared as `overridable` in the super-component, 
+a subcomponent may override its associated rules and facts 
+from its super-component. The facts and rules of the super-component 
+are discarded of an `overridable` relation 
+with the directive `override` in the subcomponent. 
 
 For this example, 
 ```
@@ -271,10 +272,10 @@ by using the  override semantics as follows,
 In this example, PrecisePointsto inherits all the relations
 from AbstractPointsto, but only implements the HeapAllocationMerge 
 relation differently. This feature avoids code duplications when 
-we need several implementations of a generic analysis with small 
+we need several implementations of a generic analysis with minor 
 variations and want to overwrite behaviour of the super component.
 
-## Type Parametrization and Inheritance
+## Type Parameterisation and Inheritance
 
 Type parameters of super-components can be explicitly specified 
 in sub-component declarations. For example, 
@@ -291,7 +292,7 @@ The type parameter can also be used as the base class
 ```
 building a selective inheritance based on the type parameter `T`.
 The instantiation of `A<T>` defines which super component `A` 
-is inheriting from.
+is inheriting.
 
 With inheritance, complex component instantiatons are
 implementable. In the example below
