@@ -14,27 +14,21 @@ However, MAC OS X with [brew](http://brew.sh) can automate the build process:
 brew install --HEAD souffle-lang/souffle/souffle
 ```
 
-<!---
 ## Debian/Ubuntu Systems
 
-For Debian systems, the latest development version of Soufflé can be installed from the Bintray PPA,
+For Debian systems, the latest release version of Soufflé can be installed from the PackageCloudIO,
 
-To add the repository:
+Execute PackageCloudIO's script
 ```
-echo "deb https://dl.bintray.com/souffle-lang/deb-unstable bionic main" | sudo tee -a /etc/apt/sources.list
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 379CE192D401AB61
-sudo apt-get update
+curl -s https://packagecloud.io/install/repositories/souffle-lang/souffle/script.deb.sh | sudo bash
 ```
-Packages for Debian buster and Ubuntu focal are also available by replacing 'bionic' with 'buster' or 'focal'.
 
 Then to install souffle itself
 ```
 sudo apt-get install souffle
 ```
 
-Stable versions do not have the latest features, but if you require a stable version replace 'deb-unstable' with 'deb' in the above instructions.
-
-
+<--
 ## Centos7
 
 To add the repository and install souffle:
@@ -64,6 +58,7 @@ For the latest updates follow the development head
 ```
 brew install --HEAD souffle-lang/souffle/souffle
 ```
+
 -->
 
 {% include links.html %}
