@@ -7,7 +7,23 @@ entries:
 
   - title: Releases
     output: web, pdf
-    folderitems:
+    folderitems:    
+    - title: Version 2.1.0
+      url: /release-2.1.0
+      output: web, pdf
+
+    - title: Version 2.0.2
+      url: /release-2.0.2
+      output: web, pdf
+
+    - title: Version 2.0.0
+      url: /release-2.0.0
+      output: web, pdf
+
+    - title: Version 1.7.0
+      url: /release-1.7.0
+      output: web, pdf
+
     - title: Version 1.6.2
       url: /release-1.6.2
       output: web, pdf
