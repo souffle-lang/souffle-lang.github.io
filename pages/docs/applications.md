@@ -49,6 +49,9 @@ Souffle was initially used to find security vulnerabilities in the Java JDK libr
 ## VPN 
 Amazon used Souffle to verify VPN connections in the AWS cloud. 
 
+## Galois
+Souffle is integrated in an application performing context-sensitive pointer analysis to identify potential software vulnerabilities in C/C++ source code. More about Galois can be found [here](https://galois.com/).
+
 ## Frank's DDLOG Benchmarks
 Frank McSherry has developed three benchmarks for DDLOG. They can be found [here](https://github.com/frankmcsherry/dynamic-datalog/). 
 
