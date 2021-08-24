@@ -12,10 +12,6 @@ Need support for Soufflé? Try the following:
 
 Our guide to Soufflé covering building, installation, writing logic programs, compiling and running programs, interfaces, and more.
 
-### [Google](https://www.google.com/?q=souffle+datalog)
-
-Search for **Souffle** and **Datalog** on Google.
-
 ### [Issue List](https://github.com/souffle-lang/souffle/issues)
 
 Find the issue on the main Souffle development. File an issue if you think you have found a new bug. Use the issue list for
@@ -35,10 +31,9 @@ Find the issue on the main Souffle development. File an issue if you think you h
  - refactoring.
 
 
-### [Discussions] (https://github.com/souffle-lang/souffle/discussions)
+### [Discussions](https://github.com/souffle-lang/souffle/discussions)
 
 Use the discussions bulletin board to engage with other community members and for asking questions you’re wondering about.
-
 
 ###  How to contribute
 
@@ -55,3 +50,8 @@ To contribute in this repo, please open a pull request from your fork of this re
  4. Submit a pull request to souffle-lang/souffle from your forked repo.
 
 Our continuous integration framework enforces coding guidelines with the help of clang-format and clang-tidy. For more information on building and developing Souffle, please read the [developer tutorial](development).
+
+### [Google](https://www.google.com/?q=souffle+datalog)
+
+Search for **Souffle** and **Datalog** on Google.
+
