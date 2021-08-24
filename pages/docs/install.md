@@ -22,7 +22,7 @@ Then to install souffle itself
 sudo apt-get install souffle
 ```
 
-# MAC OS X 
+## MAC OS X 
 
 We have a brew formula for MAC OS X using the [brew](http://brew.sh) system. The 
 brew formula automates the build and installation on MAC OS X. 
