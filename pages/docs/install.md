@@ -5,14 +5,8 @@ redirect_from: /docs/install
 sidebar: docs_sidebar
 folder: docs
 ---
-## Installation
 
-Currently the only way to install Soufflé is by building from source. 
-Please follow the instructions from [Build Soufflé](https://souffle-lang.github.io/build). 
-However, MAC OS X with [brew](http://brew.sh) can automate the build process: 
-```
-brew install --HEAD souffle-lang/souffle/souffle
-```
+You can build and install Soufflé following the instructions from [Build Soufflé](/build).
 
 ## Debian/Ubuntu Systems
 
@@ -27,4 +21,15 @@ Then to install souffle itself
 ```
 sudo apt-get install souffle
 ```
+
+# MAC OS X 
+
+We have a brew formula for MAC OS X using the [brew](http://brew.sh) system. The 
+brew formula automates the build and installation on MAC OS X. 
+To install Soufflé please type: 
+
+```
+brew install --HEAD souffle-lang/souffle/souffle
+```
+
 {% include links.html %}
