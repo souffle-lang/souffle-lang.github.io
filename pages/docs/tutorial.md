@@ -477,7 +477,7 @@ MaxA(y) :- y = max x:{A(x)}.
 
 #### Minimum & Sum
 Similarly to the above, these functors compute the minimum/sum of a sub-goal.
-The ``min`` syntax is ``min <var>:{<sub-goal(<var>)>}``, and the ``sum`` syntax is ``sum <var>:{<sub-goal>(<var>)>}``.
+The ``min`` syntax is ``min <var>:{<sub-goal>(<var>)>}``, and the ``sum`` syntax is ``sum <var>:{<sub-goal>(<var>)>}``.
 
 #### Witnesses are not permitted
 Consider the following example which will not compile:
