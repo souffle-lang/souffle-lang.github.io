@@ -352,7 +352,7 @@ is associated with a branch identifier. The branch identifier must be unique in 
 
 ![ADT Branch](https://souffle-lang.github.io/img/adt_branch.svg)
 ```ebnf
-adt_branch ::= IDENT "{" attribute ( "," attribute)* "}"
+adt_branch ::= IDENT "{" (attribute ( "," attribute)*)? "}"
 ```
 
 ### Attribute Declaration
