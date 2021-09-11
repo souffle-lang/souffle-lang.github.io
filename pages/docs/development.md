@@ -40,25 +40,7 @@ souffle
 
 ## Building Soufflé
 
-Navigate to the cloned `souffle` directory.
-
-~~~
-$ cd souffle
-~~~
-
-To set things up, we have to bootstrap and configure.
-
-~~~
-$ ./bootstrap && ./configure
-~~~
-
-If this step fails, you likely have missing dependencies. Please consult the documentation to ensure all required packages are installed on your system.
-
-If this step works, we can compile the Soufflé executable with make. Using `-j8` here tells make to use 8 threads in parallel, which is usually faster than with just one thread.
-
-~~~
-$ make -j8
-~~~
+See [Build Soufflé](https://souffle-lang.github.io/build) page.
 
 ## Running Soufflé
 
@@ -116,24 +98,7 @@ Note that this pushes your changes to your fork of Soufflé only, not the upstre
 
 ## Running the Tests
 
-However, before doing so, it is always a good idea to run the tests, to ensure that you have not broken anything.
-
-You can use the following make command to run the Soufflé test suite. The `-j8` option behaves the same as in the call to `make`.
-
-~~~
-$ make check -j8
-~~~
-
-Initially, the unit tests in `//src/test` are run.
-
-If all unit pass successfully, then the test suite proceeds with running each datalog program in a subdirectory of `//tests`.
-
-If some test fails, say at `//tests/foo/bar`, then a directory will be created at `//test/testsuite.dir/foo/bar` with some useful files. This allows us to debug problems with our code.
-
-You will need to make changes to fix your bugs, and then repeat everything from the above "Making Changes" section.
-
-When all tests pass successfully, you are ready to do a pull request.
-
+See [Build Soufflé](https://souffle-lang.github.io/build#testing-souffl%C3%A9) page.
 
 ## Debugging
 Debug mode can be enabled by configuring with `--enable-debug`. You may also find `--enable-sanitise-memory` useful to find memory leak,reuse, and use after free issues.
