@@ -276,7 +276,7 @@ The following example demonstrate how branch constructors can be used in rules:
 
 .decl A(x:Expression)
 A($Number(10)).
-A($Add($Number(10),$Imaginary)).
+A($Add($Number(10),$Imaginary())).
 A($Add($Number(10), $Variable("x"))).
 A($Number(x+1)) :- A($Number(x)), x < 20.
 
