@@ -97,16 +97,16 @@ $ ./src/souffle -F. -D. -rexample.html example.dl
 $ ./src/souffle -F. -D. -pexample.log example.dl
 ~~~
 
-To analyse the profiling data in `example.log`, we need to open it with the included `souffle-profile` program, done as follows.
+To analyse the profiling data in `example.log`, we need to open it with the included `souffleprof` program, done as follows.
 
 ~~~
-$ ./src/souffle-profile example.log
+$ ./src/souffleprof example.log
 ~~~
 
 The profiler includes a lot of functionality useful for analysing the performance of Datalog programs. It too comes with a help text, which is given by the following command.
 
 ~~~
-$ ./src/souffle-profile -h
+$ ./src/souffleprof -h
 ~~~
 
 As noted, there are many other useful options available to Soufflé, so be sure to explore them too!
