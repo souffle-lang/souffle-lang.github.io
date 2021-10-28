@@ -105,7 +105,7 @@ The defaults are taken from the compiler invocation, which may be overwritten wi
 Note that if the profiling option is enabled, the standalone executable has the additional option ```-p``` (see below). 
  
 ## Profiling 
-As a side-effect of execution, a profile log can be generated. The profile log can be visualized using the souffle-profiler. The option for enabling the profile log is ```-p <log-file>``` that works for the interpreter as well as the compiler. The profiler is described in the [profiler](profiler) section. 
+As a side-effect of execution, a profile log can be generated. The profile log can be visualized using the souffleprof. The option for enabling the profile log is ```-p <log-file>``` that works for the interpreter as well as the compiler. The profiler is described in the [profiler](profiler) section. 
 
 Soufflé has various command line options to control the execution mode and parameterise the Soufflé input program.
 

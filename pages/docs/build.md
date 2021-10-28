@@ -133,7 +133,7 @@ to install Soufflé. By setting the path variable
 ```
  PATH=$PATH:<install-dir>/bin
 ``` 
-the Soufflé commands ```souffle``` and ```souffle-profile``` are available to the users.
+the Soufflé commands ```souffle``` and ```souffleprof``` are available to the users.
 
 
 ### Configuring Soufflé

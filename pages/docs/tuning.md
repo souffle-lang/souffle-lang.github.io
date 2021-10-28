@@ -18,7 +18,7 @@ your tuning effort.
 
 The tuning cycle consists of: 
  1) Run the Souffle program with the profile option (`-p <file>`) 
- 2) Run the profiler (`souffle-profile <file> -o <html>`) 
+ 2) Run the profiler (`souffleprof <file> -o <html>`) 
  3) Idendity the most dominant performance bottlenecks 
  4) Eliminate the most dominant performance bottlenecks 
  5) Go to step 1 until the performance is satisfactory for the current input 
