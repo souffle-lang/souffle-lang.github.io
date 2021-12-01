@@ -1,0 +1,17 @@
+Package: souffle
+Priority: optional
+Section: devel
+Installed-Size: 12972
+Maintainer: Patrick H.
+Architecture: amd64
+Version: 2.1
+Depends: g++ (>= 7), libffi-dev, libncurses5-dev, libsqlite3-dev, mcpp, zlib1g-dev, libc6 (>= 2.30), libffi8ubuntu1 (>= 3.4~20200819), libgcc-s1 (>= 3.0), libgomp1 (>= 6), libncurses6 (>= 6), libsqlite3-0 (>= 3.5.9), libstdc++6 (>= 9), libtinfo6 (>= 6), zlib1g (>= 1:1.1.4)
+Filename: pool/groovy/main/s/souffle/souffle_2.1_amd64.deb
+Size: 3419888
+MD5sum: b5d2c27f0065d18829808b31c8547b94
+SHA1: d7309173dcf78a006a266a8cf7ac5636eea52a0c
+SHA256: 7eabd5f17fa39bbba2e6e123e7465e5f706e2a1d001cf238bf9682240b554b88
+SHA512: 790dd5f88acb2b4731115f23ab46ba214e3f1aced251b83f114b5f431724a3b59f5d83cbb1ddfcdeedaeb5ae288b844f92c6e127ff2c04b4c03b9868db2af47f
+Description: A Datalog Compiler
+ Souffle - A Datalog Compiler
+
