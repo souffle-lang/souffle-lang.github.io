@@ -107,6 +107,14 @@ entries:
       url: /components
       output: web
 
+    - title: Choice Construct
+      url: /choice 
+      output: choice 
+
+    - title: Subsumption 
+      url: /subsumption
+      output: subsumption 
+
     - title: User-Defined Functors
       url: /functors
       output: web
