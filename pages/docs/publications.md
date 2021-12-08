@@ -6,6 +6,10 @@ folder: docs
 toc: false
 ---
 ## Publications
+ * Xiaowen Hu, Joshua Karp, David Zhao, Abdul Zreika, Xi Wu, Bernhard Scholz:
+The Choice Construct in the Souffle Language. APLAS 2021: 161-181; ([link](https://link.springer.com/chapter/10.1007/978-3-030-89051-3_10)). 
+ * David Zhao, Pavle Subotic, Mukund Raghothaman, Bernhard Scholz:
+Towards Elastic Incrementalization for Datalog. PPDP 2021: 20:1-20:16 ([link](https://dl.acm.org/doi/10.1145/3479394.3479415)).
  * Xiaowen Hu, David Zhao, Herbert Jordan, Bernhard Scholz:
 An efficient interpreter for Datalog by de-specializing relations. PLDI 2021: 681-695; ([link](https://dl.acm.org/doi/10.1145/3453483.3454070)).
  * David Zhao, Pavle Subotić, and Bernhard Scholz:
