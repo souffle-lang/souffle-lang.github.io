@@ -174,14 +174,11 @@ A *Sideways Information-Passing Strategy* (SIPS) is a heuristic used to determin
 - `all-bound`: Prioritise atoms with all arguments bound
 - `naive`: Prioritise (1) all bound, then (2) atoms with at least one bound argument, then (3) left-most
 - `max-bound`: Prioritise (1) all-bound, then (2) max number of bound vars, then (3) left-most
-- `max-bound-delta`: Prioritise (1) all-bound, then (2) max number of bound vars, then (3) left-most, but use deltas as a tiebreaker between these.
 - `max-ratio`: Prioritise max ratio of bound args
 - `least-free`: Choose the atom with the least number of unbound arguments
 - `least-free-vars`: Choose the atom with the least amount of unbound variables
 - `profile-use`: Reorder based on the given profiling information
-- `delta`: Goal: Prioritise (1) all-bound, then (2) deltas, and then (3) left-most
 - `input`: Goal: Prioritise (1) all-bound, (2) input, then (3) rest
-- `delta-input`: Prioritise (1) all-bound, (2) deltas, (3) input, then (4) rest
 
 You can view the effect of different SIPS strategies on the query plan using the `--show=transformed-datalog` option.
 
