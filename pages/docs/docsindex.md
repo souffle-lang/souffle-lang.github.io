@@ -19,7 +19,7 @@ analysis for smart contracts [Gigahorse](https://github.com/nevillegrech/gigahor
 [Securify](https://github.com/eth-sri/securify), [Secuify V2.0](https://github.com/eth-sri/securify2),
 [VANDAL](https://github.com/usyd-blockchain/vandal). More applications are listed [here](/applications).
 
-Soufflé language project is led by [Bernhard Scholz](http://b-scholz.github.io), and commenced at [Oracle Labs in
+Soufflé language project is led by [Prof Bernhard Scholz](http://b-scholz.github.io), and commenced at [Oracle Labs in
 Brisbane](https://github.com/oracle/souffle/wiki/Contributors). Soufflé was open-sourced in March 2016. It is actively
 supported by universities and industrial research labs. The main contributors to this project have been [The University
 of Sydney](http://sydney.edu.au), the [University of Innsbruck](https://www.uibk.ac.at/index.html.en), the [University
