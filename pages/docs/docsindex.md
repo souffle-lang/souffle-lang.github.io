@@ -8,8 +8,7 @@ folder: docs
 ---
 Soufflé is a logic programming language inspired by Datalog. It overcomes some of the limitations in classical Datalog.
 For example, programmers are not restricted to finite domains, and the usage of functors (intrinsic, user-defined, records/constructors, etc.) are permitted. Soufflé has a component model so that large logic projects can be 
-expressed. Initially, Soufflé has been designed for crafting static analysis in logic at Oracle Labs. 
-Recently, there are many other applications written in the Soufflé language, including applications in network analysis and data analytics. 
+expressed. The Soufflé and has been initially designed for crafting static analysis in logic at Oracle Labs. Since then, there are many other applications written in the Soufflé language, including applications in reverse engineering, network analysis and data analytics. 
 
 Soufflé provides the ability to rapid prototype and make deep design space explorations possible.
 A wide range of [applications](/applications) have been implemented in the Soufflé language, e.g., static program
@@ -25,9 +24,9 @@ Brisbane](https://github.com/oracle/souffle/wiki/Contributors). Soufflé was ope
 supported by universities and industrial research labs. The main contributors to this project have been [The University
 of Sydney](http://sydney.edu.au), the [University of Innsbruck](https://www.uibk.ac.at/index.html.en), the [University
 College London](https://www.ucl.ac.uk), the [University of Athens](http://www.di.uoa.gr/), [Oracle Labs,
-Brisbane](http://https://labs.oracle.com/).
+Brisbane](http://https://labs.oracle.com/), and many more.
 
-One of the major challenges in logic programming is scalability. 
+One of the major challenges in logic programming is performance and scalability. 
 Soufflé applies advanced compilation techniques for logic programs. We use a range of techniques to achieve high-performance: Futamura Projections, staged-compilation with a new abstract machine, partial evaluation, and parallelization with highly-parallel data-structures. 
 
 Soufflé has been designed such that, 
