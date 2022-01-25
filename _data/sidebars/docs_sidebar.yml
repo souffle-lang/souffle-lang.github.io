@@ -109,11 +109,11 @@ entries:
 
     - title: Choice Construct
       url: /choice 
-      output: choice 
+      output: web
 
     - title: Subsumption 
       url: /subsumption
-      output: subsumption 
+      output: web
 
     - title: User-Defined Functors
       url: /functors
