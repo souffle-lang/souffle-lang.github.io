@@ -10,7 +10,7 @@ folder: docs
 
 To use the SWIG feature, it must be enabled through configuring Soufflé with the following:
 
-`./configure --enable-swig` 
+`cmake -DSOUFFLE_SWIG_PYTHON=ON` for Python bindings, and `cmake -DSOUFFLE_SWIG_JAVA=ON` for Java bindings. 
 
 ## SWIG Command Line Option in Souffle
 To run the SWIG command line option in Souffle, run:
