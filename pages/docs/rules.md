@@ -4,15 +4,15 @@ permalink: /rules
 sidebar: docs_sidebar
 folder: docs
 ---
-A rule is a definite horn clause that has one or more predicates as a head, and one or more 
-literals in the body. The literals are predicates, negated 
+A rule is a horn clause that has one predicate (or more; see below) as a head, and one or more 
+literals in the body. The literals can be predicates, negated 
 predicates, or constraints.
 All variables of a rule must be *grounded*, i.e., a variable must occur
 at least once as an argument of a positive predicate in the body of
 a rule.  Soufflé permits arithmetic and string functors assuming
 that their arguments are grounded.
 
- ```A``` and ```B``` with two number attributes.
+Consider the following example, that has relation ```A``` and ```B``` with two number attributes.
 ```prolog
 .decl A, B(x:number, y:number)  // declaration of relation B
 .input A                     // read A 
@@ -22,9 +22,45 @@ B(x,z) :- A(x,y), B(y,z).
 ```
 Relation ```B``` has two rules: ```B(x,y) :- A(x,y).``` and ```B(x,y) :- A(x,y), B(y,z).``` The first rule says, there is a tuple in `B` if this tuple shows up in `A`. The second rule says there is a tuple `(x,z)` in `B`, if there is a tuple in `(x,y)` in `A` and a tuple `(y,z)` in `B`.
 
+For the first rule, variables ```x``` and ```y``` are *grounded*, since they show up as variables in the 
+positive predicate ```B(x,y)```. Similiar, the variables ```x```, ```y```, and ```z``` are *grounded* because 
+they occur in the positive predicates ``` A(x,y)``` and ```B(y,z)```. 
 
-### Binding of Variables
-TBD.
+However, note that the following example has an *ungrounded* variable:
+```prolog
+.decl fib(idx:number, value:number)
+fib(1,1).
+fib(2,1).
+fib(idx, x + y) :- fib(idx-1, x), fib(idx-2, y), idx <= 10.
+.output fib
+```
+
+The reason for this is that variable ```idx``` is not bound as an argument of a positive predicate in the body. In the example, variable ```idx``` occurrs in the predicates ```fib(idx-1, x)``` and ```fib(idx-2, y)``` but as arguments of a functor rather than as a direct argument. To make variable ```idx``` bound, we can shift the index by one and obtain a program whose variables are *grounded*:
+```prolog
+.decl fib(idx:number, value:number)
+fib(1,1).
+fib(2,1).
+fib(idx+1, x + y) :- fib(idx, x), fib(idx-1, y), idx <= 9.
+.output fib
+```
+And the program can produce the following output,
+```
+---------------
+fib
+idx	value
+===============
+1	1
+2	1
+3	2
+4	3
+5	5
+6	8
+7	13
+8	21
+9	34
+10	55
+===============
+```
 
 ### Type System
 
