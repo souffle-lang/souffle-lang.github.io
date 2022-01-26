@@ -197,64 +197,15 @@ The relation qualifier `override` controls whether rules in a relation that is d
 The component model of Souffle is described [here](components).
 
 ### Choice Domain / Functional-Dependency Constraint
-Programmers can impose a functional dependency constraint on relation. 
+Programmers can impose one or more functional dependency constraints on relations. 
 With functional dependencies, non-determistic selections are available for use-cases 
-such as expressing worklist algorithm in Souffle.
-
-A functional dependency `x -> y` on relation `R(x:number, y:number)` ensures that
-each `x` in `R` will uniquely define a value of `y`.
-For example, during the evaluation, if a set of tuples `{(1,1), (1,2), (1,3)}`
-are about to be inserted into `R`, Souffle only chooses arbitrary one of them 
-(the first one in the evaluation order). Any subsequent functionally dependent 
-tuples will be ommitted. 
-
-Functional dependency is defined using the keyword `choice-domain` in a relation
+such as expressing worklist algorithm in Souffle.  Functional dependency 
+is defined as a relational qualifier using the keyword `choice-domain` in a relation
 declaration.  For the sake of brevity, our syntax omits the co-domain (i.e. the
 right hand side of the arrow).  Therefore, a choice-domain `D` for a relation with 
 attribute set `X` implicitly defines a functional dependency of `D -> X \ D`.
+You find more information about choice [here](choice).
 
-Consider the following example,
-```
-.decl edge(u:symbol, v:symbol)
-.decl st(u:symbol, v:symbol) choice-domain v // functional dependency: v -> u 
-.decl startNode(x:symbol)
-
-st("root", x) :- startNode(x).
-st(u, v) :- st(_, v), edge(u, v).
-```
-that calculates a spanning tree on a connected component of an undirected graph.
-The first rule simply chooses a start node.
-The second rule states that, an edge `(u, v)` is in the spanning tree: if `v` is
-reachable in the spanning tree and there is an edge between `u` and `v`.
-The `choice-domain v` on `st` ensures that the value of `v` is unique, i.e.,
-each node can be visited only once in the spanning tree.
-
-Here is another example,
-```
-.decl student (s:symbol, majr:symbol, year:number)
-.decl professor (s:symbol, majr:symbol)
-.decl advisor (s:symbol, year:number, p:symbol) choice-domain (s, year) // functional dependency: (s,year) -> p
-
-advisor(s, y, p) :- student(s, y, m), professor(p, m).
-```
-which allocates an advisor for each student. The `choice-domain (s, year)`
-on `advisor` makes sure that the combination of `(student, year)` is unique,
-i.e., student from each year is assigned to a professor only once.
-
-In the following example,
-```
-.decl d(x:symbol)
-.decl list(prev:symbol, next:symbol) choice-domain prev, next // functional dependencies: prev -> next & next -> prev
-
-list(p, n) :- d(n), list(_, p).
-```
-an unordered set of elements is ordered using a list.
-The program effectively computes a total order over the set.
-The rule states that, `p` is before `e` if `p` is already assigned into the total order list.
-With the help of the two choice-domains `prev` and `next`: 
-`prev` makes sure that for each element, there can only be one unique element after
-it; similarly, `next` makes sure for each element, there can be only one unique
-element before it. Those constraints defines the property of a total order set.
 
 ## Syntax 
 In the following, we define relation declarations in Souffle more formally using [syntax diagrams](https://en.wikipedia.org/wiki/Syntax_diagram) and [EBNF](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form). The syntax diagrams were produced with [Bottlecaps](https://www.bottlecaps.de/rr/ui).
