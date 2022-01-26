@@ -93,6 +93,11 @@ it; similarly, `next` makes sure for each element, there can be only one unique
 element before it. Those constraints defines the property of a total order set.
 
 
+## Publication
+
+ * Xiaowen Hu, Joshua Karp, David Zhao, Abdul Zreika, Xi Wu, Bernhard Scholz:
+The Choice Construct in the Souffle Language. APLAS 2021: 161-181; ([link](https://link.springer.com/chapter/10.1007/978-3-030-89051-3_10)).
+
 ## Syntax
 
 ### Choice-Domain
