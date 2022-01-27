@@ -64,8 +64,23 @@ idx	value
 
 ### Type System
 
-The variables deduce their types from their bindings. A variable receives values from positive predicates in the body of a rule.
-TBD: Explain the information flow in a rule (what is a a source / sink) and type checking.  
+Variables in a rule have no explicit type declaration. Hence, 
+Soufflé's typesystem must automatically deduce the type of variables in a rule, depending on how they are used 
+as arguments in predicates, functors, and constraints. Besides deducing their type, its other task is to check 
+their appropiate use.  Soufflé's typesystem supports subtypes and union types, e.g., ```.type A <: B``` and ```.type C = A|B```  that makes the semantics of the typesystem more complex. For example,
+
+```prolog
+.type A <: number
+.type B <: number
+.type C = A | B 
+
+.decl P(x:A)
+.decl Q(x:B)
+.decl R(x:C)
+
+R(x) :- P(x), Q(x).
+```
+In the above example, the type of variable is of type `C`. The reason is that the right-hand side of the body constraints the variable ```x``` such that ```x``` must be of type `A` / `B` or a supertype of them. The left-hand side constrain the type of variable to type `C` or a subtype of it. We also refer to *grounded* variable occurrences in the body of a rule as `sources` and the variable occurrences in the head of a rule / constraints / negation etc. as `sinks`. The reason for this is that sources may produce a concrete assignment and the the sinks use as concrete assignment. 
 
 ### Negation in Rules
 A rules of the form
