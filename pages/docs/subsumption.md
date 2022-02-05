@@ -15,7 +15,7 @@ In the following, we define rule declarations in Souffle more formally using [sy
 ### Subsumptive Rule
 A subsumptive rule has a dominated and a dominating head seperated by `<=` and is followed by its rule body. The rule body is defined as in a standard [rule](/rule).  A query plan is optional for a subsumptive rule.
 
-![Rule](https://souffle-lang.github.io/img/subsumptive_rule.svg)
+![Rule](/img/subsumptive_rule.svg)
 
 ```ebnf
 rule ::= atom '<=' atom ':-' disjunction '.' query_plan?
