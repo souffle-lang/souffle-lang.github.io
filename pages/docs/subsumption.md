@@ -13,7 +13,7 @@ of a subsumptive clause.
 In the following, we define rule declarations in Souffle more formally using [syntax diagrams](https://en.wikipedia.org/wiki/Syntax_diagram) and [EBNF](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form). The syntax diagrams were produced with [Bottlecaps](https://www.bottlecaps.de/rr/ui).
 
 ### Subsumptive Rule
-A rule has a dominated and a dominating head followed by symbol `:-` and a disjunctive term. A query plan is optional for a subsumptive rule.
+A subsumptive rule has a dominated and a dominating head seperated by `<=` and is followed by its rule body. The rule body is defined as in a standard [rule](/rule).  A query plan is optional for a subsumptive rule.
 
 ![Rule](https://souffle-lang.github.io/img/subsumptive_rule.svg)
 
