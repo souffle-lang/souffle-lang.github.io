@@ -37,7 +37,7 @@ computes the spanning tree `st` from the graph relation `edge`.
 The rule `st(v,u) :- st(_, v), edge(v,u)` states that, an edge 
 `(u, v)` is in the spanning tree: if `v` is
 reachable in the spanning tree and there is an edge between `u` and `v`.
-The `choice-domain v` on `st` ensures that the value of `v` is unique, i.e.,
+The `choice-domain u` on `st` ensures that the value of `u` is unique, i.e.,
 each node can be visited only once in the spanning tree, and 
 there is at
 most one in-coming edge for a node in the spanning tree. 
@@ -45,7 +45,7 @@ For example, if the relation `st` already contains the tuple
 `(L5, L9)`, a subsequent insertion of tuple `(L7, L9)` will be 
 ignored/rejected because the attribute value `L9` of attribute u
 has been allocated by the previously inserted
-tuple `(L5, L9)'. Note that the order of insertion cannot be controlled 
+tuple `(L5, L9)`. Note that the order of insertion cannot be controlled 
 by the program. It is a non-deterministic
 choice, which tuple will be inserted first. 
 
