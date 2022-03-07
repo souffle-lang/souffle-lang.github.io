@@ -116,6 +116,7 @@ g++ -dynamiclib -install_name libfunctors.dylib -o libfunctors.dylib functors.o
 export DYLD_LIBRARY_PATH=${DYLD_LIBRARY_PATH:+$DYLD_LIBRARY_PATH:}`pwd`
 ```
 
+
 ## Stateful User-Defined Functors 
 Souffle exposes the symbol and record table to a stateful user-defined functor.
 A stateful functor can access and manipulate these tables for [symbols and records](types).
@@ -185,6 +186,9 @@ souffle::RamDomain _myappend(
     }
 }
 ``` 
+
+
+Note that the flag `-fopenmp` needs to be added for compiling the functor library in case OpenMPI is enabeled; it will cause unexpected crashes without the OpenMPI library.
 
 ## Syntax 
 In the following, we define user-defined functor declarations more formally using [syntax diagrams](https://en.wikipedia.org/wiki/Syntax_diagram) and [EBNF](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form). The syntax diagrams were produced with [Bottlecaps](https://www.bottlecaps.de/rr/ui).
