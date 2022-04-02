@@ -155,7 +155,7 @@ entries:
       url: /translate
       output: web
 
-    - title: Symbol & Record Tables
+    - title: Symbol and Record Tables
       url: /implementation
       output: web
 
@@ -167,6 +167,6 @@ entries:
       url: /contributors
       output: web
 
-    - title: Publications & Talks
+    - title: Publications and Talks
       url: /publications
       output: web

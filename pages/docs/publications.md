@@ -1,5 +1,5 @@
 ---
-title: Publications & Talks
+title: Publications and Talks
 permalink: /publications
 sidebar: docs_sidebar
 folder: docs

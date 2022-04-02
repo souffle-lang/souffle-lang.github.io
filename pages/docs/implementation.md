@@ -1,5 +1,5 @@
 ---
-title: Symbol & Record Tables
+title: Symbol and Record Tables
 permalink: /implementation
 sidebar: docs_sidebar
 folder: docs
