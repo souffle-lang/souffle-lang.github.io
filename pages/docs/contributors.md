@@ -22,7 +22,7 @@ The contributors with their code contributions are listed below:
  * **Abdul Karim Zreika**: optimizations, magic set transformation, inlining, new ast-to-ram translator
  * **Martin McGrane**: dev ops, refactoring, new I/O system for relations, numerous bug fixes
  * **David Zhao**: provenance/debugging for Datalog, refactoring of relation synthesis
- * **Samuel Isaac Arch**: index selection for inequalities
+ * **Samuel Isaac Arch**: Auto-Scheduler, Auto-Index Selection with Inequalities
  * **Tytus Metrycki**: New type system
  * **Xiaowen Hu**: New high-performance interpreter
  * **Rachel Dowavic**: Aggregators, scripting
