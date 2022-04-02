@@ -155,7 +155,7 @@ entries:
       url: /translate
       output: web
 
-    - title: Symbol&Record Tables
+    - title: Symbol & Record Tables
       url: /implementation
       output: web
 
