@@ -16,13 +16,20 @@ Souffle has a profiler which is the main instrument to guide you with performanc
 tuning starts with using a suitable input for your Souffle program. The runtime of the your program with the chosen input should be acceptable so that the tuning cycle is short. The shorter the cycle is the faster you will make progress in
 your tuning effort.
 
-The tuning cycle consists of: 
- 1) Run the Souffle program with the profile option (`-p <file>`) 
- 2) Run the profiler (`souffleprof <file> -o <html>`) 
- 3) Idendity the most dominant performance bottlenecks 
+The tuning cycle consists of:
+ 
+ 1) Run the Souffle program with the profile option (`-p <file>`)
+ 
+ 2) Run the profiler (`souffleprof <file> -o <html>`)
+ 
+ 3) Identify the most dominant performance bottlenecks 
+ 
  4) Eliminate the most dominant performance bottlenecks 
+ 
  5) Go to step 1 until the performance is satisfactory for the current input 
+ 
  6) Choose a larger input for your program with acceptable performance
+ 
  7) Go to step 1 until the performance of the program becomes acceptable
  
 
@@ -34,13 +41,13 @@ problem and hence will influence the runtime of the rules. Also, the access to t
 they are stored) and the number of relations will determine the overall performance of your
 program. 
 
-It is worthwile to note that there are infinite many ways to express your relational 
+It is worthwhile to note that there are infinitely many ways to express your relational 
 schemas that give you the same result. However, some are more effective than others 
 and it is the art of the logic programmer to choose the right relational schemas. 
 
 Sometimes, the concept  of  (database normilization)[https://en.wikipedia.org/wiki/Database_normalization] that 
 exploits functional dependencies (cf. Edgar F. Codd) helps to improve the performance.
-Whether normalization is fruitful dependens on the case. Howerver, familiarizing with the 
+Whether normalization is fruitful dependens on the case. However, the 
 concept of normalization is a powerful tool understanding how relational schemas 
 can be rewritten. 
 
@@ -109,14 +116,14 @@ T(x,z) :-  T(x,y), T(y,z).
 .printsize D
 ```
 
-Althouh it computes the transitive closure, it is a bad formulation of the transitive. A better way of writing the transitive closure is the following:
+Although it computes the transitive closure, it is a bad formulation of the solution. A better way of writing the transitive closure is the following:
 ```
 T(x,y) :- G(x,y). 
 T(x,z) :- T(x,y), G(y,z). 
 ```
 
 # Rule Scheduling 
-Determining a good execution schedule for a given rule requires some insight regarding the internal operation of the data log engine. In general, a rule like
+Determining a good execution schedule for a given rule requires some insight regarding the internal operation of the Datalog engine. In general, a rule like
 ```
 C(X,Z) :- A(X,Y), B(Y,Z).
 ```
@@ -130,7 +137,7 @@ for( e1 : A ) {
     }
 } 
 ```
-The cost of this loop is mainly dominated by the number of times the innermost loop body, comprising the condition and the insertion operation, needs to be evaluated. The objective of finding a good is to minimize the number of inner-most loop-body executions.
+The cost of this loop is mainly dominated by the number of times the innermost loop body, comprising the condition and the insertion operation, needs to be evaluated. The objective of finding a good schedule is to minimize the number of inner-most loop-body executions.
 
 Obviously, a naive conversion like this would be not very efficient. It would require |A| * |B| iterations of the innermost loop body. Fortunately, the second for loop and the condition can be combined into
 ```
@@ -208,7 +215,7 @@ eqrel_slow(a,c) :- eqrel_slow(a,b), eqrel_slow(b, c).   // transitivity
 
 The performance impact of the rule order can be measured using the profiling tool of Souffle. The runtime of a rule, how many tuples are produced by the rule, and the performance behaviour for each iteration of a recursively defined rule can be measured and visualised. In practice, only a few rules are performance critical and need to be considered for performance tuning. 
 
-More detailed description follows. First, souffle is executed with the profiler log option enabled on a given Datalog specification and a set of input facts. Then the generated log file is opened with souffle profiler. As described in the user manual section of souffle profiler, the profiler can be made to list the rules in the descending order of the total time consumed by each rule of the given Datalog specification. This list is very useful in the sense that one can compare the time taken by each rule with the number of tuples it generated. The rules which consume more time by generating less tuples are the candidates for optimisation. Typically optimising the top 10 rules in the list is sufficient.
+More detailed description follows. First, Souffle is executed with the profiler log option enabled on a given Datalog specification and a set of input facts. Then the generated log file is opened with souffle profiler. As described in the user manual section of souffle profiler, the profiler can be made to list the rules in the descending order of the total time consumed by each rule of the given Datalog specification. This list is very useful in the sense that one can compare the time taken by each rule with the number of tuples it generated. The rules which consume more time by generating less tuples are the candidates for optimisation. Typically optimising the top 10 rules in the list is sufficient.
 
 A simple way to optimise a rule is to reorder the relations in its body based on the insight explained in the above section (Best Practices). Note that due to the semi-naive evaluation technique some rules are transformed into multiple rules. They are listed as versions of the rule. A manual query planner may be used to reorder predicates corresponding to a particular version of the rule. An example is given below.
 
@@ -226,4 +233,4 @@ Version 1: A(x) :- B(x), Δ C(x)
 Δ B(x) includes only the new tuples of B generated in the previous stage of the semi-naive evaluation.
 
 And the statement starting with .plan swaps the relations in the body of the Version 1 of the rule.
-Souffle also provides an auto-scheduler which finds orders automatically. However, the auto-scheduler is still experimental and does not produce high-quality orders. Note that to fully understand the optimisations a good understanding of the semi-naive algorithm is required.
+Note that to fully understand the optimisations a good understanding of the semi-naive algorithm is required.

@@ -14,7 +14,7 @@ wrong data-models (e.g., lack of database normalization using first, second, and
 etc.
 To identify and eliminate performance bottlenecks, the following steps are to be performed:
 1. Execute the input program with profiling flags. As a side-effect of the execution a profile log is generated.
-2. Run profiler (called ```souffleprof```) with the generated profile and identify performance bottlenecks
+2. Run the profiler (called ```souffleprof```) with the generated profile and identify performance bottlenecks
 3. Improve the input program by eliminating performance bottlenecks if performance bottlenecks still exist.
 4. Continue with step 1 until no further bottlenecks can be found. 
 
