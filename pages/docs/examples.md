@@ -202,7 +202,7 @@ The relation `seq` is defined to contain all sequences of length 5 or less over 
 Finally, the `res` relation illustrates how to create constant values for recursive record types.
 
 ## Component Inheritance
-Components provide the means within Souffle's Datalog to build modular queries, thus fostering the reuse of code.
+Components provide the means within Soufflé's Datalog to build modular queries, thus fostering the reuse of code.
 ```
 .type node <: symbol
 

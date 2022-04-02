@@ -233,7 +233,7 @@ which transfers the lists into a set called `Flatten`.
 Note that record types are supported by the I/O system. You can use the ```.input``` and ```.output``` directives
 to print tuples of relations with record elements. If a records contains another record, 
 the whole record with all its composed records will be either read or written. 
-Note that union types involving records and sub-typing of record types are currently not supported in Souffle.
+Note that union types involving records and sub-typing of record types are currently not supported in Soufflé.
 
 ##  Algebraic Data Types (ADT)
 
@@ -316,7 +316,7 @@ Type conversions are cast the value to a new type without converting the value. 
 
 ## Syntax 
 
-In the following, we define type declarations in Souffle more formally using [syntax diagrams](https://en.wikipedia.org/wiki/Syntax_diagram) and [EBNF](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form). The syntax diagrams were produced with [Bottlecaps](https://www.bottlecaps.de/rr/ui).
+In the following, we define type declarations in Soufflé more formally using [syntax diagrams](https://en.wikipedia.org/wiki/Syntax_diagram) and [EBNF](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form). The syntax diagrams were produced with [Bottlecaps](https://www.bottlecaps.de/rr/ui).
 
 ### Type Declaration 
  
@@ -329,7 +329,7 @@ type_decl ::= TYPE IDENT ("<:" type_name | "=" ( type_name ( "|" type_name )* | 
 
 ### Type Name 
 
-Souffle has pre-defined types such as `number`, `symbol`, `unsigned`, and `float`. Used-defined types have a name. If a type has been defined in a component, the type can be still accessed outside the component using a qualified name. 
+Soufflé has pre-defined types such as `number`, `symbol`, `unsigned`, and `float`. Used-defined types have a name. If a type has been defined in a component, the type can be still accessed outside the component using a qualified name. 
 
 ![Type Name](https://souffle-lang.github.io/img/type_name.svg)
 ```ebnf
@@ -348,7 +348,7 @@ record_list ::= "[" attribute ( "," attribute)* "]"
 ### ADT Declaration
 
 An ADT consists of a several ADT branches. An ADT branch consists of a list of attributes which 
-is associated with a branch identifier. The branch identifier must be unique in Souffle.
+is associated with a branch identifier. The branch identifier must be unique in Soufflé.
 
 ![ADT Branch](https://souffle-lang.github.io/img/adt_branch.svg)
 ```ebnf
@@ -367,8 +367,8 @@ attribute ::= IDENT ":" type_name
 
 ### Legacy Syntax
 
-The syntax of Souffle changed over time. Older code bases can be still used with 
-modern versions of Souffle.  In older versions of Soufflé we used
+The syntax of Soufflé changed over time. Older code bases can be still used with 
+modern versions of Soufflé.  In older versions of Soufflé we used
 ```prolog
 .number_type Even
 .symbol_type Place

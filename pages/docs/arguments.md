@@ -92,7 +92,7 @@ The output would be:
 ```
 The reverse operation **to_string(*number*)** also exists, which turns a number to its string representation.
 
-Souffle supports standard arithmetic operations **+**, **-**, **&#42;**, **&#47;**, **&#94;** and **&#37;**. Examples of this are given below.
+Soufflé supports standard arithmetic operations **+**, **-**, **&#42;**, **&#47;**, **&#94;** and **&#37;**. Examples of this are given below.
 ```
 .decl e(x:number, t:symbol, y:number)
 e(10 * 2,"10*2", 20).
@@ -102,7 +102,7 @@ e(10 ^ 2 , "10^2", 100).
 e(10 % 3, "10%3", 1).
 e(2^4%13 , "2^4%13",3).
 ```
-Souffle supports bitwise logical operations: **band** (bitwise and), **bor** (bitwise or), **bxor** (bitwise exclusive-or), **bshl** (bitwise shift left), **bshr** (bitwise shift right), and **bshru** (bitwise shift right/unsigned). 
+Soufflé supports bitwise logical operations: **band** (bitwise and), **bor** (bitwise or), **bxor** (bitwise exclusive-or), **bshl** (bitwise shift left), **bshr** (bitwise shift right), and **bshru** (bitwise shift right/unsigned). 
 
 Examples of this are given below.
 ```
@@ -111,7 +111,7 @@ e(0xFF00 bor 0x000F, "0xFF00 bor 0x000F", 0xFF0F).
 e(0xFFFF bxor 0x000F, "0xFFFF bxor 0x000F", 0xFFF0).
 ```
 
-Souffle supports logical operations that consider every non-zero number as true and always return 1 or 0: **land** (logical and), **lor** (logical or), **lxor** (logical exclusive-or), and **lnot** (logical not).
+Soufflé supports logical operations that consider every non-zero number as true and always return 1 or 0: **land** (logical and), **lor** (logical or), **lxor** (logical exclusive-or), and **lnot** (logical not).
 
 Examples of this are given below.
 ```
@@ -120,13 +120,13 @@ e(1 land 0, "1 land 0", 0).
 e(1 lor 0, "1 lor 0", 1).
 ```
 
-Souffle supports **max** and **min** operations over numbers.
+Soufflé supports **max** and **min** operations over numbers.
 ```
 e(max(3, 4), "max(3, 4)", 4).
 e(min(3, 4), "min(3, 4)", 3).
 ```
 
-Souffle supports standard unary operation **-**.
+Soufflé supports standard unary operation **-**.
 ```
 e(-2*10,"-20", -20).
 e(-2,"-2", -2).
@@ -154,7 +154,7 @@ TBD.
 
 
 ## Syntax 
-In the following, we define constraints and argument values in Souffle more formally using [syntax diagrams](https://en.wikipedia.org/wiki/Syntax_diagram) and [EBNF](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form). The syntax diagrams were produced with [Bottlecaps](https://www.bottlecaps.de/rr/ui).
+In the following, we define constraints and argument values in Soufflé more formally using [syntax diagrams](https://en.wikipedia.org/wiki/Syntax_diagram) and [EBNF](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form). The syntax diagrams were produced with [Bottlecaps](https://www.bottlecaps.de/rr/ui).
 
 ### Argument Value
 
@@ -248,7 +248,7 @@ intrinsic_functor ::= 'ord' | 'to_float' | 'to_number' | 'to_string' | 'to_unsig
 
 ### Type Name 
 
-A type name is needed for type conversions. Souffle has pre-defined types such as `number`, `symbol`, `unsigned`, and `float`. Used-defined types have a name. If a type has been defined in a component, the type can be still accessed outside the component using a qualified name. 
+A type name is needed for type conversions. Soufflé has pre-defined types such as `number`, `symbol`, `unsigned`, and `float`. Used-defined types have a name. If a type has been defined in a component, the type can be still accessed outside the component using a qualified name. 
 
 ![Type Name](https://souffle-lang.github.io/img/type_name.svg)
 ```ebnf
@@ -257,8 +257,8 @@ type_name ::=  "number" | "symbol" |"unsigned" | "float"  | IDENT ("." IDENT )*
 
 ### Legacy Syntax
 
-The syntax of Souffle changed over time. Older code bases can be still used with 
-modern versions of Souffle.  In older versions of Soufflé we used the dollar symbol
+The syntax of Soufflé changed over time. Older code bases can be still used with 
+modern versions of Soufflé.  In older versions of Soufflé we used the dollar symbol
 ```prolog
 .decl A(x:number)
 A($):-true.

@@ -20,7 +20,7 @@ To build and install Soufflé, the following software must be installed:
 Clang++ (with OpenMP support) can be used as an alternative for C++.
 
 ### Ubuntu/Debian Package
-To get Souffle from a package manager, first install our repository held on [PackageCloud](https://packagecloud.io/souffle-lang/souffle).
+To get Soufflé from a package manager, first install our repository held on [PackageCloud](https://packagecloud.io/souffle-lang/souffle).
 
 ```
 curl -s https://packagecloud.io/install/repositories/souffle-lang/souffle/script.deb.sh | sudo bash
@@ -155,7 +155,7 @@ The most relevant options are listed below.
 All available options can be found by browsing the source code, see `souffle/CMakeLists.txt`.
 
 ## IDE/Editor
-With CMake, you can easily integrate the Souffle project with your IDE/editor.
+With CMake, you can easily integrate the Soufflé project with your IDE/editor.
 For example, if you are using clangd, simply run `cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1` to generate the configuration file.
 
 

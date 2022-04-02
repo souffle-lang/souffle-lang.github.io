@@ -4,14 +4,20 @@ permalink: /profiler
 sidebar: docs_sidebar
 folder: docs
 ---
-Profiling is an important aspect of logic programming with Soufflé. 
-Programmers require to identify the performance bottlenecks in Soufflé programs
-such that the program can be effectively modified improving the runtime and reducing the
-memory-consumption.  
-The reasons for performance bottlenecks in programs can be manifold: 
-inefficiently written rules (e.g., sub-optimal schedules),
-wrong data-models (e.g., lack of database normalization using first, second, and third normal form),
+Soufflé has a profiler, to help users understand the performance of their programs.
+Programmers can use the generated profile to identify performance bottlenecks in their program.
+These bottlenecks can then be addressed to reduce the runtime of their program.
+ 
+The reasons for performance bottlenecks in programs can be manifold:
+ 
+1. Bad schedules (e.g., an ordering of atoms in a rule which leads to a bad join order). 
+2. Wrong data-models (e.g., lack of database normalization using first, second, and third normal form),
 etc.
+ 
+The issue of bad schedules can be almost entirely alleviated with Soufflé's [Auto-Scheduler](autotuning). 
+However, the Auto-Scheduler cannot always derive optimal schedules for all rules.
+Therefore, to achieve optimal performance [manual tuning](handtuning) may be necessary.
+
 To identify and eliminate performance bottlenecks, the following steps are to be performed:
 1. Execute the input program with profiling flags. As a side-effect of the execution a profile log is generated.
 2. Run the profiler (called ```souffleprof```) with the generated profile and identify performance bottlenecks

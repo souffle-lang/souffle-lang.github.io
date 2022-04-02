@@ -51,7 +51,7 @@ aaaa
 abba
 ```
 
-Souffle supports inequalities and equalities, i.e., **&#62;**, **&#60;**, **&#61;**, **&#33;&#61;**, **&#62;&#61;** and **&#60;&#61;**. Examples of this are given below.
+Soufflé supports inequalities and equalities, i.e., **&#62;**, **&#60;**, **&#61;**, **&#33;&#61;**, **&#62;&#61;** and **&#60;&#61;**. Examples of this are given below.
 ```
 A(a,c) :- a > c.
 B(a,c) :- a < c.
@@ -62,7 +62,7 @@ F(a,c) :- a >= c.
 ```
 
 ## Syntax 
-In the following, we define constraints and argument values in Souffle more formally using [syntax diagrams](https://en.wikipedia.org/wiki/Syntax_diagram) and [EBNF](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form). The syntax diagrams were produced with [Bottlecaps](https://www.bottlecaps.de/rr/ui).
+In the following, we define constraints and argument values in Soufflé more formally using [syntax diagrams](https://en.wikipedia.org/wiki/Syntax_diagram) and [EBNF](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form). The syntax diagrams were produced with [Bottlecaps](https://www.bottlecaps.de/rr/ui).
 
 ### Constraint
 

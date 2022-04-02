@@ -12,15 +12,15 @@ To use the SWIG feature, it must be enabled through configuring Soufflé with th
 
 `cmake -DSOUFFLE_SWIG_PYTHON=ON` for Python bindings, and `cmake -DSOUFFLE_SWIG_JAVA=ON` for Java bindings. 
 
-## SWIG Command Line Option in Souffle
-To run the SWIG command line option in Souffle, run:
+## SWIG Command Line Option in Soufflé
+To run the SWIG command line option in Soufflé, run:
 
 ```./souffle -s <language> <.dl file> ```
 
 Currently, the languages supported are Java and Python.
 The language given must be all lowercase.
 
-## Running Souffle in Other Languages
+## Running Soufflé in Other Languages
 Once the wrapper files have been generated, to use them in your program, you need to import the SwigInterface. Then you may run your program to generate the CSV files.
 
 ### Running it in Java

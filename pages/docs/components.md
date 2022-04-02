@@ -37,12 +37,12 @@ Test(x) :- myInstance1.TheAnswer(x).
 .output Test
 ```
 we instantiate the component `MyComponent` with the name `myInstance1`. 
-Internally, Souffle flattens the component instantiation
+Internally, Soufflé flattens the component instantiation
 creating for each component instantiation its own namespace. 
 The qualified names of component elements
 are prepended using the name of the instantiation.
 
-For the above example, Souffle internally expands the component instantiation as follows:
+For the above example, Soufflé internally expands the component instantiation as follows:
 ```
 .type myInstance1.myType = number
 .decl myInstance1.TheAnswer(x:myType)    // relation of myInstance1
@@ -106,7 +106,7 @@ relations reside outside of the component in which they are defined.
 .init myA = A
 .output Out
 ```
-Souffle expands the code above as follows:
+Soufflé expands the code above as follows:
 ```
 .decl Out(x:number) 
 .decl myA.R(x:number) 
@@ -133,7 +133,7 @@ Components can be parametrized by unqualified type names.  In the example,
 ```
 two different instances are generated whose relation's attribute
 are either of type `number` or `float`. Internally, 
-Souffle produces the program showing the different attribute types 
+Soufflé produces the program showing the different attribute types 
 of the instantiated relations `TheAnswer`.
 ```
 .decl numberInstance.TheAnswer(x:number)     // relation of numberInstance
@@ -199,7 +199,7 @@ In the following example,
 .init mySub = Sub
 ```
 the components `Base1` and `Base2` pass on all component elements to the component `Sub`. 
-Souffle produces internally the following code for the component instantiation `mySub`:
+Soufflé produces internally the following code for the component instantiation `mySub`:
 ```
 .type mySub.myNumber = number
 .decl mySub.TheAnswer(x:mySub.myNumber) 
@@ -235,8 +235,8 @@ For this example,
 ```
 the sub-components discards fact `R(1).` and rule `R(x+1) :- R(x), x < 5.` 
 since the relation `R` has been declared with the relation qualifier `overrideable`
-and the sub-component has the `.override R` directive, which let Souffle drop the 
-facts and rules of its super component. Souffle will produce internally the following
+and the sub-component has the `.override R` directive, which let Soufflé drop the 
+facts and rules of its super component. Soufflé will produce internally the following
 code for the sub-component instantiation `mySub`:
 ```
 .decl mySub.R(x:number)overridable 

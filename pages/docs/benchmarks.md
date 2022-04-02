@@ -44,7 +44,7 @@ $ ./timer.sh tc/tc.dl --facts=tc/facts --instance=/home/me/souffle/src/souffle
 name,d2creal,d2cuser,d2csys,d2cmem,c2oreal,c2ouser,c2osys,c2omem,runreal,runuser,runsys,runmem
 ~~~
 
-where `d2c` means Datalog to C++ Souffle Compilation, `c2o` means `gcc`'s C++ to .o Compilation, and `run` means the execution of the produced executable file. `real` is the process's elapsed real time measured in seconds, `user` is the total number of CPU-seconds that the process spent in user mode, and `sys` is the same but for the number of seconds spent in kernel mode. Here is an example of the expected output.
+where `d2c` means Datalog to C++ Soufflé Compilation, `c2o` means `gcc`'s C++ to .o Compilation, and `run` means the execution of the produced executable file. `real` is the process's elapsed real time measured in seconds, `user` is the total number of CPU-seconds that the process spent in user mode, and `sys` is the same but for the number of seconds spent in kernel mode. Here is an example of the expected output.
 
 ~~~
 $ ./timer.sh tc/tc.dl --facts=tc/facts --instance=/home/me/souffle/src/souffle

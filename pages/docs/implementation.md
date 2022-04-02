@@ -6,13 +6,13 @@ folder: docs
 ---
 
 Relations store symbol, records, and ADTs using their ordinal numbers. 
-Souffle uses internal symbol and record tables that conver the ordinal 
+Soufflé uses internal symbol and record tables that conver the ordinal 
 numbers to symbols/records, and vice versa. 
 
 ## Symbols 
 Symbols are maintained in the symbol table. A symbol is represented as an ordinal number, and the conversion between its string representation and its ordinal number is handled by the symbol table. 
 The source code of the symbol table can be found [here](https://github.com/souffle-lang/souffle/blob/master/src/include/souffle/SymbolTable.h). 
-In relations, the ordinal number is stored. In case, the actual string of a symbol is needed, Souffle looks up in the symbol table to translate the ordinal number to its string representation. Conversely, if a functor computes a new string or a new string is read by an input directive, the symbol table receives a new entry and an ordinal for this string is computed. 
+In relations, the ordinal number is stored. In case, the actual string of a symbol is needed, Soufflé looks up in the symbol table to translate the ordinal number to its string representation. Conversely, if a functor computes a new string or a new string is read by an input directive, the symbol table receives a new entry and an ordinal for this string is computed. 
 
 ## Records 
 Records are maintained in the record table. Similar to symbols, a record 

@@ -5,7 +5,7 @@ sidebar: docs_sidebar
 folder: docs
 ---
 
-Following applications are written in the Souffle Language. Some are open source and the source code is accessible:
+The following applications are written in the Soufflé Language. Some are open source and the source code is accessible:
 
 ## Doop
 Doop is a pointer analysis framework for Java programs. 
@@ -37,25 +37,25 @@ Sydney. The source code can be found [here](https://github.com/usyd-blockchain/v
 A synthesis framework that learns Datalog rules from data (appeared POPL'20).
 
 ## Haskell Interface 
-There is a Haskell/Souffle interface written by Luc Tielen. You can find the source code [here](https://github.com/luc-tielen/souffle-haskell). 
+There is a Haskell/Soufflé interface written by Luc Tielen. You can find the source code [here](https://github.com/luc-tielen/souffle-haskell). 
 
 ## Haskell Program Optimisation
-GRIN is a Haskell backend that uses Souffle. The source code can be found
+GRIN is a Haskell backend that uses Soufflé. The source code can be found
 [here](https://github.com/grin-compiler/ghc-grin). 
 
 ## Java JDK Security Analysis
-Souffle was initially used to find security vulnerabilities in the Java JDK library. This project was conducted by Oracle Labs, Brisbane. 
+Soufflé was initially used to find security vulnerabilities in the Java JDK library. This project was conducted by Oracle Labs, Brisbane. 
 
 ## VPN 
-Amazon used Souffle to verify VPN connections in the AWS cloud. 
+Amazon used Soufflé to verify VPN connections in the AWS cloud. 
 
 ## Galois
-Souffle is integrated in an application performing context-sensitive pointer analysis to identify potential software vulnerabilities in C/C++ source code. More about Galois can be found [here](https://galois.com/).
+Soufflé is integrated in an application performing context-sensitive pointer analysis to identify potential software vulnerabilities in C/C++ source code. More about Galois can be found [here](https://galois.com/).
 
 ## Frank's DDLOG Benchmarks
 Frank McSherry has developed three benchmarks for DDLOG. They can be found [here](https://github.com/frankmcsherry/dynamic-datalog/). 
 
-## Souffle's Benchmark Suite
+## Soufflé's Benchmark Suite
 The souffle team has its own benchmark, which can be found [here](https://github.com/souffle-lang/benchmarks/)
 
 {% include links.html %}

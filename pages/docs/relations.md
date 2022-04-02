@@ -6,7 +6,7 @@ folder: docs
 ---
 # Relations
 Soufflé requires the declaration of relations. A relation is a set of ordered tuples (x1, …, xk) where each element xi is a member of a data domain denoted by an attribute type. In the previous example, the declaration
-In Souffle, relations declarations define the domain of relations, their constraints, and their execution behaviour. Souffle uses different relation representations internally that can be chosen by the programmer. Inlining, magic-set transformations, and component behaviour is also controlled by the relation declarations.
+In Soufflé, relations declarations define the domain of relations, their constraints, and their execution behaviour. Soufflé uses different relation representations internally that can be chosen by the programmer. Inlining, magic-set transformations, and component behaviour is also controlled by the relation declarations.
 
 The relation declaration,
 ```prolog
@@ -73,7 +73,7 @@ The following example demonstrates the use of an equivalence relation, and is se
 .decl eqrel_fast(x : number, y : number) eqrel
 eqrel_fast(a,b) :- rel1(a), rel2(b).
 ```
-More details on equivalence relation in Souffle can be found in [this paper](https://doi.org/10.1109/PACT.2019.00015).
+More details on equivalence relation in Soufflé can be found in [this paper](https://doi.org/10.1109/PACT.2019.00015).
 
 ### Nullaries
 Nullary relations are special relations. Their arity is zero, i.e., they don't have attributes. 
@@ -89,10 +89,10 @@ In Soufflé, the default data structure is the B-tree, with the *direct* version
 
 ## Indexing 
 
-In Souffle, relations are cluster of indexes. The indexes are automatically chosen using a combinatorial optimisation problem so that all operations on a relation can be covered by an index using a minimal number of indexes. We refer to these operations as **primitive searches**, which may evaluate billions of times in large-scale Datalog applications. More details on our auto-indexing technique can be found in [this paper](https://doi.org/10.14778/3282495.3282500). Souffe's auto-indexing technique alleviates the burden of selecting indexes for Datalog programs by the end-user.
+In Soufflé, relations are cluster of indexes. The indexes are automatically chosen using a combinatorial optimisation problem so that all operations on a relation can be covered by an index using a minimal number of indexes. We refer to these operations as **primitive searches**, which may evaluate billions of times in large-scale Datalog applications. More details on our auto-indexing technique can be found in [this paper](https://doi.org/10.14778/3282495.3282500). Souffe's auto-indexing technique alleviates the burden of selecting indexes for Datalog programs by the end-user.
 
 ## Magic-Set Transformation
-The relation qualifier `magic` enables the magic-set transformation for a relation. A magic set transformation specializes the evaluation for a Datalog program for a given set of output relations. The magic-set transformation does not always lead to better performance. Souffle provides the relation qualifier `magic` to enable magic-set transformation and the relation qualifier `no_magic` to disable magic-set transformation (note that `no_magic` also implies `no_inline`). More information on the magic-set transformation can be found [here](magicset).
+The relation qualifier `magic` enables the magic-set transformation for a relation. A magic set transformation specializes the evaluation for a Datalog program for a given set of output relations. The magic-set transformation does not always lead to better performance. Soufflé provides the relation qualifier `magic` to enable magic-set transformation and the relation qualifier `no_magic` to disable magic-set transformation (note that `no_magic` also implies `no_inline`). More information on the magic-set transformation can be found [here](magicset).
 
 ## Inlining Relations
 Souffl&eacute; offers the ability to manually select one or more program relations to be inlined, i.e., a substitution of the relations are performed. This may lead to performance gains by re-computing results rather than storing them. For example, 
@@ -194,12 +194,12 @@ The option `inline-exclude` can be used to prevent the given relations from bein
 
 ## Override 
 The relation qualifier `override` controls whether rules in a relation that is defined in a component, can be overwritten in a sub-component. 
-The component model of Souffle is described [here](components).
+The component model of Soufflé is described [here](components).
 
 ### Choice Domain / Functional-Dependency Constraint
 Programmers can impose one or more functional dependency constraints on relations. 
 With functional dependencies, non-determistic selections are available for use-cases 
-such as expressing worklist algorithm in Souffle.  Functional dependency 
+such as expressing worklist algorithm in Soufflé.  Functional dependency 
 is defined as a relational qualifier using the keyword `choice-domain` in a relation
 declaration.  For the sake of brevity, our syntax omits the co-domain (i.e. the
 right hand side of the arrow).  Therefore, a choice-domain `D` for a relation with 
@@ -208,10 +208,10 @@ You find more information about choice [here](choice).
 
 
 ## Syntax 
-In the following, we define relation declarations in Souffle more formally using [syntax diagrams](https://en.wikipedia.org/wiki/Syntax_diagram) and [EBNF](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form). The syntax diagrams were produced with [Bottlecaps](https://www.bottlecaps.de/rr/ui).
+In the following, we define relation declarations in Soufflé more formally using [syntax diagrams](https://en.wikipedia.org/wiki/Syntax_diagram) and [EBNF](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form). The syntax diagrams were produced with [Bottlecaps](https://www.bottlecaps.de/rr/ui).
 
 ### Type Name 
-Souffle has pre-defined types such as `number`, `symbol`, `unsigned`, and `float`. Used-defined types have a name. If a type has been defined in a component, the type can be still accessed outside the component using a qualified name. More details about the type system can be found [here](types).
+Soufflé has pre-defined types such as `number`, `symbol`, `unsigned`, and `float`. Used-defined types have a name. If a type has been defined in a component, the type can be still accessed outside the component using a qualified name. More details about the type system can be found [here](types).
 
 ![Type Name](https://souffle-lang.github.io/img/type_name.svg)
 ```ebnf
@@ -248,8 +248,8 @@ choice_domain ::= ( 'choice-domain' ( IDENT | '(' IDENT ( ',' IDENT )* ')' ) ( '
 ```
 
 ### Legacy Syntax
-The syntax of Souffle changed over time. Older code bases can be still used with 
-modern versions of Souffle.  In older versions of Soufflé we used
+The syntax of Soufflé changed over time. Older code bases can be still used with 
+modern versions of Soufflé.  In older versions of Soufflé we used
 ```prolog
 .decl A(x:number) input 
 .decl B(x:number) output

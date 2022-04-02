@@ -109,7 +109,7 @@ This rule attempts to sum together all the increasing sums of prime numbers that
 ## Generative Functors
 
 
-Souffle supporst generative range functors that produce values within a numeric range. 
+Soufflé supports generative range functors that produce values within a numeric range. 
 The format of the functors are 
 ```
 range(bgn, endExcl, step = sign(endExcl - bgn))
@@ -130,7 +130,7 @@ A(x) :- x = range(1,5,1).
 produces the values one to four in relation A. 
 
 ## Syntax 
-In the following, we define rule declarations in Souffle more formally using [syntax diagrams](https://en.wikipedia.org/wiki/Syntax_diagram) and [EBNF](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form). The syntax diagrams were produced with [Bottlecaps](https://www.bottlecaps.de/rr/ui).
+In the following, we define rule declarations in Soufflé more formally using [syntax diagrams](https://en.wikipedia.org/wiki/Syntax_diagram) and [EBNF](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form). The syntax diagrams were produced with [Bottlecaps](https://www.bottlecaps.de/rr/ui).
 
 ### Aggregator
 

@@ -13,7 +13,7 @@ A full exposition is beyond the scope of this manual -- more details are availab
 
 ## Language
 
-The main language elements in Souffle are relation declarations, facts, rules, and directives. For example,
+The main language elements in Soufflé are relation declarations, facts, rules, and directives. For example,
 the following program,
 ```prolog
 .decl A(x:number, y:number)  // declaration of relation A
@@ -58,10 +58,10 @@ rules and check their correct use.
 
 ## [Types](types)
 
-Souffle utilises a typed Datalog dialect to conduct static checks enabling the early detection of errors in Datalog query specifications. 
-Each attribute of involved relations has to be typed. Based on those, Souffle attempts to deduce a type for all terms within all the Horn clauses within a given Datalog program. In case no type can be deduced for some terms, a typing error is reported -- indicating a likely inconsistency in the query specification.
+Soufflé utilises a typed Datalog dialect to conduct static checks enabling the early detection of errors in Datalog query specifications. 
+Each attribute of involved relations has to be typed. Based on those, Soufflé attempts to deduce a type for all terms within all the Horn clauses within a given Datalog program. In case no type can be deduced for some terms, a typing error is reported -- indicating a likely inconsistency in the query specification.
 
-There are four primitive types in Souffle, i.e., `symbol`, `number`, `unsigned`, and `float`. 
+There are four primitive types in Soufflé, i.e., `symbol`, `number`, `unsigned`, and `float`. 
 
 ## [Rules](rules)
 
@@ -71,23 +71,25 @@ A(x,y) :- B(x,y).
 ```
 holds for a pair (x,y) if it is in B.
 
-Souffle may need [performance tuning](tuning) for tuples. 
+The performance of rules can be automatically improved by using Soufflé's [auto-scheduler](autotuning).
+
+Note that to achieve optimal performance of rules, [hand-tuning](handtuning) may be required.
 
 ## [Components](components) 
 
-Souffle has [components](components) to modularise large logic programs. A component may contain other components, relation and type declarations, 
+Soufflé has [components](components) to modularise large logic programs. A component may contain other components, relation and type declarations, 
 facts, rules, and directives. A programmer can declare and instantiate components. Each component has its own name space to access its elements.
 Components can have one or more super-components from which they can inherit.
 
 ## [User-Defined Functors](functors)
 
-Programmers can declare user-defined functors for extending Souffle. User-defined functors are implemented in C/C++. 
+Programmers can declare user-defined functors for extending Soufflé. User-defined functors are implemented in C/C++. 
 There are two flavours of the user-defined functors, i.e., naive and stateful functors. 
 Stateful functors expose [record and symbol tables](implementation). 
 
 ## [Pragma](pragmas)
 
-Pragmas configure Souffle. For example, command-line options can be set in the source code. 
+Pragmas configure Soufflé. For example, command-line options can be set in the source code. 
 
 ## Syntax 
 In the following, we define a program more formally using [syntax diagrams](https://en.wikipedia.org/wiki/Syntax_diagram) and [EBNF](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form). The syntax diagrams were produced with [Bottlecaps](https://www.bottlecaps.de/rr/ui).

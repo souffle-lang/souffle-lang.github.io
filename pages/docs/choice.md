@@ -6,13 +6,13 @@ folder: docs
 ---
 
 
-Souffle's choice construct impose one or more functional dependency constraints for a relation. With the choice
+Soufflé's choice construct impose one or more functional dependency constraints for a relation. With the choice
 construct, worklist algorithms such as spanning trees, can be expressed in few lines. 
 
 A functional dependency `x -> y` on relation `R(x:number, y:number)` ensures that
 each `x` in `R` will uniquely define a value of `y`.
 For example, during the evaluation, if a set of tuples `{(1,1), (1,2), (1,3)}`
-are about to be inserted into `R`, Souffle only chooses arbitrary one of them
+are about to be inserted into `R`, Soufflé only chooses arbitrary one of them
 (the first one in the evaluation order). Any subsequent functionally dependent
 tuples will be ommitted.
 
@@ -96,7 +96,7 @@ element before it. Those constraints defines the property of a total order set.
 ## Publication
 
  * Xiaowen Hu, Joshua Karp, David Zhao, Abdul Zreika, Xi Wu, Bernhard Scholz:
-The Choice Construct in the Souffle Language. APLAS 2021: 161-181; ([link](https://link.springer.com/chapter/10.1007/978-3-030-89051-3_10)).
+The Choice Construct in the Soufflé Language. APLAS 2021: 161-181; ([link](https://link.springer.com/chapter/10.1007/978-3-030-89051-3_10)).
 
 ## Syntax
 

@@ -4,11 +4,11 @@ permalink: /directives
 sidebar: docs_sidebar
 folder: docs
 ---
-Souffle has directives controlling the I/O behaviour of relations, and their execution behaviour.
+Soufflé has directives controlling the I/O behaviour of relations, and their execution behaviour.
 The I/O system for relations supports various data-sources for input and output using various formats.
 Soufflé supports terminal output, file I/O, and I/O utilising a SQLite as a database. 
 For a relation in a Datalog program, several input and output directives can be issued. 
-Souffle supports directies to limit the number of tuples per relation. 
+Soufflé supports directies to limit the number of tuples per relation. 
 
 ## Input Directive
 A Soufflé program may load the facts of a relation (aka. as EDB) from various input sources.
@@ -204,7 +204,7 @@ A   2
 ```
 
 ## Limit-Size Directive 
-Souffle can stop the fix-point calculation after a certain number of 
+Soufflé can stop the fix-point calculation after a certain number of 
 tuples have been computed. This number is a soft-limit and should be
 used for debugging purposes only.
 
@@ -225,7 +225,7 @@ This is a consequence of the limitsize directive that stops the fix-point comput
 Note that if there are other mutual recursive relations in the same stratum, they will be stopped as well. 
 
 ## Syntax 
-In the following, we define directive declarations in Souffle more formally using [syntax diagrams](https://en.wikipedia.org/wiki/Syntax_diagram) and [EBNF](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form). The syntax diagrams were produced with [Bottlecaps](https://www.bottlecaps.de/rr/ui).
+In the following, we define directive declarations in Soufflé more formally using [syntax diagrams](https://en.wikipedia.org/wiki/Syntax_diagram) and [EBNF](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form). The syntax diagrams were produced with [Bottlecaps](https://www.bottlecaps.de/rr/ui).
 
 ### Qualified Name
 

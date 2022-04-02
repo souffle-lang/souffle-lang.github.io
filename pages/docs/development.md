@@ -103,7 +103,7 @@ See [Build Soufflé](https://souffle-lang.github.io/build#testing-souffl%C3%A9) 
 ## Debugging
 Debug mode can be enabled by configuring with `--enable-debug`. You may also find `--enable-sanitise-memory` useful to find memory leak,reuse, and use after free issues.
 
-Souffle has a signal handler that will catch common errors and print error messages helpful for end users. As a developer, you may want to temporarily disable that by setting the environment variable `SOUFFLE_ALLOW_SIGNALS=1`.
+Soufflé has a signal handler that will catch common errors and print error messages helpful for end users. As a developer, you may want to temporarily disable that by setting the environment variable `SOUFFLE_ALLOW_SIGNALS=1`.
 
 ## Making a Pull Request
 

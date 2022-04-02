@@ -127,8 +127,12 @@ entries:
     output: web, pdf
     folderitems:
 
-    - title: Tuning
-      url: /tuning
+    - title: Auto-Tuning
+      url: /autotuning
+      output: web
+
+    - title: Hand-Tuning
+      url: /handtuning
       output: web
 
     - title: Profiler

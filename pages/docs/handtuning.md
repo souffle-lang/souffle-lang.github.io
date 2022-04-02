@@ -1,6 +1,6 @@
 ---
-title: Tuning
-permalink: /tuning
+title: Hand-Tuning
+permalink: /handtuning
 sidebar: docs_sidebar
 folder: docs
 toc: false
@@ -8,17 +8,20 @@ toc: false
 
 # Performance
 
-Performance tuning in Souffle is complicated. It will take time and experience to become effective
-with performance tuning for Souffle programs. If you want to study 
-highly-tuned Datalog code, I suggest that you study the Souffle code of DOOP.
+To achieve high performance in Soufflé, the [Auto-Scheduler](autotuning) can be used.
 
-Souffle has a profiler which is the main instrument to guide you with performance tuning. The process of performance 
-tuning starts with using a suitable input for your Souffle program. The runtime of the your program with the chosen input should be acceptable so that the tuning cycle is short. The shorter the cycle is the faster you will make progress in
+However, attaining optimal performance is challenging and requires a deep understanding of the engine internals.
+
+It will take time and experience to become effective with performance tuning for Soufflé programs. If you want to study 
+highly-tuned Datalog code, I suggest that you study the Soufflé code of DOOP.
+
+Soufflé has a profiler which is the main instrument to guide you with performance tuning. The process of performance 
+tuning starts with using a suitable input for your Soufflé program. The runtime of the your program with the chosen input should be acceptable so that the tuning cycle is short. The shorter the cycle is the faster you will make progress in
 your tuning effort.
 
 The tuning cycle consists of:
  
- 1) Run the Souffle program with the profile option (`-p <file>`)
+ 1) Run the Soufflé program with the profile option (`-p <file>`)
  
  2) Run the profiler (`souffleprof <file> -o <html>`)
  
@@ -173,9 +176,15 @@ for( e1 : A ) {
 ```
 eliminating an entire loop, significantly reducing the number of times the loop body is processed.
 
+## Auto-Scheduling
+
+Soufflé's [Auto-Scheduler](autotuning) can be used to automatically derive high quality schedules for a Soufflé program.
+
 ## Sideways Information-Passing Strategy
 
-A *Sideways Information-Passing Strategy* (SIPS) is a heuristic used to determine the rule schedule (query plan). Because the SIPS is applied to any rule without a `.plan` directive, this choice can have a huge impact on the performance of your program. The default SIPS is `all-bound`, you can choose an alternate SIPS by passing `-PSIPS:<strategy>` to Soufflé.
+A *Sideways Information-Passing Strategy* (SIPS) is a heuristic used to determine the rule schedule (query plan). A SIPS heuristic is static and does not take advantage of run-time statistics. Therefore, the schedules chosen by any particular SIPS will generally be poor in comparison to those derived by Soufflé's Auto-Scheduler.
+
+The SIPS is applied to any rule without a `.plan` directive. The default SIPS is `all-bound`, you can choose an alternate SIPS by passing `-PSIPS:<strategy>` to Soufflé.
 
 - `strict`: Always choose the left-most atom
 - `all-bound`: Prioritise atoms with all arguments bound
@@ -184,10 +193,7 @@ A *Sideways Information-Passing Strategy* (SIPS) is a heuristic used to determin
 - `max-ratio`: Prioritise max ratio of bound args
 - `least-free`: Choose the atom with the least number of unbound arguments
 - `least-free-vars`: Choose the atom with the least amount of unbound variables
-- `profile-use`: Reorder based on the given profiling information
 - `input`: Goal: Prioritise (1) all-bound, (2) input, then (3) rest
-
-You can view the effect of different SIPS strategies on the query plan using the `--show=transformed-datalog` option.
 
 ## Datastructure
 The datastructure for a relation can be specifically chosen by adding an appropriate attribute to the relation declaration, e.g.,
@@ -196,7 +202,7 @@ The datastructure for a relation can be specifically chosen by adding an appropr
 .decl B(x:number, y:number) brie
 .decl C(x:number, y:number) eqrel
 ```
-The default datastructure for most relations in Souffle is a B-Tree. A Brie structure can improve performance in some cases, and is more memory efficient for particularly large relations.
+The default datastructure for most relations in Soufflé is a B-Tree. A Brie structure can improve performance in some cases, and is more memory efficient for particularly large relations.
 
 `eqrel` is a high performance datastructure optimised specifically for equivalence relations. In the example below, eqrel_fast has the same functionality as eqrel_slow, but with greatly improved performance. 
 ```
@@ -213,9 +219,9 @@ eqrel_slow(a,c) :- eqrel_slow(a,b), eqrel_slow(b, c).   // transitivity
 
 ## Profiler
 
-The performance impact of the rule order can be measured using the profiling tool of Souffle. The runtime of a rule, how many tuples are produced by the rule, and the performance behaviour for each iteration of a recursively defined rule can be measured and visualised. In practice, only a few rules are performance critical and need to be considered for performance tuning. 
+The performance impact of the rule order can be measured using the profiling tool of Soufflé. The runtime of a rule, how many tuples are produced by the rule, and the performance behaviour for each iteration of a recursively defined rule can be measured and visualised. In practice, only a few rules are performance critical and need to be considered for performance tuning. 
 
-More detailed description follows. First, Souffle is executed with the profiler log option enabled on a given Datalog specification and a set of input facts. Then the generated log file is opened with souffle profiler. As described in the user manual section of souffle profiler, the profiler can be made to list the rules in the descending order of the total time consumed by each rule of the given Datalog specification. This list is very useful in the sense that one can compare the time taken by each rule with the number of tuples it generated. The rules which consume more time by generating less tuples are the candidates for optimisation. Typically optimising the top 10 rules in the list is sufficient.
+More detailed description follows. First, Soufflé is executed with the profiler log option enabled on a given Datalog specification and a set of input facts. Then the generated log file is opened with souffle profiler. As described in the user manual section of souffle profiler, the profiler can be made to list the rules in the descending order of the total time consumed by each rule of the given Datalog specification. This list is very useful in the sense that one can compare the time taken by each rule with the number of tuples it generated. The rules which consume more time by generating less tuples are the candidates for optimisation. Typically optimising the top 10 rules in the list is sufficient.
 
 A simple way to optimise a rule is to reorder the relations in its body based on the insight explained in the above section (Best Practices). Note that due to the semi-naive evaluation technique some rules are transformed into multiple rules. They are listed as versions of the rule. A manual query planner may be used to reorder predicates corresponding to a particular version of the rule. An example is given below.
 

@@ -64,15 +64,15 @@ declares a user-defined functor with name `f`. The functor has a number as an ar
 
 User-defined functors can be implemented in C++ (other languages could be used if they support an external C/C++ interface). 
 There are strong execution requirements when user-defined functors are implemented. If these requirements are violated, 
-the execution of Souffle program cannot be guaranteed. 
+the execution of Soufflé programs cannot be guaranteed. 
 
 The properties of the functor implementation are the following:
 
  * The implementation of a functor must return the same return value for the same input arguments. The functor implementation may have state but must follow strict pure functional semantics. For example, a functor cannot produce random numbers, however, f(x) = x + 1 would be a valid functor. 
 
- * The implementation of a functor must be reentrant. Souffle is highly parallel and several threads may execute the implementation of a user-defined functor in parallel. Pthread synchronisation techniques may be required for the implementation.
+ * The implementation of a functor must be reentrant. Soufflé is highly parallel and several threads may execute the implementation of a user-defined functor in parallel. Pthread synchronisation techniques may be required for the implementation.
 
- * By default a single shared-library `libfunctors.so` in the current folder contains all user-defined functors. Custom libraries may be used by starting souffle with `-l<libraryname>` and `-L<library path>`, e.g. `souffle -lfunctors -lmorefunctors a.dl`. Note that these options must precede the Datalog file in the command line. The environment variable `LD_LIBRARY_PATH` can also be used to specify library paths for the shared functor library. If you use Souffle to compile a standalone executable, the path for dynamic dlls may still be required at execution time, so `LD_LIBRARY_PATH` must be specified for the executable to run.
+ * By default a single shared-library `libfunctors.so` in the current folder contains all user-defined functors. Custom libraries may be used by starting souffle with `-l<libraryname>` and `-L<library path>`, e.g. `souffle -lfunctors -lmorefunctors a.dl`. Note that these options must precede the Datalog file in the command line. The environment variable `LD_LIBRARY_PATH` can also be used to specify library paths for the shared functor library. If you use Soufflé to compile a standalone executable, the path for dynamic dlls may still be required at execution time, so `LD_LIBRARY_PATH` must be specified for the executable to run.
  
  * The name of the user-defined functor must be a C-linkable name (not a C++ linkable name). For example, if the user-defined functor `f` is declared, the shared-library must have a function `f` in the shared library with a C style argument passing mechanism.
 
@@ -118,14 +118,14 @@ export DYLD_LIBRARY_PATH=${DYLD_LIBRARY_PATH:+$DYLD_LIBRARY_PATH:}`pwd`
 
 
 ## Stateful User-Defined Functors 
-Souffle exposes the symbol and record table to a stateful user-defined functor.
+Soufflé exposes the symbol and record table to a stateful user-defined functor.
 A stateful functor can access and manipulate these tables for [symbols and records](types).
 
 For example, the following line
 ``` 
 .functor mycat(a:symbol, b:symbol):symbol stateful
 ```
-declares the stateful user-defined `mycat` functor in the Souffle program. The C++ implementation 
+declares the stateful user-defined `mycat` functor in the Soufflé program. The C++ implementation 
 is shown below:
 
 ```
@@ -141,7 +141,7 @@ extern "C" {
  }
 }
 ```
-The first two parameters are pointers to Souffle's symbol and record table. 
+The first two parameters are pointers to Soufflé's symbol and record table. 
 Although the two arguments of the functor are symbols, only the ordinal numbers 
 are passed on when the functor is called. To implement a concatenation, 
 the ordinal numbers must be converted to strings first using 
@@ -217,7 +217,7 @@ attribute ::= IDENT ":" type_name
 
 ### Type Name 
 
-Souffle has pre-defined types such as `number`, `symbol`, `unsigned`, and `float`. Used-defined types have a name. If a type has been defined in a component, the type can be still accessed outside the component using a qualified name. 
+Soufflé has pre-defined types such as `number`, `symbol`, `unsigned`, and `float`. Used-defined types have a name. If a type has been defined in a component, the type can be still accessed outside the component using a qualified name. 
 
 ![Type Name](https://souffle-lang.github.io/img/type_name.svg)
 ```ebnf
