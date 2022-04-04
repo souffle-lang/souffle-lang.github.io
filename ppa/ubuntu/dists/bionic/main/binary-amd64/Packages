@@ -1,0 +1,116 @@
+Package: souffle
+Version: 1.7.1-1
+Architecture: amd64
+Maintainer: Kostyantyn Vorobyov <k.a.vorobyov@gmail.com>
+Installed-Size: 8659
+Depends: libc6 (>= 2.14), libffi6 (>= 3.0.4), libgcc1 (>= 1:3.4), libgomp1 (>= 4.9), libncurses5 (>= 6), libsqlite3-0 (>= 3.5.9), libstdc++6 (>= 6), libtinfo5 (>= 6), zlib1g (>= 1:1.1.4), g++, mcpp, zlib1g-dev, libffi-dev, libsqlite3-dev, libncurses5-dev
+Filename: /pool/bionic/souffle_1.7.1-1_amd64.deb
+Size: 1470244
+MD5sum: e25cc17061a58ca2fd958f9e4c85e7b4
+SHA1: ebfe18bb355ad48dc60832540aca277e27423bac
+SHA256: bd8a7d0cb87a6d82e36ab35662a5e2887f3fa26dbf4aedc6a7db761a2b7d1a75
+Section: misc
+Priority: optional
+Homepage: https://souffle-lang.org/
+Description: Translator of declarative Datalog programs into the C++ language.
+ Soufflé is a translator of declarative Datalog programs into the C++ language.
+ Soufflé is used as a domain-specific language for static program analysis, over
+ large code bases with millions of lines of code. Soufflé aims to produce
+ high-performance C++ code that can be compiled with the native compiler on
+ the target machine.
+
+Package: souffle
+Version: 2.0.0-1
+Architecture: amd64
+Maintainer: Kostyantyn Vorobyov <k.a.vorobyov@gmail.com>
+Installed-Size: 8317
+Depends: libc6 (>= 2.27), libffi6 (>= 3.0.4), libgcc1 (>= 1:3.4), libgomp1 (>= 4.9), libncurses5 (>= 6), libsqlite3-0 (>= 3.5.9), libstdc++6 (>= 6), libtinfo5 (>= 6), zlib1g (>= 1:1.1.4), g++ (>= 7), mcpp, zlib1g-dev, libffi-dev, libsqlite3-dev, libncurses5-dev
+Filename: /pool/bionic/souffle_2.0.0-1_amd64.deb
+Size: 1490948
+MD5sum: 8155b7f0a60196a74fe9fbbd7cf948d8
+SHA1: 871fc69a3dcc530e5d9356d7c337f573e64ec80f
+SHA256: 710afdda29c71ddcf33fd59a18c373f4b2dfb817d378aa50093d2318596748ac
+Section: misc
+Priority: optional
+Homepage: https://souffle-lang.org/
+Description: Translator of declarative Datalog programs into the C++ language.
+ Soufflé is a translator of declarative Datalog programs into the C++ language.
+ Soufflé is used as a domain-specific language for static program analysis, over
+ large code bases with millions of lines of code. Soufflé aims to produce
+ high-performance C++ code that can be compiled with the native compiler on
+ the target machine.
+
+Package: souffle
+Version: 2.0.1-1
+Architecture: amd64
+Maintainer: Kostyantyn Vorobyov <k.a.vorobyov@gmail.com>
+Installed-Size: 8576
+Depends: libc6 (>= 2.27), libffi6 (>= 3.0.4), libgcc1 (>= 1:3.4), libgomp1 (>= 4.9), libncurses5 (>= 6), libsqlite3-0 (>= 3.5.9), libstdc++6 (>= 6), libtinfo5 (>= 6), zlib1g (>= 1:1.1.4), g++ (>= 7), mcpp, zlib1g-dev, libffi-dev, libsqlite3-dev, libncurses5-dev
+Filename: /pool/bionic/souffle_2.0.1-1_amd64.deb
+Size: 1539924
+MD5sum: c45529e3c85652a381efcfc19decad50
+SHA1: e5d1fddd71b1070b41d9d355be186611595d8fe5
+SHA256: 5f8fe66fb8cff850c962c5e194fe37ef480ea89a565a2d7989e298da3d180a61
+Section: misc
+Priority: optional
+Homepage: https://souffle-lang.org/
+Description: Translator of declarative Datalog programs into the C++ language.
+ Soufflé is a translator of declarative Datalog programs into the C++ language.
+ Soufflé is used as a domain-specific language for static program analysis, over
+ large code bases with millions of lines of code. Soufflé aims to produce
+ high-performance C++ code that can be compiled with the native compiler on
+ the target machine.
+
+Package: souffle
+Version: 2.0.2-1
+Architecture: amd64
+Maintainer: Martin McGrane <mmcgrane@it.usyd.edu.au>
+Installed-Size: 7233
+Depends: libc6 (>= 2.27), libffi6 (>= 3.0.4), libgcc1 (>= 1:3.0), libgomp1 (>= 4.9), libncurses5 (>= 6), libsqlite3-0 (>= 3.5.9), libstdc++6 (>= 6), libtinfo5 (>= 6), zlib1g (>= 1:1.1.4), g++ (>= 7), libffi-dev, libncurses5-dev, libsqlite3-dev, mcpp, zlib1g-dev
+Filename: /pool/bionic/souffle_2.0.2-1_amd64.deb
+Size: 1451520
+MD5sum: a75102c7f964eba8842e19445c88f619
+SHA1: 41c680fa45d3bcd3eef878b24fde3e778109f0a9
+SHA256: 11d23542e514d3d5cfd1d9cbcdafaa73d7558515e46b4596c29e828f1cf12221
+Section: misc
+Priority: optional
+Homepage: https://souffle-lang.org/
+Description: Translator of declarative Datalog programs into the C++ language.
+ Soufflé is a translator of declarative Datalog programs into the C++ language.
+ Soufflé is used as a domain-specific language for static program analysis, over
+ large code bases with millions of lines of code. Soufflé aims to produce
+ high-performance C++ code that can be compiled with the native compiler on
+ the target machine.
+
+Package: souffle
+Version: 2.1
+Architecture: amd64
+Maintainer: Patrick H.
+Installed-Size: 12523
+Depends: g++ (>= 7), libffi-dev, libncurses5-dev, libsqlite3-dev, mcpp, zlib1g-dev, libc6 (>= 2.34), libffi8 (>= 3.4), libgcc-s1 (>= 3.0), libgomp1 (>= 6), libncurses6 (>= 6), libsqlite3-0 (>= 3.5.9), libstdc++6 (>= 11), libtinfo6 (>= 6), zlib1g (>= 1:1.1.4)
+Filename: /pool/bionic/souffle_2.1-1_amd64.deb
+Size: 3310038
+MD5sum: ee9a55e6a3cc8556cfe73775ed746b68
+SHA1: 161d5273b4cadb2e392bab0019f362120facbc68
+SHA256: b70b2b06bb18a0e086af81b60d41640b960438d6cb8f1015f1c0f0796e7ea3ab
+Section: devel
+Priority: optional
+Description: A Datalog Compiler
+ Souffle - A Datalog Compiler
+
+Package: souffle
+Version: 2.2
+Architecture: amd64
+Maintainer: Patrick H.
+Installed-Size: 15032
+Depends: g++ (>= 8), libffi-dev, libncurses5-dev, libsqlite3-dev, mcpp, zlib1g-dev, libc6 (>= 2.34), libffi8 (>= 3.4), libgcc-s1 (>= 3.0), libgomp1 (>= 6), libncurses6 (>= 6), libsqlite3-0 (>= 3.6.0), libstdc++6 (>= 11), libtinfo6 (>= 6), zlib1g (>= 1:1.1.4)
+Filename: /pool/bionic/souffle_2.2-1_amd64.deb
+Size: 3758434
+MD5sum: d65ceffa909505703d5a2c16db34b554
+SHA1: f1c665d43429416d2eabd907be6ededad28b81c7
+SHA256: 7cd672769288653fb2aa5487fd3b6350b230d5126798ebded7ce4e1abe540282
+Section: devel
+Priority: optional
+Description: A Datalog Compiler
+ Souffle - A Datalog Compiler
+
