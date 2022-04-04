@@ -1,60 +1,21 @@
 Origin: Souffle Repository
 Label: Souffle
-Suite: stable
-Codename: stable
+Suite: bionic
+Codename: bionic
 Version: 1.0
 Architectures: amd64 arm64
 Components: main
 Description: Souffle repository
-Date: Mon, 04 Apr 2022 03:05:33 +0000
+Date: Mon, 04 Apr 2022 03:46:40 +0000
 MD5Sum:
- 6e1f542e4dd5df47f9fc2ae82968190d 833 dists/bionicRelease.gpg
- 41c9ddf2495c07ab92b272e8ce3a0783 1394 dists/bionic/main/binary-amd64/Packages.gz
- 31b501717de3290808308493aebac7c1 5743 dists/bionic/main/binary-amd64/Packages
- 41eb74723af31fc42892614cade503ad 107 dists/bionic/main/binary-amd64/Release
- 2d51ab9dd40eb289c80f2d8319c9b46f 833 dists/bionic/Release.gpg
- c413d443e18ad2a589c35d1b2290ac25 883 dists/bionic/InRelease
- d9ddae84ef354da97b18b1c6ceb1b3f0 632 dists/bionic/Release
- 7c943277ddab3b98352a8d12fdfe206e 5326 dists/bionicInRelease
- f79dfdc3864d0c549554be8902d4773a 4444 dists/bionicRelease
- a90d49f5e17c18682519ba3a897324ee 3147 souffle-key.public
- a75102c7f964eba8842e19445c88f619 1451520 pool/bionic/souffle_2.0.2-1_amd64.deb
- ee9a55e6a3cc8556cfe73775ed746b68 3310038 pool/bionic/souffle_2.1-1_amd64.deb
- c45529e3c85652a381efcfc19decad50 1539924 pool/bionic/souffle_2.0.1-1_amd64.deb
- e25cc17061a58ca2fd958f9e4c85e7b4 1470244 pool/bionic/souffle_1.7.1-1_amd64.deb
- 8155b7f0a60196a74fe9fbbd7cf948d8 1490948 pool/bionic/souffle_2.0.0-1_amd64.deb
- d65ceffa909505703d5a2c16db34b554 3758434 pool/bionic/souffle_2.2-1_amd64.deb
+ 2b1cbb629ce309da105e23f52ba8e6c4 1394 main/binary-amd64/Packages.gz
+ 31b501717de3290808308493aebac7c1 5743 main/binary-amd64/Packages
+ 41eb74723af31fc42892614cade503ad 107 main/binary-amd64/Release
 SHA1:
- 41ba80ed05da543945e00579d44bbe3ee93ce43c 833 dists/bionicRelease.gpg
- ba0892a28689e77c53dae07bc498bd396a362962 1394 dists/bionic/main/binary-amd64/Packages.gz
- 3c6ec0fe70e204c98c910693a263af11108d858c 5743 dists/bionic/main/binary-amd64/Packages
- eb43cbdc026006bb0df1fe174091651108730713 107 dists/bionic/main/binary-amd64/Release
- cf31dbbccdd879d3e2309fa62ccdf32d21a76341 833 dists/bionic/Release.gpg
- e6478629f1f1ac112481e4cf40e7910552d1f429 883 dists/bionic/InRelease
- 6d2c3128f28fe9b0a1c59c98151155afa17d95c8 1823 dists/bionic/Release
- 30674bb66a038f9dd61f41343e071964862380cc 5326 dists/bionicInRelease
- d42d2911452f66fd01d3e2bcbd1ed7280bebe9f0 4444 dists/bionicRelease
- 4a37700092f7c4a32edf446e1fdeac481c4a6de0 3147 souffle-key.public
- 41c680fa45d3bcd3eef878b24fde3e778109f0a9 1451520 pool/bionic/souffle_2.0.2-1_amd64.deb
- 161d5273b4cadb2e392bab0019f362120facbc68 3310038 pool/bionic/souffle_2.1-1_amd64.deb
- e5d1fddd71b1070b41d9d355be186611595d8fe5 1539924 pool/bionic/souffle_2.0.1-1_amd64.deb
- ebfe18bb355ad48dc60832540aca277e27423bac 1470244 pool/bionic/souffle_1.7.1-1_amd64.deb
- 871fc69a3dcc530e5d9356d7c337f573e64ec80f 1490948 pool/bionic/souffle_2.0.0-1_amd64.deb
- f1c665d43429416d2eabd907be6ededad28b81c7 3758434 pool/bionic/souffle_2.2-1_amd64.deb
+ d47272dbb7f068a625850d95a48c998bda3a4dea 1394 main/binary-amd64/Packages.gz
+ 3c6ec0fe70e204c98c910693a263af11108d858c 5743 main/binary-amd64/Packages
+ eb43cbdc026006bb0df1fe174091651108730713 107 main/binary-amd64/Release
 SHA256:
- ebb82188b25e13c8526de14b40965f699536fe38094c5f062dc04d5c76fc9469 833 dists/bionicRelease.gpg
- 71dc6a1fa1bffd980b5e66ac2be8ef1d494089cefbac3e21288a3bb5924caead 1394 dists/bionic/main/binary-amd64/Packages.gz
- 9e785e8fe8cdbcc943ff848fd72c9586924eb74501b5b66820b1730e1421c9e7 5743 dists/bionic/main/binary-amd64/Packages
- 4cb1f25ced2d853cec02b39157e2140da81d32dc68de8ad618cdddb5f795a9c4 107 dists/bionic/main/binary-amd64/Release
- ada10daf20b95d370e66e1a19099ce7d7d22dac6c1729ec7c5afe64c0b9df344 833 dists/bionic/Release.gpg
- b98cc5b0ee0aeba1507f1ee8054e5bee82a3f36b4e0c8d702e5053e7a9af65af 883 dists/bionic/InRelease
- be0e9abdc2fee825dd7171c77f77369a274946020d483f0c2970d19e35c4fad6 3241 dists/bionic/Release
- e41706a63f2b3cae7e6e60671594a27f483723aa2f340290a9a400e2f511099b 5326 dists/bionicInRelease
- 1086484c8aa20592cbdd4ae52420f3638d4ed48d225d49d65ed4ff990e5595bd 4444 dists/bionicRelease
- 641d832b1b591aaaa1651b457f0262f971528f2a2c196470d98fa9d3205766a2 3147 souffle-key.public
- 11d23542e514d3d5cfd1d9cbcdafaa73d7558515e46b4596c29e828f1cf12221 1451520 pool/bionic/souffle_2.0.2-1_amd64.deb
- b70b2b06bb18a0e086af81b60d41640b960438d6cb8f1015f1c0f0796e7ea3ab 3310038 pool/bionic/souffle_2.1-1_amd64.deb
- 5f8fe66fb8cff850c962c5e194fe37ef480ea89a565a2d7989e298da3d180a61 1539924 pool/bionic/souffle_2.0.1-1_amd64.deb
- bd8a7d0cb87a6d82e36ab35662a5e2887f3fa26dbf4aedc6a7db761a2b7d1a75 1470244 pool/bionic/souffle_1.7.1-1_amd64.deb
- 710afdda29c71ddcf33fd59a18c373f4b2dfb817d378aa50093d2318596748ac 1490948 pool/bionic/souffle_2.0.0-1_amd64.deb
- 7cd672769288653fb2aa5487fd3b6350b230d5126798ebded7ce4e1abe540282 3758434 pool/bionic/souffle_2.2-1_amd64.deb
+ e6d16f9203dc28ac9ad2b6e63968cbd3d515ec3a61d6e1cbf5c8db5a5caad19b 1394 main/binary-amd64/Packages.gz
+ 9e785e8fe8cdbcc943ff848fd72c9586924eb74501b5b66820b1730e1421c9e7 5743 main/binary-amd64/Packages
+ 4cb1f25ced2d853cec02b39157e2140da81d32dc68de8ad618cdddb5f795a9c4 107 main/binary-amd64/Release
