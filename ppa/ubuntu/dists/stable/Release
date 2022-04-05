@@ -1,0 +1,18 @@
+Origin: Souffle Repository
+Label: Souffle
+Suite: stable
+Codename: stable
+Version: 1.0
+Architectures: amd64 arm64
+Components: main
+Description: Souffle repository
+Date: Mon, 04 Apr 2022 04:10:00 +0000
+MD5Sum:
+ 25953fd6a2e407aaeea23c834b74bb54 1394 main/binary-amd64/Packages.gz
+ c179859869a68b0a52bf7f73921bf610 5743 main/binary-amd64/Packages
+SHA1:
+ c8b5b267e2d2dc35086dc5db1374b059482d2a94 1394 main/binary-amd64/Packages.gz
+ 67726d1a6af110e68213f5fe5281bd445d2f8648 5743 main/binary-amd64/Packages
+SHA256:
+ 868d6aa055dccc6a39b953dd6fea314d48d98a7d575581bbc0d7d481eb9113ee 1394 main/binary-amd64/Packages.gz
+ bf7c9306f17bdec5c1f17f2ca7cfa6f67f95ff288fe1ff68e095c989b1893aaa 5743 main/binary-amd64/Packages
