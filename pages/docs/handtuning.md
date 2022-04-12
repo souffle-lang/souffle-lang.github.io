@@ -66,7 +66,7 @@ A(x+1) :- A(x), x < N.
 B(x) :- A(x). 
 
 .decl C(x:number, y:number) 
-C(x) :- A(x), B(x). 
+C(x, y) :- A(x), B(y). 
 
 .decl D(x:number, y:number) 
 D(x,x) :- C(x,x).
