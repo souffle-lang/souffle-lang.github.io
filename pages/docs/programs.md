@@ -91,17 +91,48 @@ Stateful functors expose [record and symbol tables](implementation).
 
 Pragmas configure Soufflé. For example, command-line options can be set in the source code. 
 
-## Syntax 
-In the following, we define a program more formally using [syntax diagrams](https://en.wikipedia.org/wiki/Syntax_diagram) and [EBNF](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form). The syntax diagrams were produced with [Bottlecaps](https://www.bottlecaps.de/rr/ui).
+## Syntax
 
-Soufflé utilises the same comment syntax as C/C++. Furthermore, all souffle programs are passed through the C pre-processor. As a consequence, e.g. `#include` pragmas may be utilized to organize Datalog input queries into several files and reuse common constructs within several programs. Also, constants may be defined utilizing the `#define` pragma.
+### Comments
+
+Soufflé utilises the same comment syntax as C/C++. Inline comments starts with `//` anywhere outside of a comment and extend to the end of the line. Block comments starts with `/*` anywhere outside of a comment and extend to the first occurence of `*/`.
+
+```c
+// an inline comment
+
+/* this is
+ * a comment block
+ */
+```
+
+### Identifiers
 
 Soufflé Identifiers follow the C++ naming convention, except that a question mark may appear anywhere.
 - The identifier can only be composed of letters (lower or upper case), numbers, or the question mark and underscore characters. That means the name cannot contain whitespace, or any symbols other than underscores or question marks.
 - The identifier must begin with a letter (lower or upper case), an underscore, or a question mark. It can not start with a number.
 
+### Syntax with the C pre-processor
+
+By default all souffle programs are passed through the C pre-processor. As a consequence, e.g. `#include` pragmas may be utilized to organize Datalog input queries into several files and reuse common constructs within several programs. Also, constants may be defined utilizing the `#define` pragma.
+
+Soufflé selects a C pre-processor based on the following decision process:
+- do not use any C pre-processor if command-line argument `--no-preprocessor` is set
+- otherwise, use the user-provided `COMMAND` if command-line argument `--preprocessor COMMAND` is set
+- otherwise, use `mcpp` if it is available
+- otherwise, use `gcc` if it is available
+- otherwise, raise an error.
+
+### Syntax without C pre-processor
+
+The C pre-processor is disabled with Soufflé option `--no-preprocessor`.
+
+The Soufflé syntax allows to include files using the `.include "path/to/file.dl"` directive that has a similar behavior as `#include "path/to/file.dl"`. The `.once` directive instructs the scanner to skip the rest of the current file the next time it encounters this directive at the same location. The special tokens `__FILE__` and `__LINE__` are available and replaced respectively by the current reported file and line number.
+
+The `.include` directive is available reguardless of the `--no-preprocessor` option. However when the C pre-processor is active, files included by `.include` will not be pre-processed.
 
 ### Program
+
+In the following, we define a program more formally using [syntax diagrams](https://en.wikipedia.org/wiki/Syntax_diagram) and [EBNF](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form). The syntax diagrams were produced with [Bottlecaps](https://www.bottlecaps.de/rr/ui).
 
 A program consists of [type declarations](types), [relation declarations](relations), [facts](facts), [rules](rules), [component declarations and instantiations](components), [user-defined functor declarations](functors), and [pragmas](pragmas).
 
