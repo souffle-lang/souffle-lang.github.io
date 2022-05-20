@@ -27,6 +27,21 @@ Brie: A Specialized Trie for Concurrent Datalog. PMAM@PPoPP 2019: 31-40; ([link]
  * Bernhard Scholz, Herbert Jordan, Pavle Subotić, Till Westmann: On fast large-scale program analysis in Datalog. CC 2016: 196-206; ([link](/pdf/cc.pdf)).
  * Bernhard Scholz, Kostyantyn Vorobyov, Padmanabhan Krishnan, Till Westmann: A Datalog Source-to-Source Translator for Static Program Analysis: An Experience Report. ASWEC 2015: 28-37; ([link](https://ieeexplore.ieee.org/document/7365791/)).
 
+## Theses
+
+* Lyndon Henry: 
+Soufflé in the Cloud, Masters of Philosophy 2021. ([link](https://ses.library.usyd.edu.au/handle/2123/25800)).
+* Sam Arch:
+Automatic Index Selection for Inequalities, Honours 2020. ([link](/pdf/samthesis.pdf)).
+* Xiaowen Hu:
+An Efficient Interpreter for Soufflé, Honours 2020. ([link](/pdf/xiaowenthesis.pdf)).
+* Abdul Zreika:
+Program-Rewriting Transformations for Datalog, Honours 2019.
+* Patrick Nappa:
+Equivalence Relations in Soufflé, Honours 2018. ([link](/pdf/patrickthesis.pdf)).
+* David Zhao:
+Provenance in Soufflé, Honours 2017. ([link](/pdf/davidthesis.pdf)).
+
 ## Talks
  * Bernhard Scholz: Tool Talk: Soufflé, PLDI 2020 - SOAP, London, UK` https://www.youtube.com/watch?v=Qp3zfM-JSx8
  * Pavle Subotić: Soufflé, 27/10/16, Amazon AWS, Automated Reasoning Group, Seattle, USA`
