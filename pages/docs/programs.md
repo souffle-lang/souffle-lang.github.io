@@ -130,6 +130,9 @@ The Soufflé syntax allows to include files using the `.include "path/to/file.dl
 
 The `.include` directive is available reguardless of the `--no-preprocessor` option. However when the C pre-processor is active, files included by `.include` will not be pre-processed.
 
+The `.include` directive looks for source files first relative to the directory of the current file, and then relative to each include directory set with `-I` command-line option.
+When setting a non-absolute include directory with `-I relative/path`, it is interpreted relative to the current working directory.
+
 ### Program
 
 In the following, we define a program more formally using [syntax diagrams](https://en.wikipedia.org/wiki/Syntax_diagram) and [EBNF](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form). The syntax diagrams were produced with [Bottlecaps](https://www.bottlecaps.de/rr/ui).
