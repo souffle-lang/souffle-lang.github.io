@@ -36,7 +36,7 @@ Automatic Index Selection for Inequalities, Honours 2020. ([link](/pdf/samthesis
 * Xiaowen Hu:
 An Efficient Interpreter for Soufflé, Honours 2020. ([link](/pdf/xiaowenthesis.pdf)).
 * Abdul Zreika:
-Program-Rewriting Transformations for Datalog, Honours 2019.
+Program-Rewriting Transformations for Datalog, Honours 2019. ([link](/pdf/abdulthesis.pdf)).
 * Patrick Nappa:
 Equivalence Relations in Soufflé, Honours 2018. ([link](/pdf/patrickthesis.pdf)).
 * David Zhao:
