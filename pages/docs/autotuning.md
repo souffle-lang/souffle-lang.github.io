@@ -12,7 +12,7 @@ To achieve high performance in Soufflé, the Auto-Scheduler can be used.
 
 The Auto-Scheduler can be used as follows:
 
-1. ```souffle <program> -p <profile> --index-stats```
+1. ```souffle <program> -p <profile> --emit-statistics```
 
 2. ```souffle -c <program> --auto-schedule=<profile> -o <binary>```
 
