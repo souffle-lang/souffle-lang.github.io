@@ -49,8 +49,8 @@ Soufflé was initially used to find security vulnerabilities in the Java JDK lib
 ## VPN 
 Amazon used Soufflé to verify VPN connections in the AWS cloud. 
 
-## Galois
-Soufflé is integrated in an application performing context-sensitive pointer analysis to identify potential software vulnerabilities in C/C++ source code. More about Galois can be found [here](https://galois.com/).
+## cclyzer++ and MATE
+[Galois'](https://galois.com/) [MATE](https://github.com/galoisinc/MATE) tool for interactive exploration of potential software vulnerabilities in C/C++ source code uses a context-sensitive pointer analysis [cclyzer++](https://github.com/galoisinc/cclyzerpp) implemented using Soufflé.
 
 ## Frank's DDLOG Benchmarks
 Frank McSherry has developed three benchmarks for DDLOG. They can be found [here](https://github.com/frankmcsherry/dynamic-datalog/). 
