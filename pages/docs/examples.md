@@ -183,7 +183,7 @@ seq([l,s]) :- letter(l), seq(s), len(s,n), n<5.
 
 .decl len ( s : Seq, n:number )
 len(nil,0).
-len(s,n+1) :- seq(s), s = [l,r], len(r,n).
+len(s,n+1) :- seq(s), letter(l), s = [l,r], len(r,n).
 
 .decl res( s : symbol )
 .output res
