@@ -6,6 +6,8 @@ folder: docs
 toc: false
 ---
 ## Publications
+ * Samuel Arch, Xiaowen Hu, David Zhao, Pavle Subotić, and Bernhard Scholz:
+Building a Join Optimizer for Soufflé. LOPSTR 2022: 83–102; ([link](/pdf/lopstr2022.pdf)).
  * Xiaowen Hu, Joshua Karp, David Zhao, Abdul Zreika, Xi Wu, Bernhard Scholz:
 The Choice Construct in the Soufflé Language. APLAS 2021: 161-181; ([link](https://link.springer.com/chapter/10.1007/978-3-030-89051-3_10)). 
  * David Zhao, Pavle Subotic, Mukund Raghothaman, Bernhard Scholz:
