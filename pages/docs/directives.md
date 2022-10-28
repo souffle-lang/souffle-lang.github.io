@@ -147,7 +147,8 @@ and printed.  For example:
 A([1,[2,[3,nil]]],10). 
 .output A
 ```
-produces following output:
+
+Produces following output:
 ```
 ---------------
 A
@@ -157,22 +158,42 @@ l	y
 ===============
 ```
 
-To read or write arbitrary complex records and symbols without ambiguity, you may use the `rfc4180=true` I/O option. For example:
+ADTs are written in a serialized format for input and output directives. An ADT is expanded with its branch name and printed. For example:
+```prolog
+.type Location = City {name: symbol} | Country {name: symbol}
+.decl Resident(l:Location, p:symbol)
+Resident($City("Sydney"), "Bob").
+Resident($Country("Australia"), "Bob").
+.output Resident
+```
+
+Produces the following output:
+```
+---------------
+Resident
+l       p
+===============
+$City(Sydney)   Bob
+$Country(Australia)     Bob
+===============
+```
+
+To read or write arbitrary ADTs, complex records, and symbols without ambiguity, you may use the `rfc4180=true` I/O option. For example:
 ```prolog
 .type ListOfSymbols = [data:symbol, next:ListOfSymbols]
-.decl A(l:ListOfSymbols,y:symbol,z:number)
-A(["comma=,",["double-quote=\"",["space= ",["bracket=]",["nil",nil]]]]],"double-quote=\" comma=,",10).
+.type ADT = One {a:number} | Two {b:number, c:number}
+.decl A(l:ListOfSymbols,y:symbol,z:ADT)
+A(["comma=,",["double-quote=\"",["space= ",["bracket=]",["nil",nil]]]]],"double-quote=\" comma=,",$Two(10,20)).
 .output A(rfc4180=true,delimiter="\t")
 ```
 
 Produces following output:
-
 ```
 ---------------
 A
 l       y       z
 ===============
-"[""comma=,"", [""double-quote=\\"""", [""space= "", [""bracket=]"", [""nil"", nil]]]]]"        "double-quote=\\"" comma=,"     10
+"[""comma=,"", [""double-quote=\"""", [""space= "", [""bracket=]"", [""nil"", nil]]]]]"	"double-quote=\"" comma=,"	"$Two(10, 20)"
 ===============
 ```
 
@@ -183,7 +204,7 @@ Compared to (without the `rfc4180` option):
 A
 l       y       z
 ===============
-[comma=,, [double-quote=\", [space= , [bracket=], [nil, nil]]]]]        double-quote=\" comma=, 10
+[comma=,, [double-quote=", [space= , [bracket=], [nil, nil]]]]]	double-quote=" comma=,	$Two(10, 20)
 ===============
 ```
 
