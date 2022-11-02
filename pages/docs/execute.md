@@ -19,7 +19,7 @@ If more precise control over file location is needed, more options can be added 
 .decl my_relation(a:number,b:number)
 .input my_relation(filename="<path to input file>")
 ```
-The output relations of a Datalog program are written to file in the current directory if no command line parameters, directives in the Datalog program, are given. The default output directory can be specified with the flag ```-D <output-dir>``` Output is written to standard output with the parameter ```-D-```. For example, the relation  
+The output relations of a Datalog program are written to file in the current directory if no command line parameters, directives in the Datalog program, are given. The default output directory can be specified with the flag ```-D <output-dir>``` Output is written to standard output with the parameter ```-D-```. **Notice that when there is more than one `.output` the output order is not deterministic**. For example, the relation  
 ```
 .decl result(a:number,b:number,c:number)
 .output result
