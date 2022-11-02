@@ -380,7 +380,7 @@ The functor ``autoinc()`` issues a new number every time it is evaluated.
 However, it is not permitted in recursive relations. It can be used to create unique numbers (acting as identifiers) for symbols, such as in the following example:
 ```prolog
 .decl A(x: symbol)
-A(“a”). A(“b”). A(“c”). A(“d”).
+A("a"). A("b"). A("c"). A("d").
 
 .decl B(x: symbol, y: number)
 .output B
@@ -454,12 +454,12 @@ The syntax is ``count:{<sub-goal>}``.
 The following example outputs the number of "blue" cars - that is, the number of elements in ``Car`` with second argument "blue":
 ```prolog
 .decl Car(name: symbol, colour:symbol)
-Car(“Audi”, ”blue”).
-Car(“VW”, “red”).
-Car(“BMW”, “blue”).
+Car("Audi", "blue").
+Car("VW", "red").
+Car("BMW", "blue").
 
 .decl BlueCarCount(x: number)
-BlueCarCount(c) :- c = count:{Car(_,”blue”)}.
+BlueCarCount(c) :- c = count:{Car(_,"blue")}.
  .output BlueCarCount
 ```
 
@@ -483,7 +483,7 @@ The ``min`` syntax is ``min <var>:{<sub-goal>(<var>)>}``, and the ``sum`` syntax
 Consider the following example which will not compile:
 ```prolog
 .decl A(n:number, w:symbol)
-A(1, ”a”). A(10, ”b”). A(100, ”c”).
+A(1, "a"). A(10, "b"). A(100, "c").
 .decl MaxA(x: number,w:symbol)
 MaxA(y, w) :- y = max x:{A(x, w)}.
 ```
