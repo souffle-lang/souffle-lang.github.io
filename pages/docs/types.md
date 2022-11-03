@@ -141,7 +141,7 @@ In the following example, we show the use of a union type for a relation,
 .type Village <: symbol
 .type Place = City | Town | Village
 .decl Data(c:City, t:Town, v:Village)
-Data(“Sydney”, ”Ballina”, “Glenrowan”).
+Data("Sydney", "Ballina", "Glenrowan").
 
 .decl Location(p:Place)
 .output Location
