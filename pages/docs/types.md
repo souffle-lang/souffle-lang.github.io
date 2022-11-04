@@ -291,7 +291,19 @@ the following type definition is illegal:
 .type B = Number { x:number }  // error: reuse of branch identifier
         | Symbol { v:symbol }  // error: reuse of branch identifier
 ```
-Since the branch identifier `Number` and `Symbol` are reused in the ADT `B`. 
+Since the branch identifier `Number` and `Symbol` are reused in the ADT `B`. One way to work around this is to use [Components](components):
+
+```prolog
+.type OuterType = Number { n: number }
+                | Symbol { s: symbol }
+.comp MyComponent {
+	.type InnerType = Number { n: number }
+                    | Symbol { s: symbol }
+}
+.init component = MyComponent
+.decl Relation(x:component.InnerType)
+Relation($component.Symbol("x")).
+```
 
 ## Type Conversion
 Soufflé permits type conversion of an argument using a functor notation. The type of argument `<expr>` is converted to a new type `<new-type>` using the type cast `as(<expr>, <new-type>)`. The correctness of the cast is left to the user. 
