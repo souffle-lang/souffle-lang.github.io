@@ -265,7 +265,7 @@ Below is given an example for an ADT definition,
 ```
 Note that `nil` cannot be used for ADTs and termination branches for recursive definition must be expressed explicitly by the programmer. 
 
-In rules, branches can by constructes using the dollar sign followed by the branch identifier, i.e.,  `$branch_constructor(args...)`. In case there is a branch without arguments, the programmer can use `$branch_constructor`.
+In rules, branches can be constructed using the dollar sign followed by the branch identifier, i.e.,  `$branch_constructor(args...)`.
 The following example demonstrate how branch constructors can be used in rules:
 
 ```prolog
