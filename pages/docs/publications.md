@@ -45,6 +45,8 @@ Equivalence Relations in Soufflé, Honours 2018. ([link](/pdf/patrickthesis.pdf)
 Provenance in Soufflé, Honours 2017. ([link](/pdf/davidthesis.pdf)).
 
 ## Talks
+ * Pavle Subotić: Commercial-Grade Static Analyzers in Datalog, LPOP'22 Workshop. 
+ * Bernhard Scholz: Commercial-Grade Static Analyzers in Datalog, SAS'22 Keynote, ([link](/pdf/SAS22Keynote.pptx)).
  * Bernhard Scholz: Tool Talk: Soufflé, PLDI 2020 - SOAP, London, UK` https://www.youtube.com/watch?v=Qp3zfM-JSx8
  * Pavle Subotić: Soufflé, 27/10/16, Amazon AWS, Automated Reasoning Group, Seattle, USA`
  * Pavle Subotić: Soufflé: On Synthesis of Analyzers, 23/7/16, Computer Aided Verification (CAV), Toronto, Canada`
