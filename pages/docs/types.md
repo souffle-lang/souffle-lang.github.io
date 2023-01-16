@@ -237,7 +237,7 @@ Note that union types involving records and sub-typing of record types are curre
 
 ##  Algebraic Data Types (ADT)
 
-Alebraic Data Types are extended versions of records, which permit several type shapes for an ADT. Each shape in the ADT we call a branch. A branch is defined similar to a record, however, it has a unique branch identifier. 
+Algebraic Data Types are extended versions of records, which permit several type shapes for an ADT. Each shape in the ADT we call a branch. A branch is defined similar to a record, however, it has a unique branch identifier. 
 
 A record-type is defined as follows,
 ```prolog
