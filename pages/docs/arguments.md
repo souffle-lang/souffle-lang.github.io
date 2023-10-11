@@ -102,6 +102,16 @@ e(10 ^ 2 , "10^2", 100).
 e(10 % 3, "10%3", 1).
 e(2^4%13 , "2^4%13",3).
 ```
+
+Binary `+` operation is defined as the string concatenation operator when both operands are `symbol`.
+
+```
+.decl string_concat(result:symbol)
+string_concat("a" + "b").
+string_concat(to_string(10) + "b").
+string_concat(to_string(3) + "." + to_string(14) + to_string(159)).
+```
+
 Soufflé supports bitwise logical operations: **band** (bitwise and), **bor** (bitwise or), **bxor** (bitwise exclusive-or), **bshl** (bitwise shift left), **bshr** (bitwise shift right), and **bshru** (bitwise shift right/unsigned). 
 
 Examples of this are given below.
