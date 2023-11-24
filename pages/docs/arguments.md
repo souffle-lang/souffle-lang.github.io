@@ -78,17 +78,21 @@ llo
 ld!
 ```
 
-Functor **to_number(*string*)** transforms a string representing a number to its associated number.
+Functor **to_number(*string*)** transforms a string representing a number to its associated number, it also recognises hex and binary numbers with a prefix.
 ```prolog
 .decl tonumber(n:number)
 .output tonumber
 tonumber(n) :- n=to_number("123").
 tonumber(n) :- n=to_number("1534").
+tonumber(n) :- n=to_number("0xff").
+tonumber(n) :- n=to_number("0b111").
 ```
 The output would be:
 ```
 123
 1534
+255
+7
 ```
 The reverse operation **to_string(*number*)** also exists, which turns a number to its string representation.
 
