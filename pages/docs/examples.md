@@ -43,7 +43,8 @@ ld("v4","v1","f").
 
 // -- analysis --
 
-.decl alias( a:var, b:var ) output
+.decl alias( a:var, b:var )
+.output alias
 alias(X,X) :- assign(X,_).
 alias(X,X) :- assign(_,X).
 alias(X,Y) :- assign(X,Y).
@@ -273,7 +274,8 @@ Frequently, components can be described in an abstract, generic way such that it
 NetA.edge("A","B").
 NetA.edge("B","C").
 
-.decl resA(a:symbol, b:symbol) output
+.decl resA(a:symbol, b:symbol)
+.output resA
 resA(X,Y) :- NetA.reach(X,Y).
 
 
