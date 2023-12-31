@@ -47,6 +47,11 @@ ld("v4","v1","f").
 .output alias
 alias(X,X) :- assign(X,_).
 alias(X,X) :- assign(_,X).
+alias(X,X) :- new(X,_).
+alias(X,X) :- ld(X,_,_).
+alias(X,X) :- ld(_,X,_).
+alias(X,X) :- st(X,_,_).
+alias(X,X) :- st(_,_,X).
 alias(X,Y) :- assign(X,Y).
 alias(X,Y) :- ld(X,A,F), alias(A,B), st(B,F,Y).
 
