@@ -32,7 +32,7 @@ The following example encodes the most simple version of a var-points-to analysi
 // -- facts --
 
 assign("v1","v2").
-
+May be optimize the deprecated output qualifier
 new("v1","h1").
 new("v2","h2").
 new("v3","h3").
@@ -47,6 +47,11 @@ ld("v4","v1","f").
 .output alias
 alias(X,X) :- assign(X,_).
 alias(X,X) :- assign(_,X).
+alias(X,X) :- new(X,_).
+alias(X,X) :- ld(X,_,_).
+alias(X,X) :- ld(_,X,_).
+alias(X,X) :- st(X,_,_).
+alias(X,X) :- st(_,_,X).
 alias(X,Y) :- assign(X,Y).
 alias(X,Y) :- ld(X,A,F), alias(A,B), st(B,F,Y).
 
