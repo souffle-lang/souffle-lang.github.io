@@ -324,7 +324,7 @@ B(as(a, Variable)) :- A(a).
 Converts the expression `as(a, Variable)` to an expression of type `Variable` although `a` is of type `VariableOrStackIndex`. 
 Note that type casts between numbers and symbols are particular dangerous because strings for certain ordinal numbers may not exist. E.g., the fact `A(as(1034234234, symbol).` most likely will cause troubles in conjunction with an output directive since a symbol with ordinal number 1034234234 may not exist. 
 
-Type conversions are cast the value to a new type without converting the value. For converting, a number stored as a string and vice veras we have the functors `to_number`, `to_string`, `to_unsigned`, and `to_float`.
+Type conversions cast the value to a new type without converting the value. For converting, a number stored as a string and vice versa we have the functors `to_number`, `to_string`, `to_unsigned`, and `to_float`.
 
 ## Syntax 
 
