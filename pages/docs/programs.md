@@ -95,7 +95,10 @@ Pragmas configure Soufflé. For example, command-line options can be set in the 
 
 ### Comments
 
-Soufflé utilises the same comment syntax as C/C++. Inline comments starts with `//` anywhere outside of a comment and extend to the end of the line. Block comments starts with `/*` anywhere outside of a comment and extend to the first occurence of `*/`.
+Soufflé utilises the same comment syntax as C/C++. Inline comments starts with
+`//` anywhere outside of a comment and extend to the end of the line. Block
+comments starts with `/*` anywhere outside of a comment and extend to the first
+occurence of `*/`.
 
 ```c
 // an inline comment
@@ -103,6 +106,36 @@ Soufflé utilises the same comment syntax as C/C++. Inline comments starts with 
 /* this is
  * a comment block
  */
+```
+
+### Documentation comments & annotations
+
+[![Static Badge](https://img.shields.io/badge/since_%232472-blue)](https://github.com/souffle-lang/souffle/pull/2472) Documentation comments and annotations are part of the syntax.
+The design is close to Rust's *attributes*. A documentation comment is a syntactic sugar for a `doc` annotation.
+
+For an optimal usage of documentation comments and annotations, [disable the C preprocessor](#syntax-without-c-pre-processor) with `--no-preprocessor`.
+
+All program's and component's items can have outer annotations of the form `@[annotation]` or `/// doc comment`. Attributes and ADT branches also accept outer annotations.
+
+Some items can have inner annotations of the form `@![annotation]` or `//! doc comment`:
+- after `{` of a component, before the first component's item.
+- after `{` of an ADT branch, before the first attribute of the branch.
+- after `:-` of a clause, before the first constraint.
+
+Annotations and doc comments should not appear before `.include` or before any `}` or before the end of a file.
+
+```c
+/// The documentation comment
+/// for relation `R`
+.decl R()
+
+/// doc comment for `C`
+@[doc = "more outer documentation"]
+.comp C {
+  //! inner doc comment
+  //! for `C`
+  @![doc = "more inner documentation"]
+}
 ```
 
 ### Identifiers
