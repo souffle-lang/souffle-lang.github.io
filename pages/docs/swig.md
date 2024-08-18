@@ -6,6 +6,7 @@ folder: docs
 ---
  
 # Using SWIG
+
 [SWIG](http://swig.org/) is a software development tool that connects programs written in C and C++ with a variety of high-level programming languages. Soufflé uses SWIG as a programming interface such that other languages can interface it. This enables a program written in other languages to read in the Datalog input file through the wrapper files and output the corresponding CSV files. These wrapper files are generated through first generating the C++ file for the Datalog file and then compiling it using SWIG. Swig Interface currently supports **Java**  and **Python**.
 
 To use the SWIG feature, it must be enabled through configuring Soufflé with the following:
@@ -26,45 +27,55 @@ Once the wrapper files have been generated, to use them in your program, you nee
 ### Running it in Java
 To use the interface in your Java program, add 
 
-```System.loadLibrary("SwigInterface")```
+```java
+System.loadLibrary("SwigInterface")
+```
 
-MAC users may need to add this instead
+MAC users may need to add this instead:
 
-`System.load(System.getProperty("java.library.path")+ "/" + "libSwigInterface.so")`
+```java
+System.load(System.getProperty("java.library.path")+ "/" + "libSwigInterface.so")
+```
 
 You are now able to use the SwigInterface to create an instance of the input file to be loaded and run.
 
-`SWIGSouffleProgram p = SwigInterface.newInstance("<name of .dl file without extension>")`
+```java
+SWIGSouffleProgram p = SwigInterface.newInstance("<name of .dl file without extension>")
 
-`p.loadAll(".");`
+p.loadAll(".");
 
-`p.run(); `
+p.run();
 
-`p.printAll(".");`
+p.printAll(".");
 
-`p.finalize();   ` 
+p.finalize();
+```
 
-Compile your program and run it with the -D option to specify the directory of your SwigInterface
+Compile your program and run it with the -D option to specify the directory of your SwigInterface:
 
 `java -Djava.library.path=<path of SwigInterface> <.java>`
 
 ### Running it in Python
+
 To use the interface in your Python program, add at the top of the file
-`import SwigInterface`
+`import SwigInterface`.
 
 You are now able to use the SwigInterface to create an instance of the input file to be loaded and run.
 
-`p = SwigInterface.newInstance("<name of .dl file without extension>")`
+```python
+p = SwigInterface.newInstance("<name of .dl file without extension>")
 
-`p.loadAll('.')`
+p.loadAll('.')
 
-`p.run()`
+p.run()
 
-`p.printAll('.')`
+p.printAll('.')
+```
 
 Run your program to see the outputted CSV files.
  
- ## Supported functions
+## Supported functions
+
 `newInstance("<name of .dl file without extension>")`: creates a new instance from a Datalog file
 
 `loadAll("<input directory>")`: loads all input relations
