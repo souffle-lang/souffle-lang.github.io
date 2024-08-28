@@ -72,6 +72,12 @@ sudo apt install \
   zlib1g-dev
 ```
 
+### Fedora Dependencies
+
+```sh
+sudo dnf install bison flex libffi-devel sqlite-devel zlib-devel
+```
+
 ### Linux Build
 
 Support for C++17 is required. This support is present in GNU C++ version 7 or greater and Clang++ version 7 or greater.
