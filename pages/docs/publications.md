@@ -6,6 +6,8 @@ folder: docs
 toc: false
 ---
 ## Publications
+ * Yu Liu, Sergey Mechtaev, Pavle Subotic, Abhik Roychoudhury:
+Program Repair Guided by Datalog-Defined Static Analysis. ESEC/SIGSOFT FSE 2023: 1216-1228; ([link](https://dl.acm.org/doi/10.1145/3611643.3616363))
  * Samuel Arch, Xiaowen Hu, David Zhao, Pavle Subotić, and Bernhard Scholz:
 Building a Join Optimizer for Soufflé. LOPSTR 2022: 83–102; ([link](/pdf/lopstr2022.pdf)).
  * Xiaowen Hu, Joshua Karp, David Zhao, Abdul Zreika, Xi Wu, Bernhard Scholz:
