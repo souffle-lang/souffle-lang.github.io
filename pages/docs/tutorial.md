@@ -183,7 +183,7 @@ For example, to store a relation after evaluation into a SQLite3 database, the u
 .decl A(a:number, b:number)
 .output A(IO=sqlite, dbname="path/to/sqlite3db")
 ```
-More information about the possibilites for I/O can be found in the documentation [here](/io).
+More information about the possibilites for I/O can be found in the documentation [here](/directives).
 
 #### Lack of goals in Soufflé
 A goal in Datalog is a logical relation of the form ``false <= p``, where ``p`` is a logical relation.
