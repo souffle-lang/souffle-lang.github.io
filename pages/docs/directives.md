@@ -8,7 +8,7 @@ Soufflé has directives controlling the I/O behaviour of relations, and their ex
 The I/O system for relations supports various data-sources for input and output using various formats.
 Soufflé supports terminal output, file I/O, and I/O utilising a SQLite as a database. 
 For a relation in a Datalog program, several input and output directives can be issued. 
-Soufflé supports directies to limit the number of tuples per relation. 
+Soufflé supports directives to limit the number of tuples per relation. 
 
 ## Input Directive
 A Soufflé program may load the facts of a relation (aka. as EDB) from various input sources.
