@@ -90,7 +90,7 @@ The output would be:
 123
 1534
 ```
-In souffle >2.4.1, or when building from source after [030e111b](https://github.com/souffle-lang/souffle/commit/030e111be9e3aa90033092e56ce49af96dd36790), functor **to_number(*string*)** will also recognise hex and binary strings with a prefix. 
+In souffle `>=2.5`, functor **to_number(*string*)** also recognises hex and binary strings with a prefix.
 ```prolog
 .decl tonumber(n:number)
 .output tonumber
