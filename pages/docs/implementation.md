@@ -6,7 +6,7 @@ folder: docs
 ---
 
 Relations store symbol, records, and ADTs using their ordinal numbers. 
-Soufflé uses internal symbol and record tables that conver the ordinal 
+Soufflé uses internal symbol and record tables that convert the ordinal 
 numbers to symbols/records, and vice versa. 
 
 ## Symbols 
