@@ -5,6 +5,30 @@ sidebar: docs_sidebar
 folder: docs
 ---
 
+## Build with Docker and install (Linux only)
+
+```
+# Build the image that will build souffle from sources
+#
+# For Fedora 41:
+# Other distributions are available too.
+docker build . -f ./.github/images/fedora-41/Dockerfile -t souffle-builder-image
+
+# Actually build souffle and create a package
+#
+# Look for message 'CPack: - package: /souffle/build/souffle-VERSION-OS.EXTENSION'
+#
+docker run -e DOMAIN_SIZE="64bit" -t souffle-builder-image --name souffle-builder
+
+# Copy the package onto your system
+docker cp souffle-builder:/souffle/build/souffle-VERSION-OS.EXTENSION .
+
+# Use your system package manager to install souffle from the package.
+#
+# For DNF package manager (.rpm package extension):
+dnf install souffle-VERSION-OS.rpm
+```
+
 ## Software Requirements
 
 To build and install Soufflé, the following software must be installed:
@@ -13,7 +37,7 @@ To build and install Soufflé, the following software must be installed:
 * Python 3
 * A C++ compiler supporting C++17: GNU C++, clang++, Microsoft Visual Studio
 * OpenMP (optional)
-* GNU Bison (version 3.0.4 or greater)
+* GNU Bison (version 3.6 or greater)
 * flex
 * DoxyGen (optional)
 * git (optional)
