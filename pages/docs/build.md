@@ -68,7 +68,7 @@ sudo apt install \
   make \
   mcpp \
   python \
-  sqlite \
+  sqlite3 \
   zlib1g-dev
 ```
 
