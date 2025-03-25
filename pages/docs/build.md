@@ -30,7 +30,7 @@ To build and install Soufflé, the following software must be installed:
 
 All available options can be found by browsing the source code, see `souffle/CMakeLists.txt`. Below is a table of the most relevant.
 
-To specify build options, run `cmake -S . -B build -D<option>=<value>`. Alternatively, run `ccmake build` to start cmake with a terminal GUI interface that lets you configure the options.
+To specify build options, run `cmake -S . -B build -D<option>=<value>`. Alternatively, run `cmake build` to start cmake with a terminal GUI interface that lets you configure the options.
 
 
 | Option | Default | Description
