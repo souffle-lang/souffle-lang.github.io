@@ -12,7 +12,7 @@ The following applications are written in the Soufflé Language. Some are open s
 - Doop is a pointer analysis framework for Java programs. 
 Doop implements a range of points-to algorithms, including context insensitive, 
 call-site sensitive, and object-sensitive analyses. The source code can be found
-[here](https://bitbucket.org/yanniss/doop/).
+[here](https://github.com/plast-lab/doop).
 - Java JDK Security Analysis: Soufflé was initially used to find security vulnerabilities in the Java JDK library. This project was conducted by Oracle Labs, Brisbane. 
 
 ## Solidity / EVM
