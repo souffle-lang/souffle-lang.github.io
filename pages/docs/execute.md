@@ -12,7 +12,7 @@ The Soufflé permits facts to be sourced from tab-separated input files to separ
 .decl my_relation(a:number,b:number)
 .input my_relation
 ```
-defines an input relation ```my_relation``` with two number columns. Note that a relation becomes an input relation with the keyword ```input``` at the end of a declaration.  For the aforementioned example , souffle expects a tab-separated file ```my_relation.facts``` in either the current directory (if no ```-F``` flag was specified) or in the directory ```<fact-dir>``` with the option ```-F <fact-dir>```. Note that there is an exception if a relation is an input relation and is declared in an instantiation of a [component](components). 
+defines an input relation ```my_relation``` with two number columns. Note that a relation becomes an input relation with the keyword ```input``` at the end of a declaration.  For the aforementioned example, souffle expects a tab-separated file ```my_relation.facts``` in either the current directory (if no ```-F``` flag was specified) or in the directory ```<fact-dir>``` with the option ```-F <fact-dir>```. Note that there is an exception if a relation is an input relation and is declared in an instantiation of a [component](components). 
 
 If more precise control over file location is needed, more options can be added to the input directive. For example
 ```
