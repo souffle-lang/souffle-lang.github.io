@@ -18,7 +18,7 @@ docker build . -f ./.github/images/fedora-41/Dockerfile -t souffle-builder-image
 #
 # Look for message 'CPack: - package: /souffle/build/souffle-VERSION-OS.EXTENSION'
 #
-docker run -e DOMAIN_SIZE="64bit" -t souffle-builder-image --name souffle-builder
+docker run --name souffle-builder -e DOMAIN_SIZE="64bit" -t souffle-builder-image
 
 # Copy the package onto your system
 docker cp souffle-builder:/souffle/build/souffle-VERSION-OS.EXTENSION .
