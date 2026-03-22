@@ -27,7 +27,7 @@ B(x,z) :- A(x,y), B(y,z).
 .output B                    // Output relation B 
 ```
 has two relations `A` and `B`.  Relations must be declare 
-so that the use of attributes can be checked at compiletime. 
+so that the use of attributes can be checked at compile time. 
 In the example, relation ```A``` has two facts: ```A(1,2).``` and ```A(2,3)```.
 A fact is a rule that holds unconditionally, i.e., a fact is a Horn Clause  ```A(1,2) ⇐ true```.
 Relation ```B``` has two rules, i.e., ```B(x,y) :- A(x,y).``` and ```B(x,y) :- A(x,y), B(y,z).```
